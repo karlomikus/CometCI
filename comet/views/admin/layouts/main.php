@@ -6,16 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Clan Comet CMS site administration">
 	<meta name="author" content="Karlo Mikus">
-
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,300' rel='stylesheet' type='text/css'>
-	<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/select2.css" rel="stylesheet">
-
-	<link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/select2.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/main.css" rel="stylesheet">
 	<!--[if lt IE 9]>
-	<script src="<?php echo base_url(); ?>/assets/js/html5shiv.js"></script>
+	<script src="<?php echo base_url(); ?>/assets/admin/js/html5shiv.js"></script>
 	<![endif]-->
 </head>
 <body>
@@ -91,13 +89,10 @@
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.datepicker.js"></script>
-
-<script src="<?php echo base_url(); ?>assets/jquery.filedrop.js"></script>
-
-<script src="<?php echo base_url(); ?>/assets/js/main.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/select2.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.datepicker.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/jquery.filedrop.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/main.js"></script>
 </body>
 </html>
