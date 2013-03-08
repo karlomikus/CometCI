@@ -52,4 +52,11 @@ class Matches_m extends MY_Model {
 		);
 		return $this->db->insert('matches_files', $data); 
 	}
+
+	public function get_match_screenshots($id) {
+		$this->db->select('*');
+		$query = $this->db->get_where('matches_files', array('match_id' => $id))->result();
+
+		return $query;
+	}
 }

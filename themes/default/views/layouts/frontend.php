@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>{{template.title}}</title>
+
   <link rel="stylesheet" href="{{theme_asset('css/normalize.css')}}">
   <link rel="stylesheet" href="{{theme_asset('css/foundation.min.css')}}">
   <link rel="stylesheet" href="{{theme_asset('css/font-awesome.min.css')}}">
@@ -29,7 +30,7 @@
 	  <img src="http://placehold.it/50x50" />
 	</div>
 	<div class="large-5 columns"><h4>CLANNAME</h4></div>
-	<div class="large-6 columns">
+	<div class="large-6 columns text-right">
 		Logged in as: {{user.username}}<br>
 		<a href="{{base_url('admin')}}">Control Panel</a>
 	</div>
@@ -62,20 +63,9 @@
   <!-- Footer -->
   
   <footer class="row">
-	<div class="large-12 columns">
+	<div class="large-12 columns text-center">
 	  <hr />
-	  <div class="row">
-		<div class="large-6 columns">
-		  <p>&copy; 2013 Copyright Clanname</p>
-		</div>
-		<div class="large-6 columns">
-		  <ul class="inline-list right">
-			<li><a href="#">Link 1</a></li>
-			<li><a href="#">Link 2</a></li>
-			<li><a href="#">Link 3</a></li>
-		  </ul>
-		</div>
-	  </div>
+	  <p>&copy; 2013 Copyright Clanname</p>
 	</div> 
   </footer>
 

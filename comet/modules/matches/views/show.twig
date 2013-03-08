@@ -31,6 +31,18 @@
 	{% set i = i + 1 %}
 	{% endfor %}
 </table>
+
 <div class="panel">
 	{{match.report}}
 </div>
+
+{% if get_match_screenshots(match.id)|length > 0 %}
+<h4>Screenshots:</h4>
+<div class="panel">
+	<ul class="small-block-grid-4">
+	{% for screenshot in get_match_screenshots(match.id) %}
+		<li><img src="{{base_url()}}uploads/screenshots/{{screenshot.file}}" alt="Screenshot" /></li>
+	{% endfor %}
+	</ul>
+</div>
+{% endif %}

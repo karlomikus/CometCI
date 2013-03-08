@@ -87,6 +87,13 @@ function get_scores($id) {
 	return $CI->matches_m->get_scores($id);
 }
 
+function get_match_screenshots($id) {
+	$CI =& get_instance();
+	$CI->load->model('matches/matches_m');
+
+	return $CI->matches_m->get_match_screenshots($id);
+}
+
 function user_uri($id) {
 	return 'users/profile/'.$id;
 }
