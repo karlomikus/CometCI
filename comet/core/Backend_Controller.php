@@ -6,6 +6,8 @@ class Backend_Controller extends MY_Controller {
 
 		parent::__construct();
 
+		$this->load->library();
+
 		//Set theme for backend
 		$this->template
 			->set_partial('sidebar', 'admin/sidebar')

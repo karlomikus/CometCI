@@ -5,10 +5,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>{{template.title}}</title>
-  <link rel="stylesheet" href="{{base_url('themes/default/css/normalize.css')}}">
-  <link rel="stylesheet" href="{{base_url('themes/default/css/foundation.min.css')}}">
-  <link rel="stylesheet" href="{{base_url('themes/default/css/font-awesome.min.css')}}">
-  <script src="{{base_url('themes/default/js/vendor/custom.modernizr.js')}}"></script>
+  <link rel="stylesheet" href="{{theme_asset('css/normalize.css')}}">
+  <link rel="stylesheet" href="{{theme_asset('css/foundation.min.css')}}">
+  <link rel="stylesheet" href="{{theme_asset('css/font-awesome.min.css')}}">
+  <script src="{{theme_asset('js/vendor/custom.modernizr.js')}}"></script>
   <style type="text/css">
 	body { margin-top: 20px; background: #ccc; }
 	.wrap { background: #fff; padding: 20px; }
@@ -81,8 +81,8 @@
 
 </div>
 
-<script src="{{base_url()}}themes/default/js/vendor/zepto.js"></script>
-<script src="{{base_url()}}themes/default/js/foundation.min.js"></script>
+<script src="{{theme_asset('js/vendor/zepto.js')}}"></script>
+<script src="{{theme_asset('js/foundation.min.js')}}"></script>
 
 </body>
 </html>

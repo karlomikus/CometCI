@@ -1,3 +1,5 @@
+.hgignore
+plugini.txt
 uploads/users/*
 uploads/labels/*
 uploads/teams/*
