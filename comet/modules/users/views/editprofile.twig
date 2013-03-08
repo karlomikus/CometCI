@@ -1,0 +1,22 @@
+{{form_open_multipart(current_url())}}
+	<label>Avatar</label>
+	<input type="file" name="avatar" />
+	<label>First name</label>
+	<input type="text" name="firstname" value="{{data.first_name}}" />
+	<label>Last name</label>
+	<input type="text" name="lastname" value="{{data.last_name}}" />
+	<label>Email</label>
+	<input type="text" name="email" value="{{data.email}}" />
+	<label>Date of birth</label>
+	<input type="text" name="firstname" value="{{data.dob}}" />
+	<label>Country</label>
+	<select name="country">
+		{% for country in get_countries() %}
+		<option value="{{country.id}}">{{country.name}}</option>
+		{% endfor %}
+	</select>
+	<label>Gender</label>
+	<input type="text" name="sex" value="{{data.gender}}" />
+	<hr />
+	<input class="button" type="submit" name="save" value="Save changes" />
+{{form_close()}}

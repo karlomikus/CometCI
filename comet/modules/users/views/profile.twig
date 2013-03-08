@@ -1,0 +1,17 @@
+{% set age = '-' %}
+{% if data.dob is defined %}
+{% set age = data.dob %}
+{% endif %}
+<p>
+	<strong>Username:</strong> {{data.username}} <br />
+	<strong>Email:</strong> {{data.email}} <br />
+	<strong>Firstname:</strong> {{data.first_name}} <br />
+	<strong>Lastname:</strong> {{data.last_name}} <br />
+	<strong>Age:</strong> {{age}} <br />
+	<strong>Country:</strong> {{data.country}} <br />
+	<strong>Gender:</strong> {{data.gender}}
+</p>
+{% if option == true %}
+<hr />
+<a href="{{site_url('users/profile/edit/1')}}" class="small secondary button">Edit profile</a>
+{% endif %}

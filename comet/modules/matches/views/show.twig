@@ -1,0 +1,36 @@
+<div class="row match">
+	<div class="large-2 columns textright">
+		{{get_result(match.id, false)}}
+	</div>
+	<div class="large-3 columns textcenter">
+		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" />
+	</div>
+	<div class="large-2 columns textcenter">
+		<h3>VS</h3>
+	</div>
+	<div class="large-3 columns textcenter">
+		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" />
+	</div>
+	<div class="large-2 columns textleft">
+		{{get_result(match.id)}}
+	</div>
+</div>
+<table width="50%" style="margin: 20px auto;">
+	<tr>
+		<th></th>
+		<th>Opponent</th>
+		<th>Team</th>
+	</tr>
+	{% set i = 1 %}
+	{% for round in get_scores(match.id) %}
+	<tr>
+		<td class="textcenter">Round {{i}}:</td>
+		<td class="textcenter">{{round.opponent}}</td>
+		<td class="textcenter">{{round.team}}</td>
+	</tr>
+	{% set i = i + 1 %}
+	{% endfor %}
+</table>
+<div class="panel">
+	{{match.report}}
+</div>
