@@ -7,7 +7,7 @@
 	<meta name="description" content="Clan Comet CMS site administration">
 	<meta name="author" content="Karlo Mikus">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,300' rel='stylesheet' type='text/css'>
-	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/select2.css" rel="stylesheet">

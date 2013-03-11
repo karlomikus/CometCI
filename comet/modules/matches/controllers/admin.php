@@ -137,13 +137,41 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE) {
 
-			$data = array(
-				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description')
-			);
-			$this->groups_m->update($id, $data);
+			$date = $this->input->post('date') .' '.$this->input->post('time');
+			$players = $this->input->post('team_players');
+			if(!empty($players)) $team_players = implode(",", $players);
+			else $team_players = NULL;
 
-			redirect('admin/groups');
+			$data = array(
+				'team' => $this->input->post('team'),
+				'opponent' => $this->input->post('opponent'),
+				'date' => $date,
+				'game' => $this->input->post('game'),
+				'report' => $this->input->post('report'),
+				'type' => $this->input->post('type'),
+				'matchlink' => $this->input->post('matchlink'),
+				'status' => $this->input->post('status'),
+				'opponent-players' => $this->input->post('opplayers'),
+				'team-players' => $team_players
+			);
+
+			$this->matches_m->update($id, $data);
+
+			// Update scores
+			$opponent_scores = $this->input->post('opponentscore');
+			$team_scores = $this->input->post('teamscore');
+			$limit = count($team_scores);
+			$score_array = array();
+			for($i = 0; $i < $limit; $i++) {
+				$score_array[$i] = array(
+					'match' => $id,
+					'opponent' => $opponent_scores[$i],
+					'team' => $team_scores[$i]
+				);
+			}
+			$this->matches_m->update_scores($id, $score_array);
+
+			redirect('admin/matches');
 		}
 		else {
 			$this->load->model('opponents/opponents_m');
@@ -156,14 +184,29 @@ class Admin extends Backend_Controller {
 				->set('teams', $this->teams_m->get_all())
 				->set('games', $this->games_m->get_all())
 				->set('data', $this->matches_m->as_array()->get($id))
+				->set('scores', $this->matches_m->get_scores($id))
+				->set('screenshots', $this->matches_m->get_match_screenshots($id))
 				->build('admin/form');
 		}
 	}
 
 	public function delete($id = 0) {
-
 		$this->matches_m->delete($id);
+		// TODO: Unlink match screenshots
 		redirect('admin/matches');
+	}
+
+	public function delete_screenshot($id = 0, $i = 0) {
+		if(!$this->input->is_ajax_request()) redirect('admin/matches');
+
+		if($_POST && $_POST['matchID'] && $_POST['i']) {
+			$matchID = $_POST['matchID'];
+			$i = $_POST['i'];
+			$this->matches_m->delete_screenshot($matchID, $i);
+ 		}
+		else {
+			redirect('admin/matches');
+		}
 	}
 
 	private function set_upload_options($i, $next){
@@ -189,7 +232,9 @@ class Admin extends Backend_Controller {
 				->set('data', $this->teams_m->get_team_members($id))
 				->build('admin/ajax_members');
 		}
-		else {}		
+		else {
+			redirect('admin/matches');
+		}
 	}
 
 	public function _valid_time($time) {

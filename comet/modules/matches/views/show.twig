@@ -3,13 +3,15 @@
 		{{get_result(match.id, false)}}
 	</div>
 	<div class="large-3 columns textcenter">
-		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" />
+		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" /><br />
+		Opponent name
 	</div>
 	<div class="large-2 columns textcenter">
 		<h3>VS</h3>
 	</div>
 	<div class="large-3 columns textcenter">
-		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" />
+		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" /><br />
+		Team name
 	</div>
 	<div class="large-2 columns textleft">
 		{{get_result(match.id)}}

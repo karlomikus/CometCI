@@ -7,6 +7,18 @@ class Matches_m extends MY_Model {
 			$this->db->insert_batch('matches_scores', $scores);
 			return true;
 		}
+		return false;
+	}
+
+	public function update_scores($id, $scores) {
+		$this->db->where('match', $id);
+		$this->db->delete('matches_scores');
+
+		if(is_array($scores)) {
+			$this->db->insert_batch('matches_scores', $scores);
+			return true;
+		}
+		return false;
 	}
 
 	public function get_scores($id) {
@@ -53,10 +65,34 @@ class Matches_m extends MY_Model {
 		return $this->db->insert('matches_files', $data); 
 	}
 
+	public function delete_screenshot($matchID, $i) {
+		$this->db->select('file');
+		$query = $this->db->get_where('matches_files', array('match' => $matchID))->result();
+		foreach($query as $file) {
+			$meta = $this->get_screenshot_meta($file);
+			if($meta[1] == $i) {
+				unlink('./uploads/screenshots/'.$file);
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
+		}
+		return FALSE;
+	}
+
 	public function get_match_screenshots($id) {
 		$this->db->select('*');
 		$query = $this->db->get_where('matches_files', array('match_id' => $id))->result();
 
 		return $query;
+	}
+
+	public function get_screenshot_meta($file) {
+		$pass1 = explode('_', $file);
+		$pass2 = explode('.', $pass1[2]); // Get timestamp
+
+		$result = array($pass1[0], $pass1[1], $pass2[0]); // MatchID, PictureNo, Timestamp
+		return $result;
 	}
 }

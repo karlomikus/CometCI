@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="<?php echo base_url(); ?>/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             padding-top: 40px;
@@ -41,7 +41,7 @@
         }
 
     </style>
-    <link href="<?php echo base_url(); ?>/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -71,20 +71,6 @@
     <?php echo form_close();?>
 
 </div> <!-- /container -->
-
-<script src="<?php echo base_url(); ?>/assets/js/jquery.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-transition.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-alert.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-modal.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-dropdown.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-scrollspy.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-tab.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-tooltip.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-popover.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-button.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-collapse.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-carousel.js"></script>
-<script src="<?php echo base_url(); ?>/assets/js/bootstrap-typeahead.js"></script>
 
 </body>
 </html>

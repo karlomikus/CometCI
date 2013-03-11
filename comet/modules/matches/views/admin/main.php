@@ -7,11 +7,17 @@
 		<th width="15%"></th>
 	</tr>
 	<?php foreach ($matches as $match): ?>
+	<?php
+		$outcome = $this->matches_m->get_match_outcome($match->id);
+		if($outcome == 'WIN') $class = 'win';
+		elseif($outcome == 'LOSE') $class = 'lose';
+		else $class = 'draw';
+	?>
 	<tr>
 		<td><?php echo $this->opponents_m->get($match->opponent)->name; ?></td>
 		<td><?php echo $match->date; ?></td>
 		<td><?php echo $this->games_m->get($match->game)->name; ?></td>
-		<td class="text-center"><?php echo $this->matches_m->get_match_outcome($match->id); ?></td>
+		<td class="text-center <?php echo $class; ?>"><?php echo $outcome; ?></td>
 		<td class="text-center">
 			<div class="btn-toolbar">
 				<div class="btn-group">
