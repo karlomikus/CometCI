@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2013 at 06:30 PM
+-- Generation Time: Mar 12, 2013 at 01:31 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -19,6 +19,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `cms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `poster_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `module` varchar(50) NOT NULL,
+  `module_link` varchar(50) NOT NULL COMMENT 'example: ID of show posts',
+  `parent_id` int(11) DEFAULT NULL COMMENT 'for multilevel comments',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `poster_id`, `content`, `module`, `module_link`, `parent_id`) VALUES
+(1, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. However, some developers prefer to use a template engine if they work with designers who they feel would find some confusion working with PHP.', 'matches', '17', NULL),
+(2, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. Hofind some confusion working with PHP.', 'matches', '17', NULL),
+(3, 1, 'sagfasgasgasgasgasg', 'drugimodul', '17', NULL),
+(4, 1, 'dshsdhsdhsdhsdh', 'matches', '2', NULL),
+(5, 1, 'sdgsd', 'matches', '17', 0),
+(6, 1, 'gdsgds', 'matches', '17', 0),
+(7, 1, 'tgrh', 'matches', '2', 0),
+(8, 1, '1', 'matches', '3', 0);
 
 -- --------------------------------------------------------
 
@@ -457,7 +487,7 @@ INSERT INTO `matches` (`id`, `team`, `opponent`, `date`, `game`, `report`, `stat
 (2, 2, 3, '2013-02-27 00:22:57', 1, 'dasdsad', 0, NULL, '', '', NULL, ''),
 (3, 5, 5, '2013-02-27 00:56:50', 10, 'jhvjhv', 0, NULL, '', '', NULL, ''),
 (5, 2, 6, '2013-03-04 19:48:00', 7, 'There are two ways to build panels in Foundation 4, either with our predefined HTML or with our mixin. Building panels using our predefined class isn''t hard at all. You''ll start with and add a class of .panel to it. From there, you just need to add content inside, anything will do.', 0, 'notail,player1,fag1,fag2', '2,3,4,5', 'http://dotabuff.com/matches/140944627', 3, ''),
-(17, 2, 5, '2013-03-07 12:43:00', 3, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.', 0, 'xboct,dendi,blyat,cyka', '2,3,4,5', '', 3, '');
+(17, 2, 3, '2013-03-18 12:00:00', 6, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.0', 2, 'xboct,dendi,blyat', '2,3,4', 'ss', 2, '');
 
 -- --------------------------------------------------------
 
@@ -734,7 +764,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `dob`, `gender`, `country`, `avatar`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1362690749, 1, 'Karlo', 'Mikus', NULL, NULL, NULL, '1.png'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1363086162, 1, 'Karlo', 'Mikus', NULL, NULL, NULL, '1.png'),
 (2, '\0\0', 'test', 'c9677e8112319f649747a8b05708d010221e6b41', NULL, 'test@test.com', NULL, NULL, NULL, NULL, 1361107053, 1361107053, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, '\0\0', 'test2', 'b4bbb3960ac42732f74d08c1927f97003ef9bb6b', NULL, 'test2@test.com', NULL, NULL, NULL, NULL, 1361107377, 1361107377, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '\0\0', 'johndoe', 'f406c4e029784051584774587294de88047f74a0', NULL, 'john@doe.com', NULL, NULL, NULL, NULL, 1361112609, 1361112609, 1, NULL, NULL, NULL, NULL, NULL, NULL),
