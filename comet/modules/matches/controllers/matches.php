@@ -20,6 +20,7 @@ class Matches extends Frontend_Controller {
 
 		$this->template
 			->set('match', $this->matches_m->get($id))
+			->set('comments', $this->commentslib->render('matches', $id))
 			->build('show.twig');
 	}
 

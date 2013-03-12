@@ -1,7 +1,7 @@
-<h4>Post comment</h4>
-<form action="#">
-	<label>Content:</label>
-	<textarea>{{base_url()}}</textarea>
+<hr />
+<form action="{{base_url()}}comments/add/{{data.module}}/{{data.link}}" accept-charset="utf-8" method="post">
+	<label for="cmt_content">Content:</label>
+	<textarea id="cmt_content" name="content"></textarea>
 
 	<input class="small button" type="submit" value="POST COMMENT" name="save" />
 </form>
