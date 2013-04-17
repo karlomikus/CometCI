@@ -12,6 +12,13 @@ function get_game_name($id) {
 	return $CI->games_m->get($id)->name;
 }
 
+function get_game_icon($id) {
+	$CI =& get_instance();
+	$CI->load->model('games/games_m');
+
+	return $CI->games_m->get($id)->icon;
+}
+
 /**
  * Returns opponent name based on opponent id
  *
@@ -111,4 +118,12 @@ function get_avatar($userID) {
 	$avatar = $CI->ion_auth->user($userID)->row()->avatar;
 	if(isset($avatar)) return $avatar;
 	return 'noavatar.jpg';
+}
+
+function clear_text($text) {
+	return htmlspecialchars($text);
+}
+
+function widget($name) {
+	return Modules::run('wi_'.$name);
 }

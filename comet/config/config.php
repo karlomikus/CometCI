@@ -357,6 +357,10 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+$config['modules_locations'] = array(
+	APPPATH.'modules/' => '../modules/',
+	APPPATH.'widgets/' => '../widgets/',
+);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Controller extends CI_Controller {
+class MY_Controller extends MX_Controller {
 
 	// "Global" variable that cointains information about currently logged in user
 	public $user;

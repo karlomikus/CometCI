@@ -19,6 +19,22 @@
 	.textleft { text-align: left; }
 	.textright { text-align: right; }
 	.match img { margin: 0 auto; }
+
+	.wi_default {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.wi_default li {
+		overflow: hidden;
+	}
+	.wi_default img {
+		float: left;
+		margin-right: 7px;
+	}
+	.wi_default span {
+		float: right;
+	}
   </style>
 </head>
 <body>
@@ -58,7 +74,13 @@
 	  {{template.body}}
 	</div>
 		
-  </div>  
+  </div>
+
+  <div class="row">
+  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
+  	<div class="large-4 columns"><h6>LATEST POSTS</h6><hr />{{widget('posts')}}</div>
+  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
+  </div>
   
   <!-- Footer -->
   

@@ -697,6 +697,7 @@ class Template
 			{
 				$theme_views = array(
 					$this->_theme . '/views/modules/' . $this->_module . '/' . $view,
+					$this->_theme . '/views/widgets/' . $this->_module . '/' . $view,
 					$this->_theme . '/views/' . $view
 				);
 
