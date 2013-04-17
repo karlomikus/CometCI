@@ -1,21 +1,48 @@
-<?php
-	$avatar = 'noavatar.jpg';
-	if(isset($user->avatar)) $avatar = $user->avatar;
-?>
-<div class="userarea clearfix">
-	<img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" />
-	<ul class="unstyled">
-		<li><?php echo $user->username; ?></li>
-		<li><a href="<?php echo base_url(); ?>users/profile/<?php echo $user->id; ?>" target="_blank">Profile</a></li>
-		<li><a href="<?php echo base_url(); ?>" target="_blank">View site</a></li>
-	</ul>
-</div>
-<h5 class="sidebar-header">Related links</h5>
-<ul class="nav nav-list">
-    <li><a href="<?php echo site_url('groups/admin');?>">Groups</a></li>
-    <li><a href="<?php echo site_url('access/admin');?>">User access</a></li>
-</ul>
-<h5 class="sidebar-header">Module help</h5>
-<p>
-	Echo park sunt eu authentic direct trade. Fanny pack fingerstache aliquip meggings. Banjo pork belly DIY hoodie single-origin coffee truffaut. 3 wolf moon brooklyn fixie cosby sweater chambray, hella keytar labore 90's bicycle rights direct trade typewriter +1 selvage. Hashtag pour-over flexitarian whatever brooklyn.
-</p>
+<aside class="sidebar-group">
+		<section class="sidebar-icon">
+			<ul>
+				<li class="active"><a href="#dashboard-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-dashboard.png" alt="Dashboard" /></a></li>
+				<li><a href="#content-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-content.png" alt="Content" /></a></li>
+				<li><a href="#clan-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-clan.png" alt="Clan" /></a></li>
+				<li><a href="#users-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-users.png" alt="Users" /></a></li>
+				<li><a href="#settings-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-settings.png" alt="Settings" /></a></li>
+			</ul>
+		</section>
+
+		<section class="site-sidebar tab-content">
+			<ul id="dashboard-tab" class="tab-pane fade in active">
+				<li class="sidebar-title">Dashboard</li>
+				<li><a href="<?php echo site_url('admin/'); ?>">Startpage</a></li>
+				<li><a href="<?php echo site_url('admin/'); ?>">Statistics</a></li>
+			</ul>
+			<ul id="content-tab" class="tab-pane fade in">
+				<li class="sidebar-title">Content</li>
+				<li><a href="<?php echo site_url('admin/posts'); ?>">Posts</a></li>
+				<li><a href="<?php echo site_url('admin/labels'); ?>">Labels</a></li>
+				<li><a href="<?php echo site_url('admin/forum'); ?>">Forum</a></li>
+				<li><a href="<?php echo site_url('admin/calendar'); ?>">Calendar</a></li>
+				<li><a href="<?php echo site_url('admin/stats'); ?>">Statistics</a></li>
+				<li><a href="<?php echo site_url('admin/gallery'); ?>">Gallery</a></li>
+			</ul>
+			<ul id="clan-tab" class="tab-pane fade in">
+				<li class="sidebar-title">Clan</li>
+				<li><a href="<?php echo site_url('admin/matches'); ?>">Matches</a></li>
+				<li><a href="<?php echo site_url('admin/teams'); ?>">Teams</a></li>
+				<li><a href="<?php echo site_url('admin/roster'); ?>">Roster</a></li>
+				<li><a href="<?php echo site_url('admin/opponents'); ?>">Opponents</a></li>
+				<li><a href="<?php echo site_url('admin/games'); ?>">Games</a></li>
+				<li><a href="<?php echo site_url('admin/sponsors'); ?>">Sponsors</a></li>
+			</ul>
+			<ul id="users-tab" class="tab-pane fade in">
+				<li class="sidebar-title">Users</li>
+				<li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
+				<li><a href="<?php echo site_url('admin/groups'); ?>">Groups</a></li>
+				<li><a href="<?php echo site_url('admin/permissions'); ?>">Permissions</a></li>
+			</ul>
+			<ul id="settings-tab" class="tab-pane fade in">
+				<li class="sidebar-title">Settings</li>
+				<li><a href="#">Site settings</a></li>
+				<li><a href="#">Match settings</a></li>
+			</ul>
+		</section>
+	</aside>

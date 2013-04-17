@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Clan Comet CMS site administration">
 	<meta name="author" content="Karlo Mikus">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800|Sintony:400,700' rel='stylesheet' type='text/css'>
 	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" rel="stylesheet">
@@ -17,82 +17,37 @@
 	<![endif]-->
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container-fluid admin-wrap-header">
+<?php
+	$avatar = 'noavatar.jpg';
+	if(isset($user->avatar)) $avatar = $user->avatar;
+?>
+	<header class="site-header">
+		<a class="avatar" href="#"><img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" width="32" height="32" /></a>
 
-			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+		<h1>Clan Comet</h1>
 
-			<h1 class="brand logo">Clan Comet CMS</h1>
+		<ul>
+			<li><a href="#"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-pm.png" alt="Messagess" /></a></li>
+			<li><a href="#"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-view.png" alt="View site" /></a></li>
+		</ul>
+	</header>
 
-			<div class="nav-collapse collapse">
-				<ul class="nav pull-right">
-					<li class="active"><a href="admin">Main</a></li>
-					<li class="dropdown">
-						<a href="users/admin" class="dropdown-toggle" data-toggle="dropdown">Clan</a>
-						<ul class="dropdown-menu">
-						  <li><a href="<?php echo site_url('admin/matches'); ?>">Matches</a></li>
-						  <li><a href="<?php echo site_url('admin/teams'); ?>">Teams</a></li>
-						  <li><a href="<?php echo site_url('admin/roster'); ?>">Roster</a></li>
-						  <li><a href="<?php echo site_url('admin/opponents'); ?>">Opponents</a></li>
-						  <li><a href="<?php echo site_url('admin/games'); ?>">Games</a></li>
-						  <li><a href="<?php echo site_url('admin/sponsors'); ?>">Sponsors</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="users/admin" class="dropdown-toggle" data-toggle="dropdown">Content</a>
-						<ul class="dropdown-menu">
-						  <li><a href="<?php echo site_url('admin/posts'); ?>">Posts</a></li>
-						  <li><a href="<?php echo site_url('admin/labels'); ?>">Labels</a></li>
-						  <li><a href="<?php echo site_url('admin/forum'); ?>">Forum</a></li>
-						  <li><a href="<?php echo site_url('admin/calendar'); ?>">Calendar</a></li>
-						  <li><a href="<?php echo site_url('admin/stats'); ?>">Statistics</a></li>
-						  <li><a href="<?php echo site_url('admin/gallery'); ?>">Gallery</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Users</a>
-						<ul class="dropdown-menu">
-						  <li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
-						  <li><a href="<?php echo site_url('admin/groups'); ?>">Groups</a></li>
-						  <li><a href="<?php echo site_url('admin/permissions'); ?>">Permissions</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div><!--/.nav-collapse -->
+	<?php echo $template['partials']['sidebar']; ?>
 
-		</div>
-	</div>
-</div>
+	<section class="site-content">
+		
+		<?php echo $template['body']; ?>
 
-<div class="admin-content-wrap">
-	<div class="clearfix">
-		<div class="col sidebar pull-left">
-			<!-- <p>Logged in as <a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link"><?php echo $user; ?></a></p> -->
+	</section>
 
-			<?php echo $template['partials']['sidebar']; ?>
-		</div>
-		<div class="col template-body pull-right">
-			<?php echo $template['partials']['module_header']; ?>
-			<?php echo $template['body']; ?>
-		</div>
-	</div>
-</div>
-
-<footer class="site">
-	<p>&copy; Clan Comet v0.1a</p>
-</footer>
+	<div style="clear:both;"></div>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.datepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/jquery.filedrop.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/main.js"></script>
 </body>
 </html>
