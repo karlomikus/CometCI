@@ -6,8 +6,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 body
 {
 	/* Font */
-	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
-	font-size: 12px;
+	font-family: 'Merriweather Sans', sans-serif, Arial, Verdana, "Trebuchet MS";
+	font-weight: 300;
+	font-size: 14px;
 
 	/* Text color */
 	color: #333;
@@ -30,7 +31,7 @@ blockquote
 	font-family: Georgia, Times, "Times New Roman", serif;
 	padding: 2px 0;
 	border-style: solid;
-	border-color: #ccc;
+	border-color: #dddddd;
 	border-width: 0;
 }
 
@@ -38,20 +39,22 @@ blockquote
 {
 	padding-left: 20px;
 	padding-right: 8px;
-	border-left-width: 5px;
+	border-left-width: 1px;
 }
 
 .cke_contents_rtl blockquote
 {
 	padding-left: 8px;
 	padding-right: 20px;
-	border-right-width: 5px;
+	border-right-width: 1px;
 }
 
 a
 {
-	color: #0782C1;
+	color: #2ba6cb;
 }
+a:hover, a:focus {
+    color: #2795b6; }
 
 ol,ul,dl
 {

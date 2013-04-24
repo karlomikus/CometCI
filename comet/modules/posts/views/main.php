@@ -1,5 +1,5 @@
 {% for post in posts %}
-	<h3>{{post.title}}</h3>
+	<h1>{{post.title}}</h1>
 	<hr />
 	<p>{{post.body}}</p>
 {% endfor %}
