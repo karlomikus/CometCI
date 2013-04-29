@@ -8,6 +8,6 @@ class Posts extends Frontend_Controller {
 
 		$this->template
 			->set('posts', $this->posts_m->get_all())
-			->build('main');
+			->build('main.twig');
 	}
 }

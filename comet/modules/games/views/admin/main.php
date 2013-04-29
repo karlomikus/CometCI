@@ -1,7 +1,13 @@
+<?php if($this->session->flashdata('create_error')) : ?>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?php echo $this->session->flashdata('create_error'); ?>
+</div>
+<?php endif; ?>
 <table class="table tbl-custom">
 	<thead>
 		<tr>
-			<th align="center">Icon</th>
+			<th align="center" width="40">Icon</th>
 			<th>Name</th>
 			<th>Code</th>
 			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>

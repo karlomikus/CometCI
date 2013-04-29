@@ -39,7 +39,7 @@ class Matches_m extends MY_Model {
 		return $result;
 	}
 
-	public function get_match_outcome($id, $text = true) {
+	public function get_match_outcome($id, $text = TRUE, $format = FALSE) {
 		$home = $this->calculate_score('team', $id);
 		$away = $this->calculate_score('opponent', $id);
 
@@ -51,6 +51,12 @@ class Matches_m extends MY_Model {
 			if($outcome == 1) $outcome_text = 'WIN';
 			elseif($outcome == 2) $outcome_text = 'LOSE';
 			else $outcome_text = 'DRAW';
+		}
+
+		if($text && $format) {
+			if($outcome == 1) $outcome_text = '<span class="win-color">WIN</span>';
+			elseif($outcome == 2) $outcome_text = '<span class="lose-color">LOSE</span>';
+			else $outcome_text = '<span class="draw-color">DRAW</span>';
 		}
 
 		return $text ? $outcome_text : $outcome;

@@ -19,6 +19,7 @@ class Admin extends Backend_Controller {
 	}
 
 	public function index() {
+		$this->load->helper('text');
 		
 		$this->template
 			->set($this->template_data)
@@ -31,8 +32,6 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
-		$this->form_validation->set_error_delimiters('<div class="alert alert-error">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>', '</div>');
 
 		$this->form_validation->set_rules('name', 'Team name', 'required');
 		$this->breadcrumb->append_crumb($this->template_data['create_title'], 'admin/teams/create');
@@ -84,6 +83,9 @@ class Admin extends Backend_Controller {
 				$games_picked = implode(',', $games_post);
 			}
 			else { $games_picked = 0; }
+
+			$gamingTeam = 0;
+			if(isset($games_picked)) $gamingTeam = 1;
 			
 			$data = array(
 				'name' => $this->input->post('name'),
@@ -91,7 +93,7 @@ class Admin extends Backend_Controller {
 				'games' => $games_picked,
 				'banner' => $banner_data['file_name'],
 				'logo' => $logo_data['file_name'],
-				'type' => $this->input->post('type'),
+				'type' => $gamingTeam,
 				'countryID' => $this->input->post('country')
 			);    
 

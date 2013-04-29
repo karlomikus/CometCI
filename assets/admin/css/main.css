@@ -26,6 +26,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	box-shadow: 0 1px 0 #fff;
 }
 
+.ajax-load { display: none; }
+
+.win-color { color: #a2e16b; }
+.lose-color { color: #e36e6e; }
+.draw-color { color: #ededed; }
+
 /* Site Header */
 .site-header {
 	background: #424851;
@@ -156,13 +162,88 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	background: #37bbeb;
 }
 
-/* Matches form */
+/* Calendar / Fixtures */
+.cms-calendar, .cms-calendar tbody {
+	width: 100%;
+	background-color: #fff;
+}
+
+.cms-calendar th {
+	padding: 10px 0;
+}
+
+.cms-calendar th a {
+	color: #f94e36;
+}
+
+.cms-calendar td {
+	text-align: center;
+}
+
+.cms-calendar tr.week-row td {
+	color: #f94e36;
+}
+
+/* Custom upload input */
+.cms-upload {
+	background: #fff;
+	border: 1px solid #a0a6af;
+	padding: 10px;
+	width: 400px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.cms-upload p {
+	float: left;
+	margin: 0;
+}
+.cms-upload p span { color: #bbb; }
+.cms-upload a { float: right; }
+
+/* Custom media panel */
 .media-panel {
 	background: #37404e;
 	margin-bottom: 20px;
 	padding: 20px 20px 0 20px;
 	box-shadow: 0 1px 0 #fff, inset 0 5px 4px #262d36;
 }
+
+.media-panel .media-list {
+	list-style: none;
+	overflow: hidden;
+}
+
+.media-panel .media-list li {
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.media-panel .media-list li div {
+	background: #fff;
+	height: 150px;
+	padding: 5px;
+	text-align: center;
+}
+
+.media-panel .media-add {
+	color: #fff;
+	border: 2px dashed #fff;
+	display: block;
+	height: 150px;
+	line-height: 170px;
+	padding: 0 20px;
+}
+
+/* Match Scores add/remove */
+#admin-scores a {
+	margin-bottom: 20px;
+	padding: 9px 12px;
+}
+
+#admin-scores p { margin: 0; }
 
 /* Screenshots */
 #screenshots ul {
@@ -241,7 +322,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	padding: 17px;
 }
 
-td.action {
+.tbl-custom td.action {
 	width: 100%;
 	text-align: center;
 	padding: 0 !important;
@@ -249,7 +330,7 @@ td.action {
 	display: block;
 }
 
-td.action .action-icon {
+.tbl-custom td.action .action-icon {
 	background: url(../img/icon-actions.gif) center no-repeat;
 	display: block;
 	text-indent: -9999px;
@@ -257,8 +338,8 @@ td.action .action-icon {
 	border-left: 1px solid transparent;
 }
 
-td.action .action-icon:hover { background: #4e5867 url(../img/icon-actions-hover.gif) center no-repeat; }
-td.action .action-icon-active {
+.tbl-custom td.action .action-icon:hover { background: #4e5867 url(../img/icon-actions-hover.gif) center no-repeat; }
+.tbl-custom td.action .action-icon-active {
 	background: #4e5867 url(../img/icon-actions-hover.gif) center no-repeat;
 	border-left: 1px solid #616b79;
 }
@@ -266,6 +347,10 @@ td.action .action-icon-active {
 .tbl-custom tbody > tr:nth-child(2n+1) > td,
 .tbl-custom tbody > tr:nth-child(2n+1) > th {
 	background-color: #f5f5f5;
+}
+
+.tbl-custom tr:hover td {
+	background: rgba(0,0,0,0.08) !important;
 }
 
 /* Table action list */
@@ -306,7 +391,9 @@ td.action .action-icon-active {
 .cms-form {
 }
 
-.cms-form h4 {
+.cms-form .cms-margin { margin-bottom: 20px !important; }
+
+.cms-form h4, h4.cms-title {
 	border-bottom: 3px solid #cacaca;
 	width: 20%;
 	padding-bottom: 10px;
@@ -450,8 +537,39 @@ td.action .action-icon-active {
 	border-right: none;
 }
 
+.modal-header h3 {
+	font-weight: 300;
+}
+
+.cms-progress {
+	border: 5px solid #3a4048;
+	overflow: hidden;
+}
+.cms-progress div { height: 40px; float: left; }
+.cms-progress .wins {
+	background: #a2e16b;
+}
+.cms-progress .draws {
+	background: #ededed;
+}
+.cms-progress .loses {
+	background: #e36e6e;
+}
+
+/* CMS Alerts */
+.alert {
+	border-radius: 0;
+	border: none;
+	background-color: #f58c45;
+	color: #fff;
+}
+
+.alert-danger, .alert-error { background-color: #e95353; }
+.alert-success { background-color: #6fd267; }
+.alert-info { background-color: #33b5e5; }
+
 /* Misc. */
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
-.hidden { display: none; visibility: hidden; box-shadow: none !important; width: 1px; height: 1px; }
+.hidden { display: none; visibility: hidden; box-shadow: none !important; margin: 0 !important; }

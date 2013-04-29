@@ -25,7 +25,7 @@ class Admin extends Backend_Controller {
 			->build('admin/main');
 	}
 
-	public function create() {
+	public function adduser($id = 0) {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');

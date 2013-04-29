@@ -10,12 +10,12 @@
 
 	vs
 
-	<select placeholder="Select your team" class="js_select input-xlarge team_select" name="team">
+	<select placeholder="Select your team" class="js_select teamdropdown input-xlarge team_select" name="team">
 		<option></option>
 		<?php foreach($teams as $team): ?>
 		<option value="<?php echo $team->id; ?>" <?php echo isset($data) ? set_select('team', $data['team'], $team->id==$data['team'] ? TRUE : FALSE) : set_select('team'); ?>><?php echo $team->name; ?></option>
 		<?php endforeach; ?>
-	</select>
+	</select> <span class="ajax-load"><img src="<?php echo base_url(); ?>assets/admin/img/loading.gif" alt="Loading..." /></span>
 
 	<br />
 
@@ -66,21 +66,7 @@
 
 	<input placeholder="Opponent player list" class="input-xlarge" type="text" name="opplayers" value="<?php echo isset($data) ? $data['opponent-players'] : set_value("opponent-players"); ?>" />
 
-	<?php if(isset($data)): ?>
-	<div class="ajax-team-out">
-		<?php $team_players = explode(',', $data['team-players']); ?>
-		<select class="js_select teamplayers" name="team_players[]" multiple>
-		<?php foreach($this->teams_m->get_team_members($data['team']) as $team_member): ?>
-			<?php $selected = ''; if(in_array($team_member['user_id'], $team_players)) $selected = 'selected'; ?>
-			<option value="<?php echo $team_member['user_id']; ?>" <?php echo $selected; ?>><?php echo $this->ion_auth->user($team_member['user_id'])->row()->username; ?></option>
-		<?php endforeach; ?>
-		</select>
-	</div>
-	<?php else: ?>
-	<select placeholder="Choose team first" class="js_select teamplayers input-xlarge" name="team_players[]" multiple>
-		<option></option>
-	</select>
-	<?php endif; ?>
+	<input placeholder="Choose team first" class="input-xxlarge cms-margin" type="hidden" id="teamplayers" name="team_players[]" />
 
 	<h4>Additional data</h4>
 
@@ -133,7 +119,7 @@
 				<?php $i++; endforeach; ?>
 			<?php endif; ?>
 
-			<li class="addscreenshot"><i class="icon-plus icon-2x"></i></li>
+			<li class="addscreenshot"><i class="icon-cloud-upload icon-2x"></i></li>
 
 			<input name="userfile[]" id="screenshotsfile" class="hidden" type="file" accept="image/*" multiple />
 		</ul>

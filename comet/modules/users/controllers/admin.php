@@ -12,19 +12,18 @@ class Admin extends Backend_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
+		//$this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
 	}
 
 	public function index() {
 
-		$this->data['users'] = $this->ion_auth->users()->result();
-		foreach ($this->data['users'] as $k => $user)  {
-			$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		$data['users'] = $this->ion_auth->users()->result();
+		foreach ($data['users'] as $k => $user)  {
+			$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 		}
 
 		$this->template
-			->set($this->template_data)
-			->build('admin/main', $this->data);
+			->build('admin/main', $data);
 	}
 
 	public function create() {

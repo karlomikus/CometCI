@@ -104,7 +104,6 @@ class Admin extends Backend_Controller {
 				}
 				else {
 					$file_data = NULL;
-					//echo $this->upload->display_errors();
 				}
 			}
 
@@ -221,16 +220,19 @@ class Admin extends Backend_Controller {
 		return $config;
 	}
 
+	/* Return JSON array used for ajax */
 	public function fetch_team_members() {
 		if (!$this->input->is_ajax_request()) redirect('admin/matches'); // Wot u think u doin m8
-
-		if($_POST && $_POST['id']) {
+		if(isset($_POST) && isset($_POST['id'])) {
 			$id = $_POST['id'];
 			$this->load->model('teams/teams_m');
-			$this->template
-				->set_layout(NULL)
-				->set('data', $this->teams_m->get_team_members($id))
-				->build('admin/ajax_members');
+
+			$teamData = $this->teams_m->get_team_members($id);
+			$result = array();
+			foreach ($teamData as $member) {
+				$result[] = array('id' => $member['user_id'], 'text' => $this->ion_auth->user($member['user_id'])->row()->username);
+			}
+			echo json_encode($result);
 		}
 		else {
 			redirect('admin/matches');

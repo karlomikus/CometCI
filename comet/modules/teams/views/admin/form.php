@@ -1,20 +1,12 @@
 <?php echo validation_errors(); ?>
 
-<?php echo form_open_multipart(uri_string()); ?>
+<?php echo form_open_multipart(uri_string(), array('class' => 'cms-form')); ?>
 
-	<label>Team name</label>
-	<input type="text" name="name" value="<?php echo isset($data) ? $data['name'] : set_value("name"); ?>" />
+	<input placeholder="Team name" type="text" name="name" value="<?php echo isset($data) ? $data['name'] : set_value("name"); ?>" />
 
-	<label class="checkbox inline">
-	<input id="type_check" type="checkbox" name="type" value="1" <?php echo isset($data) ? ($data['type']==1 ? 'checked' : '') : 'checked'; ?>>
-		Gaming team
-	</label>
+	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
 
-	<label>Description</label>
-	<textarea name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
-
-	<div class="show_games"><label>Games</label>
-	<select class="js_select" name="games[]" data-placeholder="Select game(s)" multiple>
+	<select placeholder="Select game(s)" class="js_select input-xlarge" name="games[]" multiple>
 		<option></option>
 		<?php foreach($games as $game): ?>
 		<?php 
@@ -29,23 +21,26 @@
 		 ?>
 		<option value="<?php echo $game->id; ?>" <?php echo $selected; ?>><?php echo $game->name; ?></option>
 		<?php endforeach; ?>
-	</select></div>
+	</select>
 
-	<label>Country</label>
-	<select class="js_select" name="country">
+	<select placeholder="Choose country" class="js_select input-xlarge" name="country">
+		<option value=""></option>
 		<?php foreach($countries as $country): ?>
 		<option value="<?php echo $country->id; ?>" <?php echo isset($data) ? set_select('country', $data['countryID'], $country->id==$data['countryID'] ? TRUE : FALSE) : set_select('country'); ?>><?php echo $country->name; ?></option>
 		<?php endforeach; ?>
 	</select>
 
-	<label>Team logo</label>
-	<input type="file" name="logo" size="20" />
+	<div class="cms-upload">
+		<p>Choose team logo</p> <a class="btn btn-cms-orange show-file-input" href="#file-logo"><i class="icon-cloud-upload"></i></a>
+	</div>
 
-	<label>Team banner</label>
-	<input type="file" name="banner" size="20" />
+	<div class="cms-upload">
+		<p>Choose team banner</p> <a class="btn btn-cms-orange show-file-input" href="#file-banner"><i class="icon-cloud-upload"></i></a>
+	</div>	
 
-	<hr />
-
-	<?php echo form_submit(array('name' => 'save', 'value' => 'Save team', 'class' => 'btn btn-dark')); ?>
+	<button type="submit" class="btn btn-large btn-cms-orange">Save match</button>
+	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
+	<input id="file-logo" class="hidden" type="file" name="logo" size="1" />
+	<input id="file-banner" class="hidden" type="file" name="banner" size="1" />
 
 <?php echo form_close(); ?>

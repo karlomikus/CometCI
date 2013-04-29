@@ -112,16 +112,23 @@ function get_countries() {
 	return $CI->countries_m->get_all();
 }
 
-function get_avatar($userID) {
+function get_label_name($id) {
+	$CI =& get_instance();
+	$CI->load->model('labels/labels_m');
+	if(!isset($id)) return "Undefined label";
+	return $CI->labels_m->get($id)->name;
+}
+
+function get_avatar($userID, $fulltag = FALSE) {
 	$CI =& get_instance();
 	
 	$avatar = $CI->ion_auth->user($userID)->row()->avatar;
-	if(isset($avatar)) return $avatar;
-	return 'noavatar.jpg';
-}
-
-function clear_text($text) {
-	return htmlspecialchars($text);
+	if(!$fulltag) {
+		if(isset($avatar)) return $avatar;
+		return 'noavatar.jpg';
+	}
+	if(isset($avatar)) return '<img src="'.base_url().'uploads/users/'.$avatar.'" alt="avatar" />';
+	return '<img src="'.base_url().'uploads/users/noavatar.jpg" alt="avatar" />';
 }
 
 function widget($name) {

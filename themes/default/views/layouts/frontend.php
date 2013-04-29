@@ -64,7 +64,12 @@
   </div>
   
   <!-- End Nav and Banner -->
-  
+
+  <div class="row">
+  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
+  	<div class="large-4 columns"><h6>LATEST POSTS</h6><hr />{{widget('posts')}}</div>
+  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
+  </div>
   
   <!-- Main Content Section -->
   
@@ -74,12 +79,6 @@
 	  {{template.body}}
 	</div>
 		
-  </div>
-
-  <div class="row">
-  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
-  	<div class="large-4 columns"><h6>LATEST POSTS</h6><hr />{{widget('posts')}}</div>
-  	<div class="large-4 columns"><h6>LATEST MATCHES</h6><hr />{{widget('matches')}}</div>
   </div>
   
   <!-- Footer -->

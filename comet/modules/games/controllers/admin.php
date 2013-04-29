@@ -2,7 +2,7 @@
 
 class Admin extends Backend_Controller {
 
-    private $assets_path = './assets/admin/games/';
+    private $assets_path = './assets/games/';
 
     private $template_data = array(
         'title' => 'Games',
@@ -19,7 +19,7 @@ class Admin extends Backend_Controller {
         $this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
     }
 
-    public function index($offset = 0) {
+    public function index() {
         $this->games_m->order_by('name');
 
         $this->template
@@ -37,6 +37,7 @@ class Admin extends Backend_Controller {
 
         $this->form_validation->set_rules('name', 'Game name', 'required');
         $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|callback_check_shortcode');
+        $this->form_validation->set_rules('icon', 'Icon', 'required');
 
         $config['upload_path']   = $this->assets_path;
         $config['allowed_types'] = 'gif|jpg|png';
@@ -54,6 +55,7 @@ class Admin extends Backend_Controller {
                 $icon_data = $this->upload->data();
             }
             else {
+                $this->session->set_flashdata('create_error', "There was an error with the file!");
                 redirect('admin/games');
             }
 
@@ -103,6 +105,10 @@ class Admin extends Backend_Controller {
             if ($this->upload->do_upload('icon')) {
                 $icon_data = $this->upload->data();
                 $data['icon'] = $icon_data['file_name'];
+            }
+            else {
+                $this->session->set_flashdata('create_error', "There was an error with the file!");
+                redirect('admin/games');
             }
 
             $this->games_m->update($id, $data);

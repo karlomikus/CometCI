@@ -20,6 +20,7 @@ class Admin extends Backend_Controller {
 	}
 
 	public function index() {
+		$this->load->helper('text');
 
 		$this->template
 			->set($this->template_data)
@@ -53,7 +54,7 @@ class Admin extends Backend_Controller {
 				$logo_data = $this->upload->data();
 			}
 			else {
-				$logo_data = NULL;
+				$logo_data = NULL; // Logo is not required
 			}
 
 			$data = array(
@@ -109,11 +110,15 @@ class Admin extends Backend_Controller {
 				$logo_data = NULL;
 			}
 
+			$oldData = $this->opponents_m->as_array()->get($id);
+			if(isset($logo_data)) $filename = $logo_data['file_name'];
+			else $filename = $oldData['logo'];
+
 			$data = array(
 				'name' => $this->input->post('name'),
 				'info' => $this->input->post('description'),
 				'gameID' => $this->input->post('game'),
-				'logo' => $logo_data['file_name']
+				'logo' => $filename
 			);
 
 			$this->opponents_m->update($id, $data);
