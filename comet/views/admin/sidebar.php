@@ -1,6 +1,3 @@
-<?php 
-	$active_sidebar_group = "active";
-?>
 <aside class="sidebar-group">
 		<section class="sidebar-icon">
 			<ul>
@@ -13,7 +10,7 @@
 		</section>
 
 		<section class="site-sidebar tab-content">
-			<ul id="dashboard-tab" class="tab-pane fade in <?php echo $active_sidebar_group; ?>">
+			<ul id="dashboard-tab" class="tab-pane fade in active">
 				<li class="sidebar-title">Dashboard</li>
 				<li><a href="<?php echo site_url('admin/'); ?>">Startpage</a></li>
 				<li><a href="<?php echo site_url('admin/sitestats'); ?>">Site Statistics</a></li>

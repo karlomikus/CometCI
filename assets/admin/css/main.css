@@ -28,9 +28,10 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 .ajax-load { display: none; }
 
-.win-color { color: #a2e16b; }
-.lose-color { color: #e36e6e; }
-.draw-color { color: #ededed; }
+.win-color { color: #37cb61; }
+.lose-color { color: #e42a2a; }
+.draw-color { color: #ffa200; }
+.upcoming-color { color: #3798cb; }
 
 /* Site Header */
 .site-header {
@@ -235,6 +236,11 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	height: 150px;
 	line-height: 170px;
 	padding: 0 20px;
+}
+
+.media-panel .media-add:hover, .media-panel .media-add:focus {
+	text-decoration: none;
+	background-color: rgba(0,0,0,0.2);
 }
 
 /* Match Scores add/remove */

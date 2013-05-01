@@ -12,6 +12,7 @@ $(document).ready(function() {
 	$('.sidebar-icon a').click(function (e) {
 		e.preventDefault();
 		$(this).tab('show');
+		document.cookie = "activeTabGroup=" + this;
 	});
 
 // Select 2 plugin -----------------------------------
@@ -92,8 +93,9 @@ $(document).ready(function() {
 		$("#file-input").click();
 	});
 
-// Custom file input
-	$(".show-file-input").click(function() {
+// Custom file input -----------------------------------
+	$(".show-file-input").click(function(e) {
+		e.preventDefault();
 		var selectedFile = $(this).attr('href');
 		$(selectedFile).click();
 		$(selectedFile).bind("change", handleImageFile);
@@ -102,6 +104,19 @@ $(document).ready(function() {
 // Process file reader -----------------------------------
 	$("#screenshotsfile").bind("change", handleImageFile);
 	$("#file-input").bind("change", handleImageFile);
+
+// Confirm delete -----------------------------------
+	$(".tbl-custom .confirm-delete").click(function(e) {
+		e.preventDefault(); // Prevent going to url after user clicks the link
+		var deleteLink = $(this).attr("href"); // Get link
+		bootbox.confirm("Are you sure you want to delete this data?", function(result) {
+			if (result) {
+				window.location = deleteLink; // Delete confirmed
+			} else {
+				bootbox.hideAll(); // User pressed cancel, hide all modals
+			}
+		});
+	});
 
 }); // End of jQuery document load
 
@@ -146,4 +161,15 @@ function handleImageFile(evt) {
 		})(f);
 		reader.readAsDataURL(f);
 	}
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
 }

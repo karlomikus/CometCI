@@ -8,7 +8,7 @@
 		<?php endforeach; ?>
 	</select>
 
-	vs
+	<span>VS</span>
 
 	<select placeholder="Select your team" class="js_select teamdropdown input-xlarge team_select" name="team">
 		<option></option>

@@ -39,6 +39,9 @@ class Admin extends Backend_Controller {
 
 		$this->breadcrumb->append_crumb($this->template_data['create_title'], $this->template_data['uri'].'/create');
 
+		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
+		$this->form_validation->set_rules('team', 'Team', 'required');
+		$this->form_validation->set_rules('game', 'Game', 'required');
 		$this->form_validation->set_rules('report', 'Report', 'required');
 		$this->form_validation->set_rules('date', 'Date', 'required');
 		$this->form_validation->set_rules('time', 'Time', 'required|callback__valid_time');
@@ -128,8 +131,9 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->breadcrumb->append_crumb($this->template_data['edit_title'], $this->template_data['uri'].'/edit');
-
+		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
+		$this->form_validation->set_rules('team', 'Team', 'required');
+		$this->form_validation->set_rules('game', 'Game', 'required');
 		$this->form_validation->set_rules('report', 'Report', 'required');
 		$this->form_validation->set_rules('date', 'Date', 'required');
 		$this->form_validation->set_rules('time', 'Time', 'required|callback__valid_time');

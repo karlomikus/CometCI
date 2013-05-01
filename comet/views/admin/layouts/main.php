@@ -49,6 +49,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/select2.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.datepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/ckeditor/ckeditor.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/bootbox.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/main.js"></script>
 </body>
 </html>
