@@ -1,19 +1,15 @@
-<?php echo form_open(uri_string()); ?>
+<?php echo form_open(uri_string(), array('class' => 'cms-form')); ?>
 
-    <label>Username</label>
-    <input type="text" name="username" value="<?php echo isset($userdata) ? $userdata['username'] : set_value("username"); ?>" />
+    <input placeholder="Username" type="text" name="username" value="<?php echo isset($userdata) ? $userdata['username'] : set_value("username"); ?>" />
 
-    <label>Email</label>
-    <input type="text" name="email" value="<?php echo isset($userdata) ? $userdata['email'] : set_value("email"); ?>" />
+    <input placeholder="Email" type="text" name="email" value="<?php echo isset($userdata) ? $userdata['email'] : set_value("email"); ?>" />
 
-    <label>Password</label>
-    <input type="password" name="password" />
+    <input placeholder="Password" type="password" name="password" />
 
-    <label>Confirm Password</label>
-    <input type="password" name="password_confirm" />
+    <input placeholder="Confirm password" type="password" name="password_confirm" />
 
-    <label>Choose default groups</label>
-    <select class="js_select" name="groups[]" multiple>
+    <select placeholder="Choose default group(s)" class="js_select input-xlarge" name="groups[]" multiple>
+        <option value=""></option>
         <?php foreach($groups as $group): ?>
         <?php 
             $gID = $group->id;
@@ -31,8 +27,7 @@
     </select>
     <span class="help-block">If you don't choose any group user will default to: members</span>
 
-    <hr />
-
-    <?php echo form_submit(array('name' => 'save', 'value' => 'Save user', 'class' => 'btn btn-dark')); ?>
+    <button type="submit" class="btn btn-large btn-cms-orange">Save match</button>
+    <button type="button" class="btn btn-large btn-cms goback">Cancel</button>
 
 <?php echo form_close(); ?>

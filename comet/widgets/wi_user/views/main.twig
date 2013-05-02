@@ -1,0 +1,17 @@
+{% if logged_in == false %}
+	{% if login_errors|length > 0 %}
+		<div class="alert-box alert">{{login_errors}}</div>
+	{% endif %}
+	<form action="users/user/login" method="post">
+		<input type="text" name="identity" />
+		<input type="password" name="password" />
+		<button class="small button" type="submit">Login</button>
+	</form>
+{% else %}
+	<ul class="square">
+		<li>Welcome back: {{user.username}}</li>
+		<li><a href="{{base_url()}}users/profile">Profile</a></li>
+		<li><a href="{{base_url()}}admin" target="_blank">Control Panel</a></li>
+		<li><a href="{{base_url()}}admin/logout">Logout</a></li>
+	</ul>
+{% endif %}

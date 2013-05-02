@@ -15,15 +15,17 @@
             <td><?php echo $user->email;?></td>
             <td>
                 <?php foreach ($user->groups as $group):?>
-                <?php echo anchor("admin/groups/edit/".$group->id, $group->name) ;?> 
+                <span class="label label-info"><?php echo $group->name; ?></span>
                 <?php endforeach?>
             </td>
-            <td><?php echo ($user->active) ? anchor("admin/users/deactivate/".$user->id, 'Active') : anchor("admin/users/activate/". $user->id, 'Inactive');?></td>
+            <td><?php echo ($user->active) ? '<span class="label label-success">Active</span>' : '<span class="label label-important">Inactive</span>';?></td>
             <td class="action">
                 <a class="action-icon" href="#">Action</a>
                 <ul class="action-list" style="display: none;">
                     <li><a href="<?php echo site_url('admin/users/delete/'.$user->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-delete.png" alt="" /></a></li>
                     <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-edit.png" alt="" /></a></li>
+                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-unlock"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-lock"></i></a></li>
                 </ul>
             </td>
         </tr>

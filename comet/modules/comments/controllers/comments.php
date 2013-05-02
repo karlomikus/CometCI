@@ -4,9 +4,10 @@ class Comments extends Frontend_Controller {
 
 	public function add($module = '', $module_link) {
 		$this->load->model('comments_m');
+		$this->load->helper('htmlpurifier');
 
 		$data = array(
-			'content' => clear_text($this->input->post('content')),
+			'content' => html_purify($this->input->post('content')),
 			'poster_id' => $this->user->id,
 			'module' => $module,
 			'module_link' => $module_link

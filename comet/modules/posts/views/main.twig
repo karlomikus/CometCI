@@ -1,7 +1,7 @@
 {% for post in posts %}
 	<div class="panel">
-		<h3 class="subheader">{{post.title}}</h3>
-		<a href="#">{{get_avatar(post.author, true)}}</a> on {{post.date}} in {{get_label_name(post.label)}}
+		<h4 class="subheader">{{post.title}}</h4>
+		{{post.date}} in {{get_label_name(post.label)}}
 		<br /><br />
 		<p>
 			{{post.teaser}}
