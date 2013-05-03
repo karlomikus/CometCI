@@ -2,7 +2,7 @@
 	{% if login_errors|length > 0 %}
 		<div class="alert-box alert">{{login_errors}}</div>
 	{% endif %}
-	<form action="users/user/login" method="post">
+	<form action="{{base_url()}}users/user/login" method="post">
 		<input type="text" name="identity" />
 		<input type="password" name="password" />
 		<button class="small button" type="submit">Login</button>

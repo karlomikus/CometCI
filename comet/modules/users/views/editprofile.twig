@@ -1,22 +1,51 @@
 {{form_open_multipart(current_url())}}
-	<label>Avatar</label>
-	<input type="file" name="avatar" />
-	<label>First name</label>
-	<input type="text" name="firstname" value="{{data.first_name}}" />
-	<label>Last name</label>
-	<input type="text" name="lastname" value="{{data.last_name}}" />
-	<label>Email</label>
-	<input type="text" name="email" value="{{data.email}}" />
-	<label>Date of birth</label>
-	<input type="text" name="firstname" value="{{data.dob}}" />
-	<label>Country</label>
-	<select name="country">
-		{% for country in get_countries() %}
-		<option value="{{country.id}}">{{country.name}}</option>
-		{% endfor %}
-	</select>
-	<label>Gender</label>
-	<input type="text" name="sex" value="{{data.gender}}" />
-	<hr />
-	<input class="button" type="submit" name="save" value="Save changes" />
+<fieldset style="margin-top: 0;">
+	<legend>Personal Information</legend>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<label>First name</label>
+			<input type="text" name="firstname" value="{{data.first_name}}" />
+		</div>
+		<div class="large-6 columns">
+			<label>Last name</label>
+			<input type="text" name="lastname" value="{{data.last_name}}" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<label>Email</label>
+			<input type="text" name="email" value="{{data.email}}" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<label>Date of birth</label>
+			<input type="text" name="firstname" value="{{data.dob}}" />
+		</div>
+		<div class="large-6 columns">
+			<label>Gender</label>
+			<input type="text" name="sex" value="{{data.gender}}" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<label>Country</label>
+			<select name="country">
+				{% for country in get_countries() %}
+				<option value="{{country.id}}">{{country.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="large-6 columns">
+			<label>Avatar</label>
+			<input type="file" name="avatar" />
+		</div>
+	</div>
+
+</fieldset>
+<input class="small button" type="submit" name="save" value="Save changes" />
 {{form_close()}}

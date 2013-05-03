@@ -12,6 +12,11 @@ function get_game_name($id) {
 	return $CI->games_m->get($id)->name;
 }
 
+/**
+ * Returns filename of game icon
+ *
+ * @return string
+ */
 function get_game_icon($id) {
 	$CI =& get_instance();
 	$CI->load->model('games/games_m');
@@ -29,6 +34,18 @@ function get_opponent_name($id) {
 	$CI->load->model('opponents/opponents_m');
 
 	return $CI->opponents_m->get($id)->name;
+}
+
+/**
+ * Returns team name based on team id
+ *
+ * @return string
+ */
+function get_team_name($id) {
+	$CI =& get_instance();
+	$CI->load->model('teams/teams_m');
+
+	return $CI->teams_m->get($id)->name;
 }
 
 /**

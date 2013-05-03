@@ -2,15 +2,29 @@
 
 class CommentsLib {
 
+	/**
+	 * Codeigniter object instance
+	 * @var object
+	 **/
 	private $ci;
+
+	/**
+	 * Name of the module
+	 * @var string
+	 **/
 	private $module;
+
+	/**
+	 * Link from which comment was called
+	 * @var string
+	 **/
 	private $module_link;
 
 	public function __construct() {
 		$this->ci =& get_instance();
 		$this->ci->load->model('comments/comments_m');	
 	}
-
+	
 	private function add() {
 		return $this->ci->template
 			->set('data', array('module' => $this->module, 'link' => $this->module_link))
@@ -23,6 +37,12 @@ class CommentsLib {
 			->load_view('comment.twig');
 	}
 
+	/**
+	 * Shows comment template
+	 * @param  string $mod  Module name
+	 * @param  string $link Comments link page
+	 * @return void       Prints out html page
+	 */
 	public function render($mod, $link) {
 		$this->module 		= $mod;
 		$this->module_link 	= $link;

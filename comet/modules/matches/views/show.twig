@@ -1,19 +1,19 @@
 <div class="row match">
-	<div class="large-2 columns textright">
+	<div class="large-2 columns textright" style="font-size: 22px; line-height: 150px;">
 		{{get_result(match.id, false)}}
 	</div>
 	<div class="large-3 columns textcenter">
 		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" /><br />
-		Opponent name
+		{{get_opponent_name(match.opponent)}}
 	</div>
-	<div class="large-2 columns textcenter">
+	<div class="large-2 columns textcenter" style="line-height: 150px;">
 		<h3>VS</h3>
 	</div>
 	<div class="large-3 columns textcenter">
 		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" /><br />
-		Team name
+		{{get_team_name(match.team)}}
 	</div>
-	<div class="large-2 columns textleft">
+	<div class="large-2 columns textleft" style="font-size: 22px; line-height: 150px;">
 		{{get_result(match.id)}}
 	</div>
 </div>
@@ -34,16 +34,16 @@
 	{% endfor %}
 </table>
 
-<div class="panel">
+<p class="panel">
 	{{match.report}}
-</div>
+</p>
 
 {% if get_match_screenshots(match.id)|length > 0 %}
 <h4>Screenshots:</h4>
 <div class="panel">
 	<ul class="small-block-grid-4">
 	{% for screenshot in get_match_screenshots(match.id) %}
-		<li><img src="{{base_url()}}uploads/screenshots/{{screenshot.file}}" alt="Screenshot" /></li>
+		<li><a href="{{base_url()}}uploads/screenshots/{{screenshot.file}}" target="_blank"><img src="{{base_url()}}uploads/screenshots/{{screenshot.file}}" alt="Screenshot" /></a></li>
 	{% endfor %}
 	</ul>
 </div>

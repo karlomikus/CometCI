@@ -46,15 +46,16 @@
 <div class="row wrap">
 
   <div class="row header">
-	<div class="large-1 columns">
-	  <img src="http://placehold.it/50x50" />
-	</div>
-	<div class="large-5 columns"><h4>CLANNAME</h4></div>
-	<div class="large-6 columns">
+	<div class="large-4 columns"><h4>CLANNAME</h4></div>
+	<div class="large-8 columns">
 		<ul class="button-group" style="float: right;">
 			<li><a href="{{base_url('posts')}}" class="small button">Posts</a></li>
 			<li><a href="{{base_url('matches')}}" class="small button">Matches</a></li>
 			<li><a href="{{base_url('roster')}}" class="small button">Roster</a></li>
+			<li><a href="{{base_url('roster')}}" class="small button">Forums</a></li>
+			<li><a href="{{base_url('roster')}}" class="small button">Gallery</a></li>
+			<li><a href="{{base_url('roster')}}" class="small button">Contact</a></li>
+			<li><a href="{{base_url('roster')}}" class="small button">About</a></li>
 		</ul>
 	</div>
 	<hr />

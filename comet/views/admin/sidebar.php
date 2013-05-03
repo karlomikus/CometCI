@@ -19,17 +19,21 @@
 			<ul id="content-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Content</li>
 				<li><a href="<?php echo site_url('admin/posts'); ?>">Posts</a></li>
+				<li><a href="<?php echo site_url('admin/posts'); ?>">Features slider</a></li>
 				<li><a href="<?php echo site_url('admin/labels'); ?>">Labels</a></li>
 				<li><a href="<?php echo site_url('admin/forum'); ?>">Forum</a></li>
-				<li><a href="<?php echo site_url('admin/calendar'); ?>">Calendar</a></li>
+				<li><a href="<?php echo site_url('admin/calendar'); ?>">Events</a></li>
 				<li><a href="<?php echo site_url('admin/stats'); ?>">Statistics</a></li>
-				<li><a href="<?php echo site_url('admin/gallery'); ?>">Gallery</a></li>
+				<li><a href="<?php echo site_url('admin/gallery'); ?>">Media</a></li>
+				<li><a href="<?php echo site_url('admin/advertising'); ?>">Ads</a></li>
+				<li><a href="<?php echo site_url('admin/cinema'); ?>">Cinema</a></li>
 			</ul>
 			<ul id="clan-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Clan</li>
 				<li><a href="<?php echo site_url('admin/matches'); ?>">Matches</a></li>
 				<li><a href="<?php echo site_url('admin/teams'); ?>">Teams</a></li>
 				<li><a href="<?php echo site_url('admin/roster'); ?>">Roster</a></li>
+				<li><a href="<?php echo site_url('admin/calendar'); ?>">Fixtures</a></li>
 				<li><a href="<?php echo site_url('admin/opponents'); ?>">Opponents</a></li>
 				<li><a href="<?php echo site_url('admin/games'); ?>">Games</a></li>
 				<li><a href="<?php echo site_url('admin/sponsors'); ?>">Sponsors</a></li>
