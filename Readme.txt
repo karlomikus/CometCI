@@ -1,7 +1,11 @@
-Codeigniter plugins:
-	twiggy 0.8.5
-	hmvc
-	ion auth 10.02.13
+Current version: 0.02 Alpha
 
-Features list:
-	
+Codeigniter plugins:
+* twiggy parser
+* hmvc
+* ion auth
+
+Changelog:
+
+v0.02 Alpha
+- New admin layout and logic
