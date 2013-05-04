@@ -6,6 +6,7 @@
 				<li><a href="#clan-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-clan.png" alt="Clan" /></a></li>
 				<li><a href="#users-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-users.png" alt="Users" /></a></li>
 				<li><a href="#settings-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-settings.png" alt="Settings" /></a></li>
+				<li class="last"></li>
 			</ul>
 		</section>
 

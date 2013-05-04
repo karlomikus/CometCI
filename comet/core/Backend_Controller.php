@@ -9,11 +9,8 @@ class Backend_Controller extends MY_Controller {
 		//Set theme for backend
 		$this->template
 			->set_partial('sidebar', 'admin/sidebar')
-			->set_partial('module_header', 'admin/module_header')
 			->enable_parser(FALSE)
 			->set_layout('main', 'admin');
-
-		$this->breadcrumb->append_crumb('Home', '/admin/dashboard');
 
 		$current_page = $this->uri->segment(1, '') . '/' . $this->uri->segment(2, 'index');
 

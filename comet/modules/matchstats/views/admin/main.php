@@ -1,11 +1,8 @@
-<script src="<?php echo base_url(); ?>assets/admin/js/morris.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<div id="myfirstchart" style="height: 250px;"></div>
-
+<script src="<?php echo base_url(); ?>assets/admin/js/flotr2.min.js"></script>
 <?php 
-  $wins = 2144;
-  $draws = 111;
-  $loses = 18;
+  $wins = 300;
+  $draws = 45;
+  $loses = 120;
   $total = $wins + $draws + $loses;
 ?>
 
@@ -15,21 +12,46 @@
   <div class="loses" style="width: <?php echo round($loses/$total*100, 3); ?>%;"></div>
 </div>
 
-<script type="text/javascript">
-new Morris.Bar({
-  // ID of the element in which to draw the chart.
-  element: 'myfirstchart',
-  data: [
-      {device: 'Wins', geekbench: 136},
-      {device: 'Draws', geekbench: 137},
-      {device: 'Losses', geekbench: 275}
-    ],
-    xkey: 'device',
-    ykeys: ['geekbench'],
-    labels: ['Geekbench'],
-    barRatio: 0.4,
-    xLabelMargin: 10,
-    hideHover: 'auto'
-});
+<div style="background: #33b5e5; padding: 20px; margin: 20px 0;">
+  <div id="flotr" style="width: 100%; height: 300px; margin-top: 20px;"></div>
+</div>
 
+<script>
+  (function basic(container) {
+
+    var
+    d1 = [
+        [0, 3],
+        [4, 8],
+        [8, 5],
+        [9, 13],
+        [14, 17],
+        [18, 25],
+        [26, 12]
+    ]
+
+    // Draw Graph
+    graph = Flotr.draw(container, [d1], {
+        colors: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+        shadowSize: 0,
+        points: {
+            show: true
+        },
+        lines: {
+            show: true
+        },
+        xaxis: {
+            minorTickFreq: 4
+        },
+        grid: {
+            color: "#ffffff",
+            minorVerticalLines: true,
+            backgroundColor: null,
+            tickColor: "#72d7f2",
+            outlineWidth: 0,
+            verticalLines: false,
+            minorVerticalLines: false
+        }
+    });
+})(document.getElementById("flotr"));
 </script>

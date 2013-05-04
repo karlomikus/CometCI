@@ -10,7 +10,6 @@
 	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/select2.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.2.min.css">
 	<link href="<?php echo base_url(); ?>assets/admin/css/main.css" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="<?php echo base_url(); ?>/assets/admin/js/html5shiv.js"></script>
@@ -25,11 +24,13 @@
 	if(isset($user->avatar)) $avatar = $user->avatar;
 ?>
 	<header class="site-header">
-		<a class="avatar" href="#"><img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" width="32" height="32" /></a>
+		<a class="avatar" href="#"><img src="<?php echo base_url(); ?>assets/admin/img/logo.png" width="32" height="32" /></a>
 
-		<h1>Clan Comet</h1>
+		<h1><?php echo isset($title) ? $title : 'Undefined module'; ?></h1>
 
 		<ul>
+			<li class="first"></li>
+			<li><a href="#"><img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" width="32" height="32" /></a></li>
 			<li><a href="#"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-pm.png" alt="Messagess" /></a></li>
 			<li><a href="/cms" target="_blank"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-view.png" alt="View site" /></a></li>
 		</ul>

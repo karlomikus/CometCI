@@ -73,7 +73,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 .site-header ul li a {
 	display: block;
-	padding: 15px;
+	padding: 17px;
 	border-right: 1px solid #555b64;
 	border-left: 1px solid #333840;
 }
@@ -81,6 +81,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .site-header ul li a:hover {
 	background: #3c4149;
 }
+
+.site-header ul li.first { display: block; border-right: 1px solid #555b64; height: 70px; }
 
 /* Content Wrappers */
 .sidebar-group {
@@ -127,6 +129,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .sidebar-icon ul li.active {
 	background: url(../img/dashboard-active.png) right no-repeat;
 }
+
+.sidebar-icon ul li.last { border-top: 1px solid #454a52; }
 
 /* Sidebar */
 .site-sidebar {

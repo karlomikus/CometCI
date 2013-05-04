@@ -5,20 +5,9 @@ class Admin extends Backend_Controller {
 	//API: 60C93BF0B5507EB6A957E2A1D7F5EE84
 	private $folder_path = './uploads/screenshots/';
 
-	private $template_data = array(
-		'title' => 'Matches',
-		'create_title' => 'Add match',
-		'edit_title' => 'Edit match',
-		'add_button' => 'Add match',
-		'layout_title' => 'Choose layout',
-		'uri' => '/admin/matches'
-	);
-
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('matches_m');
-
-		$this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
 	}
 
 	public function index() {
@@ -26,7 +15,7 @@ class Admin extends Backend_Controller {
 		$this->load->model('games/games_m');
 
 		$this->template
-			->set($this->template_data)
+			->set('title', 'Matches')
 			->set('matches', $this->matches_m->get_all())
 			->build('admin/main');
 
@@ -36,8 +25,6 @@ class Admin extends Backend_Controller {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
-		$this->breadcrumb->append_crumb($this->template_data['create_title'], $this->template_data['uri'].'/create');
 
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
@@ -118,7 +105,7 @@ class Admin extends Backend_Controller {
 			$this->load->model('games/games_m');
 
 			$this->template
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create Match')
 				->set('opponents', $this->opponents_m->get_all())
 				->set('teams', $this->teams_m->get_all())
 				->set('games', $this->games_m->get_all())
@@ -182,7 +169,7 @@ class Admin extends Backend_Controller {
 			$this->load->model('games/games_m');
 
 			$this->template
-				->set('title', $this->template_data['edit_title'])
+				->set('title', 'Edit Match')
 				->set('opponents', $this->opponents_m->get_all())
 				->set('teams', $this->teams_m->get_all())
 				->set('games', $this->games_m->get_all())

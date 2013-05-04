@@ -4,26 +4,16 @@ class Admin extends Backend_Controller {
 
     private $assets_path = './assets/games/';
 
-    private $template_data = array(
-        'title' => 'Games',
-        'create_title' => 'Add game',
-        'edit_title' => 'Edit game',
-        'add_button' => 'Add game',
-        'uri' => '/admin/games'
-    );
-
     public function __construct() {
         parent::__construct();
         $this->load->model('games_m');
-
-        $this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
     }
 
     public function index() {
         $this->games_m->order_by('name');
 
         $this->template
-            ->set($this->template_data)
+            ->set('title', 'Games')
             ->set('games', $this->games_m->get_all())
             ->build('admin/main');
     }
@@ -32,8 +22,6 @@ class Admin extends Backend_Controller {
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-
-        $this->breadcrumb->append_crumb($this->template_data['create_title'], $this->template_data['uri'].'/create');
 
         $this->form_validation->set_rules('name', 'Game name', 'required');
         $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|callback_check_shortcode');
@@ -70,7 +58,7 @@ class Admin extends Backend_Controller {
         }
         else {
             $this->template
-            ->set('title', $this->template_data['create_title'])
+            ->set('title', 'Create Game')
             ->build('admin/form');
         }
     }
@@ -79,8 +67,6 @@ class Admin extends Backend_Controller {
 
         $this->load->helper('form');
         $this->load->library('form_validation');
-
-        $this->breadcrumb->append_crumb($this->template_data['edit_title'], $this->template_data['uri'].'/edit');
 
         $this->form_validation->set_rules('name', 'Game name', 'required');
         $this->form_validation->set_rules('shortcode', 'Shortcode', 'required');
@@ -116,7 +102,7 @@ class Admin extends Backend_Controller {
         }
         else {
             $this->template
-            ->set('title', $this->template_data['edit_title'])
+            ->set('title', 'Edit Game')
             ->set('data', $this->games_m->as_array()->get($id))
             ->build('admin/form');
         }
