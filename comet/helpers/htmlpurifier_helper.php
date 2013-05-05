@@ -37,7 +37,7 @@ if (! function_exists('html_purify'))
 					$config = HTMLPurifier_Config::createDefault();
 					$config->set('Core.Encoding', 'utf-8');
 					$config->set('HTML.Doctype', 'XHTML 1.0 Strict');
-					$config->set('HTML.Allowed', 'p,a[href|title],abbr[title],acronym[title],b,strong,blockquote[cite],code,em,i,strike');
+					$config->set('HTML.Allowed', 'a[href|title],abbr[title],acronym[title],b,strong,blockquote[cite],code,em,i,strike');
 					$config->set('AutoFormat.AutoParagraph', TRUE);
 					$config->set('AutoFormat.Linkify', TRUE);
 					$config->set('AutoFormat.RemoveEmpty', TRUE);

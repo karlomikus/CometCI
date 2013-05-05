@@ -2,17 +2,55 @@
 
 class Comments extends Frontend_Controller {
 
-	public function add($module = '', $module_link) {
+	/**
+	 * Processes comment data and inserts it
+	 * into the database
+	 * 
+	 * @param string $module      Name of the module
+	 * @param string $module_link Link from where comment was called
+	 */
+	public function add($module, $module_link)
+	{
+		$this->load->library('form_validation');
 		$this->load->model('comments_m');
 		$this->load->helper('htmlpurifier');
 
-		$data = array(
-			'content' => html_purify($this->input->post('content')),
-			'poster_id' => $this->user->id,
-			'module' => $module,
-			'module_link' => $module_link
-		);
-		$this->comments_m->insert($data);
-		redirect($module.'/show/'.$module_link);
+		$this->form_validation->set_rules('content', 'Comment content', 'trim|required|min_length[5]|xss_clean');
+
+		if($this->ion_auth->logged_in() && $this->form_validation->run()) 
+		{
+			$data = array(
+				'content' => html_purify($this->input->post('content'), 'comment'),
+				'poster_id' => $this->user->id,
+				'module' => $module,
+				'module_link' => $module_link,
+				'date' => date('Y-m-d H:i:s')
+			);
+			$this->comments_m->insert($data);
+			redirect($module.'/show/'.$module_link);
+		}
+		else 
+		{
+			redirect($module.'/show/'.$module_link);
+		}
+	}
+
+	/**
+	 * Delete comment based on comment ID
+	 * @param  integer $id Comment ID
+	 */
+	public function delete($id = 0)
+	{
+		if($this->ion_auth->logged_in())
+		{
+			$comment_data = $this->comments_m->get($id);
+
+			// User is author or is admin
+			if($comment_data->poster_id == $user->user_id || $this->ion_auth->is_admin()) {
+				$this->comments_m->delete($id);
+				redirect('/');
+			}
+		}
+		redirect('/');
 	}
 }

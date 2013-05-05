@@ -1,11 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Basic helper functions to make using of CMS easier
+ */
 
 /**
  * Returns game name based on game id
  *
  * @return string
  */
-function get_game_name($id) {
+function get_game_name($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('games/games_m');
 
@@ -17,7 +21,8 @@ function get_game_name($id) {
  *
  * @return string
  */
-function get_game_icon($id) {
+function get_game_icon($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('games/games_m');
 
@@ -29,7 +34,8 @@ function get_game_icon($id) {
  *
  * @return string
  */
-function get_opponent_name($id) {
+function get_opponent_name($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('opponents/opponents_m');
 
@@ -41,7 +47,8 @@ function get_opponent_name($id) {
  *
  * @return string
  */
-function get_team_name($id) {
+function get_team_name($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('teams/teams_m');
 
@@ -53,7 +60,8 @@ function get_team_name($id) {
  *
  * @return string
  */
-function get_opponent_logo($id) {
+function get_opponent_logo($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('opponents/opponents_m');
 
@@ -65,7 +73,8 @@ function get_opponent_logo($id) {
  *
  * @return string
  */
-function get_team_logo($id) {
+function get_team_logo($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('teams/teams_m');
 
@@ -77,7 +86,8 @@ function get_team_logo($id) {
  *
  * @return string
  */
-function get_match_score($id) {
+function get_match_score($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('matches/matches_m');
 
@@ -89,7 +99,8 @@ function get_match_score($id) {
  *
  * @return int
  */
-function get_result($id, $team = true) {
+function get_result($id, $team = true) 
+{
 	$CI =& get_instance();
 	$CI->load->model('matches/matches_m');
 
@@ -104,39 +115,59 @@ function get_result($id, $team = true) {
  *
  * @return object
  */
-function get_scores($id) {
+function get_scores($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('matches/matches_m');
 
 	return $CI->matches_m->get_scores($id);
 }
-
-function get_match_screenshots($id) {
+/**
+ * Gets match screenshots by match ID
+ * @param  int $id Match ID
+ * @return object     Database object
+ */
+function get_match_screenshots($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('matches/matches_m');
 
 	return $CI->matches_m->get_match_screenshots($id);
 }
 
-function user_uri($id) {
-	return 'users/profile/'.$id;
-}
-
-function get_countries() {
+/**
+ * Gets list of all countries in the database
+ * @return object Database object
+ */
+function get_countries() 
+{
 	$CI =& get_instance();
 	$CI->load->model('countries/countries_m');
 
 	return $CI->countries_m->get_all();
 }
 
-function get_label_name($id) {
+/**
+ * Get label name from label ID
+ * @param  int $id 	Label ID
+ * @return string   Name of the label
+ */
+function get_label_name($id) 
+{
 	$CI =& get_instance();
 	$CI->load->model('labels/labels_m');
 	if(!isset($id)) return "Undefined label";
 	return $CI->labels_m->get($id)->name;
 }
 
-function get_avatar($userID, $fulltag = FALSE) {
+/**
+ * Get avatar information from user's ID
+ * @param  int  $userID  User ID
+ * @param  boolean $fulltag If true returns HTML format of avatar image
+ * @return string           Avatar filename
+ */
+function get_avatar($userID, $fulltag = FALSE) 
+{
 	$CI =& get_instance();
 	
 	$avatar = $CI->ion_auth->user($userID)->row()->avatar;
@@ -148,6 +179,27 @@ function get_avatar($userID, $fulltag = FALSE) {
 	return '<img src="'.base_url().'uploads/users/noavatar.jpg" alt="avatar" />';
 }
 
-function widget($name) {
+/**
+ * Gets username from user ID
+ * @param  int $userID User ID
+ * @return string         Username of the user
+ */
+function get_username($userID) 
+{
+	$CI =& get_instance();
+
+	return $CI->ion_auth->user($userID)->row()->username;
+}
+
+/**
+ * Wrapper function for easier access
+ * in twig parser. Loads module
+ * then injects it into the layout
+ * 
+ * @param  string $name Widget name without "wi_"
+ * @return object      Module object
+ */
+function widget($name) 
+{
 	return Modules::run('wi_'.$name);
 }

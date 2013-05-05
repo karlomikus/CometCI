@@ -12,7 +12,9 @@
 	<ul class="square">
 		<li>Welcome back: {{user.username}}</li>
 		<li><a href="{{base_url()}}users/profile">Profile</a></li>
-		<li><a href="{{base_url()}}admin" target="_blank">Control Panel</a></li> {# IF ADMIN SHOW THIS #}
+		{% if is_admin == true %}
+			<li><a href="{{base_url()}}admin" target="_blank">Control Panel</a></li>
+		{% endif %}
 		<li><a href="{{base_url()}}users/logout">Logout</a></li>
 	</ul>
 {% endif %}

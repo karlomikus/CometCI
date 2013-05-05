@@ -80,7 +80,7 @@ $autoload['helper'] = array('url', 'comet', 'assets');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('comet');
 
 
 /*

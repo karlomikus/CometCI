@@ -2,19 +2,6 @@
 
 class Admin extends Backend_Controller {
 
-	private $template_data = array(
-		'title' => 'Users',
-		'create_title' => 'Add user',
-		'edit_title' => 'Edit user',
-		'add_button' => 'Add user',
-		'uri' => '/admin/users'
-	);
-
-	public function __construct() {
-		parent::__construct();
-		//$this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
-	}
-
 	public function index() {
 
 		$data['users'] = $this->ion_auth->users()->result();
@@ -23,6 +10,7 @@ class Admin extends Backend_Controller {
 		}
 
 		$this->template
+			->set('title', 'Users')
 			->build('admin/main', $data);
 	}
 
@@ -30,8 +18,6 @@ class Admin extends Backend_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->helper('form');
-
-		$this->breadcrumb->append_crumb($this->template_data['create_title'], $this->template_data['uri'].'/create');
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[10]|matches[password_confirm]');
@@ -50,7 +36,7 @@ class Admin extends Backend_Controller {
 			$groups = $this->ion_auth->groups()->result();
 
 			$this->template
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create User')
 				->set('groups', $groups)
 				->build('admin/form');
 		}
@@ -60,8 +46,6 @@ class Admin extends Backend_Controller {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
-		$this->breadcrumb->append_crumb($this->template_data['edit_title'], $this->template_data['uri'].'/edit');
 
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		
@@ -94,7 +78,7 @@ class Admin extends Backend_Controller {
 		}
 
 		$this->template
-			->set('title', $this->template_data['edit_title'])
+			->set('title', 'Edit user')
 			->set('userdata', $this->ion_auth->user($id)->row_array())
 			->set('groups', $this->ion_auth->groups()->result())
 			->set('current_groups', $this->ion_auth->get_users_groups($id)->result())

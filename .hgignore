@@ -5,3 +5,5 @@ uploads/labels/*
 uploads/teams/*
 uploads/opponents/*
 uploads/screenshots/*
+
+comet/third_party/htmlpurifier-4.5.0-standalone/standalone/HTMLPurifier/DefinitionCache/*

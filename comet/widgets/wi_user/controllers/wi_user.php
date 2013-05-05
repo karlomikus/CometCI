@@ -6,10 +6,13 @@ class Wi_user extends Frontend_Controller {
 
 		$logged_in = FALSE;
 		if ($this->ion_auth->logged_in()) $logged_in = TRUE;
+		$is_admin = FALSE;
+		if ($this->ion_auth->is_admin()) $is_admin = TRUE;
 
 		echo $this->template
 			->set('login_alerts', $this->session->flashdata('login_alerts'))
 			->set('logged_in', $logged_in)
+			->set('is_admin', $is_admin)
 			->load_view('../widgets/wi_user/views/main.twig');
 	}
 

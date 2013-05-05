@@ -1,5 +1,5 @@
 <ul class="wi_default">
 	{% for post in posts %}
-		<li><a href="{{base_url()}}posts/show/{{post.id}}">{{post.title}}</a> <span>231 Views</span></li>
+		<li><a href="{{base_url()}}posts/show/{{post.id}}">{{post.title}}</a> <span>{{post.views}} Views</span></li>
 	{% endfor %}
 </ul>

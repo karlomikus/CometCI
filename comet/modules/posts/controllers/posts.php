@@ -13,6 +13,7 @@ class Posts extends Frontend_Controller {
 
 	public function show($id = 0) {
 		$this->load->model('posts_m');
+		$this->posts_m->update_views($id);
 		$this->template
 			->set('post', $this->posts_m->get($id))
 			->set('comments', $this->commentslib->render('posts', $id))

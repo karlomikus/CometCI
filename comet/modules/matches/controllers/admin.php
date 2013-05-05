@@ -16,7 +16,8 @@ class Admin extends Backend_Controller {
 
 		$this->template
 			->set('title', 'Matches')
-			->set('matches', $this->matches_m->get_all())
+			->set('upcoming', $this->matches_m->get_upcoming_matches())
+			->set('matches', $this->matches_m->get_matches(FALSE))
 			->build('admin/main');
 
 	}

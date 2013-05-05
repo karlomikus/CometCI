@@ -9,6 +9,21 @@
 		</tr>
 	</thead>
 	<tbody>
+	<?php foreach ($upcoming as $up_match): ?>
+	<tr>
+		<td><?php echo $this->opponents_m->get($up_match->opponent)->name; ?></td>
+		<td><?php echo $up_match->date; ?></td>
+		<td><?php echo $this->games_m->get($up_match->game)->name; ?></td>
+		<td class="text-center"><span class="upcoming-color">UPCOMING</span></td>
+		<td class="action">
+			<a class="action-icon" href="#">Action</a>
+			<ul class="action-list" style="display: none;">
+				<li><a class="confirm-delete" href="<?php echo site_url('admin/matches/delete/'.$up_match->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-delete.png" alt="" /></a></li>
+				<li><a href="<?php echo site_url('admin/matches/edit/'.$up_match->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-edit.png" alt="" /></a></li>
+			</ul>
+		</td>
+	</tr>
+	<?php endforeach;?>
 	<?php foreach ($matches as $match): ?>
 		<tr>
 			<td><?php echo $this->opponents_m->get($match->opponent)->name; ?></td>

@@ -1,7 +1,17 @@
 {% for comment in data %}
 <div class="panel">
-	{{comment.content}}
-	<br />
-	<small>Posted by eGGzy on 12.12.12</small>
+	<div class="row">
+		<div class="large-2 columns hide-for-small">{{get_avatar(comment.poster_id, true)}}</div>
+		<p class="large-10 columns">
+			{{comment.content}}
+			<br />
+			<small>
+				Posted by {{get_username(comment.poster_id)}} on {{comment.date}}
+				{% if comment.poster_id == user.user_id or is_admin == true %}
+				[<a href="{{base_url()}}comments/delete/{{comment.id}}">delete</a>]
+				{% endif %}
+			</small>
+		</p>
+	</div>
 </div>
 {% endfor %}

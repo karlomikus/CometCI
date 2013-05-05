@@ -1,7 +1,6 @@
 <hr />
 <form action="{{base_url()}}comments/add/{{data.module}}/{{data.link}}" accept-charset="utf-8" method="post">
-	<label for="cmt_content">Content:</label>
-	<textarea id="cmt_content" name="content"></textarea>
-
+	<textarea placeholder="Write a comment" name="content" style="height: 100px;"></textarea>
 	<input class="small button" type="submit" value="POST COMMENT" name="save" />
+	<small>Posting as {{user.username}}</small>
 </form>
