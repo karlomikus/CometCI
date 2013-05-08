@@ -45,12 +45,14 @@ class Admin extends Backend_Controller {
 			if(!empty($players)) $team_players = implode(",", $players);
 			else $team_players = NULL;
 
+			$this->load->helper('htmlpurifier');
+
 			$data = array(
 				'team' => $this->input->post('team'),
 				'opponent' => $this->input->post('opponent'),
 				'date' => $date,
 				'game' => $this->input->post('game'),
-				'report' => $this->input->post('report'),
+				'report' => html_purify($this->input->post('report'), 'wysiwyg'),
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
@@ -118,6 +120,7 @@ class Admin extends Backend_Controller {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->helper('htmlpurifier');
 
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
@@ -138,7 +141,7 @@ class Admin extends Backend_Controller {
 				'opponent' => $this->input->post('opponent'),
 				'date' => $date,
 				'game' => $this->input->post('game'),
-				'report' => $this->input->post('report'),
+				'report' => html_purify($this->input->post('report'), 'wysiwyg'),
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),

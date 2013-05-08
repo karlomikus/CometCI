@@ -1,0 +1,13 @@
+{{validation_errors()}}
+<form action="{{base_url()}}forums/newtopic/{{forumID}}" method="post">
+	<input placeholder="Topic title" type="text" name="title" />
+
+	<textarea placeholder="Write topic content here..." name="content" style="height: 150px;"></textarea>
+
+	<input type="checkbox" name="sticky" value="1" /> Make sticky topic
+
+	<br />
+	<br />
+
+	<button class="small button">Save topic</button>
+</form>

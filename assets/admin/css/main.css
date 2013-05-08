@@ -167,6 +167,55 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	background: #37bbeb;
 }
 
+/* CMS Base Scaffolding */
+.cms-box {
+	background: #fff;
+}
+
+.cms-box .box-title {
+	background: #4e5867;
+	box-shadow: inset 0 -5px rgba(0,0,0,0.15);
+}
+
+.cms-box h4 {
+	margin: 0;
+	color: #fff;
+	padding: 15px 15px 20px 15px;
+}
+
+#event-tabs {
+	overflow: hidden;
+}
+
+#event-tabs a {
+	background: #ed442d;
+	display: block;
+	float: left;
+	width: 50%;
+	color: #fff;
+	padding: 13px 0;
+	text-indent: 5px;
+	font-size: 18px;
+}
+
+#event-tabs a:hover, #event-tabs a:focus, #event-tabs a.active {
+	background: #f3593b;
+	text-decoration: none;
+}
+
+.cms-box .match-list {
+	list-style: none;
+	margin: 0;
+	padding-top: 10px;
+}
+
+.cms-box .match-list li {
+	margin: 0 10px 10px 10px;
+	overflow: hidden;
+}
+
+.cms-box .match-list li img { float: left; }
+
 /* Calendar / Fixtures */
 .cms-calendar, .cms-calendar tbody {
 	width: 100%;

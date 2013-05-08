@@ -4,8 +4,9 @@ class Wi_matches extends Frontend_Controller {
 
 	public function index() {
 		$this->load->model('matches/matches_m');
+		$this->matches_m->order_by('date', 'DESC');
 		echo $this->template
-			->set('matches', $this->matches_m->get_all())
+			->set('matches', $this->matches_m->get_matches(FALSE))
 			->load_view('../widgets/wi_matches/views/main.twig');
 	}
 

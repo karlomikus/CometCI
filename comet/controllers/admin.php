@@ -2,10 +2,14 @@
 
 class Admin extends Backend_Controller {
 
-    public function index() {
+    public function index() 
+    {
+        $this->load->model('matches/matches_m');
 
-        //Show dashboard
-        $this->template->build('admin/dashboard');
+        $this->template
+            ->set('title', 'Dashboard')
+            ->set('matches', $this->matches_m->get_upcoming_matches())
+            ->build('admin/dashboard');
 
     }
 

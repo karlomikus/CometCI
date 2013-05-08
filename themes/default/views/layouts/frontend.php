@@ -11,18 +11,29 @@
   <link rel="stylesheet" href="{{theme_asset('css/font-awesome.min.css')}}">
   <script src="{{theme_asset('js/vendor/custom.modernizr.js')}}"></script>
   <style type="text/css">
-	body { margin: 30px 0; background: #eee; }
-	.wrap { background: #fff; padding: 20px; border: 2px solid rgba(0,0,0,0.3); font-size: 1em; }
+	body { margin: 30px 0; background: #90CDDB; }
+	.wrap { background: #fff; padding: 20px; box-shadow: 0 0 8px rgba(0,0,0,0.3); font-size: 1em; }
 	.header { padding-bottom: 20px; }
 	.button-group { }
 	.textcenter { text-align: center; }
 	.textleft { text-align: left; }
 	.textright { text-align: right; }
 	.match img { margin: 0 auto; }
-	a { color: #ED6A50; }
-	a:hover, a:focus { color: #B73A3A; }
-	.button { border: none; box-shadow: none; background-color: #ED6A50; }
-	.button:hover, .button:focus { background-color: #B73A3A; }
+	a { color: #B73A3A; }
+	a:hover, a:focus { color: #399EB5; }
+	.button { border: none; box-shadow: none; background-color: #B73A3A; }
+	.button:hover, .button:focus { background-color: #399EB5; }
+	.panel { padding: 10px; }
+	
+	.forum-list {
+		list-style: none;
+	}
+	.forum-list li {
+		border: 1px solid #D9D9D9;
+		background: #fff;
+		text-indent: 10px;
+		margin: 5px 0;
+	}
 
 	.wi_default {
 		margin: 0;
@@ -52,10 +63,10 @@
 			<li><a href="{{base_url('posts')}}" class="small button">Posts</a></li>
 			<li><a href="{{base_url('matches')}}" class="small button">Matches</a></li>
 			<li><a href="{{base_url('roster')}}" class="small button">Roster</a></li>
-			<li><a href="{{base_url('roster')}}" class="small button">Forums</a></li>
-			<li><a href="{{base_url('roster')}}" class="small button">Gallery</a></li>
-			<li><a href="{{base_url('roster')}}" class="small button">Contact</a></li>
-			<li><a href="{{base_url('roster')}}" class="small button">About</a></li>
+			<li><a href="{{base_url('forums')}}" class="small button">Forums</a></li>
+			<li><a href="{{base_url('gallery')}}" class="small button">Gallery</a></li>
+			<li><a href="{{base_url('contact')}}" class="small button">Contact</a></li>
+			<li><a href="{{base_url('page/about')}}" class="small button">About</a></li>
 		</ul>
 	</div>
 	<hr />

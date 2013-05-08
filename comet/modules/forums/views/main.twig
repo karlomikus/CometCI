@@ -1,0 +1,18 @@
+{% for label, forums in data %}
+<table width="100%">
+	<thead>
+		<tr>
+			<th colspan="3">{{get_label_name(label)}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for forum in forums %}
+		<tr>
+			<td width="60%"><a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a></td>
+			<td width="20%">13 Threads</td>
+			<td width="20%">234 Posts</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endfor %}

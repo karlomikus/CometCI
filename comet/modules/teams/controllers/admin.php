@@ -4,25 +4,17 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/teams/';
 
-	private $template_data = array(
-		'title' => 'Teams',
-		'create_title' => 'Add team',
-		'edit_title' => 'Edit team',
-		'add_button' => 'Add team'
-	);
-
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('teams_m');
 
-		$this->breadcrumb->append_crumb($this->template_data['title'], '/admin/teams');
 	}
 
 	public function index() {
 		$this->load->helper('text');
 		
 		$this->template
-			->set($this->template_data)
+			->set('title', 'Teams')
 			->set('teams', $this->teams_m->get_all())
 			->build('admin/main');
 	}
@@ -34,7 +26,6 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('name', 'Team name', 'required');
-		$this->breadcrumb->append_crumb($this->template_data['create_title'], 'admin/teams/create');
 
 		if ($this->form_validation->run() == TRUE) {
 
@@ -105,7 +96,7 @@ class Admin extends Backend_Controller {
 			$this->load->model('games/games_m');
 
 			$this->template
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create team')
 				->set('countries', $this->countries_m->get_all())
 				->set('games', $this->games_m->get_all())
 				->build('admin/form');
@@ -119,7 +110,6 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('name', 'Team name', 'required');
-		$this->breadcrumb->append_crumb($this->template_data['edit_title'], 'admin/teams/edit');
 
 		if ($this->form_validation->run() == TRUE) {
 
@@ -190,7 +180,7 @@ class Admin extends Backend_Controller {
 			$this->load->model('countries/countries_m');
 			$this->load->model('games/games_m');
 			$this->template
-				->set('title', $this->template_data['edit_title'])
+				->set('title', 'Edit team')
 				->set('data', $this->teams_m->as_array()->get($id))
 				->set('countries', $this->countries_m->get_all())
 				->set('games', $this->games_m->get_all())

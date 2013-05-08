@@ -192,6 +192,19 @@ function get_username($userID)
 }
 
 /**
+ * Parser markdown format of text
+ * @param  string $text Text containing markdown content
+ * @return string       HTML output of text
+ */
+function parse_markdown($text)
+{
+	$CI =& get_instance();
+	$CI->load->library('markdown');
+
+	return $CI->markdown->parse($text);
+}
+
+/**
  * Wrapper function for easier access
  * in twig parser. Loads module
  * then injects it into the layout

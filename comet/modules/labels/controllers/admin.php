@@ -4,24 +4,15 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/labels/';
 
-	private $template_data = array(
-		'title' => 'Labels',
-		'create_title' => 'Add label',
-		'edit_title' => 'Edit label',
-		'add_button' => 'Add label'
-	);
-
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('labels_m');
-
-		$this->breadcrumb->append_crumb($this->template_data['title'], '/admin/labels');
 	}
 
 	public function index() {
 		
 		$this->template
-			->set($this->template_data)
+			->set('title', 'Labels')
 			->set('labels', $this->labels_m->get_all())
 			->build('admin/main');
 	}
@@ -31,8 +22,6 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
-
-		$this->breadcrumb->append_crumb($this->template_data['create_title'], 'admin/labels/create');
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 
@@ -73,7 +62,7 @@ class Admin extends Backend_Controller {
 		else {
 
 			$this->template
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create label')
 				->build('admin/form');
 		}
 	}
@@ -83,8 +72,6 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
-
-		$this->breadcrumb->append_crumb($this->template_data['edit_title'], 'admin/labels/edit');
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 
@@ -119,7 +106,7 @@ class Admin extends Backend_Controller {
 		}
 		else {
 			$this->template
-				->set('title', $this->template_data['edit_title'])
+				->set('title', 'Edit label')
 				->set('data', $this->labels_m->as_array()->get($id))
 				->build('admin/form');
 		}

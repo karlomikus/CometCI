@@ -1,0 +1,20 @@
+<dl class="sub-nav">
+	<dt>Filter:</dt>
+	<dd class="active"><a href="#">All</a></dd>
+	{% for label in labels %}
+	<dd><a href="{{base_url()}}posts/archive/{{label.id}}">{{label.name}}</a></dd>
+	{% endfor %}
+</dl>
+
+<pre><?php print_r($posts); ?></pre>
+
+
+<?php foreach ($posts as $post): ?>
+	<?php print_r($post); ?>
+	<?php echo $post->title; ?>
+<?php endforeach; ?>
+
+{% for post in posts %}
+	<a href="{{base_url()}}posts/show/{{post.id}}">{{post.title}}</a>
+	<hr />
+{% endfor %}

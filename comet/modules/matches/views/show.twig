@@ -1,3 +1,6 @@
+<div class="row">
+	<p class="large-12 columns text-center"><strong>{{get_game_name(match.game)}}</strong> played on <strong>{{match.date}}</strong></p>
+</div>
 <div class="row match">
 	<div class="large-2 columns textright" style="font-size: 22px; line-height: 150px;">
 		{{get_result(match.id, false)}}
@@ -17,6 +20,9 @@
 		{{get_result(match.id)}}
 	</div>
 </div>
+<div class="row">
+	<p class="large-12 columns text-center">{{attribute(match, 'opponent-players')}}</p>
+</div>
 <table width="50%" style="margin: 20px auto;">
 	<tr>
 		<th></th>
@@ -34,9 +40,9 @@
 	{% endfor %}
 </table>
 
-<p class="panel">
+<div class="panel">
 	{{match.report}}
-</p>
+</div>
 
 {% if get_match_screenshots(match.id)|length > 0 %}
 <h4>Screenshots:</h4>

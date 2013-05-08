@@ -41,14 +41,26 @@ class Comments extends Frontend_Controller {
 	 */
 	public function delete($id = 0)
 	{
+		$this->load->library('user_agent');
+
 		if($this->ion_auth->logged_in())
 		{
 			$comment_data = $this->comments_m->get($id);
 
 			// User is author or is admin
-			if($comment_data->poster_id == $user->user_id || $this->ion_auth->is_admin()) {
+			if($comment_data->poster_id == $user->user_id || $this->ion_auth->is_admin()) 
+			{
 				$this->comments_m->delete($id);
-				redirect('/');
+
+				// Send them back to the previous url
+				if($this->agent->is_referral())
+				{
+					redirect($this->agent->referrer()); 
+				}
+				else 
+				{
+					redirect('/');
+				}
 			}
 		}
 		redirect('/');

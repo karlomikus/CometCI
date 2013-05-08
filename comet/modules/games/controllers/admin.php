@@ -44,7 +44,7 @@ class Admin extends Backend_Controller {
             }
             else {
                 $this->session->set_flashdata('create_error', "There was an error with the file!");
-                redirect('admin/games');
+                $icon_data = NULL;
             }
 
             $data = array(
@@ -63,8 +63,8 @@ class Admin extends Backend_Controller {
         }
     }
 
-    public function edit($id = 0) {
-
+    public function edit($id = 0) 
+    {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -77,8 +77,8 @@ class Admin extends Backend_Controller {
         $config['max_width']     = '32';
         $config['max_height']    = '32';
 
-        if ($this->form_validation->run() == TRUE) {
-
+        if ($this->form_validation->run() == TRUE) 
+        {
             $shortcode = strtolower($this->input->post('shortcode'));
             $config['file_name'] = $shortcode;
             $this->load->library('upload', $config);
@@ -88,19 +88,21 @@ class Admin extends Backend_Controller {
                 'shortcode' => $shortcode
             );
 
-            if ($this->upload->do_upload('icon')) {
+            if (isset($_FILES['icon']) && $this->upload->do_upload('icon')) 
+            {
                 $icon_data = $this->upload->data();
                 $data['icon'] = $icon_data['file_name'];
             }
-            else {
+            else 
+            {
                 $this->session->set_flashdata('create_error', "There was an error with the file!");
-                redirect('admin/games');
             }
 
             $this->games_m->update($id, $data);
             redirect('admin/games');
         }
-        else {
+        else 
+        {
             $this->template
             ->set('title', 'Edit Game')
             ->set('data', $this->games_m->as_array()->get($id))

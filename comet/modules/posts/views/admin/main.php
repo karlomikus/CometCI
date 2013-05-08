@@ -14,7 +14,7 @@
 			<td><?php echo $post->title; ?></td>
 			<td><?php echo $post->date; ?></td>
 			<td><?php echo $this->ion_auth->user($post->author)->row()->username; ?></td>
-			<td><?php echo $post->label; ?></td>
+			<td><?php echo get_label_name($post->label); ?></td>
 			<td class="action">
 				<a class="action-icon" href="#">Action</a>
 				<ul class="action-list" style="display: none;">

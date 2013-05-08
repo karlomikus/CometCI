@@ -35,7 +35,7 @@ class Admin extends Backend_Controller {
 		if ($this->form_validation->run() == TRUE) {
 
 			$this->load->helper('htmlpurifier');
-			$clean_html = html_purify($this->input->post('body'));
+			$clean_html = html_purify($this->input->post('body'), 'wysiwyg');
 			
 			$data = array(
 				'title' => $this->input->post('title'),

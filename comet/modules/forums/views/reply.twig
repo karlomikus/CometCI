@@ -1,0 +1,31 @@
+<a href="{{base_url()}}forums/newreply/{{original_post.id}}" class="small button"><i class="icon-plus"></i> Add reply</a>
+
+<div class="panel">
+	<div class="row">
+		<div class="large-2 columns">
+			{{get_avatar(original_post.author, true)}}
+			<br />
+			{{get_username(original_post.author)}}
+		</div>
+		<div class="large-10 columns">
+			{{parse_markdown(original_post.content)}}
+		</div>
+	</div>
+</div>
+
+{% for post in data %}
+	<div class="panel">
+		<div class="row">
+			<div class="large-2 columns">
+				{{get_avatar(post.poster, true)}}
+				<br />
+				{{get_username(post.poster)}}
+			</div>
+			<div class="large-10 columns">
+				{{parse_markdown(post.content)}}
+			</div>
+		</div>
+	</div>
+{% endfor %}
+
+<a href="{{base_url()}}forums/newreply/{{original_post.id}}" class="small button"><i class="icon-plus"></i> Add reply</a>

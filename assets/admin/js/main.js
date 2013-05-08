@@ -15,6 +15,11 @@ $(document).ready(function() {
 		document.cookie = "activeTabGroup=" + this;
 	});
 
+	$('#event-tabs a').click(function (e) {
+		e.preventDefault();
+		$(this).tab('show');
+	});
+
 // Select 2 plugin -----------------------------------
 	$(".js_select").select2({
 		width: 'off'

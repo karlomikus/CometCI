@@ -9,4 +9,10 @@ class Posts_m extends MY_Model {
 		parent::update($id, array('views' => $total_views));
 	}
 
+	// public function get_posts_by_label($label = 0)
+	// {
+	// 	$this->db->where('label', $label)
+	// 	return parent::get_by();
+	// }
+
 }
