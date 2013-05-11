@@ -2,6 +2,12 @@
 
 class Forums extends Frontend_Controller {
 
+	function __construct() {
+		parent::__construct();
+		$this->template
+			->set('logged_in', $this->ion_auth->logged_in());
+	}
+
 	/**
 	 * Lists all available forums,
 	 * grouped by label
@@ -9,6 +15,9 @@ class Forums extends Frontend_Controller {
 	public function index()
 	{
 		$this->load->model('forums_m');
+		$this->load->helper('forum');
+		$this->parser->addFunction('count_topics');
+		$this->parser->addFunction('count_replies_in_forum');
 
 		$data = array();
 		$active_labels = $this->forums_m->get_active_forum_labels();
@@ -28,6 +37,10 @@ class Forums extends Frontend_Controller {
 	public function forum($id = 0)
 	{
 		$this->load->model('forums_m');
+		$this->load->helper('forum');
+		$this->parser->addFunction('count_replies');
+		$this->parser->addFunction('get_last_post_in_topic');
+
 		$this->forums_m->order_by('sticky', 'DESC');
 
 		$this->template
@@ -44,7 +57,6 @@ class Forums extends Frontend_Controller {
 	public function topic($id = 0)
 	{
 		$this->load->model('forums_m');
-		
 
 		$data_op = $this->forums_m->get_topic($id); // Original post
 		$data = $this->forums_m->get_topic_replies($id); // Replies
@@ -52,7 +64,7 @@ class Forums extends Frontend_Controller {
 		$this->template
 			->set('original_post', $data_op)
 			->set('data', $data)
-			->build('reply.twig');
+			->build('topic.twig');
 	}
 
 	/**
@@ -88,6 +100,18 @@ class Forums extends Frontend_Controller {
 				->set('forumID', $forumID)
 				->build('new-topic.twig');
 		}
+	}
+
+	public function deletetopic($topicID = 0)
+	{
+		// Check if admin or moderator
+		// Check for csfr
+		// Delete topic
+	}
+
+	public function locktopic($topicID = 0)
+	{
+		// TODO
 	}
 
 	public function newreply($topicID = 0)

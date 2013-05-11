@@ -2,15 +2,16 @@
 <table width="100%">
 	<thead>
 		<tr>
-			<th colspan="3">{{get_label_name(label)}}</th>
+			<th colspan="4">{{get_label_name(label)}}</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for forum in forums %}
 		<tr>
-			<td width="60%"><a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a></td>
-			<td width="20%">13 Threads</td>
-			<td width="20%">234 Posts</td>
+			<td width="5%"><i class="icon-folder-close"></i></td>
+			<td width="55%"><a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a></td>
+			<td width="20%">{{count_topics(forum.id)}} Topics</td>
+			<td width="20%">{{count_replies_in_forum(forum.id)}} Posts</td>
 		</tr>
 		{% endfor %}
 	</tbody>

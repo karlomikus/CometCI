@@ -1,0 +1,49 @@
+{% if logged_in %}
+<a href="{{base_url()}}forums/newreply/{{original_post.id}}" class="small button"><i class="icon-plus"></i> Add reply</a>
+<a href="{{base_url()}}forums/locktopic/{{original_post.id}}" class="small button"><i class="icon-lock"></i> Lock topic</a>
+<a href="{{base_url()}}forums/deletetopic/{{original_post.id}}" class="small button"><i class="icon-trash"></i> Delete topic</a>
+{% endif %}
+
+<div class="panel">
+	<div class="row">
+		<div class="large-1 columns">
+			{{get_avatar(original_post.author, true)}}
+		</div>
+		<div class="large-6 columns">
+			{{get_username(original_post.author)}}
+		</div>
+		<div class="large-5 columns text-right">
+			<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			{{parse_markdown(original_post.content)}}
+		</div>
+	</div>
+</div>
+
+{% for post in data %}
+	<div class="panel">
+		<div class="row">
+			<div class="large-1 columns">
+				{{get_avatar(post.poster, true)}}
+			</div>
+			<div class="large-6 columns">
+				{{get_username(post.poster)}}
+			</div>
+			<div class="large-5 columns text-right">
+				<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				{{parse_markdown(post.content)}}
+			</div>
+		</div>
+	</div>
+{% endfor %}
+
+{% if logged_in %}
+<a href="{{base_url()}}forums/newreply/{{original_post.id}}" class="small button"><i class="icon-plus"></i> Add reply</a>
+{% endif %}

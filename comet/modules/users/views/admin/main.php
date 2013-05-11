@@ -22,10 +22,10 @@
             <td class="action">
                 <a class="action-icon" href="#">Action</a>
                 <ul class="action-list" style="display: none;">
-                    <li><a href="<?php echo site_url('admin/users/delete/'.$user->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-delete.png" alt="" /></a></li>
-                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-edit.png" alt="" /></a></li>
-                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-unlock"></i></a></li>
-                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-lock"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/users/delete/'.$user->id); ?>"><i class="icon-trash icon-large"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-edit icon-large"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-unlock icon-large"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-lock icon-large"></i></a></li>
                 </ul>
             </td>
         </tr>

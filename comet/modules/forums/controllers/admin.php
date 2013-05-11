@@ -7,7 +7,7 @@ class Admin extends Backend_Controller {
 		$this->load->model('forums_m');
 
 		$this->template
-			->set('forums', $this->forums_m->get_all())
+			->set('forums', $this->forums_m->get_forums())
 			->set('title', 'Forums')
 			->build('admin/main');
 	}

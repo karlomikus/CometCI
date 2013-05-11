@@ -1,5 +1,8 @@
+{% if logged_in %}
 <a href="{{base_url()}}forums/newtopic/{{forumID}}" class="small button"><i class="icon-plus"></i> New topic</a>
 <a href="{{base_url()}}forums/newtopic/{{forumID}}" class="small button"><i class="icon-bullhorn"></i> New annoucement</a>
+{% endif %}
+
 {% if data %}
 	<table width="100%">
 		<tbody>
@@ -15,15 +18,15 @@
 				<td>
 					<a href="{{base_url()}}forums/topic/{{topic.id}}">{{topic.title}}</a>
 					<br />
-					<span style="font-size: 12px;">Started by {{get_username(topic.poster)}}</span>
+					<span style="font-size: 12px;">Started by {{get_username(topic.author)}}</span>
 				</td>
-				<td class="text-center">
-					Posts: 2314
+				<td class="text-right">
+					Posts: {{count_replies(topic.id)}}
 					<br />
 					<span style="font-size: 12px;">Views: 423</span>
 				</td>
-				<td class="text-right">
-					Last post by: User
+				<td width="27%" class="text-right">
+					Last post: {{get_username(get_last_post_in_topic(topic.id).poster)}}
 					<br />
 					<span style="font-size: 12px;">{{topic.date}}</span>
 				</td>

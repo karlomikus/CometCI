@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{theme_asset('css/normalize.css')}}">
   <link rel="stylesheet" href="{{theme_asset('css/foundation.min.css')}}">
   <link rel="stylesheet" href="{{theme_asset('css/font-awesome.min.css')}}">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="{{theme_asset('js/vendor/custom.modernizr.js')}}"></script>
   <style type="text/css">
 	body { margin: 30px 0; background: #90CDDB; }
@@ -99,9 +100,7 @@
   </footer>
 
 </div>
-
 <script src="{{theme_asset('js/vendor/zepto.js')}}"></script>
 <script src="{{theme_asset('js/foundation.min.js')}}"></script>
-
 </body>
 </html>

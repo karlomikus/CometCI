@@ -12,6 +12,18 @@
 
 	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
 
+	<select placeholder="Assign moderators" class="js_select input-xlarge" name="label">
+		<option></option>
+		<?php foreach($labels as $label): ?>
+		<option value="<?php echo $label->id; ?>" <?php echo isset($data) ? set_select('label', $data['id'], $label->id==$data['label'] ? TRUE : FALSE) : set_select('label'); ?>><?php echo $label->name; ?></option>
+		<?php endforeach; ?>
+	</select>
+
+	
+	<label class="checkbox">
+		<input type="checkbox" name="clan" value="1" /> Clanmembers only forum
+	</label>
+
 	<button type="submit" class="btn btn-large btn-cms-orange">Save label</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
 

@@ -435,15 +435,14 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border-left: 1px solid #616b79;
 	display: block;
 	height: 50px;
-	width: 60px;
+	width: 53px;
 }
 
-.action-list li a:hover {
-	background: #48515f;
-}
-
-.action-list li a img {
-	padding-top: 12px;
+.action-list li a:hover { background: #48515f; }
+.action-list li a img { padding-top: 12px; }
+.action-list li a i {
+	padding-top: 14px;
+	color: #fff;
 }
 
 /* Forms */
