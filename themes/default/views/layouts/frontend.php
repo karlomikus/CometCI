@@ -25,6 +25,7 @@
 	.button { border: none; box-shadow: none; background-color: #B73A3A; }
 	.button:hover, .button:focus { background-color: #399EB5; }
 	.panel { padding: 10px; }
+	.pagination li.current a { background: #B73A3A; }
 	
 	.forum-list {
 		list-style: none;

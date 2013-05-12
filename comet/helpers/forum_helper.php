@@ -31,3 +31,11 @@ function get_last_post_in_topic($topic)
 
 	return $CI->forums_m->get_last_post($topic);
 }
+
+function get_views($id)
+{
+	$CI =& get_instance();
+	$CI->load->model('forums/forums_m');
+
+	return $CI->forums_m->count_views($id);
+}

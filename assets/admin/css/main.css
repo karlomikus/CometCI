@@ -443,6 +443,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .action-list li a i {
 	padding-top: 14px;
 	color: #fff;
+	display: block;
 }
 
 /* Forms */

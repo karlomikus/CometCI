@@ -13,6 +13,7 @@ class MY_Controller extends MX_Controller {
 		}
 		else {
 			$this->user = NULL;
+			$this->user->user_id = NULL;
 		}
 
 		$this->template->set('user', $this->user); // Make user information available in templates

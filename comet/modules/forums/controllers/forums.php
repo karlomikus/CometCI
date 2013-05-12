@@ -2,8 +2,21 @@
 
 class Forums extends Frontend_Controller {
 
+	/**
+	 * Maximum topics shown per forum page
+	 * @var integer
+	 */
+	public $max_topic_per_forum = 10;
+	
+	/**
+	 * Maximum topic replies shown
+	 * @var integer
+	 */
+	public $max_topic_replies = 10;
+
 	function __construct() {
 		parent::__construct();
+
 		$this->template
 			->set('logged_in', $this->ion_auth->logged_in());
 	}
@@ -34,19 +47,54 @@ class Forums extends Frontend_Controller {
 	 * Lists all topics in given forum
 	 * @param  integer $id Forum ID
 	 */
-	public function forum($id = 0)
+	public function forum($id = 0, $page = 0)
 	{
 		$this->load->model('forums_m');
 		$this->load->helper('forum');
+		$this->load->library('pagination');
+
+		// Pagination configuration
+		$config['base_url'] = base_url().'forums/forum/'.$id;
+		$config['total_rows'] = $this->forums_m->count_forum_topics($id);
+		$config['per_page'] = $this->max_topic_per_forum;
+		$config['uri_segment'] = 4;
+
+		// Oh god what is this?
+		$config['next_link'] = '&raquo;';
+		$config['prev_link'] = '&laquo;';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="current"><a href="">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li class="arrow">';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li class="arrow">';
+		$config['prev_tag_close'] = '</li>';
+
+		// Let's do this
+		$this->pagination->initialize($config);
+
+		// Add missing functions from forum helper to twig parser
 		$this->parser->addFunction('count_replies');
 		$this->parser->addFunction('get_last_post_in_topic');
+		$this->parser->addFunction('get_views');
 
+		// Check privileges
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $id) || $this->ion_auth->is_admin()) $is_mod = TRUE;
+
+		// Sort and limit forum topics
 		$this->forums_m->order_by('sticky', 'DESC');
+		$this->forums_m->limit($this->max_topic_per_forum, $page);
 
 		$this->template
 			->set('data', $this->forums_m->get_forum_topics($id))
+			->set('is_mod', $is_mod)
 			->set('forumID', $id)
-			->build('topics.twig');
+			->set('pagination', $this->pagination->create_links())
+			->build('forum.twig');
 	}
 
 	/**
@@ -61,9 +109,17 @@ class Forums extends Frontend_Controller {
 		$data_op = $this->forums_m->get_topic($id); // Original post
 		$data = $this->forums_m->get_topic_replies($id); // Replies
 
+		$forumID = $this->forums_m->get_topic_forum($id)->forum;
+		$this->forums_m->update_views('forum_topics', $id);
+
+		// Check privileges
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
+
 		$this->template
 			->set('original_post', $data_op)
 			->set('data', $data)
+			->set('is_mod', $is_mod)
 			->build('topic.twig');
 	}
 
@@ -79,6 +135,10 @@ class Forums extends Frontend_Controller {
 
 		$this->form_validation->set_rules('title', 'Topic title', 'required');
 		$this->form_validation->set_rules('content', 'Topic content', 'required');
+
+		// Check privileges
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
 
 		if($this->form_validation->run())
 		{
@@ -98,15 +158,26 @@ class Forums extends Frontend_Controller {
 		{
 			$this->template
 				->set('forumID', $forumID)
+				->set('is_mod', $is_mod)
 				->build('new-topic.twig');
 		}
 	}
 
 	public function deletetopic($topicID = 0)
 	{
-		// Check if admin or moderator
-		// Check for csfr
-		// Delete topic
+		$this->load->model('forums_m');
+
+		$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
+
+		if($is_mod) {
+			$this->forums_m->delete_topic($topicID);
+			redirect('forums/forum/'.$forumID);
+		}
+		else {
+			redirect('forums/forum/'.$forumID);
+		}
 	}
 
 	public function locktopic($topicID = 0)

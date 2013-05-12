@@ -3,10 +3,12 @@
 	<input placeholder="Topic title" type="text" name="title" />
 
 	<textarea class="markitup" placeholder="Write topic content here..." name="content" style="height: 150px;"></textarea>
-
+	
+	{% if is_mod %}
 	<label for="checkbox1">
 		<input type="checkbox" id="checkbox1" name="sticky" value="1" /> Make sticky topic
 	</label>
+	{% endif %}
 
 	<button class="small button">Save topic</button>
 </form>

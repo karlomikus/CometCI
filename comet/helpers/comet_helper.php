@@ -188,7 +188,8 @@ function get_username($userID)
 {
 	$CI =& get_instance();
 
-	return $CI->ion_auth->user($userID)->row()->username;
+	if(isset($CI->ion_auth->user($userID)->row()->username)) return $CI->ion_auth->user($userID)->row()->username;
+	else return NULL;
 }
 
 /**

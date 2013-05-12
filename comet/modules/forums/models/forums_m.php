@@ -2,6 +2,21 @@
 
 class Forums_m extends MY_Model {
 
+	/* Forums */
+
+	/**
+	 * Insert new forum data
+	 */
+	public function insert_forum($data)
+	{
+		$this->_table = 'forum_forums';
+		parent::insert($data);
+	}
+
+	/**
+	 * [get_forums description]
+	 * @return [type] [description]
+	 */
 	public function get_forums()
 	{
 		$this->_table = 'forum_forums';
@@ -36,6 +51,8 @@ class Forums_m extends MY_Model {
 		return $query->result();
 	}
 
+	/* Topics */
+
 	/**
 	 * Insert new topic into database
 	 * @param  array $data Array of data
@@ -46,14 +63,12 @@ class Forums_m extends MY_Model {
 		parent::insert($data);
 	}
 
-	/**
-	 * Insert topic reply into database
-	 * @param  array $data Array of data
-	 */
-	public function insert_reply($data)
+	public function delete_topic($topicID)
 	{
-		$this->_table = 'forum_replies';
-		parent::insert($data);
+		// Delete topic
+		$this->db->delete('forum_topics', array('id' => $topicID));
+		// Delete replies
+		$this->db->delete('forum_replies', array('topic' => $topicID));
 	}
 
 	/**
@@ -68,6 +83,23 @@ class Forums_m extends MY_Model {
 		return parent::get($topicID);
 	}
 
+	/* Replies */
+
+	/**
+	 * Insert topic reply into database
+	 * @param  array $data Array of data
+	 */
+	public function insert_reply($data)
+	{
+		$this->_table = 'forum_replies';
+		parent::insert($data);
+	}
+
+	/**
+	 * [get_reply description]
+	 * @param  integer $postID [description]
+	 * @return [type]          [description]
+	 */
 	public function get_reply($postID = 0)
 	{
 		$this->_table = 'forum_replies';
@@ -82,6 +114,12 @@ class Forums_m extends MY_Model {
 	public function get_topic_replies($topicID = 0) {
 		$this->_table = 'forum_replies';
 		return parent::get_many_by('topic', $topicID);
+	}
+
+	public function get_topic_forum($topicID = 0)
+	{
+		$this->_table = 'forum_topics';
+		return parent::get_by('id', $topicID);
 	}
 
 	public function count_forum_topics($forumID = 0)
@@ -112,8 +150,48 @@ class Forums_m extends MY_Model {
 		$this->db->where('topic', $topicID);
 
 		$postID = $this->db->get()->row()->id;
+		if(isset($postID)) return $this->get_reply($postID);
+		else return NULL;
 		// If null: poster = autor
-		return $this->get_reply($postID);
+		
+	}
+
+	public function add_moderators($data, $forumID)
+	{
+		$mods = array();
+		foreach($data as $userID)
+		{
+			$this->db->set('user', $userID);
+			$this->db->set('forum', $forumID);
+			$this->db->insert('forum_moderators'); 
+		}
+	}
+
+	public function is_moderator($userID, $forumID)
+	{
+		$this->db->select('*');
+		$this->db->where('forum', $forumID);
+		$moderators = $this->db->get('forum_moderators')->result_array();
+
+		foreach($moderators as $mod)
+		{
+			if(in_array($userID, $mod)) return TRUE;
+		}
+		return FALSE;
+	}
+
+	public function update_views($table, $id)
+	{
+		$this->_table = $table;
+		$total_views = parent::get($id)->views;
+		$total_views++;
+		parent::update($id, array('views' => $total_views));
+	}
+
+	public function count_views($id)
+	{
+		$this->_table = 'forum_topics';
+		return parent::get($id)->views;
 	}
 
 }

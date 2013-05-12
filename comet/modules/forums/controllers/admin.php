@@ -6,6 +6,8 @@ class Admin extends Backend_Controller {
 	{
 		$this->load->model('forums_m');
 
+		//TODO: Make unlabeled forums only visible to admins with a warning to fix them
+
 		$this->template
 			->set('forums', $this->forums_m->get_forums())
 			->set('title', 'Forums')
@@ -31,9 +33,13 @@ class Admin extends Backend_Controller {
 				'label' => $this->input->post('label'),
 				'date' => date('Y-m-d H:i:s'),
 				'description' => $this->input->post('description')
-			);    
+			);
+			$this->forums_m->insert_forum($data);
+			$forumID = $this->db->insert_id();
 
-			$this->forums_m->insert($data);
+			$mods = $this->input->post('mods');
+			$this->forums_m->add_moderators($mods, $forumID);
+
 			redirect('admin/forums');
 		}
 		else
@@ -41,6 +47,7 @@ class Admin extends Backend_Controller {
 			$this->template
 				->set('title', 'Create forum')
 				->set('labels', $this->labels_m->get_all())
+				->set('users', $this->ion_auth->users()->result())
 				->build('admin/form');
 		}
 	}

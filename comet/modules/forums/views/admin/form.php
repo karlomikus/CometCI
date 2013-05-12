@@ -12,10 +12,10 @@
 
 	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
 
-	<select placeholder="Assign moderators" class="js_select input-xlarge" name="label">
+	<select placeholder="Assign moderators" class="js_select input-xlarge" name="mods[]" multiple>
 		<option></option>
-		<?php foreach($labels as $label): ?>
-		<option value="<?php echo $label->id; ?>" <?php echo isset($data) ? set_select('label', $data['id'], $label->id==$data['label'] ? TRUE : FALSE) : set_select('label'); ?>><?php echo $label->name; ?></option>
+		<?php foreach($users as $user): ?>
+		<option value="<?php echo $user->id; ?>"><?php echo $user->username; ?></option>
 		<?php endforeach; ?>
 	</select>
 
