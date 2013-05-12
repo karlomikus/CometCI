@@ -2,7 +2,7 @@
 	<div class="alert-box alert">{{login_alerts}}</div>
 {% endif %}
 {% if logged_in == false %}
-	<form action="{{base_url()}}users/login" method="post">
+	{{form_open}}
 		<input type="text" name="identity" />
 		<input type="password" name="password" />
 		<button class="small button" type="submit">Login</button>

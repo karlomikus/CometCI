@@ -19,10 +19,16 @@
 		<?php endforeach; ?>
 	</select>
 
-	
-	<label class="checkbox">
-		<input type="checkbox" name="clan" value="1" /> Clanmembers only forum
-	</label>
+	<ul class="check-list">
+		<li>
+			<input id="check-clan" type="checkbox" name="clan" value="1" />
+			<label for="check-clan">Clanmembers only forum</label>
+		</li>
+		<li>
+			<input id="check-private" type="checkbox" name="private" value="1" />
+			<label for="check-private">Visible only to registered users</label>
+		</li>
+	</ul>
 
 	<button type="submit" class="btn btn-large btn-cms-orange">Save label</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>

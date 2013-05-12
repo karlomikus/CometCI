@@ -5,6 +5,12 @@ $(document).ready(function() {
 		$(this).find(".action-list").toggle();
 	});
 
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue',
+		increaseArea: '20%' // optional
+	});
+
 // Tooltip -----------------------------------
 	$('.js_tooltip').tooltip();
 

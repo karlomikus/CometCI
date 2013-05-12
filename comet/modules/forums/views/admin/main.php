@@ -10,6 +10,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Label</th>
+			<th>Tags</th>
 			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>
@@ -18,6 +19,7 @@
 		<tr>
 			<td><?php echo $forum->name; ?></td>
 			<td><?php echo get_label_name($forum->label); ?></td>
+			<td><span class="label label-info">Private</span></td>
 			<td class="action">
 				<a class="action-icon" href="#">Action</a>
 				<ul class="action-list" style="display: none;">

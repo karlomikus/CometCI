@@ -17,7 +17,8 @@ class Admin extends Backend_Controller {
 	/**
 	 * Creates forum
 	 */
-	public function create() {
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
@@ -32,6 +33,8 @@ class Admin extends Backend_Controller {
 				'name' => $this->input->post('name'),
 				'label' => $this->input->post('label'),
 				'date' => date('Y-m-d H:i:s'),
+				'clan' => $this->input->post('clan'),
+				'private' => $this->input->post('private'),
 				'description' => $this->input->post('description')
 			);
 			$this->forums_m->insert_forum($data);
@@ -52,6 +55,42 @@ class Admin extends Backend_Controller {
 		}
 	}
 
+	public function edit($id = 0)
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->load->model('forums_m');
+		$this->load->model('labels/labels_m');
+
+		$this->form_validation->set_rules('name', 'Forum name', 'required');
+		$this->form_validation->set_rules('label', 'Label', 'required');
+
+		if ($this->form_validation->run() == TRUE)
+		{
+			$data = array(
+				'name' => $this->input->post('name'),
+				'label' => $this->input->post('label'),
+				'clan' => $this->input->post('clan'),
+				'private' => $this->input->post('private'),
+				'description' => $this->input->post('description')
+			);
+			$this->forums_m->update_forum($data, $id);
+
+			$mods = $this->input->post('mods');
+			//$this->forums_m->add_moderators($mods, $forumID);
+
+			redirect('admin/forums');
+		}
+		else
+		{
+			$this->template
+				->set('title', 'Edit forum')
+				->set('data', $this->forums_m->get($id))
+				->set('labels', $this->labels_m->get_all())
+				->set('users', $this->ion_auth->users()->result())
+				->build('admin/form');
+		}
+	}
 }
 
 /* End of file admin.php */

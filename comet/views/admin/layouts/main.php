@@ -10,6 +10,7 @@
 	<link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/select2.css" rel="stylesheet">
+	<link href="<?php echo base_url(); ?>assets/admin/css/icheck.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/admin/css/main.css" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="<?php echo base_url(); ?>/assets/admin/js/html5shiv.js"></script>
@@ -51,6 +52,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/bootstrap.datepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/bootbox.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.icheck.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/main.js"></script>
 </body>
 </html>
