@@ -1,5 +1,6 @@
 {{validation_errors()}}
-<form action="{{base_url()}}forums/newtopic/{{forumID}}" method="post">
+{{form_open(uri_string())}}
+
 	<input placeholder="Topic title" type="text" name="title" />
 
 	<textarea class="markitup" placeholder="Write topic content here..." name="content" style="height: 150px;"></textarea>
@@ -11,4 +12,5 @@
 	{% endif %}
 
 	<button class="small button">Save topic</button>
-</form>
+	
+{{form_close()}}

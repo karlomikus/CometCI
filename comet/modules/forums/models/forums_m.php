@@ -43,12 +43,23 @@ class Forums_m extends MY_Model {
 	/**
 	 * Get all topics from chosen forum
 	 * @param  int $forumID Forum ID
+	 * @param  int $type Type 1: All topics, 2: Only sticky, 3: All but sticky
 	 * @return object
 	 */
-	public function get_forum_topics($forumID)
+	public function get_forum_topics($forumID, $type = 1)
 	{
-		$query = $this->db->get_where('forum_topics', array('forum' => $forumID));
-		return $query->result();
+		if($type == 2) {
+			$this->db->where('forum', $forumID);
+			$this->db->where('sticky', '1');
+		}
+		elseif($type == 3) {
+			$this->db->where('forum', $forumID);
+			$this->db->where('sticky', '0');
+		}
+		else {
+			$this->db->where('forum', $forumID);
+		}
+		return $this->db->get('forum_topics')->result();
 	}
 
 	/* Topics */

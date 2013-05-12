@@ -8,4 +8,9 @@ Codeigniter plugins:
 Changelog:
 
 v0.02 Alpha
+- Enabled CSRF (You must use form_open() as from now!)
+- Added forum module
 - New admin layout and logic
+
+v0.01
+- Initial version

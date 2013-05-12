@@ -2,11 +2,13 @@
 	<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="small button">
 		<i class="icon-plus"></i> New topic
 	</a>
+
 	{% if is_mod %}
-	<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="small button">
-		<i class="icon-bullhorn"></i> New annoucement
-	</a>
+		<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="small button">
+			<i class="icon-bullhorn"></i> New annoucement
+		</a>
 	{% endif %}
+
 {% endif %}
 
 {% if data %}
@@ -16,9 +18,9 @@
 			<tr>
 				<td width="30">
 					{% if topic.sticky == 1 %}
-					<i class="icon-asterisk icon-large"></i>
+						<i class="icon-asterisk icon-large"></i>
 					{% else %}
-					<i class="icon-comments icon-large"></i>
+						<i class="icon-comments icon-large"></i>
 					{% endif %}
 				</td>
 				<td>

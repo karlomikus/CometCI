@@ -7,16 +7,20 @@ class Forums extends Frontend_Controller {
 	 * @var integer
 	 */
 	public $max_topic_per_forum = 10;
-	
+
 	/**
 	 * Maximum topic replies shown
 	 * @var integer
 	 */
 	public $max_topic_replies = 10;
 
-	function __construct() {
+	/**
+	 * Sets some template variables that are need
+	 * all over the forum module
+	 */
+	function __construct()
+	{
 		parent::__construct();
-
 		$this->template
 			->set('logged_in', $this->ion_auth->logged_in());
 	}
@@ -129,9 +133,14 @@ class Forums extends Frontend_Controller {
 	 */
 	public function newtopic($forumID = 0)
 	{
-		$this->load->library('form_validation');
 		$this->load->model('forums_m');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		// Load missing twig functions
 		$this->parser->addFunction('validation_errors');
+		$this->parser->addFunction('form_open');
+		$this->parser->addFunction('form_close');
 
 		$this->form_validation->set_rules('title', 'Topic title', 'required');
 		$this->form_validation->set_rules('content', 'Topic content', 'required');
