@@ -9,7 +9,10 @@
 		{% for forum in forums %}
 		<tr>
 			<td width="5%"><i class="icon-folder-close"></i></td>
-			<td width="55%"><a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a></td>
+			<td width="55%">
+				<a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a><br />
+				<span style="font-size: 12px;">Moderators: -</span>
+			</td>
 			<td width="20%">{{count_topics(forum.id)}} Topics</td>
 			<td width="20%">{{count_replies_in_forum(forum.id)}} Posts</td>
 		</tr>

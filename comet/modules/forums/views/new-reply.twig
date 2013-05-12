@@ -1,5 +1,7 @@
-<form action="{{base_url()}}forums/newreply/{{topicID}}" method="post">
+{{form_open(uri_string())}}
+
 	<textarea placeholder="Write reply here..." name="content" style="height: 150px;"></textarea>
 
 	<button class="small button">Add reply</button>
-</form>
+
+{{form_close()}}

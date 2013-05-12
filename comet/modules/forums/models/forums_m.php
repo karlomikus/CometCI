@@ -102,8 +102,16 @@ class Forums_m extends MY_Model {
 	 */
 	public function insert_reply($data)
 	{
+		// Insert reply
 		$this->_table = 'forum_replies';
-		parent::insert($data);
+		parent::insert($data);		
+	}
+
+	public function update_last_modified($topicID)
+	{
+		$this->db->set('last_modified', date('Y-m-d H:i:s'));
+		$this->db->where('id', $topicID);
+		return $this->db->update('forum_topics');
 	}
 
 	/**

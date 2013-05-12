@@ -22,7 +22,8 @@ class Forums extends Frontend_Controller {
 	{
 		parent::__construct();
 		$this->template
-			->set('logged_in', $this->ion_auth->logged_in());
+			->set('logged_in', $this->ion_auth->logged_in())
+			->set_layout('frontend_full');
 	}
 
 	/**
@@ -33,6 +34,7 @@ class Forums extends Frontend_Controller {
 	{
 		$this->load->model('forums_m');
 		$this->load->helper('forum');
+
 		$this->parser->addFunction('count_topics');
 		$this->parser->addFunction('count_replies_in_forum');
 
@@ -91,6 +93,7 @@ class Forums extends Frontend_Controller {
 
 		// Sort and limit forum topics
 		$this->forums_m->order_by('sticky', 'DESC');
+		$this->forums_m->order_by('date', 'DESC');
 		$this->forums_m->limit($this->max_topic_per_forum, $page);
 
 		$this->template
@@ -156,6 +159,7 @@ class Forums extends Frontend_Controller {
 				'author' => $this->user->user_id,
 				'title' => $this->input->post('title'),
 				'date' => date('Y-m-d H:i:s'),
+				'last_modified' => date('Y-m-d H:i:s'),
 				'sticky' => $this->input->post('sticky'),
 				'content' => $this->input->post('content')
 			);
@@ -175,8 +179,8 @@ class Forums extends Frontend_Controller {
 	public function deletetopic($topicID = 0)
 	{
 		$this->load->model('forums_m');
-
 		$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
+
 		$is_mod = FALSE;
 		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
 
@@ -198,7 +202,11 @@ class Forums extends Frontend_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
+		$this->load->helper('form');
+
 		$this->parser->addFunction('validation_errors');
+		$this->parser->addFunction('form_open');
+		$this->parser->addFunction('form_close');
 
 		$this->form_validation->set_rules('content', 'Reply content', 'required');
 
@@ -212,6 +220,7 @@ class Forums extends Frontend_Controller {
 			);
 
 			$this->forums_m->insert_reply($data);
+			$this->forums_m->update_last_modified($topicID);
 			redirect('forums/topic/'.$topicID);
 		}
 		else
