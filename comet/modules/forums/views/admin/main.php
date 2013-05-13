@@ -8,6 +8,7 @@
 <table class="table tbl-custom">
 	<thead>
 		<tr>
+			<th width="1"></th>
 			<th>Name</th>
 			<th>Label</th>
 			<th>Tags</th>
@@ -17,6 +18,7 @@
 	<tbody>
 		<?php foreach ($forums as $forum): ?>
 		<tr>
+			<td><a href=""><i class="icon-ellipsis-vertical icon-large"></i></a></td>
 			<td><?php echo $forum->name; ?></td>
 			<td><?php echo get_label_name($forum->label); ?></td>
 			<td><span class="label label-info">Private</span></td>

@@ -10,27 +10,31 @@
 		<?php endforeach; ?>
 	</select>
 
-	<label class="checkbox">
-		<input type="checkbox" name="featured" />
-		Featured news (Shown in featured news widget)
-	</label>
-	<label class="checkbox">
-		<input type="checkbox" name="clan" />
-		Clan news (Only clan members can see this news)
-	</label>
+	<ul class="check-list">
+		<li>
+			<input id="check-clan" type="checkbox" name="clan" value="1" />
+			<label for="check-clan">Clan news (Only clan members can see this news)</label>
+		</li>
+		<li>
+			<input id="check-featured" type="checkbox" name="featured" value="1" />
+			<label for="check-featured">Featured news (Shown in featured news widget)</label>
+		</li>
+	</ul>
 
 	<textarea placeholder="Teaser text" name="teaser" style="width: 40%;" rows="4"><?php echo isset($data) ? $data['teaser'] : set_value("teaser"); ?></textarea>
 
 	<textarea placeholder="Content" class="ckeditor" name="body" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['body'] : set_value("body", "Content"); ?></textarea>
 
-	<label class="radio">
-		<input type="radio" name="state" value="1" checked>
-		Publish post now
-	</label>
-	<label class="radio">
-		<input type="radio" name="state" value="0">
-		Save post as draft
-	</label>
+	<ul class="check-list">
+		<li>
+			<input id="check-publish" type="radio" name="state" value="1" checked>
+			<label for="check-publish">Publish post now</label>
+		</li>
+		<li>
+			<input id="check-draft" type="radio" name="state" value="0">
+			<label for="check-draft">Save post as draft</label>
+		</li>
+	</ul>
 
 	<button type="submit" class="btn btn-large btn-cms-orange">Save post</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>

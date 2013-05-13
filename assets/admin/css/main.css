@@ -11,6 +11,9 @@ body {
 	margin: 0;
 }
 
+a { color: #f94e36; }
+a:hover, a:focus, a:active { color: #28B975; text-decoration: none; }
+
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, 
 input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
 input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, 
@@ -504,9 +507,10 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f94e36', endColorstr='#e33c25',GradientType=0 );*/
 
 	color: #fff;
-	text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+	text-shadow: none;
 	font-family: inherit;
 	text-transform: uppercase;
+	font-weight: bold;
 	font-size: 18px;
 
 	box-shadow: none;
@@ -520,7 +524,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .btn-cms-orange:hover, .btn-cms-orange:focus {
-	background: #fb6646;
+	background: #28B975;
 	/*background: -moz-linear-gradient(top,  #fb6646 0%, #eb4e30 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fb6646), color-stop(100%,#eb4e30));
 	background: -webkit-linear-gradient(top,  #fb6646 0%,#eb4e30 100%);
@@ -529,9 +533,9 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	background: linear-gradient(to bottom,  #fb6646 0%,#eb4e30 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb6646', endColorstr='#eb4e30',GradientType=0 );*/
 	
-	border-color: #fb6646;
+	border-color: #28B975;
 	color: #fff;
-	text-shadow: 0 1px 0 #be3622;
+	text-shadow: none;
 }
 
 .btn-cms {
@@ -545,10 +549,15 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6b6b6', endColorstr='#949494',GradientType=0 );*/
 
 	color: #fff;
-	text-shadow: 0 1px 0 #757575;
+	text-shadow: none;
 	font-family: inherit;
 	text-transform: uppercase;
+	font-weight: bold;
 	font-size: 18px;
+
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
 
 	border: 1px solid #949494;
 	border-radius: 0;
@@ -557,17 +566,18 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .btn-cms:hover, .btn-cms:focus {
-	background: #c5c5c5;
-	background: -moz-linear-gradient(top,  #c5c5c5 0%, #a9a9a9 100%);
+	background: #28B975;
+	/*background: -moz-linear-gradient(top,  #c5c5c5 0%, #a9a9a9 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c5c5c5), color-stop(100%,#a9a9a9));
 	background: -webkit-linear-gradient(top,  #c5c5c5 0%,#a9a9a9 100%);
 	background: -o-linear-gradient(top,  #c5c5c5 0%,#a9a9a9 100%);
 	background: -ms-linear-gradient(top,  #c5c5c5 0%,#a9a9a9 100%);
 	background: linear-gradient(to bottom,  #c5c5c5 0%,#a9a9a9 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c5c5', endColorstr='#a9a9a9',GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c5c5', endColorstr='#a9a9a9',GradientType=0 );*/
 
+	border-color: #28B975;
 	color: #fff;
-	text-shadow: 0 1px 0 #757575;
+	text-shadow: none;
 }
 
 .select2-container .select2-choice {
@@ -635,6 +645,13 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	float: left;
 	background-color: #fff;
 	box-shadow: 0 1px 0 #fff;
+}
+
+.check-list li div.iradio_square-blue {
+	background-color: #fff;
+	border-radius: 13px;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;
 }
 
 .check-list li label {

@@ -37,6 +37,7 @@ class Forums extends Frontend_Controller {
 
 		$this->parser->addFunction('count_topics');
 		$this->parser->addFunction('count_replies_in_forum');
+		$this->parser->addFunction('get_mods');
 
 		$data = array();
 		$active_labels = $this->forums_m->get_active_forum_labels();

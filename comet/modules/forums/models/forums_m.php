@@ -2,31 +2,41 @@
 
 class Forums_m extends MY_Model {
 
-	/* Forums */
-
 	/**
-	 * Insert new forum data
+	 * Main forum list methods
 	 */
+	
 	public function insert_forum($data)
 	{
 		$this->_table = 'forum_forums';
 		parent::insert($data);
 	}
 
-	/**
-	 * [get_forums description]
-	 * @return [type] [description]
-	 */
+	public function update_forum($id, $data)
+	{
+		$this->_table = 'forum_forums';
+		parent::update($id, $data);
+	}
+
+	public function delete_forum($id)
+	{
+		// Delete all posts in the forum
+		$this->_table = 'forum_forums';
+		parent::delete($id);
+	}
+
 	public function get_forums()
 	{
 		$this->_table = 'forum_forums';
 		return parent::get_all();
 	}
 
-	/**
-	 * Get labels that have forums
-	 * @return array Unique list of label ID's
-	 */
+	public function get_forum($id)
+	{
+		$this->_table = 'forum_forums';
+		return parent::get($id);
+	}
+
 	public function get_active_forum_labels() 
 	{
 		$this->_table = 'forum_forums';
@@ -40,12 +50,6 @@ class Forums_m extends MY_Model {
 		return $labels;
 	}
 
-	/**
-	 * Get all topics from chosen forum
-	 * @param  int $forumID Forum ID
-	 * @param  int $type Type 1: All topics, 2: Only sticky, 3: All but sticky
-	 * @return object
-	 */
 	public function get_forum_topics($forumID, $type = 1)
 	{
 		if($type == 2) {
@@ -62,12 +66,10 @@ class Forums_m extends MY_Model {
 		return $this->db->get('forum_topics')->result();
 	}
 
-	/* Topics */
-
 	/**
-	 * Insert new topic into database
-	 * @param  array $data Array of data
+	 * Forum topics list methods
 	 */
+
 	public function insert_topic($data)
 	{
 		$this->_table = 'forum_topics';
@@ -175,8 +177,13 @@ class Forums_m extends MY_Model {
 		
 	}
 
+	/**
+	 * Moderators methods
+	 */
+	
 	public function add_moderators($data, $forumID)
 	{
+		$this->delete_moderators($forumID);
 		$mods = array();
 		foreach($data as $userID)
 		{
@@ -184,6 +191,18 @@ class Forums_m extends MY_Model {
 			$this->db->set('forum', $forumID);
 			$this->db->insert('forum_moderators'); 
 		}
+	}
+
+	public function delete_moderators($id)
+	{
+		$this->_table = 'forum_moderators';
+		return parent::delete_by(array('forum'=>$id));
+	}
+
+	public function get_moderators($forumID = 0)
+	{
+		$this->_table = 'forum_moderators';
+		return parent::get_by('forum', $forumID);
 	}
 
 	public function is_moderator($userID, $forumID)

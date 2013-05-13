@@ -74,10 +74,10 @@ class Admin extends Backend_Controller {
 				'private' => $this->input->post('private'),
 				'description' => $this->input->post('description')
 			);
-			$this->forums_m->update_forum($data, $id);
+			$this->forums_m->update_forum($id, $data);
 
 			$mods = $this->input->post('mods');
-			//$this->forums_m->add_moderators($mods, $forumID);
+			$this->forums_m->add_moderators($mods, $id);
 
 			redirect('admin/forums');
 		}
@@ -85,11 +85,18 @@ class Admin extends Backend_Controller {
 		{
 			$this->template
 				->set('title', 'Edit forum')
-				->set('data', $this->forums_m->get($id))
+				->set('data', $this->forums_m->get_forum($id))
 				->set('labels', $this->labels_m->get_all())
 				->set('users', $this->ion_auth->users()->result())
 				->build('admin/form');
 		}
+	}
+
+	public function delete($id = 0)
+	{
+		$this->load->model('forums_m');
+		$this->groups_m->delete_forum($id);
+		redirect('admin/forums');
 	}
 }
 

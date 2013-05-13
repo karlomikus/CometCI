@@ -39,3 +39,19 @@ function get_views($id)
 
 	return $CI->forums_m->count_views($id);
 }
+
+function get_mods($forumID)
+{
+	$CI =& get_instance();
+	$CI->load->model('forums/forums_m');
+
+	$mods = $CI->forums_m->get_moderators($forumID);
+
+	if(!empty($mods)) {
+		foreach($mods as $mod)
+		{
+			echo get_username($mod).' ';
+		}
+	}
+	else echo '-';
+}
