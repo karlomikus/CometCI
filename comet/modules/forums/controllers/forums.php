@@ -47,6 +47,7 @@ class Forums extends Frontend_Controller {
 
 		$this->template
 			->set('data', $data)
+			->set('last_online', $this->forums_m->last_online())
 			->build('main.twig');
 	}
 

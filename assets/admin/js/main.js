@@ -129,6 +129,27 @@ $(document).ready(function() {
 		});
 	});
 
+// Input tooltips -----------------------------------
+	$(".inputip").on({
+	"keyup focus": function() {
+	    if (this.value.length <= 3) {
+	        if ($(".tooltip").length == 0) {
+	            $(this).tooltip("show");
+	        }
+	    } else {
+	        if ($(".tooltip").length != 0) {
+	            $(this).tooltip("hide");
+	        }
+	    }
+	},
+	blur: function() {
+	    $(this).tooltip("hide");
+	}
+	}).tooltip({
+	placement: "right",
+	trigger: "manual"
+	});
+
 }); // End of jQuery document load
 
 String.prototype.trunc = 

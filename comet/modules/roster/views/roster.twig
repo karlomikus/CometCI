@@ -1,3 +1,15 @@
-<div class="panel">
-	sasdas
-</div>
+{% for team in data %}
+	<div class="panel">
+		<h5>{{team.name}}</h5>
+		<p>{{team.description}}</p>
+		<p>
+			<strong>From:</strong> {{get_country_info(team.countryID, 'icon')}} {{get_country_info(team.countryID, 'name')}}
+			<br />
+			<strong>Playing:</strong> {{get_game_name(team.games)}}
+		</p>
+		<hr />
+		<p>
+			Members: 
+		</p>
+	</div>
+{% endfor %}

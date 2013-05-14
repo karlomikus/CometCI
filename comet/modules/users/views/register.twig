@@ -1,9 +1,9 @@
 {{validation_errors()}}
-<form action="{{base_url()}}users/register" method="post" accept-charset="utf-8">
+{{form_open(uri_string())}}
 	<input placeholder="Username" type="text" name="username" value="{{set_value('username')}}" />
 	<input placeholder="Email" type="text" name="email" value="{{set_value('email')}}" />
 	<input placeholder="Password" type="password" name="password" value="{{set_value('password')}}" />
 	<input placeholder="Repeat Password" type="password" name="password_repeat" value="{{set_value('password_repeat')}}" />
 	
 	<button type="submit" class="small button">Register</button>
-</form>
+{{form_close()}}

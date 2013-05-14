@@ -202,7 +202,7 @@ class Forums_m extends MY_Model {
 	public function get_moderators($forumID = 0)
 	{
 		$this->_table = 'forum_moderators';
-		return parent::get_by('forum', $forumID);
+		return parent::get_many_by('forum', $forumID);
 	}
 
 	public function is_moderator($userID, $forumID)
@@ -230,6 +230,13 @@ class Forums_m extends MY_Model {
 	{
 		$this->_table = 'forum_topics';
 		return parent::get($id)->views;
+	}
+
+	public function last_online()
+	{
+		$query = $this->db->query('SELECT * FROM users 
+			WHERE TIMESTAMPDIFF(HOUR, FROM_UNIXTIME(last_login), NOW()) <= 1');
+		return $query->result();
 	}
 
 }

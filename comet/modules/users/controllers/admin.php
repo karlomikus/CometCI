@@ -2,8 +2,8 @@
 
 class Admin extends Backend_Controller {
 
-	public function index() {
-
+	public function index()
+	{
 		$data['users'] = $this->ion_auth->users()->result();
 		foreach ($data['users'] as $k => $user)  {
 			$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -14,8 +14,8 @@ class Admin extends Backend_Controller {
 			->build('admin/main', $data);
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->library('form_validation');
 		$this->load->helper('form');
 
@@ -42,8 +42,8 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -85,12 +85,14 @@ class Admin extends Backend_Controller {
 			->build('admin/form');
 	}
 
-	public function delete($id = 0) {
+	public function delete($id = 0)
+	{
 		if($this->ion_auth->delete_user($id)) redirect('admin/users');
 		else echo 'Delete failed';		
 	}
 
-	public function activate($id = 0, $code = FALSE) {
+	public function activate($id = 0, $code = FALSE)
+	{
 		if ($code !== FALSE) {
 			$activation = $this->ion_auth->activate($id, $code);
 		}
@@ -106,7 +108,8 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	function deactivate($id = 0)	{
+	function deactivate($id = 0)
+	{
 		$this->ion_auth->deactivate($id);
 		redirect('admin/users');
 	}

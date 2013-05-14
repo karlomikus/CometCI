@@ -4,7 +4,8 @@ class Users extends Frontend_Controller {
 
 	private $redirect_to = '/';
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->library('form_validation');
 	}
@@ -51,6 +52,8 @@ class Users extends Frontend_Controller {
 	{
 		$this->parser->addFunction('validation_errors'); // Make it available in twig parser
 		$this->parser->addFunction('set_value');
+		$this->parser->addFunction('form_open');
+		$this->parser->addFunction('form_close');
 
 		$this->form_validation->set_rules('username', 'Username', 'required|xss_clean|min_length[4]');
 		$this->form_validation->set_rules('email', 'Email', 'required|xss_clean|valid_email');

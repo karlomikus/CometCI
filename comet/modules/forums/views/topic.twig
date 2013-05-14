@@ -11,43 +11,27 @@
 	{% endif %}
 {% endif %}
 
-<div class="panel">
-	<div class="row">
-		<div class="large-1 columns">
-			{{get_avatar(original_post.author, true)}}
-		</div>
-		<div class="large-6 columns">
-			{{get_username(original_post.author)}}
-		</div>
-		<div class="large-5 columns text-right">
-			<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
-		</div>
+<div class="post">
+	<div class="post-info">
+		{{get_avatar(original_post.author, true)}} <strong>{{get_username(original_post.author)}}</strong> on {{original_post.date}}
 	</div>
-	<hr />
-	<div class="row">
-		<div class="large-12 columns" style="font-size: 14px;">
-			{{parse_markdown(original_post.content)}}
+	<div class="post-content">
+		{{parse_markdown(original_post.content)}}
+		<div>
+			<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
 		</div>
 	</div>
 </div>
 
 {% for post in data %}
-	<div class="panel">
-		<div class="row">
-			<div class="large-1 columns">
-				{{get_avatar(post.poster, true)}}
-			</div>
-			<div class="large-6 columns">
-				{{get_username(post.poster)}}
-			</div>
-			<div class="large-5 columns text-right">
-				<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
-			</div>
+	<div class="post">
+		<div class="post-info">
+			{{get_avatar(post.poster, true)}} <strong>{{get_username(post.poster)}}</strong> on {{post.date}}
 		</div>
-		<hr />
-		<div class="row">
-			<div class="large-12 columns" style="font-size: 14px;">
-				{{parse_markdown(post.content)}}
+		<div class="post-content">
+			{{parse_markdown(post.content)}}
+			<div>
+				<a href="#"><i class="icon-edit"></i></a> <a href="#"><i class="icon-trash"></i></a> <a href="#"><i class="icon-exclamation-sign"></i></a>
 			</div>
 		</div>
 	</div>

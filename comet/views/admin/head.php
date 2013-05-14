@@ -11,7 +11,6 @@
 	<link href="<?php echo $this->assets->css('bootstrap.min'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('font-awesome.min'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('select2'); ?>" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('icheck'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('main'); ?>" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="<?php echo base_url(); ?>/assets/admin/js/html5shiv.js"></script>

@@ -4,13 +4,15 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/teams/';
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('teams_m');
 
 	}
 
-	public function index() {
+	public function index()
+	{
 		$this->load->helper('text');
 		
 		$this->template
@@ -19,8 +21,8 @@ class Admin extends Backend_Controller {
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');

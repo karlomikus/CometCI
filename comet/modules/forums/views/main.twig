@@ -13,7 +13,9 @@
 				<a href="{{base_url()}}forums/forum/{{forum.id}}">{{forum.name}}</a><br />
 				<span style="font-size: 12px;">
 					Moderators:
-					{{get_mods(forum.id)}}
+					{% for mod in get_mods(forum.id) %}
+						{{get_username(mod.user)}} 
+					{% endfor %}
 				</span>
 			</td>
 			<td width="20%">{{count_topics(forum.id)}} Topics</td>
@@ -23,3 +25,12 @@
 	</tbody>
 </table>
 {% endfor %}
+
+<div class="panel">
+	Users online last hour: <br />
+	<ul class="users-online">
+		{% for user in last_online %}
+		<li>{{get_username(user.id)}}</li>
+		{% endfor %}
+	</ul>
+</div>

@@ -148,6 +148,27 @@ function get_countries()
 }
 
 /**
+ * Get country information
+ * @param  int  $id   Country ID
+ * @param  string  $type What info do you want, name or icon
+ * @param  boolean $format Should it return HTML formatted flag image
+ * @return string
+ */
+function get_country_info($id, $type = 'name', $format = TRUE)
+{
+	$CI =& get_instance();
+	$CI->load->model('countries/countries_m');
+
+	if($type == 'name') {
+		return $CI->countries_m->get($id)->name;
+	}
+	else {
+		if($format) return '<img src="'.base_url().'assets/countries/'.$CI->countries_m->get($id)->code.'.png" alt="'.$CI->countries_m->get($id)->code.'" style="display: inline-block;" />';
+		return $CI->countries_m->get($id)->code.'.png';
+	}
+}
+
+/**
  * Get label name from label ID
  * @param  int $id 	Label ID
  * @return string   Name of the label

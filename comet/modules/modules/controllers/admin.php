@@ -2,21 +2,22 @@
 
 class Admin extends Backend_Controller {
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('labels_m');
 	}
 
-	public function index() {
-		
+	public function index()
+	{
 		$this->template
 			->set('title', 'Labels')
 			->set('labels', $this->labels_m->get_all())
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
