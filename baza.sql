@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2013 at 01:31 PM
+-- Generation Time: May 15, 2013 at 12:30 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -33,22 +33,24 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `module` varchar(50) NOT NULL,
   `module_link` varchar(50) NOT NULL COMMENT 'example: ID of show posts',
   `parent_id` int(11) DEFAULT NULL COMMENT 'for multilevel comments',
+  `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `poster_id`, `content`, `module`, `module_link`, `parent_id`) VALUES
-(1, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. However, some developers prefer to use a template engine if they work with designers who they feel would find some confusion working with PHP.', 'matches', '17', NULL),
-(2, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. Hofind some confusion working with PHP.', 'matches', '17', NULL),
-(3, 1, 'sagfasgasgasgasgasg', 'drugimodul', '17', NULL),
-(4, 1, 'dshsdhsdhsdhsdh', 'matches', '2', NULL),
-(5, 1, 'sdgsd', 'matches', '17', 0),
-(6, 1, 'gdsgds', 'matches', '17', 0),
-(7, 1, 'tgrh', 'matches', '2', 0),
-(8, 1, '1', 'matches', '3', 0);
+INSERT INTO `comments` (`id`, `poster_id`, `content`, `module`, `module_link`, `parent_id`, `date`) VALUES
+(1, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. However, some developers prefer to use a template engine if they work with designers who they feel would find some confusion working with PHP.', 'matches', '17', NULL, '0000-00-00 00:00:00'),
+(2, 1, 'Note: CodeIgniter does not require you to use this class since using pure PHP in your view pages lets them run a little faster. Hofind some confusion working with PHP.', 'matches', '17', NULL, '0000-00-00 00:00:00'),
+(3, 1, 'sagfasgasgasgasgasg', 'drugimodul', '17', NULL, '0000-00-00 00:00:00'),
+(4, 1, 'dshsdhsdhsdhsdh', 'matches', '2', NULL, '0000-00-00 00:00:00'),
+(13, 1, 'Testis', 'matches', '1', NULL, '0000-00-00 00:00:00'),
+(14, 1, 'Testis', 'matches', '1', NULL, '0000-00-00 00:00:00'),
+(20, 1, 'hide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-smallhide-for-small', 'matches', '21', NULL, '2013-05-05 17:14:08'),
+(32, 1, 'fhdfh', 'posts', '1', NULL, '2013-05-06 12:17:31'),
+(33, 1, 'Comment test', 'matches', '20', NULL, '2013-05-08 14:57:50');
 
 -- --------------------------------------------------------
 
@@ -322,6 +324,117 @@ INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `forum_forums`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_forums` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  `private` int(11) NOT NULL DEFAULT '0',
+  `clan` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `forum_forums`
+--
+
+INSERT INTO `forum_forums` (`id`, `label`, `name`, `description`, `date`, `private`, `clan`) VALUES
+(1, 5, 'Test Forum2', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.2', '2013-05-08 11:37:33', 0, 0),
+(2, 9, 'Offtopic', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:31', 0, 0),
+(3, 9, 'General discussion', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:42', 0, 0),
+(4, 9, 'General news', '', '2013-05-08 12:06:42', 0, 0),
+(9, 9, 'Moderators only', '', '2013-05-11 20:25:59', 0, 0),
+(10, 9, 'Testni Forum #3', '', '2013-05-12 17:46:48', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_moderators`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_moderators` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `forum` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `forum_moderators`
+--
+
+INSERT INTO `forum_moderators` (`id`, `forum`, `user`) VALUES
+(1, 8, 3),
+(2, 8, 5),
+(3, 8, 7),
+(4, 9, 2),
+(5, 9, 10),
+(6, 9, 11),
+(7, 10, 5),
+(8, 1, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_replies`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_replies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic` int(11) NOT NULL,
+  `poster` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `forum_replies`
+--
+
+INSERT INTO `forum_replies` (`id`, `topic`, `poster`, `content`, `date`) VALUES
+(1, 37, 1, 'Hey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\nHey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\nHey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\n', '2013-05-14 14:10:06'),
+(2, 37, 1, 'Podcast\r\n\r\nCheck out the PHP Town Hall podcast to hear me and Phil Sturgeon rant about life, liberty, and the pursuit of decent code.\r\n\r\n    Episode 6 - PSR-X and the Mexican Standoff   04.19.2013\r\n    Episode 5 - PHPness Gate, Sexism and Mental Illness   03.03.2013\r\n    Episode 4: PHP''s Vision, Beards, and Cake   02.15.2013\r\n', '2013-05-14 14:10:18'),
+(3, 39, 1, '![IMAGE](http://i.imgur.com/oqerAVW.jpg "")', '2013-05-15 12:00:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_topics`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_topics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `forum` int(11) NOT NULL,
+  `author` int(11) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `date` datetime NOT NULL,
+  `sticky` int(1) DEFAULT NULL,
+  `content` text NOT NULL,
+  `views` int(11) DEFAULT '0',
+  `locked` int(11) NOT NULL DEFAULT '0',
+  `last_modified` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+--
+-- Dumping data for table `forum_topics`
+--
+
+INSERT INTO `forum_topics` (`id`, `forum`, `author`, `title`, `date`, `sticky`, `content`, `views`, `locked`, `last_modified`) VALUES
+(35, 3, 11, 'sdgdsg', '2013-05-12 15:47:19', 0, 'dsgdsg', 1, 0, '2013-05-12'),
+(36, 3, 11, 'asgasg', '2013-05-12 15:54:50', 0, 'asgasg', 4, 0, '2013-05-12'),
+(37, 3, 1, 'Dis is srs topic!', '2013-05-14 13:48:29', 0, 'Hey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\n', 78, 0, '2013-05-14'),
+(38, 3, 1, 'Markdown test', '2013-05-15 11:48:57', 0, '**Cool header**\r\n\r\nI wanna know that how to _disable_ the grabber in the textarea!\r\n\r\nI mean that triangle thing which appears in the right-bottom corner of the textarea.\r\n\r\n> Please help me out!\r\n\r\nThanks in advance!', 1, 0, '2013-05-15'),
+(39, 3, 1, 'Slika!', '2013-05-15 11:51:32', 0, '![Image](http://i.imgur.com/rI6o1rH.jpg "Title")', 2, 0, '2013-05-15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `games`
 --
 
@@ -353,7 +466,6 @@ INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 (12, 'Heroes of Newerth', 'hon', 'hon.gif'),
 (14, 'Team Fortress 2', 'tf2', 'tf2.gif'),
 (15, 'Call of Duty 2', 'cod2', 'cod2.gif'),
-(16, 'Counter Strike Promod', 'csp', 'csp.gif'),
 (18, 'Warcraft III', 'wc3', 'wc3.gif'),
 (19, 'Warcraft III: The Frozen Throne', 'tft', 'tft.gif'),
 (20, 'Left 4 Dead', 'l4d', 'l4d.gif'),
@@ -382,7 +494,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `description` varchar(100) NOT NULL,
   `permissionID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `groups`
@@ -391,7 +503,8 @@ CREATE TABLE IF NOT EXISTS `groups` (
 INSERT INTO `groups` (`id`, `name`, `description`, `permissionID`) VALUES
 (1, 'admin', 'Administrator', 0),
 (2, 'members', 'General User', 0),
-(6, 'clan', 'Clan members', 0);
+(6, 'clan', 'Clan members', 0),
+(7, 'moderators', 'Can edit, delete forum posts, make announcements, make sticky topics...', 0);
 
 -- --------------------------------------------------------
 
@@ -432,16 +545,19 @@ CREATE TABLE IF NOT EXISTS `labels` (
   `description` text NOT NULL,
   `banner` varchar(30) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `labels`
 --
 
 INSERT INTO `labels` (`id`, `name`, `description`, `banner`) VALUES
-(1, 'Site news', 'Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave.', '1.jpg'),
-(2, 'Coverages', 'Esport coverages', 'nopic'),
-(5, 'Forum', 'adfasfasfas', '5.jpg');
+(5, 'Articles', 'Nostrud vice cray, marfa tonx readymade nesciunt ennui. Fugiat helvetica cosby sweater laboris duis. ', ''),
+(6, 'Coverage', 'Nostrud vice cray, marfa tonx readymade nesciunt ennui. Fugiat helvetica cosby sweater laboris duis. ', ''),
+(7, 'Clan News', 'Quinoa leggings mumblecore cillum ea, direct trade duis culpa chambray banh mi Austin 90''s PBR.', '0'),
+(8, 'Site News', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '0'),
+(9, 'Private forums', '', '0'),
+(10, 'Public foums', '', '0');
 
 -- --------------------------------------------------------
 
@@ -475,19 +591,20 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `team-players` text NOT NULL,
   `matchlink` varchar(100) NOT NULL,
   `type` tinyint(1) DEFAULT NULL,
-  `screenshots` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `matches`
 --
 
-INSERT INTO `matches` (`id`, `team`, `opponent`, `date`, `game`, `report`, `status`, `opponent-players`, `team-players`, `matchlink`, `type`, `screenshots`) VALUES
-(2, 2, 3, '2013-02-27 00:22:57', 1, 'dasdsad', 0, NULL, '', '', NULL, ''),
-(3, 5, 5, '2013-02-27 00:56:50', 10, 'jhvjhv', 0, NULL, '', '', NULL, ''),
-(5, 2, 6, '2013-03-04 19:48:00', 7, 'There are two ways to build panels in Foundation 4, either with our predefined HTML or with our mixin. Building panels using our predefined class isn''t hard at all. You''ll start with and add a class of .panel to it. From there, you just need to add content inside, anything will do.', 0, 'notail,player1,fag1,fag2', '2,3,4,5', 'http://dotabuff.com/matches/140944627', 3, ''),
-(17, 2, 3, '2013-03-18 12:00:00', 6, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.0', 2, 'xboct,dendi,blyat', '2,3,4', 'ss', 2, '');
+INSERT INTO `matches` (`id`, `team`, `opponent`, `date`, `game`, `report`, `status`, `opponent-players`, `team-players`, `matchlink`, `type`) VALUES
+(17, 2, 3, '2013-03-18 12:00:00', 6, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.0', 2, 'xboct,dendi,blyat', '2,3,4', 'ss', 2),
+(20, 2, 7, '2013-05-01 12:23:00', 10, '<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n\r\n<blockquote>\r\n<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over.</p>\r\n</blockquote>\r\n\r\n<p><strong>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar.</strong> Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n', 0, 'lorem, ipsum, dolor, sit, amet', '', 'http://kami-design.com/', 4),
+(21, 5, 3, '2013-05-02 12:23:00', 10, '<p>Report content</p>\r\n', 0, '', '', '', 0),
+(22, 5, 5, '2013-05-02 12:23:00', 2, '<p>Report content</p>\r\n', 0, '', '', '', 0),
+(23, 2, 7, '2013-05-02 12:24:00', 11, '<p>Report content</p>\r\n', 0, '', '', '', 0),
+(24, 5, 6, '2013-05-10 10:00:00', 10, '<p>Report content</p>\r\n', 1, '', '4,9,10', '', 2);
 
 -- --------------------------------------------------------
 
@@ -501,7 +618,7 @@ CREATE TABLE IF NOT EXISTS `matches_files` (
   `file` varchar(30) NOT NULL,
   `type` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `matches_files`
@@ -511,7 +628,11 @@ INSERT INTO `matches_files` (`id`, `match_id`, `file`, `type`) VALUES
 (1, 17, '17_1_1362660242.jpg', 'screenshot'),
 (2, 17, '17_2_1362660242.jpg', 'screenshot'),
 (3, 17, '17_3_1362660242.jpg', 'screenshot'),
-(4, 17, '17_4_1362660242.jpg', 'screenshot');
+(4, 17, '17_4_1362660242.jpg', 'screenshot'),
+(5, 20, '20_1_1367413556.jpg', 'screenshot'),
+(6, 20, '20_2_1367413556.jpg', 'screenshot'),
+(7, 20, '20_3_1367413556.jpg', 'screenshot'),
+(8, 20, '20_4_1367413556.jpg', 'screenshot');
 
 -- --------------------------------------------------------
 
@@ -525,7 +646,7 @@ CREATE TABLE IF NOT EXISTS `matches_scores` (
   `opponent` int(11) NOT NULL,
   `team` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `matches_scores`
@@ -555,7 +676,21 @@ INSERT INTO `matches_scores` (`id`, `match`, `opponent`, `team`) VALUES
 (21, 15, 2, 2),
 (22, 16, 3, 3),
 (23, 17, 2, 2),
-(24, 17, 3, 1);
+(24, 17, 3, 1),
+(25, 18, 0, 0),
+(26, 18, 12, 12),
+(27, 18, 1, 1),
+(28, 19, 8, 12),
+(32, 21, 1, 1),
+(33, 22, 12, 10),
+(34, 22, 10, 12),
+(35, 22, 10, 12),
+(36, 23, 1, 0),
+(37, 23, 1, 0),
+(38, 24, 0, 0),
+(39, 20, 1, 0),
+(40, 20, 0, 1),
+(41, 20, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -595,44 +730,19 @@ CREATE TABLE IF NOT EXISTS `opponents` (
   `gameID` int(11) NOT NULL,
   `logo` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `opponents`
 --
 
 INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
-(3, 'Team Liquid', 'TwitchTV is the world’s largest video game broadcasting and chat community. We’re dedicated to connecting people around the games they love. TwitchTV features video from the top gaming personalities, players, tournaments, leagues and commentary, in addition to the most active and interesting discussions around video games. ', 10, '3.png'),
+(3, 'Team Liquid', 'In December 2012, Team Liquid entered the Dota 2 scene by picking up a North American squad consisting of FLUFFNSTUFF, ixmike88, Bulba, Korok, and TC.', 10, '31.png'),
 (5, 'Na''Vi', 'Natus Vincere (Na`Vi) is a Ukrainian multigaming e-Sports organization. It is the first team in Counter-Strike history to win three major tournaments in one calendar year - Intel Extreme Masters, Electronic Sports World Cup and World Cyber Games 2010. In 2011, Na`Vi.DotA won the $1 000 000 grand prize at The International, the first ever DotA 2 tournament.', 10, '5.png'),
-(6, 'Fnatic.eu', 'The Fnatic Team is a professional video gaming team, consisting of players from across the globe who all make a living through competing in video game tournaments.\r\n\r\nFnatic is considered to have world class squads in Counter-Strike, StarCraft II, League of Legends, Dota 2, ShootMania: Storm and Call of Duty. ', 11, '6.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `permissions`
---
-
-CREATE TABLE IF NOT EXISTS `permissions` (
-  `permissionID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `allow` text NOT NULL,
-  `deny` text NOT NULL,
-  `moduleID` int(11) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  `public` tinyint(1) NOT NULL,
-  PRIMARY KEY (`permissionID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`permissionID`, `name`, `description`, `allow`, `deny`, `moduleID`, `admin`, `public`) VALUES
-(2, 'Permisija 1', 'Generates an insert string based on the data you supply, and runs the query. You can either pass an array or an object to the function. Here is an example using an array:', 'a:3:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"5";}', 'a:5:{i:0;s:1:"3";i:1;s:1:"4";i:2;s:1:"6";i:3;s:1:"7";i:4;s:1:"8";}', 0, 0, 0),
-(3, 'Dvas', '', 'a:5:{i:0;s:1:"4";i:1;s:1:"5";i:2;s:1:"6";i:3;s:1:"7";i:4;s:1:"8";}', 'a:3:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";}', 0, 0, 0),
-(6, 'Public User', '', 'a:4:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"5";i:3;s:1:"7";}', 'a:4:{i:0;s:1:"3";i:1;s:1:"4";i:2;s:1:"6";i:3;s:1:"8";}', 0, 0, 0),
-(7, 'Admin User', '', 'a:8:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"4";i:4;s:1:"5";i:5;s:1:"6";i:6;s:1:"7";i:7;s:1:"8";}', 'b:0;', 0, 0, 0);
+(6, 'Fnatic.eu', 'The Fnatic Team is a professional video gaming team, consisting of players from across the globe who all make a living through competing in video game tournaments.\r\n\r\nFnatic is considered to have world class squads in Counter-Strike, StarCraft II, League of Legends, Dota 2, ShootMania: Storm and Call of Duty. ', 11, '6.jpg'),
+(7, 'Evil Geniuses', 'Founded in 1999, Evil Geniuses (Team EG) have grown to become a leading new media agency which specializes in contracting pro gamers, executing online and offline broadcasts, and developing unique marketing initiatives aimed at attracting and influencing gamers worldwide.With support from popular brands such as Intel, Monster Energy, Kingston HyperX, and others, EG are North America’s premier professional gaming team and a world leader in e-sports. Players and teams within EG, such as Justin “JWong” Wong, Greg “IdrA” Fields, and Isaac “Azael” Cummings-Bentley, have brought home championship trophies from every major gaming tournament circuit in the world and continue to be influential leaders of gamers everywhere.', 10, '7.jpg'),
+(8, 'Invictus Gaming', 'Invictus Gaming is a platform focused on e-sports and other business about e-sports. Many top-level professional gamers worked for it. One aim of IG is to become the best e-sports club in the world. At present, IG have already integrated all the members of Dota 2, SC2, LOL from CCM club. After several years’ observation, e-sports industry was found to be in a chaotic period. Events like club closes down due to the poor operation, wage arrears, irregular competition, reward arrears always happen. The foundation of IG will stop these from happening again. It is a sign that the chaotic period will end in the near future. IG will create a upscale platform for its gamer. The irregular training, unreasonable payment, reward arrears and other problems will be eliminated and players can get a comprehensive development. Besides, IG will give its player more opportunities to attend commercial avtivities to maximize their values and share benefits with IG. IG plans to enter into campus and periodically hold a match for the e-sports fan to compete with the club stars. To respond to e-sports fans’ support, IG club and its players will closely contact with fans through blog, QQ, YY etc. And challenge match, teaching vedio, award-winning program will be publicly reached. ', 10, '8.jpg'),
+(9, 'The Alliance', 'In April 2013, Swedish team No Tidehunter (consisting of s4, AdmiralBulldog, Akke, EGM, and Loda) announced the creation of The Alliance with StarCraft II player NaNiwa.', 10, '9.jpg');
 
 -- --------------------------------------------------------
 
@@ -648,17 +758,22 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `teaser` text NOT NULL,
   `author` int(11) NOT NULL,
   `label` int(11) DEFAULT NULL,
+  `featured` tinyint(1) NOT NULL DEFAULT '0',
+  `clan` tinyint(1) NOT NULL DEFAULT '0',
+  `state` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `label` (`label`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `body`, `date`, `teaser`, `author`, `label`) VALUES
-(1, 'Our new website launched', 'Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave. Small batch id whatever put a bird on it gluten-free, readymade vero. Mustache cosby sweater street art cupidatat labore culpa ugh pariatur, kogi chillwave banksy umami aliquip enim. Bespoke ad stumptown deep v, vero 3 wolf moon est gluten-free pitchfork trust fund quis kogi. Sriracha sed proident mumblecore lo-fi. Hashtag dolor letterpress chambray odd future freegan, williamsburg dreamcatcher biodiesel duis. Occupy ex retro, pinterest authentic vice mcsweeney''s synth readymade williamsburg cosby sweater tonx.', '2013-02-24 08:16:34', 'Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave.', 1, 1),
-(2, 'Post title 2', 'Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave. Small batch id whatever put a bird on it gluten-free, readymade vero. Mustache cosby sweater street art cupidatat labore culpa ugh pariatur, kogi chillwave banksy umami aliquip enim. Bespoke ad stumptown deep v, vero 3 wolf moon est gluten-free pitchfork trust fund quis kogi. Sriracha sed proident mumblecore lo-fi. Hashtag dolor letterpress chambray odd future freegan, williamsburg dreamcatcher biodiesel duis. Occupy ex retro, pinterest authentic vice mcsweeney''s synth readymade williamsburg cosby sweater tonx.', '2013-02-25 10:52:03', 'sadasd', 5, 1);
+INSERT INTO `posts` (`id`, `title`, `body`, `date`, `teaser`, `author`, `label`, `featured`, `clan`, `state`, `views`) VALUES
+(1, 'Lorem ipsum dolor sit amet', '<p>These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.</p>\r\n', '2013-05-02 11:07:33', 'Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you''re familiar with grid systems, you''ll feel right at home. If not, you''ll learn quickly.', 1, 6, 0, 0, 1, 62),
+(2, 'Post title 2', '<p>Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave. Small batch id whatever put a bird on it gluten-free, readymade vero. Mustache cosby sweater street art cupidatat labore culpa ugh pariatur, kogi chillwave banksy umami aliquip enim. Bespoke ad stumptown deep v, vero 3 wolf moon est gluten-free pitchfork trust fund quis kogi. Sriracha sed proident mumblecore lo-fi. Hashtag dolor letterpress chambray odd future freegan, williamsburg dreamcatcher biodiesel duis. Occupy ex retro, pinterest authentic vice mcsweeney''s synth readymade williamsburg cosby sweater tonx.</p>\r\n', '2013-05-02 11:08:03', 'Foundation is developed in Sass, which is powerful CSS pre-processor that helps you write cleaner, more organized, CSS that you can more easily maintain over time without the typical headaches of vanilla CSS. On top of our minimal styling, we''ve written powerful Javascript plugins that will make useful interactions easier to implement across screen sizes.', 1, 6, 0, 0, 1, 48),
+(3, 'CK Editor Example', '<p> <strong>Apollo 11</strong></p>\r\n\r\n<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="http://en.wikipedia.org/wiki/Neil_Armstrong">Neil Armstrong</a> and <a href="http://en.wikipedia.org/wiki/Buzz_Aldrin">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>\r\n\r\n<p>Armstrong spent about <span style="text-decoration:line-through;">three and a half</span> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5 kg) of lunar material for return to Earth. A third member of the mission, <a href="http://en.wikipedia.org/wiki/Michael_Collins_(astronaut)">Michael Collins</a>, piloted the <a href="http://en.wikipedia.org/wiki/Apollo_Command/Service_Module">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>\r\n\r\n<h3>Broadcasting and <em>quotes</em></h3>\r\n\r\n<p>Broadcast on live TV to a world-wide audience, Armstrong stepped onto the lunar surface and described the event as:</p>\r\n\r\n<blockquote>\r\n<p>One small step for [a] man, one giant leap for mankind.</p>\r\n</blockquote>\r\n\r\n<p>Apollo 11 effectively ended the <a href="http://en.wikipedia.org/wiki/Space_Race">Space Race</a> and fulfilled a national goal proposed in 1961 by the late U.S. President <a href="http://en.wikipedia.org/wiki/John_F._Kennedy">John F. Kennedy</a> in a speech before the United States Congress:</p>\r\n\r\n<blockquote>\r\n<p>[...] before this decade is out, of landing a man on the Moon and returning him safely to the Earth.</p>\r\n</blockquote>\r\n\r\n<h3>Technical details</h3>\r\n\r\n<table border="1" cellpadding="5" cellspacing="0"><caption><strong>Mission crew</strong></caption>\r\n <thead><tr><th scope="col">Position</th>\r\n   <th scope="col">Astronaut</th>\r\n  </tr></thead><tbody><tr><td>Commander</td>\r\n   <td>Neil A. Armstrong</td>\r\n  </tr><tr><td>Command Module Pilot</td>\r\n   <td>Michael Collins</td>\r\n  </tr><tr><td>Lunar Module Pilot</td>\r\n   <td>Edwin "Buzz" E. Aldrin, Jr.</td>\r\n  </tr></tbody></table><p>Launched by a <strong>Saturn V</strong> rocket from <a href="http://en.wikipedia.org/wiki/Kennedy_Space_Center">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="http://en.wikipedia.org/wiki/NASA">NASA</a>''s Apollo program. The Apollo spacecraft had three parts:</p>\r\n\r\n<ol><li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>\r\n <li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>\r\n <li><strong>Lunar Module</strong> for landing on the Moon.</li>\r\n</ol><p>After being sent to the Moon by the Saturn V''s upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="http://en.wikipedia.org/wiki/Mare_Tranquillitatis">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="http://en.wikipedia.org/wiki/Pacific_Ocean">Pacific Ocean</a> on July 24.</p>\r\n\r\n<hr /><p><small>Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a></small></p>\r\n', '2013-05-06 12:25:55', 'Apollo 11 was the spaceflight that landed the first humans, Americans Neil Armstrong and Buzz Aldrin, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.', 1, 5, 0, 0, 1, 63);
 
 -- --------------------------------------------------------
 
@@ -669,6 +784,7 @@ INSERT INTO `posts` (`id`, `title`, `body`, `date`, `teaser`, `author`, `label`)
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `clanname` varchar(50) NOT NULL,
+  `visits` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -676,8 +792,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `clanname`) VALUES
-(1, 'Team xQute');
+INSERT INTO `settings` (`id`, `clanname`, `visits`) VALUES
+(1, 'Team xQute', 0);
 
 -- --------------------------------------------------------
 
@@ -690,20 +806,21 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `games` varchar(50) NOT NULL,
-  `banner` varchar(20) NOT NULL,
-  `logo` varchar(20) NOT NULL,
+  `banner` varchar(20) DEFAULT NULL,
+  `logo` varchar(20) DEFAULT NULL,
   `type` tinyint(1) NOT NULL,
   `countryID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `teams`
 --
 
 INSERT INTO `teams` (`id`, `name`, `description`, `games`, `banner`, `logo`, `type`, `countryID`) VALUES
-(2, 'Test Team 1', 'Throughout this code, the key things to look out for when uploading multiple files with Codeigniters File Uploading Class are:', '1', '2_banner.jpg', '2.gif', 1, 55),
-(5, 'Test team 2', '$games_picked = implode('','', $games_post);', '1,3', '5_banner1.png', '51.gif', 1, 55);
+(2, 'Test Team', 'Quis synth messenger bag vegan meggings nihil locavore, ad polaroid blue bottle. 3 wolf moon labore etsy tonx try-hard mollit, cray sunt VHS brooklyn wayfarers street art four loko aliqua velit. ', '2', '', '21.jpg', 0, 55),
+(5, 'Test team 2', 'Nulla tousled next level, sustainable kogi locavore eu keytar organic elit williamsburg. Nulla vinyl retro dolor, artisan semiotics direct trade sustainable mollit.', '10', '', '5.jpg', 0, 55),
+(6, 'Counter Strike Squad', 'CodeIgniter uses a modified version of the Active Record Database Pattern. This pattern allows information to be retrieved, inserted, and updated in your database with minimal scripting. In some cases only one or two lines of code are necessary to perform a database action. CodeIgniter does not require that each database table be its own class file. It instead provides a more simplified interface.', '6,7,8', NULL, NULL, 1, 83);
 
 -- --------------------------------------------------------
 
@@ -717,17 +834,22 @@ CREATE TABLE IF NOT EXISTS `teams_members` (
   `user_id` int(11) NOT NULL,
   `position` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `teams_members`
 --
 
 INSERT INTO `teams_members` (`id`, `team_id`, `user_id`, `position`) VALUES
-(1, 2, 2, 'Captain'),
-(2, 2, 3, 'Member'),
-(3, 2, 4, 'Member'),
-(4, 2, 5, 'Toplane');
+(25, 5, 3, NULL),
+(26, 5, 4, NULL),
+(27, 5, 8, NULL),
+(28, 5, 9, NULL),
+(29, 5, 10, NULL),
+(35, 2, 2, NULL),
+(36, 2, 3, NULL),
+(37, 2, 4, NULL),
+(38, 2, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -757,14 +879,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `avatar` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `dob`, `gender`, `country`, `avatar`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1363086162, 1, 'Karlo', 'Mikus', NULL, NULL, NULL, '1.png'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1368613852, 1, 'admin@admin.com', '1', '2013-05-14 00:00:00', NULL, NULL, '11.png'),
 (2, '\0\0', 'test', 'c9677e8112319f649747a8b05708d010221e6b41', NULL, 'test@test.com', NULL, NULL, NULL, NULL, 1361107053, 1361107053, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, '\0\0', 'test2', 'b4bbb3960ac42732f74d08c1927f97003ef9bb6b', NULL, 'test2@test.com', NULL, NULL, NULL, NULL, 1361107377, 1361107377, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '\0\0', 'johndoe', 'f406c4e029784051584774587294de88047f74a0', NULL, 'john@doe.com', NULL, NULL, NULL, NULL, 1361112609, 1361112609, 1, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -772,7 +894,10 @@ INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`
 (7, '\0\0', 'comic', '70dd69dd59f781cb2526a94a7db844bd4498865f', NULL, 'comic@sans.com', '310b0e07fc5d4c9ae320ead15496a491b3725a3e', NULL, NULL, NULL, 1361112657, 1361112657, 0, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, '\0\0', 'updated', '88484160d2486d9bb2740b90624d642f0c320a71', NULL, 'asda1@asd.com', NULL, NULL, NULL, NULL, 1361878943, 1361878943, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, '\0\0', 'mmaric', '0dc1673757339d5160691754a5c5ceb6db70455d', NULL, 'maric@mm.com', NULL, NULL, NULL, NULL, 1362528738, 1362528738, 1, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '\0\0', 'mtest', '590756944210dd0131717d50f4d4c0b16c952914', NULL, 'mtest@ssss.com', NULL, NULL, NULL, NULL, 1362528766, 1362528766, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(10, '\0\0', 'mtest', '590756944210dd0131717d50f4d4c0b16c952914', NULL, 'mtest@ssss.com', NULL, NULL, NULL, NULL, 1362528766, 1362528766, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, '\0\0', 'eggzy', '46971820a249b9fe32b331534f8758baa6aa2e94', NULL, 'eggzy12@gmail.com', NULL, NULL, NULL, 'cfb089722a82fc8818b2edfbe28142f96f14ad21', 1367704152, 1368542295, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '\0\0', 'egzasa', '7f3aebf5d475de8c11d2c465d8ca7a439cbb2bc4', NULL, 'asfasf@gmsa.com', NULL, NULL, NULL, NULL, 1367705189, 1367705189, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '\0\0', 'safas', '45872df6b1fa99acca78d66b0953147c24dc2128', NULL, 'karlo.mikus1@gmail.com', '79d996585c4b7b2ae87d6a8e1e5b847f05165d9c', NULL, NULL, NULL, 1368480086, 1368480086, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -785,7 +910,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -803,7 +928,24 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (15, 8, 2),
 (16, 8, 6),
 (17, 9, 2),
-(18, 10, 2);
+(18, 10, 2),
+(19, 11, 2),
+(20, 12, 2),
+(21, 13, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_pm`
+--
+
+CREATE TABLE IF NOT EXISTS `user_pm` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
