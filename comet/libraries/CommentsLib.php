@@ -23,7 +23,12 @@ class CommentsLib {
 	public function __construct() 
 	{
 		$this->ci =& get_instance();
-		$this->ci->load->model('comments/comments_m');	
+
+		$this->ci->load->model('comments/comments_m');
+		$this->ci->load->helper('form');
+		
+		$this->ci->parser->addFunction('form_open');
+		$this->ci->parser->addFunction('form_close');
 	}
 	
 	/**

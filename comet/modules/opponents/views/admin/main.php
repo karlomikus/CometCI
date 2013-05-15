@@ -16,8 +16,8 @@
             <td class="action">
                 <a class="action-icon" href="#">Action</a>
                 <ul class="action-list" style="display: none;">
-                    <li><a class="confirm-delete" href="<?php echo site_url('admin/opponents/delete/'.$opponent->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-delete.png" alt="" /></a></li>
-                    <li><a href="<?php echo site_url('admin/opponents/edit/'.$opponent->id); ?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-action-edit.png" alt="" /></a></li>
+                    <li><a class="confirm-delete" href="<?php echo site_url('admin/opponents/delete/'.$opponent->id); ?>"><i class="icon-trash icon-large"></i></a></li>
+                    <li><a href="<?php echo site_url('admin/opponents/edit/'.$opponent->id); ?>"><i class="icon-edit icon-large"></i></a></li>
                 </ul>
             </td>
         </tr>

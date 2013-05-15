@@ -17,7 +17,8 @@
 		</ul>
 	</div>
 
-<form action="roster/adduser/<?php echo $team->id; ?>" method="post" accept-charset="utf-8" id="addUser<?php echo $i; ?>" class="modal hide fade cms-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php echo form_open(uri_string().'/adduser/'.$team->id, array('id'=>'addUser'.$i, 'class'=>'modal hide fade cms-form')); ?>
+
 	<div class="modal-header">
 		<h3>Add user to roster</h3>
 	</div>
@@ -34,6 +35,6 @@
 		<button class="btn btn-cms" data-dismiss="modal" aria-hidden="true">Close</button>
 		<button class="btn btn-cms-orange">Save changes</button>
 	</div>
-</form>
+<?php echo form_close(); ?>
 
 <?php $i++; endforeach;?>

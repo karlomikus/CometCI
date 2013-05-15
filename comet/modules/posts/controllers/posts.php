@@ -2,6 +2,13 @@
 
 class Posts extends Frontend_Controller {
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->template
+			->set_layout(get_layout(__CLASS__));
+	}
+
 	public function index() 
 	{
 		$this->load->model('posts_m');

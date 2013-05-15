@@ -15,8 +15,9 @@ class Roster extends Frontend_Controller {
 	public function index()
 	{
 		$this->load->model('roster_m');
+
 		$this->template
-			->set('data', $this->roster_m->get_all_rosters())
+			->set('data', $this->roster_m->get_teams())
 			->build('roster.twig');
 	}
 

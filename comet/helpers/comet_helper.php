@@ -21,12 +21,13 @@ function get_game_name($id)
  *
  * @return string
  */
-function get_game_icon($id) 
+function get_game_icon($id, $format = FALSE) 
 {
 	$CI =& get_instance();
 	$CI->load->model('games/games_m');
 
-	return $CI->games_m->get($id)->icon;
+	if($format) return '<img src="'.base_url().'assets/games/'.$CI->games_m->get($id)->icon.'" title="'.$CI->games_m->get($id)->name.'" style="display: inline-block;" />';
+	else return $CI->games_m->get($id)->icon;
 }
 
 /**
@@ -191,12 +192,12 @@ function get_avatar($userID, $fulltag = FALSE)
 {
 	$CI =& get_instance();
 	
-	$avatar = $CI->ion_auth->user($userID)->row()->avatar;
+	$avatar = $CI->ion_auth->user($userID)->row();
 	if(!$fulltag) {
-		if(isset($avatar)) return $avatar;
+		if(isset($avatar->avatar)) return $avatar->avatar;
 		return 'noavatar.jpg';
 	}
-	if(isset($avatar)) return '<img src="'.base_url().'uploads/users/'.$avatar.'" alt="avatar" />';
+	if(isset($avatar->avatar)) return '<img src="'.base_url().'uploads/users/'.$avatar->avatar.'" alt="avatar" />';
 	return '<img src="'.base_url().'uploads/users/noavatar.jpg" alt="avatar" />';
 }
 
@@ -224,6 +225,34 @@ function parse_markdown($text)
 	$CI->load->library('markdown');
 
 	return $CI->markdown->parse($text);
+}
+
+function get_full_roster($teamID = 0)
+{
+	$CI =& get_instance();
+	$CI->load->model('roster/roster_m');
+
+	return $CI->roster_m->get_team_roster($teamID);
+}
+
+function get_team_games($teamID)
+{
+	$CI =& get_instance();
+	$CI->load->model('roster/roster_m');
+
+	return $CI->roster_m->get_team_games($teamID);
+}
+
+function get_layout($moduleName = '')
+{
+	$CI =& get_instance();
+	$CI->load->model('modules/modules_m');
+	$module = strtolower($moduleName);
+
+	$moduleLayout = $CI->modules_m->get_by('name', $module)->layout;
+
+	if($CI->template->layout_exists($moduleLayout)) return $moduleLayout;
+	else return 'default';
 }
 
 /**

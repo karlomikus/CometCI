@@ -2,7 +2,14 @@
 
 class Matches extends Frontend_Controller {
 
-	public function index() {
+	function __construct() {
+		parent::__construct();
+		$this->template
+			->set_layout(get_layout(__CLASS__));
+	}
+
+	public function index()
+	{
 		$this->load->model('matches_m');
 
 		$this->template

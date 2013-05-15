@@ -46,6 +46,7 @@
 		<hr />
 		<h6>LATEST POSTS</h6>{{widget('posts')}}
 		<hr />
+		<h6>LATEST TOPICS</h6>{{widget('topics')}}
 	</div>
 		
   </div>

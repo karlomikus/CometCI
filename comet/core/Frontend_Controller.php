@@ -7,7 +7,6 @@ class Frontend_Controller extends MY_Controller {
 		parent::__construct();
 
 		$this->template
-			->set_theme('default')
-			->set_layout('frontend');
+			->set_theme('default');
 	}
 }

@@ -1,0 +1,5 @@
+<ul class="wi_default">
+	{% for topic in topics %}
+		<li><a href="{{base_url()}}forums/topic/{{topic.id}}">{{topic.title}}</a> <span>{{topic.views}} Views</span></li>
+	{% endfor %}
+</ul>

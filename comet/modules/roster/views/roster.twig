@@ -1,15 +1,20 @@
 {% for team in data %}
 	<div class="panel">
 		<h5>{{team.name}}</h5>
+		<div>
+			{% for game in get_team_games(team.id) %}
+				{{get_game_icon(game, true)}} 
+			{% endfor %}
+		</div>
 		<p>{{team.description}}</p>
 		<p>
 			<strong>From:</strong> {{get_country_info(team.countryID, 'icon')}} {{get_country_info(team.countryID, 'name')}}
-			<br />
-			<strong>Playing:</strong> {{get_game_name(team.games)}}
 		</p>
 		<hr />
-		<p>
-			Members: 
-		</p>
+		<ul class="small-block-grid-5">
+		{% for member in get_full_roster(team.id) %}
+			<li class="text-center">{{get_avatar(member.user_id, true)}} {{get_username(member.user_id)}}</li>
+		{% endfor %}
+		</ul>
 	</div>
 {% endfor %}

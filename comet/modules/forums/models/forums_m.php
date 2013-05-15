@@ -50,6 +50,12 @@ class Forums_m extends MY_Model {
 		return $labels;
 	}
 
+	public function get_all_topics()
+	{
+		$this->db->order_by('last_modified', 'DESC');
+		return $this->db->get('forum_topics')->result();
+	}
+
 	public function get_forum_topics($forumID, $type = 1)
 	{
 		if($type == 2) {

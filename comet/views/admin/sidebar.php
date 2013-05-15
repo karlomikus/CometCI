@@ -23,6 +23,7 @@
 				<!-- <li><a href="<?php echo site_url('admin/posts'); ?>">Features slider</a></li> -->
 				<li><a href="<?php echo site_url('admin/labels'); ?>">Labels</a></li>
 				<li><a href="<?php echo site_url('admin/forums'); ?>">Forum</a></li>
+				<li><a href="<?php echo site_url('admin/pages'); ?>">Pages</a></li>
 				<!-- <li><a href="<?php echo site_url('admin/calendar'); ?>">Events</a></li> -->
 				<!-- <li><a href="<?php echo site_url('admin/stats'); ?>">Statistics</a></li>
 				<li><a href="<?php echo site_url('admin/gallery'); ?>">Media</a></li>
@@ -47,8 +48,8 @@
 			</ul>
 			<ul id="settings-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Settings</li>
-				<li><a href="#">Site settings</a></li>
-				<li><a href="#">Match settings</a></li>
+				<li><a href="<?php echo site_url('admin/settings'); ?>">Site settings</a></li>
+				<li><a href="<?php echo site_url('admin/modules'); ?>">Modules</a></li>
 			</ul>
 		</section>
 	</aside>

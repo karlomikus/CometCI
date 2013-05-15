@@ -23,7 +23,7 @@ class Forums extends Frontend_Controller {
 		parent::__construct();
 		$this->template
 			->set('logged_in', $this->ion_auth->logged_in())
-			->set_layout('frontend_full');
+			->set_layout(get_layout(__CLASS__));
 	}
 
 	/**
