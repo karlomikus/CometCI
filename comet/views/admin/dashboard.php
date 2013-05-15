@@ -4,7 +4,7 @@
 			<h4><?php echo date('l, jS \of F Y'); ?></h4>
 		</header>
 		<ul id="event-tabs">
-			<li><a class="active" href="#matches-tab" data-toggle="tab"><i class="icon-trophy"></i> Matches</a></li>
+			<li class="active"><a href="#matches-tab" data-toggle="tab"><i class="icon-trophy"></i> Matches</a></li>
 			<li><a href="#events-tab" data-toggle="tab"><i class="icon-calendar"></i> Events</a></li>
 		</ul>
 		<div class="box-content tab-content">

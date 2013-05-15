@@ -69,10 +69,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	list-style: none;
 	margin: 0;
 }
-
-.site-header ul li {
-	float: left;
-}
+.site-header ul li { float: left; }
 
 .site-header ul li a {
 	display: block;
@@ -80,10 +77,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border-right: 1px solid #555b64;
 	border-left: 1px solid #333840;
 }
-
-.site-header ul li a:hover {
-	background: #3c4149;
-}
+.site-header ul li a:hover { background: #3c4149; }
 
 .site-header ul li.first { display: block; border-right: 1px solid #555b64; height: 70px; }
 
@@ -108,11 +102,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	height: 100%;
 	float: left;
 }
-
-.sidebar-icon ul {
- 	list-style: none;
- 	margin: 0;
-}
+.sidebar-icon ul { list-style: none; margin: 0; }
 
 .sidebar-icon ul li a {
 	display: block;
@@ -121,18 +111,9 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border-bottom: 1px solid #25282c;
 }
 
-.sidebar-icon ul li a:hover {
-	background: #2b2e33 right no-repeat;
-}
-
-.sidebar-icon ul li.active a:hover {
-	background: #2b2e33 url(../img/dashboard-active.png) right no-repeat;
-}
-
-.sidebar-icon ul li.active {
-	background: url(../img/dashboard-active.png) right no-repeat;
-}
-
+.sidebar-icon ul li a:hover { background: #2b2e33 right no-repeat; }
+.sidebar-icon ul li.active a:hover { background: #2b2e33 url(../img/dashboard-active.png) right no-repeat; }
+.sidebar-icon ul li.active { background: url(../img/dashboard-active.png) right no-repeat; }
 .sidebar-icon ul li.last { border-top: 1px solid #454a52; }
 
 /* Sidebar */
@@ -171,9 +152,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 /* CMS Base Scaffolding */
-.cms-box {
-	background: #fff;
-}
+.cms-box { background: #fff; }
 
 .cms-box .box-title {
 	background: #4e5867;
@@ -188,6 +167,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 #event-tabs {
 	overflow: hidden;
+	list-style: none;
+	margin: 0;
 }
 
 #event-tabs a {
@@ -197,11 +178,11 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	width: 50%;
 	color: #fff;
 	padding: 13px 0;
-	text-indent: 5px;
+	text-indent: 15px;
 	font-size: 18px;
 }
 
-#event-tabs a:hover, #event-tabs a:focus, #event-tabs a.active {
+#event-tabs a:hover, #event-tabs a:focus, #event-tabs .active a {
 	background: #f3593b;
 	text-decoration: none;
 }
@@ -630,6 +611,29 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	font-weight: inherit;
 }
 
+/* Modals */
+.modal {
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
+.bootbox.modal {
+	text-align: center;
+	width: 400px;
+	margin-left: -180px;
+}
+.bootbox.modal i { color: #E04C4C; }
+
+.bootbox.modal .modal-footer {
+	background: none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border: none;
+	text-align: inherit;
+}
+
 /* CMS Alerts */
 .alert {
 	border-radius: 0;
@@ -647,6 +651,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .label.label-success { background-color: #28B975; }
 .label.label-important { background-color: #E04C4C; }
 
+
+/* Alerts */
 .alert-danger, .alert-error { background-color: #e95353; }
 .alert-success { background-color: #6fd267; }
 .alert-info { background-color: #33b5e5; }
@@ -657,8 +663,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .text-right { text-align: right !important; }
 .hidden { display: none; visibility: hidden; box-shadow: none !important; margin: 0 !important; }
 
-/* iCheck plugin Square skin, blue
------------------------------------ */
+/* iCheck plugin Square skin */
 .icheckbox_square-blue,
 .iradio_square-blue {
     display: block;

@@ -120,13 +120,28 @@ $(document).ready(function() {
 	$(".tbl-custom .confirm-delete").click(function(e) {
 		e.preventDefault(); // Prevent going to url after user clicks the link
 		var deleteLink = $(this).attr("href"); // Get link
-		bootbox.confirm("Are you sure you want to delete this data?", function(result) {
-			if (result) {
-				window.location = deleteLink; // Delete confirmed
-			} else {
-				bootbox.hideAll(); // User pressed cancel, hide all modals
+
+		bootbox.dialog("<i class=\"icon-exclamation-sign icon-4x\"></i><br />Are you sure you want to delete this data?", [{
+			"label" : "OK",
+			"class" : "btn-cms-orange",
+			"callback": function() {
+				window.location = deleteLink;
 			}
-		});
+			}, {
+			"label" : "Cancel",
+			"class" : "btn-cms",
+			"callback": function() {
+				bootbox.hideAll();
+			}
+		}]);
+
+		// bootbox.confirm("<i class=\"icon-exclamation-sign icon-4x\"></i><br />Are you sure you want to delete this data?", function(result) {
+		// 	if (result) {
+		// 		window.location = deleteLink; // Delete confirmed
+		// 	} else {
+		// 		bootbox.hideAll(); // User pressed cancel, hide all modals
+		// 	}
+		// });
 	});
 
 // Input tooltips -----------------------------------

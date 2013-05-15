@@ -79,3 +79,60 @@ a:hover, a:focus { color: #399EB5; }
 .wi_default span {
 	float: right;
 }
+
+
+
+.markdown .editor-bold a {
+	background-image:url(images/bold.png);
+}
+.markdown .editor-italic a {
+	background-image:url(images/italic.png);
+}
+.markdown .editor-link a {
+	background-image:url(images/link.png);
+}
+.markdown .editor-bullet-list a {
+	background-image:url(images/list-bullet.png);
+}
+.markdown .editor-numeric-list a {
+	background-image:url(images/list-numeric.png);
+}
+.markdown .editor-picture a {
+	background-image:url(images/picture.png); 
+}
+.markdown .editor-quotes a	{
+	background-image:url(images/quotes.png);
+}
+.markdown .editor-code a	{
+	background-image:url(images/code.png);
+}
+
+.markdown {
+	margin-bottom: 15px;
+}
+
+.markItUp {
+	width: 100%;
+}
+
+.markItUpButton {
+	background: #B73A3A;
+	padding: 5px;
+}
+.markItUpButton:hover {
+	background: #399EB5;
+}
+
+.markItUpHeader ul .markItUpSeparator {
+	height: 35px;
+	margin: 0 5px;
+	background: #fff;
+}
+
+.markItUpEditor {
+	font: inherit;
+	font-size: 14px;
+	resize: none;
+	width: 100%;
+	height: 200px !important;
+}

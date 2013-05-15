@@ -1,10 +1,11 @@
+{{validation_errors()}}
 {{form_open_multipart(current_url())}}
 <fieldset style="margin-top: 0;">
 	<legend>Personal Information</legend>
 
 	<div class="row">
 		<div class="large-6 columns">
-			<label>First name</label>
+			<label>First name*</label>
 			<input type="text" name="firstname" value="{{data.first_name}}" />
 		</div>
 		<div class="large-6 columns">
@@ -14,26 +15,22 @@
 	</div>
 
 	<div class="row">
-		<div class="large-12 columns">
-			<label>Email</label>
-			<input type="text" name="email" value="{{data.email}}" />
+		<div class="large-6 columns">
+			<label>Date of birth*</label>
+			<input type="text" name="dob" value="{{data.dob}}" />
+		</div>
+		<div class="large-6 columns">
+			<label>Gender*</label>
+			<select name="gender">
+				<option value="male" selected>Male</option>
+				<option value="female">Female</option>
+			</select>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="large-6 columns">
-			<label>Date of birth</label>
-			<input type="text" name="firstname" value="{{data.dob}}" />
-		</div>
-		<div class="large-6 columns">
-			<label>Gender</label>
-			<input type="text" name="sex" value="{{data.gender}}" />
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="large-6 columns">
-			<label>Country</label>
+			<label>Country*</label>
 			<select name="country">
 				{% for country in get_countries() %}
 				<option value="{{country.id}}">{{country.name}}</option>
@@ -47,5 +44,60 @@
 	</div>
 
 </fieldset>
+
+<fieldset>
+	<legend>Account edit</legend>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<label>New password</label>
+			<input type="password" name="newpassword" />
+		</div>
+		<div class="large-6 columns">
+			<label>New password repeat</label>
+			<input type="password" name="newpasswordrepeat" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-6 columns">
+			<label>New email</label>
+			<input type="text" name="newmail" />
+		</div>
+		<div class="large-6 columns">
+			<label>New email repeat</label>
+			<input type="text" name="newmailrepeat" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<label>Current password (Only needed if you change your password or email):</label>
+			<input type="password" name="password" />
+		</div>
+	</div>	
+
+</fieldset>
+
+<fieldset>
+	<legend>Public profile</legend>
+	
+	<div class="row">
+		<div class="large-12 columns">
+			<label>About me:</label>
+			<textarea name="aboutme"></textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="large-12 columns">
+			<label>Forum signature:</label>
+			<textarea name="signature"></textarea>
+		</div>
+	</div>
+
+</fieldset>
+
 <input class="small button" type="submit" name="save" value="Save changes" />
+
 {{form_close()}}

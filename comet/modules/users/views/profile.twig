@@ -1,3 +1,7 @@
+{% if is_loggedin %}
+<a href="{{site_url('users/profile/edit/1')}}" class="small button">Edit profile</a>
+{% endif %}
+
 {% set age = '-' %}
 {% if data.dob is defined %}
 {% set age = data.dob %}
@@ -11,7 +15,3 @@
 	<strong>Country:</strong> {{data.country}} <br />
 	<strong>Gender:</strong> {{data.gender}}
 </p>
-{% if option == true %}
-<hr />
-<a href="{{site_url('users/profile/edit/1')}}" class="small secondary button">Edit profile</a>
-{% endif %}
