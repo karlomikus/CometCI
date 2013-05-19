@@ -1,3 +1,5 @@
+<script src="<?php echo base_url(); ?>assets/admin/js/flotr2.min.js"></script>
+
 <div class="row-fluid">
 	<div class="span4 cms-box">
 		<header class="box-title">
@@ -59,7 +61,48 @@
 			</ul>
 		</div>
 	</div>
-	<div class="span8 cms-box">
-		Stats go here
+	<div class="span8 cms-box" id="cms-page-views">
+		
 	</div>
 </div>
+
+<script>
+(function basic(container) {
+
+var
+d1 = [
+    [new Date("2011/7/1"), 10],
+    [new Date("2011/7/2"), 8],
+    [new Date("2011/7/3"), 5],
+    [new Date("2011/7/4"), 13],
+    [new Date("2011/7/5"), 17],
+    [new Date("2011/7/6"), 25],
+    [new Date("2011/7/7"), 12]
+]
+
+// Draw Graph
+graph = Flotr.draw(container, [d1], {
+    colors: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
+    shadowSize: 0,
+    points: {
+        show: true
+    },
+    lines: {
+        show: true
+    },
+    xaxis: {
+        minorTickFreq: 4,
+        mode: "time"
+    },
+    grid: {
+        color: "#ffffff",
+        minorVerticalLines: true,
+        backgroundColor: null,
+        tickColor: "#72d7f2",
+        outlineWidth: 0,
+        verticalLines: false,
+        minorVerticalLines: false
+    }
+});
+})(document.getElementById("cms-page-views"));
+</script>

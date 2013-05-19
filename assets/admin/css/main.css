@@ -11,8 +11,8 @@ body {
 	margin: 0;
 }
 
-a { color: #f94e36; }
-a:hover, a:focus, a:active { color: #28B975; text-decoration: none; }
+a { color: #13A8DD; }
+a:hover, a:focus, a:active { color: #e23b24; text-decoration: none; }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, 
 input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
@@ -201,25 +201,71 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .cms-box .match-list li img { float: left; }
 
 /* Calendar / Fixtures */
+.cms-calendar {
+	border: 4px solid #28B975;
+	margin-bottom: 20px;
+}
+
 .cms-calendar, .cms-calendar tbody {
 	width: 100%;
-	background-color: #fff;
+}
+
+.cms-calendar tbody {
+	background: #fff;
 }
 
 .cms-calendar th {
 	padding: 10px 0;
+	background: #28B975;
+	color: #fff;
+	font-size: 20px;
 }
 
 .cms-calendar th a {
-	color: #f94e36;
+	color: #fff;
+	padding: 4px 8px;
+}
+
+.cms-calendar th a:hover {
+	background: rgba(0,0,0,0.2);
 }
 
 .cms-calendar td {
-	text-align: center;
+	height: 70px;
+	border: 1px solid #ccc;
+	padding: 10px;
 }
 
-.cms-calendar tr.week-row td {
-	color: #f94e36;
+.cms-calendar .week-row td {
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	border-right: none !important;
+	border-top: none !important;
+	border-left: none !important;
+	height: 40px;
+	color: #28B975;
+}
+
+.event {
+	border: 2px solid #764699;
+	margin-bottom: 20px;
+	background: #fff;
+}
+
+.event-header {
+	color: #fff;
+	background: #764699;
+	padding: 5px 15px;
+}
+
+.event-content {
+	padding: 10px 15px 10px 15px;
+}
+
+.event-content h4 {
+	margin: 0 0 10px 0;
 }
 
 /* Custom upload input */
@@ -430,6 +476,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	display: block;
 }
 
+/* Stats */
+#cms-page-views {
+	height: 300px;
+	background: #33b5e5;
+}
+
 /* Forms */
 .cms-form {
 }
@@ -634,14 +686,6 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	text-align: inherit;
 }
 
-/* CMS Alerts */
-.alert {
-	border-radius: 0;
-	border: none;
-	background-color: #f58c45;
-	color: #fff;
-}
-
 /* Labels */
 .label {
 	border-radius: 0;
@@ -651,11 +695,59 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .label.label-success { background-color: #28B975; }
 .label.label-important { background-color: #E04C4C; }
 
+/* Tabs */
+.nav-tabs {
+	border-color: #a0a6af;
+	margin-bottom: 0;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+	border-color: #a0a6af #a0a6af transparent;
+}
+
+.nav-tabs > li > a {
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+	border-bottom: 1px solid #a0a6af;
+}
+
+.cms-form .tab-pane {
+	background: #fff;
+	border-bottom: 1px solid #a0a6af;
+	border-left: 1px solid #a0a6af;
+	border-right: 1px solid #a0a6af;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
 
 /* Alerts */
+.alert {
+	border-radius: 0;
+	border: none;
+	background-color: #f58c45;
+	color: #fff;
+}
+
 .alert-danger, .alert-error { background-color: #e95353; }
 .alert-success { background-color: #6fd267; }
 .alert-info { background-color: #33b5e5; }
+
+.alert-block {
+	text-shadow: none !important;
+	margin: 20px 0 0 0;
+}
+
+.alert-block h4 {
+	color: #fff;
+	border: none;
+	margin: 0;
+}
 
 /* Misc. */
 .text-center { text-align: center !important; }

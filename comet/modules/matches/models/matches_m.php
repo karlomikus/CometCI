@@ -10,7 +10,7 @@ class Matches_m extends MY_Model {
 	{
 		$this->db->select('*');
 		parent::order_by('date', 'DESC');
-		return $this->db->get_where('matches', array('type' => '2'))->result();
+		return $this->db->get_where('matches', array('status' => '1'))->result();
 	}
 
 	/**
@@ -27,7 +27,7 @@ class Matches_m extends MY_Model {
 		else {
 			parent::order_by('date', 'DESC');
 			$this->db->select('*');
-			$this->db->where('type !=', '2');
+			$this->db->where('status !=', '1');
 			return $this->db->get('matches')->result();
 		}
 	}
@@ -155,5 +155,37 @@ class Matches_m extends MY_Model {
 
 		$result = array($pass1[0], $pass1[1], $pass2[0]); // MatchID, PictureNo, Timestamp
 		return $result;
+	}
+
+	public function get_matches_in_month($month, $year)
+	{
+		// Empty params. given, show this months calendar
+		if(!isset($month) && !isset($year))
+		{
+			$month = date("m");
+			$year = date("Y");
+		}
+
+		$this->db->where('MONTH(date) =', $month);
+		$this->db->where('YEAR(date) =', $year);
+		$query = $this->db->get('matches');
+
+		return $query->result();
+	}
+
+	public function get_matches_on_date($timeStamp)
+	{
+		if(!isset($timeStamp)) $timeStamp = time();
+
+		$day 	= date("d", $timeStamp);
+		$month 	= date("m", $timeStamp);
+		$year 	= date("Y", $timeStamp);
+
+		$this->db->where('DAY(date) =', $day);
+		$this->db->where('MONTH(date) =', $month);
+		$this->db->where('YEAR(date) =', $year);
+		$query = $this->db->get('matches');
+
+		return $query->result();
 	}
 }

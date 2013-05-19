@@ -18,7 +18,7 @@
 <div class="row wrap">
 
   <div class="row header">
-	<div class="large-4 columns"><h4>CLANNAME</h4></div>
+	<div class="large-4 columns"><h4>{{clanname}}</h4></div>
 	<div class="large-8 columns">
 		<ul class="button-group" style="float: right;">
 			<li><a href="{{base_url('posts')}}" class="small button">Posts</a></li>

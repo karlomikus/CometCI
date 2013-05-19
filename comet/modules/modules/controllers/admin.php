@@ -5,7 +5,7 @@ class Admin extends Backend_Controller {
 	/**
 	 * Not really important in production enviroment.
 	 * Used when modules where first time added to the database.
-	 * Scans the modlue folder and creates table rows for
+	 * Scans the module folder and creates table row for
 	 * every found.
 	 */
 	public function __construct()
@@ -25,7 +25,7 @@ class Admin extends Backend_Controller {
 					'name' => ucfirst($module->name),
 					'description' => 'TODO',
 					'link' => $module->name,
-					'enable' => '1',
+					'enabled' => '1',
 					'layout' => NULL
 				);
 				// DO IT!
@@ -44,10 +44,24 @@ class Admin extends Backend_Controller {
 
 	public function edit($id = 0)
 	{
+		$this->load->library('form_validation');
+
 		$this->template
 			->set('title', 'Edit module')
 			->set('data', $this->modules_m->get($id))
 			->set('layouts', $this->template->get_theme_layouts('default'))
 			->build('admin/form');
+	}
+
+	public function disable($id = 0)
+	{
+		$this->modules_m->set_module_status($id, 0);
+		redirect('admin/modules');
+	}
+
+	public function enable($id = 0)
+	{
+		$this->modules_m->set_module_status($id, 1);
+		redirect('admin/modules');
 	}
 }

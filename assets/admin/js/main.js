@@ -79,12 +79,16 @@ $(document).ready(function() {
 
 // Match populate team input -----------------------------------
 	var team_id;
-	$(".teamdropdown").on("change", function (e) { 
+	var cct = $("input[name=csrf_comet]").val(); // Get CSRF token
+	$(".teamdropdown").on("change", function (e){ 
 		team_id = $(".teamdropdown").select2("data").id; 
 		$.ajax({
-			url: 'http://localhost/cms/admin/matches/fetch_team_members',
-			type:'POST',
-			data: "id="+team_id,
+			url: baseUrl+'admin/matches/fetch_team_members',
+			type: 'POST',
+			data: {
+				id: team_id,
+				csrf_comet: cct
+			},
 			dataType: 'json',
 			cache: false,
 			success: function(output) {
@@ -92,6 +96,26 @@ $(document).ready(function() {
 					data: output,
 					multiple: true
 				});
+			}
+		});
+	});
+
+// Calendar events -----------------------------------
+	$(".cms-calendar td a").click(function(e) {
+		e.preventDefault();
+		var date = $(this).attr("href").substr(1);
+		var hash = $.cookie('csrf_cookie_comet');
+		$.ajax({
+			url: baseUrl+'admin/calendar/fetch_event',
+			type: 'POST',
+			data: {
+				date: date,
+				csrf_comet: hash
+			},
+			dataType: 'html',
+			cache: false,
+			success: function(output) {
+				$('#event-list').html(output);
 			}
 		});
 	});

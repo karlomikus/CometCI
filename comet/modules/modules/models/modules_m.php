@@ -18,4 +18,32 @@ class Modules_m extends MY_Model {
 		return $modules;
 	}
 
+	public function get_disabled_modules()
+	{
+		$this->db->select('*');
+		$this->db->where('enabled', 0);
+		$this->db->from('modules');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function module_disabled($module = '')
+	{
+		$this->db->select('enabled');
+		$this->db->where('link', $module);
+		$this->db->from('modules');
+		$query = $this->db->get()->result();
+		
+		if($query->enabled == 1) return FALSE;
+		else return TRUE;
+	}
+
+	public function set_module_status($module, $enabled)
+	{
+		$this->db->set('enabled', $enabled);
+		$this->db->where('id', $module);
+		$this->db->update('modules'); 
+	}
+
 }

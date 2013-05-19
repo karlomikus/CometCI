@@ -203,7 +203,8 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	private function set_upload_options($i, $next){
+	private function set_upload_options($i, $next)
+	{
 		$config = array();
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -215,26 +216,42 @@ class Admin extends Backend_Controller {
 		return $config;
 	}
 
-	/* Return JSON array used for ajax */
-	public function fetch_team_members() {
+	/**
+	 * Gets all members in team and returns JSON array of
+	 * their user ID's
+	 * 	
+	 * @return void
+	 */
+	public function fetch_team_members()
+	{
 		if (!$this->input->is_ajax_request()) redirect('admin/matches'); // Wot u think u doin m8
-		if(isset($_POST) && isset($_POST['id'])) {
-			$id = $_POST['id'];
-			$this->load->model('teams/teams_m');
 
-			$teamData = $this->teams_m->get_team_members($id);
-			$result = array();
-			foreach ($teamData as $member) {
-				$result[] = array('id' => $member['user_id'], 'text' => $this->ion_auth->user($member['user_id'])->row()->username);
+		$this->load->model('teams/teams_m');
+
+		if(isset($_POST) && isset($_POST['id']))
+		{
+			$id 		= (int)$_POST['id'];
+			$teamData 	= $this->teams_m->get_team_members($id);
+			$result 	= array();
+
+			foreach ($teamData as $member)
+			{
+				$result[] = array(
+					'id' => $member['user_id'],
+					'text' => $this->ion_auth->user($member['user_id'])->row()->username
+				);
 			}
+
 			echo json_encode($result);
 		}
-		else {
+		else
+		{
 			redirect('admin/matches');
 		}
 	}
 
-	public function _valid_time($time) {
+	public function _valid_time($time)
+	{
 		if(preg_match("/^(20|21|22|23|[01]\d|\d)(([:.][0-5]\d){1,2})$/", $time)) return true;
 		$this->form_validation->set_message('_valid_time', 'The %s field is not set to valid time');
 		return false;

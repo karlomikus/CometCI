@@ -4,10 +4,20 @@ class MY_Controller extends MX_Controller {
 
 	public $user; // Contains information about currently logged in user
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
+
+		// Enable debugging
 		$this->output->enable_profiler(FALSE);
 
+		// Load libraries
+		$this->load->model('settings/settings_m', 'settings');
+
+		// Set config items
+		$this->config->set_item('clanname', $this->settings->get(1)->clanname);
+
+		// Set user
 		if($this->ion_auth->logged_in()) {
 			$this->user = $this->ion_auth->user()->row();
 		}
@@ -16,7 +26,8 @@ class MY_Controller extends MX_Controller {
 			$this->user->user_id = NULL;
 		}
 
-		$this->template->set('user', $this->user); // Make user information available in templates
+		// Make user information available in templates
+		$this->template->set('user', $this->user);
 	}
 
 }

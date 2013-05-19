@@ -384,6 +384,23 @@ class Template
 	 	return $this->_theme;
 	 }
 
+	 /**
+	  * List all available themes
+	  * 
+	  * @return array
+	  */
+	 public function get_themes()
+	 {
+	 	$themes = array();
+
+		foreach(glob('themes/*') as $theme)
+		{
+			$themes[] = pathinfo($theme, PATHINFO_BASENAME);
+		}
+
+		return $themes;
+	 }
+
 	/**
 	 * Get the current theme path
 	 *
