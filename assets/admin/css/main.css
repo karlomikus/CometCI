@@ -118,11 +118,11 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Sidebar */
 .site-sidebar {
-	background: #33b5e5 url(../img/sidebar-bg.gif) right repeat-y;
+	background: #22c7b6;
 	height: 100%;
 	color: #fff;
 	width: 300px;
-	border-top: 1px solid #72d7f2;
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
 	float: left;
 }
 
@@ -140,7 +140,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .site-sidebar ul li a {
-	border-bottom: 1px solid #72d7f2;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 	display: block;
 	color: #fff;
 	padding: 15px 0;
@@ -148,7 +148,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 .site-sidebar ul li a:hover {
 	text-decoration: none;
-	background: #37bbeb;
+	background: rgba(255, 255, 255, 0.2);
 }
 
 /* CMS Base Scaffolding */
@@ -530,7 +530,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Buttons */
 .btn-cms-orange {
-	background: #f94e36;
+	background: #D41E1A;
 	color: #fff;
 	text-shadow: none;
 	font-family: inherit;
@@ -540,15 +540,15 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
-	border: 1px solid #f94e36;
+	border: 1px solid #D41E1A;
 	border-radius: 0;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 }
 
 .btn-cms-orange:hover, .btn-cms-orange:focus {
-	background: #28B975;
-	border-color: #28B975;
+	background: #E1201B;
+	border-color: #E1201B;
 	color: #fff;
 	text-shadow: none;
 }

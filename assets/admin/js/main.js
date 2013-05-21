@@ -15,10 +15,13 @@ $(document).ready(function() {
 	$('.js_tooltip').tooltip();
 
 // Sidebar tabs -----------------------------------
+	if($.cookie('activeTabGroup') == null) $.cookie('activeTabGroup', '#dashboard-tab', { expires: 7, path: '/' });
+	$($.cookie('activeTabGroup')).addClass('active');
+
 	$('.sidebar-icon a').click(function (e) {
 		e.preventDefault();
 		$(this).tab('show');
-		document.cookie = "activeTabGroup=" + this;
+		$.cookie('activeTabGroup', $(this).attr('href'), { expires: 7, path: '/' });
 	});
 
 	$('#event-tabs a').click(function (e) {
@@ -116,6 +119,24 @@ $(document).ready(function() {
 			cache: false,
 			success: function(output) {
 				$('#event-list').html(output);
+			}
+		});
+	});
+
+// Layout manager -----------------------------------
+	$("#layout-list").change(function(e) {
+		var layout 	= $(this).val();
+		$.ajax({
+			url: baseUrl+'admin/layouts/fetch_layout',
+			type: 'POST',
+			data: {
+				layout: layout,
+				csrf_comet: cct
+			},
+			dataType: 'html',
+			cache: false,
+			success: function(output) {
+				$('#layout-edit').val(output);
 			}
 		});
 	});

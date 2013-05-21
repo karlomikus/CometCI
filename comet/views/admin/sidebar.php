@@ -1,7 +1,7 @@
 <aside class="sidebar-group">
 		<section class="sidebar-icon">
 			<ul>
-				<li class="active"><a href="#dashboard-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-dashboard.png" alt="Dashboard" /></a></li>
+				<li><a href="#dashboard-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-dashboard.png" alt="Dashboard" /></a></li>
 				<li><a href="#content-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-content.png" alt="Content" /></a></li>
 				<li><a href="#clan-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-clan.png" alt="Clan" /></a></li>
 				<li><a href="#users-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-users.png" alt="Users" /></a></li>
@@ -11,7 +11,7 @@
 		</section>
 
 		<section class="site-sidebar tab-content">
-			<ul id="dashboard-tab" class="tab-pane fade in active">
+			<ul id="dashboard-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Dashboard</li>
 				<li><a href="<?php echo site_url('admin/'); ?>">Startpage</a></li>
 				<li><a href="<?php echo site_url('admin/sitestats'); ?>">Site Statistics</a></li>
