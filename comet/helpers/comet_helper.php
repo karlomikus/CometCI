@@ -251,8 +251,8 @@ function get_layout($moduleName = '')
 
 	$moduleLayout = $CI->modules_m->get_by('name', $module)->layout;
 
-	if($CI->template->layout_exists($moduleLayout)) return $moduleLayout;
-	else return 'default';
+	if($CI->template->layout_exists($moduleLayout)) return $moduleLayout.'.twig';
+	else return 'default.twig';
 }
 
 /**

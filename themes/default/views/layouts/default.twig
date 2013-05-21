@@ -1,0 +1,50 @@
+{{template.partials.head}}
+
+<div class="row wrap">
+
+  <div class="row header">
+  <div class="large-4 columns"><h4>{{clanname}}</h4></div>
+  <div class="large-8 columns">
+    <ul class="button-group" style="float: right;">
+      <li><a href="{{base_url('posts')}}" class="small button">Posts</a></li>
+      <li><a href="{{base_url('matches')}}" class="small button">Matches</a></li>
+      <li><a href="{{base_url('roster')}}" class="small button">Roster</a></li>
+      <li><a href="{{base_url('forums')}}" class="small button">Forums</a></li>
+      <li><a href="{{base_url('gallery')}}" class="small button">Gallery</a></li>
+      <li><a href="{{base_url('contact')}}" class="small button">Contact</a></li>
+      <li><a href="{{base_url('page/about')}}" class="small button">About</a></li>
+    </ul>
+  </div>
+  <hr />
+  </div>
+  
+  <div class="row">
+  
+ <div class="large-8 columns">
+   {{template.body}}
+ </div>
+
+ <div class="large-4 columns">
+  <h6>USER AREA</h6>{{widget('user')}}
+  <hr />
+  <h6>LATEST MATCHES</h6>{{widget('matches')}}
+  <hr />
+  <h6>LATEST POSTS</h6>{{widget('posts')}}
+  <hr />
+  <h6>LATEST TOPICS</h6>{{widget('topics')}}
+ </div>
+  
+  </div>
+  
+  <!-- Footer -->
+  
+  <footer class="row">
+  <div class="large-12 columns text-center">
+    <hr />
+    <p>&copy; 2013 Copyright Clanname</p>
+  </div> 
+  </footer>
+
+</div>
+
+{{template.partials.foot}}
