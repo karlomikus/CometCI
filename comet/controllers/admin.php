@@ -5,10 +5,12 @@ class Admin extends Backend_Controller {
     public function index() 
     {
         $this->load->model('matches/matches_m');
+        $this->load->model('comet_m');
 
         $this->template
             ->set('title', 'Dashboard')
             ->set('matches', $this->matches_m->get_upcoming_matches())
+            ->set('visits', $this->comet_m->get_visits_stats())
             ->build('admin/dashboard');
 
     }

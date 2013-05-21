@@ -28,6 +28,10 @@ class MY_Controller extends MX_Controller {
 
 		// Make user information available in templates
 		$this->template->set('user', $this->user);
+
+		// Update visits
+		$this->load->model('comet_m', 'site');
+		$this->site->update_site_views($this->user->user_id);
 	}
 
 }

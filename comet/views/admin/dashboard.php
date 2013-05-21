@@ -1,4 +1,6 @@
-<script src="<?php echo base_url(); ?>assets/admin/js/flotr2.min.js"></script>
+<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 
 <div class="row-fluid">
 	<div class="span4 cms-box">
@@ -67,42 +69,18 @@
 </div>
 
 <script>
-(function basic(container) {
-
-var
-d1 = [
-    [new Date("2011/7/1"), 10],
-    [new Date("2011/7/2"), 8],
-    [new Date("2011/7/3"), 5],
-    [new Date("2011/7/4"), 13],
-    [new Date("2011/7/5"), 17],
-    [new Date("2011/7/6"), 25],
-    [new Date("2011/7/7"), 12]
-]
-
-// Draw Graph
-graph = Flotr.draw(container, [d1], {
-    colors: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
-    shadowSize: 0,
-    points: {
-        show: true
-    },
-    lines: {
-        show: true
-    },
-    xaxis: {
-        minorTickFreq: 4,
-        mode: "time"
-    },
-    grid: {
-        color: "#ffffff",
-        minorVerticalLines: true,
-        backgroundColor: null,
-        tickColor: "#72d7f2",
-        outlineWidth: 0,
-        verticalLines: false,
-        minorVerticalLines: false
-    }
-});
-})(document.getElementById("cms-page-views"));
+	new Morris.Line({
+		element: 'cms-page-views',
+		data: [
+		<?php foreach ($visits as $visit): ?>
+			{ month: '<?php echo date("Y-m-d", strtotime($visit->date)); ?>', value: <?php echo $visit->total; ?> },
+		<?php endforeach; ?>
+		],
+		lineColors: ['#22c7b6'],
+		smooth: true,
+		xkey: 'month',
+		xLabelFormat: function(d) { return d.getDate(); },
+		ykeys: ['value'],
+		labels: ['Visits']
+	});
 </script>
