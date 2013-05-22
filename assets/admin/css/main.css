@@ -1,5 +1,18 @@
-*, a:focus { outline: none; }
+/****************************************************
+ ______ __                ______                        __   
+|      |  |.---.-.-----. |      |.-----.--------.-----.|  |_ 
+|   ---|  ||  _  |     | |   ---||  _  |        |  -__||   _|
+|______|__||___._|__|__| |______||_____|__|__|__|_____||____| v0.2
 
+- Author: 	Karlo Mikus;
+- Version: 	1.0;
+- Package: 	Clan Comet CMS;
+- File: 	Main admin stylesheet;
+
+- Colors: #22c7b6; #D64644;
+
+*****************************************************/
+*, a:focus { outline: none; }
 body {
 	font-size: 16px;
 	font-family: 'Merriweather Sans', sans-serif;
@@ -11,8 +24,8 @@ body {
 	margin: 0;
 }
 
-a { color: #13A8DD; }
-a:hover, a:focus, a:active { color: #e23b24; text-decoration: none; }
+a { color: #22c7b6; }
+a:hover, a:focus, a:active { color: #D64644; text-decoration: none; }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, 
 input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
@@ -36,13 +49,10 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .draw-color { color: #ffa200; }
 .upcoming-color { color: #3798cb; }
 
-/* Site Header */
-.site-header {
-	background: #424851;
-	overflow: hidden;
-	height: 65px;
-}
+.site-header, .sidebar-icon { background: #35393f; }
 
+/* Site Header */
+.site-header { overflow: hidden; height: 65px; }
 .site-header h1 {
 	margin: 0;
 	line-height: 65px;
@@ -52,16 +62,18 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	float: left;
 	font-weight: lighter;
 	text-indent: 20px;
+	border-left: 1px solid #25282c;
 }
 
 .site-header .avatar {
 	display: block;
 	float: left;
-	background: #35393f;
+	background: #454B54;
 	width: 50px;
 	height: 49px;
-	padding: 15px 0 0 15px;
+	padding: 15px 0 0 14px;
 	border-bottom: 1px solid #25282c;
+	border-right: 1px solid #454a52;
 }
 
 .site-header ul {
@@ -74,12 +86,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .site-header ul li a {
 	display: block;
 	padding: 17px;
-	border-right: 1px solid #555b64;
-	border-left: 1px solid #333840;
+	border-right: 1px solid #454a52;
+	border-left: 1px solid #25282c;
 }
-.site-header ul li a:hover { background: #3c4149; }
+.site-header ul li a:hover { background: #2b2e33; }
 
-.site-header ul li.first { display: block; border-right: 1px solid #555b64; height: 70px; }
+.site-header ul li.first { display: block; border-right: 1px solid #454a52; height: 70px; }
 
 /* Content Wrappers */
 .sidebar-group {
@@ -97,7 +109,6 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Icon Sidebar */
 .sidebar-icon {
-	background: #35393f;
 	width: 65px;
 	height: 100%;
 	float: left;
@@ -148,7 +159,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 .site-sidebar ul li a:hover {
 	text-decoration: none;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.1);
 }
 
 /* CMS Base Scaffolding */
@@ -202,7 +213,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Calendar / Fixtures */
 .cms-calendar {
-	border: 4px solid #28B975;
+	border: 4px solid #D64644;
 	margin-bottom: 20px;
 }
 
@@ -216,7 +227,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 .cms-calendar th {
 	padding: 10px 0;
-	background: #28B975;
+	background: #D64644;
 	color: #fff;
 	font-size: 20px;
 }
@@ -245,18 +256,18 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border-top: none !important;
 	border-left: none !important;
 	height: 40px;
-	color: #28B975;
+	color: #D64644;
 }
 
 .event {
-	border: 2px solid #764699;
+	border: 2px solid #7E589B;
 	margin-bottom: 20px;
 	background: #fff;
 }
 
 .event-header {
 	color: #fff;
-	background: #764699;
+	background: #7E589B;
 	padding: 5px 15px;
 }
 
@@ -404,11 +415,17 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .tbl-custom .action-add a {
-	background: #33b5e5;
-	box-shadow: inset 0 -5px #2b9ac3;
+	background: #22c7b6;
+	box-shadow: inset 0 -5px rgba(0,0,0,0.12);
 	display: block;
 	height: 100%;
 	padding: 17px;
+}
+
+.tbl-custom .action-add a:hover,
+.tbl-custom .action-add a:active, 
+.tbl-custom .action-add a:focus {
+	background: #30D3C0;
 }
 
 .tbl-custom td.action {
@@ -529,7 +546,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Buttons */
 .btn-cms-orange {
-	background: #D41E1A;
+	background: #D64644;
 	color: #fff;
 	text-shadow: none;
 	font-family: inherit;
@@ -539,7 +556,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
-	border: 1px solid #D41E1A;
+	border: 1px solid #D64644;
 	border-radius: 0;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
@@ -570,8 +587,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .btn-cms:hover, .btn-cms:focus {
-	background: #28B975;
-	border-color: #28B975;
+	background: #22c7b6;
+	border-color: #22c7b6;
 	color: #fff;
 	text-shadow: none;
 }
@@ -669,6 +686,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	-webkit-border-radius: 0;
 }
 
+/* Delete prompt modal */
 .bootbox.modal {
 	text-align: center;
 	width: 400px;
@@ -683,6 +701,19 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	-webkit-border-radius: 0;
 	border: none;
 	text-align: inherit;
+}
+
+/* Global modals */
+.modal-header {
+	background: #22c7b6;
+	color: #fff;
+	border: none;
+	box-shadow: none;
+}
+
+.modal-footer {
+	box-shadow: none;
+	border: none;
 }
 
 /* Labels */
@@ -757,59 +788,36 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 /* iCheck plugin Square skin */
 .icheckbox_square-blue,
 .iradio_square-blue {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 22px;
-    height: 22px;
-    background: url(../img/icheck/blue.png) no-repeat;
-    border: none;
-    cursor: pointer;
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+	background: url(../img/icheck/blue.png) no-repeat;
+	border: none;
+	cursor: pointer;
 }
+.icheckbox_square-blue { background-position: 0 0; }
+.icheckbox_square-blue.hover { background-position: -24px 0; }
+.icheckbox_square-blue.checked { background-position: -48px 0; }
+.icheckbox_square-blue.disabled { background-position: -72px 0; cursor: default; }
+.icheckbox_square-blue.checked.disabled { background-position: -96px 0; }
 
-.icheckbox_square-blue {
-    background-position: 0 0;
-}
-    .icheckbox_square-blue.hover {
-        background-position: -24px 0;
-    }
-    .icheckbox_square-blue.checked {
-        background-position: -48px 0;
-    }
-    .icheckbox_square-blue.disabled {
-        background-position: -72px 0;
-        cursor: default;
-    }
-    .icheckbox_square-blue.checked.disabled {
-        background-position: -96px 0;
-    }
-
-.iradio_square-blue {
-    background-position: -120px 0;
-}
-    .iradio_square-blue.hover {
-        background-position: -144px 0;
-    }
-    .iradio_square-blue.checked {
-        background-position: -168px 0;
-    }
-    .iradio_square-blue.disabled {
-        background-position: -192px 0;
-        cursor: default;
-    }
-    .iradio_square-blue.checked.disabled {
-        background-position: -216px 0;
-    }
+.iradio_square-blue { background-position: -120px 0; }
+.iradio_square-blue.hover { background-position: -144px 0; }
+.iradio_square-blue.checked { background-position: -168px 0; }
+.iradio_square-blue.disabled { background-position: -192px 0; cursor: default; }
+.iradio_square-blue.checked.disabled { background-position: -216px 0; }
 
 /* Retina support */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (-moz-min-device-pixel-ratio: 1.5),
        only screen and (-o-min-device-pixel-ratio: 3/2),
        only screen and (min-device-pixel-ratio: 1.5) {
-    .icheckbox_square-blue,
-    .iradio_square-blue {
-        background-image: url(../img/icheck/blue@2x.png);
-        -webkit-background-size: 240px 24px;
-        background-size: 240px 24px;
-    }
+			.icheckbox_square-blue,
+			.iradio_square-blue {
+			    background-image: url(../img/icheck/blue@2x.png);
+			    -webkit-background-size: 240px 24px;
+			    background-size: 240px 24px;
+			}
 }

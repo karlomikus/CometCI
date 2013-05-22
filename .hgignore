@@ -1,9 +1,5 @@
 .hgignore
 plugini.txt
-uploads/users/*
-uploads/labels/*
-uploads/teams/*
-uploads/opponents/*
-uploads/screenshots/*
+uploads/*
 
 comet/third_party/htmlpurifier-4.5.0-standalone/standalone/HTMLPurifier/DefinitionCache/*
