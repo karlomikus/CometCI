@@ -2,22 +2,22 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Description</th>
-			<th>Posts</th>
+			<th>Starting date</th>
+			<th>Ending date</th>
 			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($labels as $label): ?>
+		<?php foreach ($events as $event): ?>
 		<tr>
-			<td><?php echo $label->name; ?></td>
-			<td><?php echo $label->description; ?></td>
-			<td><?php echo $this->labels_m->count_posts_in_label($label->id); ?></td>
+			<td><?php echo $event->name; ?></td>
+			<td><?php echo $event->startdate; ?></td>
+			<td><?php echo $event->enddate; ?></td>
 			<td class="action">
 				<a class="action-icon" href="#">Action</a>
 				<ul class="action-list" style="display: none;">
-					<li><a class="confirm-delete" href="<?php echo site_url('admin/labels/delete/'.$label->id); ?>"><i class="icon-trash icon-large"></i></a></li>
-					<li><a href="<?php echo site_url('admin/labels/edit/'.$label->id); ?>"><i class="icon-edit icon-large"></i></a></li>
+					<li><a class="confirm-delete" href="<?php echo site_url('admin/events/delete/'.$event->id); ?>"><i class="icon-trash icon-large"></i></a></li>
+					<li><a href="<?php echo site_url('admin/events/edit/'.$event->id); ?>"><i class="icon-edit icon-large"></i></a></li>
 				</ul>
 			</td>
 		</tr>

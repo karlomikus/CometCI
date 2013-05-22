@@ -1,11 +1,11 @@
 <table class="table tbl-custom">
 	<thead>
 		<tr>
-			<th>Title</th>
-			<th>Date</th>
+			<th>Title <a href="<?php echo base_url().'admin/posts/index/title/asc';?>"><i class="icon-angle-down"></i></a></th>
+			<th>Date <a href="<?php echo base_url().'admin/posts/index/date/asc';?>"><i class="icon-angle-down"></i></a></th>
 			<th>Author</th>
 			<th>Label</th>
-			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
+			<th class="action-add"><a href="<?php echo base_url().'admin/posts/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>
 	<tbody>

@@ -16,7 +16,9 @@ class Admin extends Backend_Controller {
 		$this->load->model('posts_m');
 	}
 
-	public function index() {
+	public function index($sortBy = NULL, $sortOrder = NULL) {
+		if(isset($sortBy) && isset($sortOrder)) $this->posts_m->order_by($sortBy, $sortOrder);
+
 		$this->template
 			->set($this->template_data)
 			->set('posts', $this->posts_m->get_all())

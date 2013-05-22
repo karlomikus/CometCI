@@ -21,6 +21,6 @@
 
 	<button type="submit" class="btn btn-large btn-cms-orange">Save label</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
-	<input id="file-input" class="hidden" type="image" name="banner" size="1" />
+	<input id="file-input" class="hidden" type="file" name="image" size="1" />
 
 <?php echo form_close(); ?>

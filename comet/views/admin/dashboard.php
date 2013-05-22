@@ -63,8 +63,11 @@
 			</ul>
 		</div>
 	</div>
-	<div class="span8 cms-box" id="cms-page-views">
-		
+	<div class="span8 cms-box">
+		<header class="box-title">
+			<h4>Unique visits this month</h4>
+		</header>
+		<div id="cms-page-views"></div>
 	</div>
 </div>
 

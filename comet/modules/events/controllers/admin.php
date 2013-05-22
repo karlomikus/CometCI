@@ -14,7 +14,7 @@ class Admin extends Backend_Controller {
 		
 		$this->template
 			->set('title', 'Events')
-			->set('labels', $this->events_m->get_all())
+			->set('events', $this->events_m->get_all())
 			->build('admin/main');
 	}
 
@@ -34,8 +34,8 @@ class Admin extends Backend_Controller {
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
+				$config['max_width']     = '500';
+				$config['max_height']    = '500';
 				$config['file_name']     = $next_id;
 				$this->upload->initialize($config);
 
@@ -43,8 +43,8 @@ class Admin extends Backend_Controller {
 					$file_data = $this->upload->data();
 				}
 				else {
-					echo 'file fail';
-					//redirect('admin/teams');
+					$this->session->set_flashdata('create_error', "There was an error with the file!");
+                	$file_data = NULL;
 				}
 			}
 
@@ -52,18 +52,21 @@ class Admin extends Backend_Controller {
 			else $file = '0';
 
 			$data = array(
-				'name' => $this->input->post('title'),
+				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'startdate' => $this->input->post('startdate'),
+				'enddate' => $this->input->post('enddate'),
+				'link' => $this->input->post('link'),
+				'image' => $file
 			);
 
 			$this->events_m->insert($data);
-			redirect('admin/labels');
+			redirect('admin/events');
 		}
 		else {
 
 			$this->template
-				->set('title', 'Create label')
+				->set('title', 'Create event')
 				->build('admin/form');
 		}
 	}
