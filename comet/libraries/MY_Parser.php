@@ -83,7 +83,7 @@ class MY_Parser extends CI_Parser
 		{
             foreach($functions as $function)
             {
-                 $this->_twig->addFunction($function, new Twig_Function_Function($function));
+                 $this->_twig->addFunction(new Twig_SimpleFunction($function, $function));
             }
         }
 	}
@@ -97,9 +97,9 @@ class MY_Parser extends CI_Parser
 	public function addFunction($functionName, $alias = '')
 	{
 		if ($alias === '')
-			$this->_twig->addFunction($functionName, new Twig_Function_Function($functionName));
+			$this->_twig->addFunction(new Twig_SimpleFunction($functionName, $functionName));
 		else
-			$this->_twig->addFunction($alias, new Twig_Function_Function($functionName));
+			$this->_twig->addFunction(new Twig_SimpleFunction($alias, $functionName));
 	}
 
 	/**

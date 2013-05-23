@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+<!-- <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css"> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 
@@ -15,7 +15,7 @@
 			<ul id="matches-tab" class="match-list tab-pane fade in active">
 				<?php foreach ($matches as $match): ?>
 				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
+					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" width="50" height="50" />
 					<p>
 						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
 						<span>18:45 - ESL Master LEague</span>
@@ -64,9 +64,18 @@
 		</div>
 	</div>
 	<div class="span8 cms-box">
-		<header class="box-title">
-			<h4>Unique visits this month</h4>
-		</header>
+		<div class="row-fluid">
+			<div class="span6 header-white">
+				<h4 class="header-thin">Unique visits this month</h4>
+			</div>
+			<div class="span6 text-right">
+				<select name="month" id="stats-month">
+					<option value="1">May</option>
+					<option value="1">September</option>
+					<option value="1">August</option>
+				</select>
+			</div>
+		</div>
 		<div id="cms-page-views"></div>
 	</div>
 </div>
@@ -79,7 +88,9 @@
 			{ month: '<?php echo date("Y-m-d", strtotime($visit->date)); ?>', value: <?php echo $visit->total; ?> },
 		<?php endforeach; ?>
 		],
-		lineColors: ['#22c7b6'],
+		lineColors: ['#9b9eaf'],
+		pointFillColors: ['#D64644'],
+		fillOpacity: 0.4,
 		smooth: true,
 		xkey: 'month',
 		xLabelFormat: function(d) { return d.getDate(); },

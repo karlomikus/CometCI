@@ -1,6 +1,8 @@
 $(document).ready(function() {
 // Table action list -----------------------------------
 	$(".tbl-custom tr").hover(function() {
+		// Remove :focus when user goes back a page
+		$('.tbl-custom tr > a').click(function () { this.blur(); return false; });
 		$(this).find(".action-icon").toggleClass("action-icon-active");
 		$(this).find(".action-list").toggle();
 	});

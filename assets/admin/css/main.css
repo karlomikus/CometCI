@@ -9,7 +9,7 @@
 - Package: 	Clan Comet CMS;
 - File: 	Main admin stylesheet;
 
-- Colors: #22c7b6; #D64644;
+- Colors: #22c7b6; #D64644; #f5696c; #FCC063; #d66d93; #7f4e84;
 
 *****************************************************/
 *, a:focus { outline: none; }
@@ -24,8 +24,13 @@ body {
 	margin: 0;
 }
 
-a { color: #22c7b6; }
-a:hover, a:focus, a:active { color: #D64644; text-decoration: none; }
+a { color: #1352a2; }
+a:hover, a:focus, a:active { color: #22c7b6; text-decoration: none; }
+
+.header-thin {
+	font-weight: lighter;
+	font-size: 22px;
+}
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, 
 input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
@@ -62,18 +67,15 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	float: left;
 	font-weight: lighter;
 	text-indent: 20px;
-	border-left: 1px solid #25282c;
 }
 
 .site-header .avatar {
 	display: block;
 	float: left;
-	background: #454B54;
+	background: #272a2f;
 	width: 50px;
 	height: 49px;
-	padding: 15px 0 0 14px;
-	border-bottom: 1px solid #25282c;
-	border-right: 1px solid #454a52;
+	padding: 16px 0 0 15px;
 }
 
 .site-header ul {
@@ -170,7 +172,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	box-shadow: inset 0 -5px rgba(0,0,0,0.15);
 }
 
-.cms-box h4 {
+.cms-box .box-title h4 {
 	margin: 0;
 	color: #fff;
 	padding: 15px 15px 20px 15px;
@@ -183,7 +185,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 #event-tabs a {
-	background: #ed442d;
+	background: #D64644;
 	display: block;
 	float: left;
 	width: 50%;
@@ -194,22 +196,31 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 #event-tabs a:hover, #event-tabs a:focus, #event-tabs .active a {
-	background: #f3593b;
+	background: #E55454;
 	text-decoration: none;
 }
 
 .cms-box .match-list {
 	list-style: none;
 	margin: 0;
-	padding-top: 10px;
 }
 
 .cms-box .match-list li {
-	margin: 0 10px 10px 10px;
+	padding: 10px;
 	overflow: hidden;
+	border-bottom: 1px solid #dcdee1;
 }
 
-.cms-box .match-list li img { float: left; }
+.cms-box .match-list li img { float: left; margin-right: 10px; }
+
+.cms-box select {
+	border-radius: 0;
+	margin: 13px 20px 0 0;
+}
+
+.header-white {
+	padding: 5px 20px;
+}
 
 /* Calendar / Fixtures */
 .cms-calendar {
@@ -260,14 +271,14 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .event {
-	border: 2px solid #7E589B;
+	border: 2px solid #7f4e84;
 	margin-bottom: 20px;
 	background: #fff;
 }
 
 .event-header {
 	color: #fff;
-	background: #7E589B;
+	background: #7f4e84;
 	padding: 5px 15px;
 }
 
@@ -400,6 +411,11 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border: none;
 }
 
+.tbl-custom thead th a { color: #22c7b6; }
+.tbl-custom thead th a:hover,
+.tbl-custom thead th a:focus,
+.tbl-custom thead th a:active { color: #fff; }
+
 .tbl-custom tbody td {
 	height: 50px;
 	font-weight: lighter;
@@ -425,7 +441,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .tbl-custom .action-add a:hover,
 .tbl-custom .action-add a:active, 
 .tbl-custom .action-add a:focus {
-	background: #30D3C0;
+	background: #e55654;
 }
 
 .tbl-custom td.action {
@@ -546,7 +562,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 /* Buttons */
 .btn-cms-orange {
-	background: #D64644;
+	background: #f5696c;
 	color: #fff;
 	text-shadow: none;
 	font-family: inherit;
@@ -556,15 +572,15 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
-	border: 1px solid #D64644;
+	border: 1px solid #f5696c;
 	border-radius: 0;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
 }
 
-.btn-cms-orange:hover, .btn-cms-orange:focus {
-	background: #E1201B;
-	border-color: #E1201B;
+.btn-cms-orange:hover, .btn-cms-orange:focus { /*#ff7362*/
+	background: #af4454;
+	border-color: #af4454;
 	color: #fff;
 	text-shadow: none;
 }
@@ -820,4 +836,30 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 			    -webkit-background-size: 240px 24px;
 			    background-size: 240px 24px;
 			}
+}
+
+/* Charts */
+.morris-hover {
+    position: absolute;
+    z-index: 1000;
+}
+
+.morris-hover.morris-default-style {
+    padding: 6px;
+    color: #fff;
+    background: #D64644;
+    font-family: sans-serif;
+    font-size: 12px;
+    text-align: center;
+}
+
+.morris-hover.morris-default-style .morris-hover-row-label {
+    font-weight: bold;
+    margin: 0.25em 0;
+}
+
+.morris-hover.morris-default-style .morris-hover-point {
+    white-space: nowrap;
+    margin: 0.1em 0;
+    color: #fff !important;
 }

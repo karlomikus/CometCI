@@ -6,6 +6,7 @@ class Admin extends Backend_Controller {
     {
         $this->load->model('matches/matches_m');
         $this->load->model('comet_m');
+        $this->load->library('CPULoad');
 
         $this->template
             ->set('title', 'Dashboard')
