@@ -255,6 +255,14 @@ function get_layout($moduleName = '')
 	else return 'default.twig';
 }
 
+function sort_link($module, $sortBy, $sortKey)
+{
+	$icon = '<i class="icon-angle-down"></i>'; // Desc
+	if($sortKey == 'asc') $icon = '<i class="icon-angle-up"></i>'; // Asc
+
+	return '<a href="'.base_url().'admin/'.$module.'/index/'.$sortBy.'/'.$sortKey.'">'.$icon.'</a>';
+}
+
 /**
  * Wrapper function for easier access
  * in twig parser. Loads module

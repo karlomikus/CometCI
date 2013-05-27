@@ -4,29 +4,39 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/posts/';
 
-	private $template_data = array(
-		'title' => 'Posts',
-		'create_title' => 'Add post',
-		'edit_title' => 'Edit post',
-		'add_button' => 'Add post'
-	);
-
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
+
 		$this->load->model('posts_m');
 	}
 
-	public function index($sortBy = NULL, $sortOrder = NULL) {
+	public function index($page = 0, $sortBy = NULL, $sortOrder = NULL)
+	{
+		$this->load->library('pagination');
+		$count = $this->posts_m->count_all();
+
 		if(isset($sortBy) && isset($sortOrder)) $this->posts_m->order_by($sortBy, $sortOrder);
+		else $this->posts_m->order_by('date', 'desc');
+
+		$config['base_url'] = base_url().'admin/posts/index/';
+		$config['total_rows'] = $count;
+		$config['per_page'] = 15;
+		$config['uri_segment'] = 3;
+
+		$this->posts_m->limit(15, $page);
+
+		$this->pagination->initialize($config);
 
 		$this->template
-			->set($this->template_data)
+			->set('title', 'Posts')
 			->set('posts', $this->posts_m->get_all())
+			->set('pagination', $this->pagination->create_links())
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -58,13 +68,13 @@ class Admin extends Backend_Controller {
 			$this->load->model('labels/labels_m');
 			$this->template
 				->set('labels', $this->labels_m->get_all())
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create post')
 				->build('admin/form');
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -95,15 +105,17 @@ class Admin extends Backend_Controller {
 		else {
 			$this->load->model('labels/labels_m');
 			$this->template
-				->set('title', $this->template_data['edit_title'])
+				->set('title', 'Edit post')
 				->set('data', $this->posts_m->as_array()->get($id))
 				->set('labels', $this->labels_m->get_all())
 				->build('admin/form');
 		}
 	}
 
-	public function delete($id = 0) {
+	public function delete($id = 0)
+	{
 		$this->posts_m->delete($id);
+
 		redirect('admin/posts');
 	}
 }

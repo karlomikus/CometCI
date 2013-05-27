@@ -1,14 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Name of the clan
+ * Site
  */
 $config['clanname'] = 'Team Comet';
 
 /**
- * Widgets config
+ * Modules
  */
-$config['wi_max_matches'] = 5;
+$config['mod_max_posts'] = 6;
+
+/**
+ * Widgets
+ */
+$config['wi_max_matches'] = 6;
+$config['wi_max_posts'] = 6;
 
 $config['comet_date_format'] = 'Y';
 

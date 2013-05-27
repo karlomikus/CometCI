@@ -3,7 +3,7 @@
 		<tr>
 			<th>Name</th>
 			<th>Description</th>
-			<th>Posts</th>
+			<th>Items</th>
 			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>

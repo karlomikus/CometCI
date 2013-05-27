@@ -43,7 +43,7 @@
 				<li class="sidebar-title">Users</li>
 				<li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
 				<li><a href="<?php echo site_url('admin/groups'); ?>">Groups</a></li>
-				<!-- <li><a href="<?php echo site_url('admin/permissions'); ?>">Permissions</a></li> -->
+				<li><a href="<?php echo site_url('admin/permissions'); ?>">Permissions</a></li>
 			</ul>
 			<ul id="settings-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Settings</li>

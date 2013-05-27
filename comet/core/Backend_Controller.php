@@ -6,27 +6,25 @@ class Backend_Controller extends MY_Controller {
 	{
 		parent::__construct();
 
-		//Set theme for backend
-		// $this->assets->js('ckeditor/ck.js');
-		// $this->assets->css('ckeditor/ck.js');
-		// $assets['css'][] = $this->assets->css('bootstrap.min');
-		// $assets['css'][] = $this->assets->css('font-awesome.min');
-		$this->assets->_add_to_group('css', 'font-awesome.min');
-		$this->assets->_add_to_group('css', 'font-awesome.min2');
-		$this->assets->_add_to_group('css', 'font-awesome.min3');
-		$this->assets->_add_to_group('js', 'font-awesome.js');
-		$this->assets->_add_to_group('js', 'font-jq.min3');
-		$this->assets->build();
+		// Set default scripts
+		$this->template->append_metadata(Assets::adminJs('bootstrap.min', 'js'));
+		$this->template->append_metadata(Assets::adminJs('select2.min', 'js'));
+		$this->template->append_metadata(Assets::adminJs('bootbox.min', 'js'));
+		$this->template->append_metadata(Assets::adminJs('jquery.icheck.min', 'js'));
+		$this->template->append_metadata(Assets::adminJs('jquery.cookie', 'js'));
+		$this->template->append_metadata(Assets::adminJs('main', 'js'));
 
+		//Set theme for backend
 		$this->template
 			->set_partial('sidebar', 'admin/sidebar')
 			->set_partial('head', 'admin/head')
 			->enable_parser(FALSE)
 			->set_layout('main', 'admin');
 
+		// Show login page
 		$current_page = $this->uri->segment(1, '') . '/' . $this->uri->segment(2, 'index');
-
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		{
 			if($current_page != 'admin/login') redirect('admin/login');
 		}
 	}

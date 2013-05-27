@@ -2,15 +2,23 @@
 
 class Admin extends Backend_Controller {
 
-	//API: 60C93BF0B5507EB6A957E2A1D7F5EE84
 	private $folder_path = './uploads/screenshots/';
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
+
+		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
+		$this->template->append_metadata(Assets::adminJs('picker', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('picker.time', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('picker.date', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('legacy', 'js/pickdate'));
+
 		$this->load->model('matches_m');
 	}
 
-	public function index() {
+	public function index()
+	{
 		$this->load->model('opponents/opponents_m');
 		$this->load->model('games/games_m');
 
@@ -22,8 +30,8 @@ class Admin extends Backend_Controller {
 
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -116,8 +124,8 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->helper('htmlpurifier');
@@ -184,13 +192,15 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	public function delete($id = 0) {
+	public function delete($id = 0)
+	{
 		$this->matches_m->delete($id);
 		// TODO: Unlink match screenshots
 		redirect('admin/matches');
 	}
 
-	public function delete_screenshot($id = 0, $i = 0) {
+	public function delete_screenshot($id = 0, $i = 0)
+	{
 		if(!$this->input->is_ajax_request()) redirect('admin/matches');
 
 		if($_POST && $_POST['matchID'] && $_POST['i']) {

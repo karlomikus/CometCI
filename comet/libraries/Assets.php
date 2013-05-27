@@ -13,14 +13,17 @@ class Assets
         $this->assets_path = base_url().'assets/';
 	}
 
-	public function build($group = '')
+	/**
+	 * Add javascript assets from admin assets folder
+	 * 
+	 * @param  string $file   Javascript file without extension
+	 * @param  string $folder Javascript folder
+	 * @return string         Fully formatted HTML script tags
+	 */
+	public static function adminJs($file, $folder = 'js')
 	{
-		//print_r($this->assets_group);
-		$i = 0;
-		foreach ($this->assets_group as $group) {
-			//echo $group[$i];
-			$i++;
-		}
+		$assetPath = base_url().'assets/admin/'.$folder.'/'.$file;
+		return '<script src="'.$assetPath.'.js"></script>';
 	}
 
 	public function css($file)
@@ -37,13 +40,6 @@ class Assets
 	{
 		//TODO
 	}
-
-	public function _add_to_group($asset, $group = 'default')
-	{
-		$this->assets_group[$asset][] = $group;
-		return $this;
-	}
-
 }
 
 /* End of file Assets.php */

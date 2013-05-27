@@ -7,12 +7,6 @@ $(document).ready(function() {
 		$(this).find(".action-list").toggle();
 	});
 
-	$('input').iCheck({
-		checkboxClass: 'icheckbox_square-blue',
-		radioClass: 'iradio_square-blue',
-		increaseArea: '20%' // optional
-	});
-
 // Tooltip -----------------------------------
 	$('.js_tooltip').tooltip();
 
@@ -52,9 +46,6 @@ $(document).ready(function() {
 	$('.goback').click(function(){
 		history.back();
 	});
-
-// Datepicker -----------------------------------
-	$('.date').datepicker();
 
 // Match - Scores -----------------------------------
 	var scntDiv = $('#admin-scores');
@@ -181,14 +172,6 @@ $(document).ready(function() {
 				bootbox.hideAll();
 			}
 		}]);
-
-		// bootbox.confirm("<i class=\"icon-exclamation-sign icon-4x\"></i><br />Are you sure you want to delete this data?", function(result) {
-		// 	if (result) {
-		// 		window.location = deleteLink; // Delete confirmed
-		// 	} else {
-		// 		bootbox.hideAll(); // User pressed cancel, hide all modals
-		// 	}
-		// });
 	});
 
 // Input tooltips -----------------------------------
@@ -210,6 +193,22 @@ $(document).ready(function() {
 	}).tooltip({
 	placement: "right",
 	trigger: "manual"
+	});
+
+// Custom checkboxes
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue',
+		increaseArea: '20%' // optional
+	});
+
+// Date and time picker -----------------------------------
+	$('.datepicker').pickadate({
+		format: 'yyyy-mm-dd'
+	});
+	$('.timepicker').pickatime({
+		format: 'HH:i',
+		interval: 10
 	});
 
 }); // End of jQuery document load

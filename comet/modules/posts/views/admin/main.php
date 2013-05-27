@@ -1,8 +1,8 @@
 <table class="table tbl-custom">
 	<thead>
 		<tr>
-			<th>Title <a href="<?php echo base_url().'admin/posts/index/title/asc';?>"><i class="icon-angle-down"></i></a></th>
-			<th>Date <a href="<?php echo base_url().'admin/posts/index/date/asc';?>"><i class="icon-angle-down"></i></a></th>
+			<th>Title <?php echo sort_link('posts', 'title', 'desc'); ?></th>
+			<th>Date <?php echo sort_link('posts', 'date', 'desc'); ?></th>
 			<th>Author</th>
 			<th>Label</th>
 			<th class="action-add"><a href="<?php echo base_url().'admin/posts/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
@@ -26,3 +26,19 @@
 		<?php endforeach;?>
 	</tbody>
 </table>
+
+<div class="pagination pagination-right pagination-large">
+	<?php echo $pagination; ?>
+</div>
+
+<div class="pagination pagination-right pagination-large">
+	<ul>
+		<li><a href="#">Prev</a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">Next</a></li>
+	</ul>
+</div>

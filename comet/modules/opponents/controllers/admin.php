@@ -4,37 +4,27 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/opponents/';
 
-	private $template_data = array(
-		'title' => 'Opponents',
-		'create_title' => 'Add opponent',
-		'edit_title' => 'Edit opponent',
-		'add_button' => 'Add opponent',
-		'uri' => '/admin/opponents'
-	);
-
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('opponents_m');
-
-		$this->breadcrumb->append_crumb($this->template_data['title'], $this->template_data['uri']);
 	}
 
-	public function index() {
+	public function index()
+	{
 		$this->load->helper('text');
 
 		$this->template
-			->set($this->template_data)
+			->set('title', 'Opponents')
 			->set('opponents', $this->opponents_m->get_all())
 			->build('admin/main');
 
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
-		$this->breadcrumb->append_crumb($this->template_data['create_title'], $this->template_data['uri'].'/create');
 
 		$this->form_validation->set_rules('name', 'Opponent name', 'required');
 
@@ -73,18 +63,16 @@ class Admin extends Backend_Controller {
 			$this->games_m->order_by('name');
 
 			$this->template
-				->set('title', $this->template_data['create_title'])
+				->set('title', 'Create opponent')
 				->set('games', $this->games_m->get_all())
 				->build('admin/form');
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-
-		$this->breadcrumb->append_crumb($this->template_data['edit_title'], $this->template_data['uri'].'/edit');
 
 		$this->form_validation->set_rules('name', 'Opponent name', 'required');
 
@@ -129,7 +117,7 @@ class Admin extends Backend_Controller {
 			$this->games_m->order_by('name');
 
 			$this->template
-			->set('title', $this->template_data['edit_title'])
+			->set('title', 'Delete opponent')
 			->set('games', $this->games_m->get_all())
 			->set('data', $this->opponents_m->as_array()->get($id))
 			->build('admin/form');

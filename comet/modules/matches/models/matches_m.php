@@ -82,6 +82,29 @@ class Matches_m extends MY_Model {
 		return $result;
 	}
 
+	public function calculate_scores_rate($type = 'win')
+	{
+		$this->db->select('match');
+		$this->db->select('sum(opponent) as score1', FALSE);
+		$this->db->select('sum(team) as score2', FALSE);
+		$this->db->group_by('match');
+		$query = $this->db->get('matches_scores')->result();
+
+		$rateWin = 0;
+		$rateLose = 0;
+		$rateDraw = 0;
+		foreach($query as $match)
+		{
+			if($match->score1 > $match->score2) $rateWin += 1;
+			else if($match->score1 < $match->score2) $rateLose += 1;
+			else $rateDraw += 1;
+		}
+
+		if($type == 'win') return $rateWin;
+		else if ($type == 'lose') return $rateLose;
+		else return $rateDraw;
+	}
+
 	/**
 	 * Gets match outcome based on provided ID
 	 * @param  int  $id     Match ID

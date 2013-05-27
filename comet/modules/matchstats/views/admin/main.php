@@ -1,57 +1,26 @@
-<script src="<?php echo base_url(); ?>assets/admin/js/flotr2.min.js"></script>
-<?php 
-  $wins = 300;
-  $draws = 45;
-  $loses = 120;
-  $total = $wins + $draws + $loses;
-?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 
-<div class="cms-progress">
-  <div class="wins" style="width: <?php echo round($wins/$total*100, 3); ?>%;"></div>
-  <div class="draws" style="width: <?php echo round($draws/$total*100, 3); ?>%;"></div>
-  <div class="loses" style="width: <?php echo round($loses/$total*100, 3); ?>%;"></div>
-</div>
+<?php $total = $data->totalWins + $data->totalLoses + $data->totalDraws; ?>
 
-<div style="background: #33b5e5; padding: 20px; margin: 20px 0;">
-  <div id="flotr" style="width: 100%; height: 300px; margin-top: 20px;"></div>
+<div class="row-fluid">
+  <div class="span3 cms-box">
+    <div class="header-white">
+      <h4 class="header-thin">Win rate</h4>
+    </div>
+    <div id="winrate" style="height: 300px;"></div>
+  </div>
+  <div class="span9 cms-box">&nbsp;</div>
 </div>
 
 <script>
-  (function basic(container) {
-
-    var
-    d1 = [
-        [0, 3],
-        [4, 8],
-        [8, 5],
-        [9, 13],
-        [14, 17],
-        [18, 25],
-        [26, 12]
-    ]
-
-    // Draw Graph
-    graph = Flotr.draw(container, [d1], {
-        colors: ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff'],
-        shadowSize: 0,
-        points: {
-            show: true
-        },
-        lines: {
-            show: true
-        },
-        xaxis: {
-            minorTickFreq: 4
-        },
-        grid: {
-            color: "#ffffff",
-            minorVerticalLines: true,
-            backgroundColor: null,
-            tickColor: "#72d7f2",
-            outlineWidth: 0,
-            verticalLines: false,
-            minorVerticalLines: false
-        }
-    });
-})(document.getElementById("flotr"));
+  new Morris.Donut({
+    element: 'winrate',
+    data: [
+      {label: "Wins", value: <?php echo $data->totalWins; ?>},
+      {label: "Loses", value: <?php echo $data->totalLoses; ?>},
+      {label: "Draws", value: <?php echo $data->totalDraws; ?>}
+    ],
+    colors: ['#22c7b6', '#D64644', '#FCC063']
+  });
 </script>

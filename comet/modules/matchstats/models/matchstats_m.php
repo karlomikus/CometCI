@@ -1,10 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Labels_m extends MY_Model {
+class Matchstats_m extends MY_Model {
 
-	public function count_posts_in_label($labelID) {
-		return $this->db->select('id')
-					->from('posts')
-					->where('label', $labelID)->get()->num_rows();
+	public function calculateTotalScores($type = 'wins')
+	{
+		$this->_table = 'matches_scores';
+		$query = parent::get_all();
+
+		foreach($query as $score) {
+			if($side == 'team') $result += $score->team;
+			else $result += $score->opponent;
+		}
+	}
+
+	public function calculateWinRate($week = '')
+	{
+		$this->_table = 'matches_scores';
+		$query = parent::get_all();
 	}
 }

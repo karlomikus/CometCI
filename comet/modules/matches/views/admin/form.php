@@ -19,15 +19,9 @@
 
 	<br />
 
-	<div class="input-append no-border">
-		<input class="span3" type="text" name="date" value="<?php echo isset($data) ? date('Y-m-d', strtotime($data['date'])) : date('Y-m-d'); ?>" />
-		<span class="add-on"><i class="icon-calendar"></i></span>
-	</div>
+	<input placeholder="Date" class="span3 datepicker" type="text" name="date" />
 
-	<div class="input-append no-border">
-		<input class="span1" type="text" name="time" value="<?php echo isset($data) ? date('H:i', strtotime($data['date'])) : date('H:i'); ?>" />
-		<span class="add-on"><i class="icon-time"></i></span>
-	</div>
+	<input placeholder="Time" class="span2 timepicker" type="text" name="time" />
 
 	<br />
 
