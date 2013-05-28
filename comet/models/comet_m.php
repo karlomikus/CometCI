@@ -2,9 +2,9 @@
 
 class Comet_m extends MY_Model {
 
-	public function get_visits_stats()
+	public function get_visits_stats($month)
 	{
-		$this->db->where('MONTH(date)', 5);
+		$this->db->where('MONTH(date)', $month);
 		$this->db->group_by('DAY(date)');
 		$this->db->select('date, COUNT(*) AS total');
 
@@ -30,6 +30,25 @@ class Comet_m extends MY_Model {
 			);
 			parent::insert($data);
 		}
+	}
+
+	public function count_comments()
+	{
+		$query = $this->db->get('comments');
+		return $query->num_rows(); 
+	}
+
+	public function comment_stats()
+	{
+		$weekAgo = date("Y-m-d", strtotime("-1 week"));
+		$where = 'date >= "'.$weekAgo.'" AND date <= "'.date("Y-m-d").'"';
+
+		$this->db->select('date');
+		$this->db->select('COUNT(*) as total');
+		$this->db->where($where);
+		$this->db->group_by('DAY(date)');
+
+		return $query = $this->db->get('comments')->result();
 	}
 
 	private function has_viewed($ip, $userID = NULL)

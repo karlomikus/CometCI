@@ -11,9 +11,10 @@ class Admin extends Backend_Controller {
         $this->template
             ->set('title', 'Dashboard')
             ->set('matches', $this->matches_m->get_upcoming_matches())
-            ->set('visits', $this->comet_m->get_visits_stats())
+            ->set('visits', $this->comet_m->get_visits_stats(5))
+            ->set('countcomments', $this->comet_m->count_comments())
+            ->set('commentstats', $this->comet_m->comment_stats())
             ->build('admin/dashboard');
-
     }
 
     public function login() {

@@ -30,6 +30,11 @@ $(document).ready(function() {
 		width: 'off'
 	});
 
+	$(".js_select_no_search").select2({
+		width: 'off',
+		minimumResultsForSearch: -1
+	});
+
 // Select 2 Game icons -----------------------------------
 	function formatGame(game) {
 		var originalOption = game.element;
@@ -52,7 +57,7 @@ $(document).ready(function() {
 	var i = $('#admin-scores p').size() + 1;
 
 	$('#admin-scores-add').live('click', function() { //Add
-		var inputhtml = '<p><input placeholder="Opponent score #'+i+'" class="reset-input" type="text" name="opponentscore[]" /> <input placeholder="Team score #'+i+'" class="reset-input" type="text" name="teamscore[]" /> <a href="#" class="admin-scores-remove btn btn-cms-orange"><i class="icon-minus"></i></a></p>';
+		var inputhtml = '<p><input placeholder="Opponent score #'+i+'" class="reset-input input-large" type="text" name="opponentscore[]" /> <input placeholder="Team score #'+i+'" class="reset-input input-large" type="text" name="teamscore[]" /> <a href="#" class="admin-scores-remove btn btn-cms-orange"><i class="icon-minus"></i></a></p>';
 		$(inputhtml).appendTo(scntDiv);
 		i++;
 		return false;

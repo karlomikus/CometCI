@@ -7,6 +7,12 @@ class Admin extends Backend_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->template->append_metadata(Assets::adminJs('picker', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('picker.time', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('picker.date', 'js/pickdate'));
+		$this->template->append_metadata(Assets::adminJs('legacy', 'js/pickdate'));
+
 		$this->load->model('events_m');
 	}
 
@@ -34,8 +40,8 @@ class Admin extends Backend_Controller {
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '500';
-				$config['max_height']    = '500';
+				$config['max_width']     = '800';
+				$config['max_height']    = '600';
 				$config['file_name']     = $next_id;
 				$this->upload->initialize($config);
 
@@ -43,7 +49,7 @@ class Admin extends Backend_Controller {
 					$file_data = $this->upload->data();
 				}
 				else {
-					$this->session->set_flashdata('create_error', "There was an error with the file!");
+					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
                 	$file_data = NULL;
 				}
 			}
@@ -51,11 +57,14 @@ class Admin extends Backend_Controller {
 			if(isset($file_data) and !empty($file_data['file_name'])) $file = $file_data['file_name'];
 			else $file = '0';
 
+			$startDate = $this->input->post('startdate').' '.$this->input->post('starttime');
+			$endDate = $this->input->post('enddate').' '.$this->input->post('endtime');
+
 			$data = array(
 				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description'),
-				'startdate' => $this->input->post('startdate'),
-				'enddate' => $this->input->post('enddate'),
+				'startdate' => $startDate,
+				'enddate' => $endDate,
 				'link' => $this->input->post('link'),
 				'image' => $file
 			);

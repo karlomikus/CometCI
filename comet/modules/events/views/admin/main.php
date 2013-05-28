@@ -1,3 +1,10 @@
+<?php if($this->session->flashdata('create_error')) : ?>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?php echo $this->session->flashdata('create_error'); ?>
+</div>
+<?php endif; ?>
+
 <table class="table tbl-custom">
 	<thead>
 		<tr>

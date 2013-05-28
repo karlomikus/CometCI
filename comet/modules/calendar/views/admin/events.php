@@ -1,13 +1,20 @@
 <?php foreach($data as $event): ?>
+<?php
+	$eventName = 'Scrim';
+	$eventLink = $event->matchlink;
+	$eventData = get_event_data($event->event);
+	if(!empty($eventData->name)) $eventName = $eventData->name;
+	if(!empty($eventData->link)) $eventLink = $eventData->link;
+?>
 	<div class="event">
 		<header class="event-header">
 			Match @ <?php echo date('H:i', strtotime($event->date)); ?>
 		</header>
 		<div class="event-content">
-			<h4>The International Qualifiers - Versus <?php echo get_opponent_name($event->opponent); ?></h4>
+			<h4><?php echo $eventName; ?> - Versus <?php echo get_opponent_name($event->opponent); ?></h4>
 			<p>
 				Game: <?php echo get_game_name($event->game); ?><br />
-				<a href="<?php echo $event->matchlink; ?>">Details</a>
+				<a href="<?php echo $eventLink; ?>" target="_blank">Details</a>
 			</p>
 		</div>
 	</div>

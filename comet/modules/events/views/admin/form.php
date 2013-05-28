@@ -3,13 +3,23 @@
 
 	<input placeholder="Name" class="input-xlarge" type="text" name="name" value="<?php echo isset($data) ? $data['name'] : set_value("name"); ?>" />
 
-	<input placeholder="Start date" type="text" name="startdate" value="<?php echo date('Y-m-d H:i:m'); ?>" />
+	<input placeholder="Event link" class="input-xlarge" type="text" name="link" value="<?php echo isset($data) ? $data['link'] : set_value("link"); ?>" />
 
-	<input placeholder="End date" type="text" name="enddate" value="<?php echo date('Y-m-d H:i:m'); ?>" />
+	<br />
 
 	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
+	
+	<br />
 
-	<input placeholder="Event link" class="input-xlarge" type="text" name="link" value="<?php echo isset($data) ? $data['link'] : set_value("link"); ?>" />
+	<input placeholder="Starting date" class="datepicker span3" type="text" name="startdate" />
+	<input placeholder="Starting time" class="timepicker span2" type="text" name="starttime" />
+
+	<br />
+
+	<input placeholder="Ending date" class="datepicker span3" type="text" name="enddate" />
+	<input placeholder="Ending time" class="timepicker span2" type="text" name="endtime" />
+
+	<br />
 
 	<div class="cms-upload">
 		<?php if(isset($data) && !empty($data['image'])): ?>

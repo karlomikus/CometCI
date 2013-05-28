@@ -19,9 +19,9 @@
 
 	<br />
 
-	<input placeholder="Date" class="span3 datepicker" type="text" name="date" />
+	<input placeholder="Date" class="span3 datepicker" type="text" name="date" value="<?php echo isset($data) ? date('Y-m-d', strtotime($data['date'])) : set_value("date"); ?>" />
 
-	<input placeholder="Time" class="span2 timepicker" type="text" name="time" />
+	<input placeholder="Time" class="span2 timepicker reset-input" type="text" name="time" value="<?php echo isset($data) ? date('H:i', strtotime($data['date'])) : set_value("date"); ?>" />
 
 	<br />
 
@@ -38,8 +38,8 @@
 		<?php if(isset($scores)): ?>
 		<?php $i=1; foreach($scores as $score): ?>
 		<p>
-			<input class="reset-input" type="text" name="opponentscore[]" value="<?php echo $score->opponent; ?>" />
-			<input class="reset-input" type="text" name="teamscore[]" value="<?php echo $score->team; ?>" />
+			<input class="reset-input input-large" type="text" name="opponentscore[]" value="<?php echo $score->opponent; ?>" />
+			<input class="reset-input input-large" type="text" name="teamscore[]" value="<?php echo $score->team; ?>" />
 			<?php if($i == 1): ?>
 			<a href="#" class="btn btn-cms-orange" id="admin-scores-add"><i class="icon-plus"></i></a>
 			<?php else: ?>
@@ -49,8 +49,8 @@
 		<?php $i++; endforeach; ?>
 		<?php else: ?>
 		<p>
-			<input class="reset-input" type="text" name="opponentscore[]" placeholder="Opponent score #1" />
-			<input class="reset-input" type="text" name="teamscore[]" placeholder="Team score #1" />
+			<input class="reset-input input-large" type="text" name="opponentscore[]" placeholder="Opponent score #1" />
+			<input class="reset-input input-large" type="text" name="teamscore[]" placeholder="Team score #1" />
 			<a id="admin-scores-add" class="btn btn-cms-orange" href="#"><i class="icon-plus"></i></a>
 		</p>
 		<?php endif; ?>
@@ -59,12 +59,14 @@
 	<h4>Player data</h4>
 
 	<input placeholder="Opponent player list" class="input-xlarge" type="text" name="opplayers" value="<?php echo isset($data) ? $data['opponent-players'] : set_value("opponent-players"); ?>" />
+	
+	<br />
 
 	<input placeholder="Choose team first" class="input-xxlarge cms-margin" type="hidden" id="teamplayers" name="team_players[]" />
 
 	<h4>Additional data</h4>
 
-	<select placeholder="Match type" class="js_select input-large" name="type">
+	<select placeholder="Match type" class="js_select_no_search input-large" name="type">
 	<?php if(isset($data)): ?>
 		<option></option>
 		<option value="0" <?php echo $data['type'] == 0 ? 'selected' : ''; ?>>1v1</option>
@@ -84,7 +86,7 @@
 	<?php endif; ?>
 	</select>
 
-	<select placeholder="Match status" class="js_select input-large" name="status">
+	<select placeholder="Match status" class="js_select_no_search input-large" name="status">
 	<?php if(isset($data)): ?>
 		<option></option>
 		<option value="0" <?php echo $data['status'] == 0 ? 'selected' : ''; ?>>Played</option>
@@ -98,6 +100,15 @@
 		<option value="2">Delayed</option>
 		<option value="3">Cancelled</option>
 	<?php endif; ?>
+	</select>
+
+	<br />
+
+	<select placeholder="Choose an event" class="js_select_no_search input-xlarge" name="event">
+		<option></option>
+		<?php foreach($events as $event): ?>
+		<option value="<?php echo $event->id; ?>" <?php echo isset($data) ? set_select('event', $data['event'], $event->id==$data['event'] ? TRUE : FALSE) : set_select('event'); ?>><?php echo $event->name; ?></option>
+		<?php endforeach; ?>
 	</select>
 
 	<input placeholder="Matchlink" class="input-xlarge" type="text" name="matchlink" value="<?php echo isset($data) ? $data['matchlink'] : set_value("matchlink"); ?>" />

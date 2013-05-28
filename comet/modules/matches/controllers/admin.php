@@ -8,6 +8,7 @@ class Admin extends Backend_Controller {
 	{
 		parent::__construct();
 
+		// Add missing javascript
 		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
 		$this->template->append_metadata(Assets::adminJs('picker', 'js/pickdate'));
 		$this->template->append_metadata(Assets::adminJs('picker.time', 'js/pickdate'));
@@ -65,7 +66,8 @@ class Admin extends Backend_Controller {
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
 				'opponent-players' => $this->input->post('opplayers'),
-				'team-players' => $team_players
+				'team-players' => $team_players,
+				'event' => $this->input->post('event')
 			);
 
 			$this->matches_m->insert($data);
@@ -114,12 +116,14 @@ class Admin extends Backend_Controller {
 			$this->load->model('opponents/opponents_m');
 			$this->load->model('teams/teams_m');
 			$this->load->model('games/games_m');
+			$this->load->model('events/events_m');
 
 			$this->template
 				->set('title', 'Create Match')
 				->set('opponents', $this->opponents_m->get_all())
 				->set('teams', $this->teams_m->get_all())
 				->set('games', $this->games_m->get_all())
+				->set('events', $this->events_m->get_all())
 				->build('admin/form');
 		}
 	}

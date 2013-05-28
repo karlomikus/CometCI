@@ -1,5 +1,6 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/admin/js/jquery.sparkline.min.js"></script>
 
 <div class="row-fluid">
 	<div class="span4 cms-box">
@@ -31,34 +32,6 @@
 						<span>18:45 - ESL Master LEague</span>
 					</p>
 				</li>
-				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
-					<p>
-						<a href="#">Team Coolermaster</a> <br />
-						<span>18:45 - ESL Master LEague</span>
-					</p>
-				</li>
-				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
-					<p>
-						<a href="#">Team Coolermaster</a> <br />
-						<span>18:45 - ESL Master LEague</span>
-					</p>
-				</li>
-				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
-					<p>
-						<a href="#">Team Coolermaster</a> <br />
-						<span>18:45 - ESL Master LEague</span>
-					</p>
-				</li>
-				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
-					<p>
-						<a href="#">Team Coolermaster</a> <br />
-						<span>18:45 - ESL Master LEague</span>
-					</p>
-				</li>
 			</ul>
 		</div>
 	</div>
@@ -69,9 +42,9 @@
 			</div>
 			<div class="span6 text-right">
 				<select name="month" id="stats-month">
-					<option value="1">May</option>
-					<option value="1">September</option>
-					<option value="1">August</option>
+					<?php for($m = 1; $m <= 12; $m++): ?>
+						<option value="<?php echo $m; ?>"><?php echo date("F", mktime(0, 0, 0, $m)); ?></option>
+					<?php endfor; ?>
 				</select>
 			</div>
 		</div>
@@ -81,17 +54,65 @@
 
 <div class="row-fluid">
 	<div class="span4 cms-box">
-		sadasda
+		<div class="row-fluid mini-stats">
+			<div class="span7">
+				<h4><?php echo $countcomments; ?></h4>
+				<small>Total Comments</small>
+			</div>
+			<div class="span4">
+				<span class="inlinesparkline">
+					<?php $resultstr = array(); foreach ($commentstats as $stat): ?>
+						<?php $resultstr[] = $stat->total; ?>
+					<?php endforeach; ?>
+					<?php echo implode(",", $resultstr); ?>
+				</span>
+			</div>
+		</div>
+		<div class="row-fluid mini-stats">
+			<div class="span7">
+				<h4>53</h4>
+				<small>Total Posts</small>
+			</div>
+			<div class="span4">
+				<span class="inlinesparkline">5,6,7,9,9,6,8,10,8,4,6,7</span>
+			</div>
+		</div>
+		<div class="row-fluid mini-stats">
+			<div class="span7">
+				<h4>64</h4>
+				<small>Total Topics</small>
+			</div>
+			<div class="span4">
+				<span class="inlinesparkline">5,6,7,9,9,6,8,10,8,4,6,7</span>
+			</div>
+		</div>
 	</div>
 </div>
 
 <script>
+	$('.inlinesparkline').sparkline('html',{
+	    type: 'line',
+	    width: '150',
+	    height: '40',
+	    lineColor: '#9b9eaf',
+	    fillColor: '#eeeeee',
+	    spotColor: false,
+	    minSpotColor: false,
+	    maxSpotColor: false,
+	    highlightSpotColor: '#d64644',
+	    highlightLineColor: '#cccccc',
+	    spotRadius: 3,
+	    drawNormalOnTop: false
+	});
+
 	new Morris.Line({
 		element: 'cms-page-views',
 		data: [
-		<?php foreach ($visits as $visit): ?>
+		<?php
+		if($visits != NULL) {
+		foreach ($visits as $visit): ?>
 			{ month: '<?php echo date("Y-m-d", strtotime($visit->date)); ?>', value: <?php echo $visit->total; ?> },
-		<?php endforeach; ?>
+		<?php endforeach; } else { echo '{month: '.date("Y-m-d").', value: 0}'; } ?>
 		],
 		lineColors: ['#9b9eaf'],
 		pointFillColors: ['#D64644'],

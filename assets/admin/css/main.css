@@ -36,13 +36,13 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, 
 input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, 
 input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
-	border-color: #e23b24;
+	border-color: #22c7b6;
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 }
 
-.js_select, .js_select_game, .js_select_country {
+.js_select, .js_select_game, .js_select_country, .js_select_no_search {
 	margin-bottom: 20px;
 	box-shadow: 0 1px 0 #fff;
 }
@@ -166,7 +166,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 /* CMS Base Scaffolding */
-.cms-box { background: #fff; }
+.cms-box { background: #fff; margin: 0 0 30px 0; }
 
 .cms-box .box-title {
 	background: #4e5867;
@@ -222,6 +222,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .header-white {
 	padding: 5px 20px;
 }
+
+.mini-stats { border-bottom: 1px solid #dcdee1; }
+.mini-stats div:first-child { padding: 10px 20px; }
+.mini-stats div:first-child h4 { font-size: 22px; margin: 10px 0 0 0; }
+.mini-stats div:first-child small { font-size: 14px; }
+.mini-stats div:last-child { padding: 20px; }
 
 /* Calendar / Fixtures */
 .cms-calendar {
@@ -516,8 +522,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 /* Forms */
-.cms-form {
-}
+input, textarea, .uneditable-input { width: 300px; }
 
 .cms-form .cms-margin { margin-bottom: 20px !important; }
 
@@ -530,7 +535,7 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	margin-bottom: 20px;
 }
 
-.cms-form input, .cms-form textarea, .cms-form select { display: block; margin: 0 0 20px 0; }
+.cms-form input, .cms-form textarea, .cms-form select { /*display: block;*/ margin: 0 0 20px 0; }
 .cms-form input, .cms-form select { height: 30px; }
 
 .cms-form input,
@@ -553,13 +558,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 .cms-form textarea:focus,
 .cms-form select:focus {
 	box-shadow: inherit;
-	border-color: #f5696c;
+	border-color: #22c7b6;
 	outline: none !important;
 }
 
-.reset-input {
-	display: inline-block !important;
-}
+.reset-input { display: inline-block !important; }
+.input-inline { display: inline; }
 
 .datepicker, .timepicker {
 	background: #fff !important;
@@ -621,10 +625,10 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 }
 
 .select2-container .select2-choice {
-	height: 35px;
+	height: 38px;
 	padding: 0 0 0 15px;
 	border: 1px solid #a0a6af;
-	line-height: 35px;
+	line-height: 38px;
 	color: #444;
 	-webkit-border-radius: 0;
 	   -moz-border-radius: 0;

@@ -243,6 +243,14 @@ function get_team_games($teamID)
 	return $CI->roster_m->get_team_games($teamID);
 }
 
+function get_event_data($eventID = 0)
+{
+	$CI =& get_instance();
+	$CI->load->model('events/events_m');
+
+	return $CI->events_m->get($eventID);
+}
+
 function get_layout($moduleName = '')
 {
 	$CI =& get_instance();
