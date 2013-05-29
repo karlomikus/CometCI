@@ -18,7 +18,7 @@
 					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" width="50" height="50" />
 					<p>
 						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
-						<span>18:45 - ESL Master LEague</span>
+						<span><?php echo date('H:i', strtotime($match->date)); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
 					</p>
 				</li>
 				<?php endforeach; ?>
@@ -43,7 +43,7 @@
 			<div class="span6 text-right">
 				<select name="month" id="stats-month">
 					<?php for($m = 1; $m <= 12; $m++): ?>
-						<option value="<?php echo $m; ?>"><?php echo date("F", mktime(0, 0, 0, $m)); ?></option>
+						<option value="<?php echo $m; ?>" <?php echo (date("n") == $m) ? 'selected' : ''; ?>><?php echo date("F", mktime(0, 0, 0, $m)); ?></option>
 					<?php endfor; ?>
 				</select>
 			</div>
@@ -112,7 +112,7 @@
 		if($visits != NULL) {
 		foreach ($visits as $visit): ?>
 			{ month: '<?php echo date("Y-m-d", strtotime($visit->date)); ?>', value: <?php echo $visit->total; ?> },
-		<?php endforeach; } else { echo '{month: '.date("Y-m-d").', value: 0}'; } ?>
+		<?php endforeach; } else { echo '{ month: '.date("Y-m-d").', value: 0 }'; } ?>
 		],
 		lineColors: ['#9b9eaf'],
 		pointFillColors: ['#D64644'],

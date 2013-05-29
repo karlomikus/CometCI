@@ -8,6 +8,8 @@ class Admin extends Backend_Controller {
 	{
 		parent::__construct();
 
+		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
+
 		$this->load->model('posts_m');
 	}
 

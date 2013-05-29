@@ -3,6 +3,8 @@
 
 	<input placeholder="Title" type="text" name="title" value="<?php echo isset($data) ? $data['name'] : set_value("title"); ?>" />
 
+	<br />
+
 	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['description'] : set_value("description"); ?></textarea>
 
 	<div class="cms-upload">

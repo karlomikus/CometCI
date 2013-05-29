@@ -46,11 +46,30 @@ class Admin extends Backend_Controller {
 	{
 		$this->load->library('form_validation');
 
-		$this->template
-			->set('title', 'Edit module')
-			->set('data', $this->modules_m->get($id))
-			->set('layouts', $this->template->get_theme_layouts('default'))
-			->build('admin/form');
+		$this->form_validation->set_rules('layout', 'Layout', 'required');
+
+		if ($this->form_validation->run())
+		{
+			$layout = $this->input->post('layout');
+			$layoutName = preg_replace("/\\.[^.\\s]{3,4}$/", "", $layout);
+
+			$data = array(
+				'description' => $this->input->post('description'),
+				'enabled' => $this->input->post('enabled'),
+				'layout' => $layoutName
+			);
+
+			$this->modules_m->update($id, $data);
+			redirect('admin/modules');
+		}
+		else
+		{
+			$this->template
+				->set('title', 'Edit module')
+				->set('data', $this->modules_m->get($id))
+				->set('layouts', $this->template->get_theme_layouts('default'))
+				->build('admin/form');
+		}		
 	}
 
 	public function disable($id = 0)

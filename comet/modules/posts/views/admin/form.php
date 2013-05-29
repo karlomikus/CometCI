@@ -3,6 +3,8 @@
 
 	<input placeholder="Title" type="text" name="title" class="input-xxlarge" value="<?php echo isset($data) ? $data['title'] : set_value("title"); ?>" />
 
+	<br />
+
 	<select placeholder="Choose label" class="js_select input-xlarge" name="label">
 		<option></option>
 		<?php foreach($labels as $label): ?>

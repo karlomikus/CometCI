@@ -12,7 +12,7 @@
 		<?php foreach ($posts as $post): ?>
 		<tr>
 			<td><?php echo $post->title; ?></td>
-			<td><?php echo $post->date; ?></td>
+			<td><?php echo cms_date($post->date); ?> - <?php echo cms_time($post->date); ?></td>
 			<td><?php echo $this->ion_auth->user($post->author)->row()->username; ?></td>
 			<td><?php echo get_label_name($post->label); ?></td>
 			<td class="action">

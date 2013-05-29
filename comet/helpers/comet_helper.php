@@ -251,6 +251,25 @@ function get_event_data($eventID = 0)
 	return $CI->events_m->get($eventID);
 }
 
+function cms_date($date = '')
+{
+	$CI =& get_instance();
+	if(empty($date)) $dateFormat = time();
+	else $dateFormat = strtotime($date);
+
+	return date($CI->config->item('cms_date_format'), $dateFormat);
+}
+
+function cms_time($time = '')
+{
+	$CI =& get_instance();
+	if(empty($time)) $timeFormat = time();
+	else $timeFormat = strtotime($time);
+	
+	return date($CI->config->item('cms_time_format'), $timeFormat);
+}
+
+
 function get_layout($moduleName = '')
 {
 	$CI =& get_instance();
@@ -259,7 +278,7 @@ function get_layout($moduleName = '')
 
 	$moduleLayout = $CI->modules_m->get_by('name', $module)->layout;
 
-	if($CI->template->layout_exists($moduleLayout)) return $moduleLayout.'.twig';
+	if($CI->template->layout_exists($moduleLayout.'.twig')) return $moduleLayout.'.twig';
 	else return 'default.twig';
 }
 

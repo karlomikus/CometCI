@@ -4,6 +4,8 @@
  * Site
  */
 $config['clanname'] = 'Team Comet';
+$config['cms_date_format'] = 'd.m.Y';
+$config['cms_time_format'] = 'H:i';
 
 /**
  * Modules

@@ -4,107 +4,123 @@ class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/labels/';
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
+
 		$this->load->model('labels_m');
 	}
 
-	public function index() {
-		
+	public function index()
+	{
+		$this->load->helper('text');
+		$this->labels_m->order_by('name', 'asc');
+
 		$this->template
 			->set('title', 'Labels')
 			->set('labels', $this->labels_m->get_all())
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
+		if ($this->form_validation->run() == TRUE)
+		{
 			$next_id = $this->labels_m->get_next_id();
 
-			if (!empty($_FILES['banner']['name'])) {
+			if (!empty($_FILES['banner']['name']))
+			{
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
+				$config['max_width']     = '1000';
+				$config['max_height']    = '1000';
 				$config['file_name']     = $next_id;
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('banner')) {
+				if ($this->upload->do_upload('banner'))
+				{
 					$file_data = $this->upload->data();
 				}
-				else {
-					echo 'file fail';
-					//redirect('admin/teams');
+				else
+				{
+					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
+                	$file_data = NULL;
 				}
 			}
-
-			if(isset($file_data) and !empty($file_data['file_name'])) $file = $file_data['file_name'];
-			else $file = '0';
 
 			$data = array(
 				'name' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'banner' => $file_data['file_name']
 			);
 
 			$this->labels_m->insert($data);
 			redirect('admin/labels');
 		}
-		else {
-
+		else
+		{
 			$this->template
 				->set('title', 'Create label')
 				->build('admin/form');
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
-			if (!empty($_FILES['banner']['name'])) {
+		if ($this->form_validation->run() == TRUE)
+		{
+			if (!empty($_FILES['banner']['name']))
+			{
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
-				$config['file_name']     = $next_id;
+				$config['max_width']     = '1000';
+				$config['max_height']    = '1000';
+				$config['file_name']     = $id;
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('banner')) {
+				if ($this->upload->do_upload('banner'))
+				{
 					$file_data = $this->upload->data();
 				}
 				else {
-					echo 'file fail';
-					//redirect('admin/teams');
+					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
+                	$file_data = NULL;
 				}
+			}
+
+			// Found new file delete the old one
+			$fileBanner = $this->labels_m->get($id)->banner;
+			if(!empty($file_data))
+			{
+				unlink($this->folder_path.$fileBanner);
+				$fileBanner = $file_data['file_name'];
 			}
 			
 			$data = array(
 				'name' => $this->input->post('title'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'banner' => $fileBanner
 			);
 
 			$this->labels_m->update($id, $data);
 			redirect('admin/labels');
 		}
-		else {
+		else
+		{
 			$this->template
 				->set('title', 'Edit label')
 				->set('data', $this->labels_m->as_array()->get($id))
@@ -112,11 +128,14 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	public function delete($id = 0) {
-		$this->label = $this->labels_m->get($id);
-		$filepath_banner = $this->folder_path.$this->label->banner;
+	public function delete($id = 0)
+	{
+		$label = $this->labels_m->get($id);
+		$filepath_banner = $this->folder_path.$label->banner;
+
 		unlink($filepath_banner);
 		$this->labels_m->delete($id);
+
 		redirect('admin/labels');
 	}
 }
