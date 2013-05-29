@@ -3,7 +3,11 @@
 
     <input placeholder="Name" class="input-xxlarge" type="text" name="name" value="<?php echo set_value("name", @$data['name']); ?>" />
 
-    <textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['info'] : set_value("description"); ?></textarea>
+    <br />
+
+    <textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo set_value("description", @$data['info']); ?></textarea>
+
+    <br />
 
     <select name="game" class="js_select_game input-xxlarge">
         <?php foreach($games as $game): ?>

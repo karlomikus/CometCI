@@ -7,6 +7,7 @@ class Admin extends Backend_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->load->model('opponents_m');
 	}
 
@@ -31,21 +32,20 @@ class Admin extends Backend_Controller {
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']      = '0';
-		$config['max_width']     = '200';
-		$config['max_height']    = '200';
+		$config['max_width']     = '500';
+		$config['max_height']    = '500';
 
-		if ($this->form_validation->run() == TRUE) {
-
-			$next_id = $this->opponents_m->get_next_id();
-			$config['file_name'] = $next_id;
+		if ($this->form_validation->run() == TRUE)
+		{
+			$config['file_name'] = $this->opponents_m->get_next_id();
 			$this->load->library('upload', $config);
 
-			if ($this->upload->do_upload('logo')) {
-				$logo_data = $this->upload->data();
+			if (!empty($_FILES['logo']['name']))
+			{
+				if ($this->upload->do_upload('logo')) $logo_data = $this->upload->data();
+				else $logo_data = NULL;
 			}
-			else {
-				$logo_data = NULL; // Logo is not required
-			}
+			else $logo_data = NULL;
 
 			$data = array(
 				'name' => $this->input->post('name'),
@@ -55,10 +55,10 @@ class Admin extends Backend_Controller {
 			);
 			
 			$this->opponents_m->insert($data);
-
 			redirect('admin/opponents');
 		}
-		else {
+		else
+		{
 			$this->load->model('games/games_m');
 			$this->games_m->order_by('name');
 
@@ -79,56 +79,60 @@ class Admin extends Backend_Controller {
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']      = '0';
-		$config['max_width']     = '200';
-		$config['max_height']    = '200';
+		$config['max_width']     = '500';
+		$config['max_height']    = '500';
 
 		if ($this->form_validation->run() == TRUE) {
 
 			$config['file_name'] = $id;
 			$this->load->library('upload', $config);
 
-			if ($this->upload->do_upload('logo')) {
-				//Delete old image
-				$this->opponent = $this->opponents_m->get($id);
-				$filepath = $this->folder_path.$this->opponent->logo;
-				unlink($filepath);
-				$logo_data = $this->upload->data();
+			if (!empty($_FILES['logo']['name']))
+			{
+				if ($this->upload->do_upload('logo')) $file_data = $this->upload->data();
+				else $file_data = NULL;
 			}
-			else {
-				$logo_data = NULL;
-			}
+			else $file_data = NULL;
 
-			$oldData = $this->opponents_m->as_array()->get($id);
-			if(isset($logo_data)) $filename = $logo_data['file_name'];
-			else $filename = $oldData['logo'];
+			// Found new file delete the old one
+			$fileLogo = $this->opponents_m->get($id)->logo;
+			if(!empty($file_data))
+			{
+				unlink($this->folder_path.$fileLogo);
+				$fileLogo = $file_data['file_name'];
+			}
 
 			$data = array(
 				'name' => $this->input->post('name'),
 				'info' => $this->input->post('description'),
 				'gameID' => $this->input->post('game'),
-				'logo' => $filename
+				'logo' => $fileLogo
 			);
 
 			$this->opponents_m->update($id, $data);
 			redirect('admin/opponents');
 		}
-		else {
+		else
+		{
 			$this->load->model('games/games_m');
 			$this->games_m->order_by('name');
 
 			$this->template
-			->set('title', 'Delete opponent')
+			->set('title', 'Edit opponent')
 			->set('games', $this->games_m->get_all())
 			->set('data', $this->opponents_m->as_array()->get($id))
 			->build('admin/form');
 		}
 	}
 
-	public function delete($id = 0) {
-		$this->opponent = $this->opponents_m->get($id);
-		$filepath = $this->folder_path.$this->opponent->logo;
+	public function delete($id = 0)
+	{
+		$opponent = $this->opponents_m->get($id);
+		$filepath = $this->folder_path.$opponent->logo;
+
 		unlink($filepath);
 		$this->opponents_m->delete($id);
+
 		redirect('admin/opponents');
 	}
 
