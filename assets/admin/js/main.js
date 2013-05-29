@@ -152,7 +152,11 @@ $(document).ready(function() {
 	$(".show-file-input").click(function(e) {
 		e.preventDefault();
 		var selectedFile = $(this).attr('href');
-		fileSender = '#' + $(this).parent().attr('id') + ' p'; // For multiple instances of file upload input
+
+		// For multiple instances of file upload input
+		var senderID = $(this).parent().attr('id');
+		if(senderID != null) fileSender = '#' + senderID + ' p';
+
 		$(selectedFile).click();
 		$(selectedFile).bind("change", handleImageFile);
 	});
