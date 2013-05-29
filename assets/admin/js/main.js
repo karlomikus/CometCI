@@ -148,9 +148,11 @@ $(document).ready(function() {
 	});
 
 // Custom file input -----------------------------------
+	var fileSender = '.cms-upload p';
 	$(".show-file-input").click(function(e) {
 		e.preventDefault();
 		var selectedFile = $(this).attr('href');
+		fileSender = '#' + $(this).parent().attr('id') + ' p'; // For multiple instances of file upload input
 		$(selectedFile).click();
 		$(selectedFile).bind("change", handleImageFile);
 	});
@@ -158,6 +160,32 @@ $(document).ready(function() {
 // Process file reader -----------------------------------
 	$("#screenshotsfile").bind("change", handleImageFile);
 	$("#file-input").bind("change", handleImageFile);
+
+/**
+ * Handles html image previews. Can display
+ * image, file size, file name, etc...
+ * Uses new FileReader class available only
+ * on modern browsers
+ * 
+ * @param  {object} evt Event data
+ * @return {void}
+ */
+function handleImageFile(evt) {
+	var files = evt.target.files;
+	for (var i = 0, f; f = files[i]; i++) {
+		if (!f.type.match('image.*')) {
+			continue;
+		}
+		var reader = new FileReader();
+		reader.onload = (function(theFile) {
+			return function(e) {
+				$(fileSender).html(escape(theFile.name).trunc(35) +" <span>"+bytesToSize(theFile.size, 0)+"</span>");
+				$('#screenshots ul').prepend('<li><a href="#"><img src="'+e.target.result+'" alt="" /></a></li>');
+			};
+		})(f);
+		reader.readAsDataURL(f);
+	}
+}
 
 // Confirm delete -----------------------------------
 	$(".tbl-custom .confirm-delete").click(function(e) {
@@ -216,13 +244,28 @@ $(document).ready(function() {
 		interval: 10
 	});
 
+
+
 }); // End of jQuery document load
 
+/**
+ * Ellipsize a string
+ * 
+ * @type {string}
+ */
 String.prototype.trunc = 
-function(n){
+function(n) {
 	return this.substr(0,n-1)+(this.length>n?'&hellip;':'');
 };
 
+/**
+ * Transforms byte representation of file size into
+ * human readable file size format
+ * 
+ * @param  {int} bytes     Size in bytes
+ * @param  {int} precision Conversion precision
+ * @return {string}
+ */
 function bytesToSize(bytes, precision) {  
     var kilobyte = 1024;
     var megabyte = kilobyte * 1024;
@@ -242,32 +285,4 @@ function bytesToSize(bytes, precision) {
     } else {
         return bytes + ' B';
     }
-}
-
-function handleImageFile(evt) {
-	var files = evt.target.files;
-	for (var i = 0, f; f = files[i]; i++) {
-		if (!f.type.match('image.*')) {
-			continue;
-		}
-		var reader = new FileReader();
-		reader.onload = (function(theFile) {
-			return function(e) {
-				$('.cms-upload p').html(escape(theFile.name).trunc(35) +" <span>"+bytesToSize(theFile.size, 0)+"</span>");
-				$('#screenshots ul').prepend('<li><a href="#"><img src="'+e.target.result+'" alt="" /></a></li>');
-			};
-		})(f);
-		reader.readAsDataURL(f);
-	}
-}
-
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
 }
