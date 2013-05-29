@@ -535,8 +535,9 @@ input, textarea, .uneditable-input { width: 300px; }
 	margin-bottom: 20px;
 }
 
-.cms-form input, .cms-form textarea, .cms-form select { /*display: block;*/ margin: 0 0 20px 0; }
+.cms-form input, .cms-form textarea, .cms-form select { margin: 0 0 20px 0; }
 .cms-form input, .cms-form select { height: 30px; }
+.js_select input { height: 36px !important; }
 
 .cms-form input,
 .cms-form textarea,
