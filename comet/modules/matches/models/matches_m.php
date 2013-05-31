@@ -63,11 +63,22 @@ class Matches_m extends MY_Model {
 		return false;
 	}
 
+	/**
+	 * Gets all scores from a match
+	 * @param  int $id Match ID
+	 * @return object
+	 */
 	public function get_scores($id) 
 	{
 		return $this->db->get_where('matches_scores', array('match' => $id))->result();
 	}
 
+	/**
+	 * Calculates total team or opponent score
+	 * @param  string 	$side 	Team or opponent
+	 * @param  int 		$id   	Match ID
+	 * @return int       		Total score
+	 */
 	public function calculate_score($side, $id) 
 	{
 		$this->db->select($side);
@@ -82,6 +93,11 @@ class Matches_m extends MY_Model {
 		return $result;
 	}
 
+	/**
+	 * Calculates win/draw/lose rate
+	 * @param  string $type Win, lose or draw rate
+	 * @return int
+	 */
 	public function calculate_scores_rate($type = 'win')
 	{
 		$this->db->select('match');
@@ -136,6 +152,13 @@ class Matches_m extends MY_Model {
 		return $text ? $outcome_text : $outcome;
 	}
 
+	/**
+	 * Adds match (screenshot) files to the database
+	 * @param  int $matchID Match ID
+	 * @param  string $file    Filename
+	 * @param  string $type    Type of data
+	 * @return bool
+	 */
 	public function insert_files($matchID, $file, $type='screenshot') 
 	{
 		$data = array(
@@ -146,23 +169,40 @@ class Matches_m extends MY_Model {
 		return $this->db->insert('matches_files', $data); 
 	}
 
-	public function delete_screenshot($matchID, $i) 
+	/**
+	 * Remove file data from database and remove screenshot
+	 * @param  string $filename Name of the file
+	 * @return bool
+	 */
+	public function delete_screenshot($filename) 
 	{
-		$this->db->select('file');
-		$query = $this->db->get_where('matches_files', array('match' => $matchID))->result();
-		foreach($query as $file) {
-			$meta = $this->get_screenshot_meta($file);
-			if($meta[1] == $i) {
-				unlink('./uploads/screenshots/'.$file);
-				return TRUE;
-			}
-			else {
-				return FALSE;
-			}
+		if($this->db->delete('matches_files', array('file' => $filename)))
+		{
+			unlink('./uploads/screenshots/'.$filename);
+			return TRUE;
 		}
-		return FALSE;
+		else return FALSE;
 	}
 
+	/**
+	 * Remove all files related to match ID
+	 * @param  int $matchID Match ID
+	 * @return void
+	 */
+	public function delete_files($matchID)
+	{
+		$query = $this->db->get_where('matches_files', array('match_id' => $matchID))->result();
+		foreach ($query as $file) {
+			unlink('./uploads/screenshots/'.$file->file);
+		}
+		$this->db->delete('matches_files', array('match_id' => $matchID));
+	}
+
+	/**
+	 * Get all match screenshots
+	 * @param  int $id Match ID
+	 * @return object
+	 */
 	public function get_match_screenshots($id) 
 	{
 		$this->db->select('*');
@@ -171,6 +211,12 @@ class Matches_m extends MY_Model {
 		return $query;
 	}
 
+	/**
+	 * Extract meta information from screenshot filename.
+	 * Usually containts matchID, picture number and timestamp.
+	 * @param  string $file Filename
+	 * @return array
+	 */
 	public function get_screenshot_meta($file) 
 	{
 		$pass1 = explode('_', $file);
@@ -180,6 +226,12 @@ class Matches_m extends MY_Model {
 		return $result;
 	}
 
+	/**
+	 * Get all matches that are played in specific month in a chosen year
+	 * @param  int $month Month
+	 * @param  int $year  Year
+	 * @return object
+	 */
 	public function get_matches_in_month($month, $year)
 	{
 		// Empty params. given, show this months calendar
@@ -196,6 +248,11 @@ class Matches_m extends MY_Model {
 		return $query->result();
 	}
 
+	/**
+	 * Get all matches played on specific date (unix timestamp)
+	 * @param  int $timeStamp Unix timestamp
+	 * @return object
+	 */
 	public function get_matches_on_date($timeStamp)
 	{
 		if(!isset($timeStamp)) $timeStamp = time();

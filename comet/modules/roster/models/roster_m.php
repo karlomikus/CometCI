@@ -27,6 +27,11 @@ class Roster_m extends MY_Model {
 		return $this->db->from('teams_members')->get()->result();
 	}
 
+	/**
+	 * Gets all games played by team
+	 * @param  int $id Team ID
+	 * @return array
+	 */
 	public function get_team_games($id)
 	{
 		$this->db->select('games');

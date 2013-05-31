@@ -2,12 +2,14 @@
 
 class Admin extends Backend_Controller {
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('roster_m');
 	}
 
-	public function index() {
+	public function index()
+	{
 		$this->load->model('teams/teams_m');
 
 		$this->template
@@ -15,9 +17,11 @@ class Admin extends Backend_Controller {
 			->build('admin/main');
 	}
 
-	public function adduser($id = 0) {
+	public function adduser($id = 0)
+	{
 		$users = $this->input->post('users');
 		$this->roster_m->add_to_roster($users, $id);
+		
 		redirect('admin/roster');
 	}
 

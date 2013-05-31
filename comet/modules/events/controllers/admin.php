@@ -24,38 +24,42 @@ class Admin extends Backend_Controller {
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
 		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url');
+		$this->form_validation->set_rules('startdate', 'Starting date', 'required');
+		$this->form_validation->set_rules('starttime', 'Starting time', 'required');
+		$this->form_validation->set_rules('enddate', 'Ending date', 'required');
+		$this->form_validation->set_rules('endtime', 'Ending time', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
-			$next_id = $this->events_m->get_next_id();
-
-			if (!empty($_FILES['image']['name'])) {
+		if ($this->form_validation->run() == TRUE)
+		{
+			if (!empty($_FILES['image']['name']))
+			{
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '800';
-				$config['max_height']    = '600';
-				$config['file_name']     = $next_id;
+				$config['max_width']     = '1000';
+				$config['max_height']    = '1000';
+				$config['file_name']     = $this->events_m->get_next_id();
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('image')) {
+				if ($this->upload->do_upload('image'))
+				{
 					$file_data = $this->upload->data();
 				}
-				else {
+				else
+				{
 					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
                 	$file_data = NULL;
 				}
 			}
-
-			if(isset($file_data) and !empty($file_data['file_name'])) $file = $file_data['file_name'];
-			else $file = '0';
 
 			$startDate = $this->input->post('startdate').' '.$this->input->post('starttime');
 			$endDate = $this->input->post('enddate').' '.$this->input->post('endtime');
@@ -66,70 +70,91 @@ class Admin extends Backend_Controller {
 				'startdate' => $startDate,
 				'enddate' => $endDate,
 				'link' => $this->input->post('link'),
-				'image' => $file
+				'image' => $file_data['file_name']
 			);
 
 			$this->events_m->insert($data);
 			redirect('admin/events');
 		}
-		else {
-
+		else
+		{
 			$this->template
 				->set('title', 'Create event')
 				->build('admin/form');
 		}
 	}
 
-	public function edit($id = 0) {
-
+	public function edit($id = 0)
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url');
+		$this->form_validation->set_rules('startdate', 'Starting date', 'required');
+		$this->form_validation->set_rules('starttime', 'Starting time', 'required');
+		$this->form_validation->set_rules('enddate', 'Ending date', 'required');
+		$this->form_validation->set_rules('endtime', 'Ending time', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
-			if (!empty($_FILES['banner']['name'])) {
+		if ($this->form_validation->run() == TRUE)
+		{
+			if (!empty($_FILES['image']['name']))
+			{
 				$config['upload_path']   = $this->folder_path;
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
-				$config['file_name']     = $next_id;
+				$config['max_width']     = '1000';
+				$config['max_height']    = '1000';
+				$config['file_name']     = $this->events_m->get_next_id();
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('banner')) {
+				if ($this->upload->do_upload('image'))
+				{
 					$file_data = $this->upload->data();
 				}
-				else {
-					echo 'file fail';
-					//redirect('admin/teams');
+				else
+				{
+					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
+                	$file_data = NULL;
 				}
+			}
+
+			$fileImage = $this->events_m->get($id)->image;
+			if(!empty($file_data))
+			{
+				unlink($this->folder_path.$fileImage);
+				$fileImage = $file_data['file_name'];
 			}
 			
 			$data = array(
-				'name' => $this->input->post('title'),
+				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'startdate' => $startDate,
+				'enddate' => $endDate,
+				'link' => $this->input->post('link'),
+				'image' => $fileImage
 			);
 
-			$this->labels_m->update($id, $data);
-			redirect('admin/labels');
+			$this->events_m->update($id, $data);
+			redirect('admin/events');
 		}
-		else {
+		else
+		{
 			$this->template
 				->set('title', 'Edit label')
-				->set('data', $this->labels_m->as_array()->get($id))
+				->set('data', $this->events_m->as_array()->get($id))
 				->build('admin/form');
 		}
 	}
 
-	public function delete($id = 0) {
-		$this->label = $this->labels_m->get($id);
-		$filepath_banner = $this->folder_path.$this->label->banner;
-		unlink($filepath_banner);
-		$this->labels_m->delete($id);
-		redirect('admin/labels');
+	public function delete($id = 0)
+	{
+		$event = $this->events_m->get($id);
+		$file = $this->folder_path.$event->image;
+		unlink($file);
+		$this->events_m->delete($id);
+		redirect('admin/events');
 	}
 }

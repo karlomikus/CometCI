@@ -18,8 +18,8 @@
 		<?php foreach ($events as $event): ?>
 		<tr>
 			<td><?php echo $event->name; ?></td>
-			<td><?php echo $event->startdate; ?></td>
-			<td><?php echo $event->enddate; ?></td>
+			<td><?php echo cms_date($event->startdate); ?> - <?php echo cms_time($event->startdate); ?></td>
+			<td><?php echo cms_date($event->enddate); ?> - <?php echo cms_time($event->enddate); ?></td>
 			<td class="action">
 				<a class="action-icon" href="#">Action</a>
 				<ul class="action-list" style="display: none;">

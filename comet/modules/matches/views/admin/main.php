@@ -1,3 +1,10 @@
+<?php if($this->session->flashdata('create_error')) : ?>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?php echo $this->session->flashdata('create_error'); ?>
+</div>
+<?php endif; ?>
+
 <table class="table tbl-custom">
 	<thead>
 		<tr>
@@ -12,7 +19,7 @@
 	<?php foreach ($upcoming as $up_match): ?>
 	<tr>
 		<td><?php echo $this->opponents_m->get($up_match->opponent)->name; ?></td>
-		<td><?php echo $up_match->date; ?></td>
+		<td><?php echo cms_date($up_match->date); ?> - <?php echo cms_time($up_match->date); ?></td>
 		<td><?php echo $this->games_m->get($up_match->game)->name; ?></td>
 		<td class="text-center"><span class="upcoming-color">UPCOMING</span></td>
 		<td class="action">
@@ -27,7 +34,7 @@
 	<?php foreach ($matches as $match): ?>
 		<tr>
 			<td><?php echo $this->opponents_m->get($match->opponent)->name; ?></td>
-			<td><?php echo $match->date; ?></td>
+			<td><?php echo cms_date($match->date); ?> - <?php echo cms_time($match->date); ?></td>
 			<td><?php echo $this->games_m->get($match->game)->name; ?></td>
 			<td class="text-center"><?php echo $this->matches_m->get_match_outcome($match->id, true, true); ?></td>
 			<td class="action">

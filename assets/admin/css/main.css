@@ -37,9 +37,9 @@ input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"
 input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, 
 input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
 	border-color: #22c7b6;
-	box-shadow: none;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
+	box-shadow: 0 1px 0 #fff;
+	-moz-box-shadow: 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 #fff;
 }
 
 .js_select, .js_select_game, .js_select_country, .js_select_no_search {
@@ -377,6 +377,10 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	text-align: center;
 }
 
+#screenshots li img {
+	border: 2px solid transparent;
+}
+
 #screenshots li a {
 	padding: 0 5px;
 	border-radius: 2px;
@@ -558,7 +562,9 @@ input, textarea, .uneditable-input { width: 300px; }
 .cms-form input:focus,
 .cms-form textarea:focus,
 .cms-form select:focus {
-	box-shadow: inherit;
+	box-shadow: 0 1px 0 #fff;
+	-moz-box-shadow: 0 1px 0 #fff;
+	-webkit-box-shadow: 0 1px 0 #fff;
 	border-color: #22c7b6;
 	outline: none !important;
 }

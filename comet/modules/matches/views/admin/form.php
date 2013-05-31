@@ -8,8 +8,6 @@
 		<?php endforeach; ?>
 	</select>
 
-	<span>VS</span>
-
 	<select placeholder="Select your team" class="js_select teamdropdown input-xlarge team_select" name="team">
 		<option></option>
 		<?php foreach($teams as $team): ?>
@@ -118,10 +116,12 @@
 	<div class="media-panel" id="screenshots">
 		<ul class="clearfix">
 			<?php if(isset($screenshots)): ?>
-				<?php $i=1; foreach($screenshots as $screenshot): ?>
-				<?php $meta = $this->matches_m->get_screenshot_meta($screenshot->file); ?>
-			<li><img src="<?php echo base_url(); ?>uploads/screenshots/<?php echo $screenshot->file; ?>" alt="Screen" /><br /><a href="#" onclick="deleteScreenshot(<?php echo $meta[0]; ?>, <?php echo $meta[1]; ?>);">DELETE</a></li>
-				<?php $i++; endforeach; ?>
+				<?php foreach($screenshots as $screenshot): ?>
+				<li class="safe">
+					<img src="<?php echo base_url(); ?>uploads/screenshots/<?php echo $screenshot->file; ?>" alt="Screen" />
+					<input type="hidden" class="todelete" name="todelete[]" value="<?php echo $screenshot->file; ?>" />
+				</li>
+				<?php endforeach; ?>
 			<?php endif; ?>
 
 			<li class="addscreenshot"><i class="icon-cloud-upload icon-2x"></i></li>
@@ -131,7 +131,7 @@
 	</div>
 
     <textarea class="ckeditor" name="report" rows="7"><?php echo isset($data) ? $data['report'] : set_value("report", "Report content"); ?></textarea>
-
+	
     <button type="submit" class="btn btn-large btn-cms-orange">Save match</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
 <?php echo form_close(); ?>

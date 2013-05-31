@@ -1,8 +1,6 @@
 $(document).ready(function() {
 // Table action list -----------------------------------
 	$(".tbl-custom tr").hover(function() {
-		// Remove :focus when user goes back a page
-		$('.tbl-custom tr > a').click(function () { this.blur(); return false; });
 		$(this).find(".action-icon").toggleClass("action-icon-active");
 		$(this).find(".action-list").toggle();
 	});
@@ -139,12 +137,28 @@ $(document).ready(function() {
 		});
 	});
 
-// Fix hidden file input ----------------------------------- [DEPRACTED]
+// Screenshots input -----------------------------------
 	$(".addscreenshot").click(function() {
+		$("#screenshots ul").children('li:not(:last):not(.safe)').remove();
 		$("#screenshotsfile").click();
 	});
-	$(".show-file-input").click(function() {
-		$("#file-input").click();
+
+	var deleteText = "delete ";
+	$(".safe img").toggle(function()
+	{
+		$(this).css("border", "2px solid #D64644");
+		$(this).parent().find('input:hidden').val(function(i,val)
+		{ 
+		    return 'delete ' + val;
+		});
+	}, function()
+	{
+		$(this).css("border", "2px solid transparent");
+		$(this).parent().find('input:hidden').val(function(i,val)
+		{ 
+		    if(val.indexOf(deleteText) != -1) return val.replace(deleteText, '');
+			else return val;
+		});
 	});
 
 // Custom file input -----------------------------------

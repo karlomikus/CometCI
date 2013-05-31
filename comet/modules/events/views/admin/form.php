@@ -1,3 +1,10 @@
+<?php if($this->session->flashdata('create_error')) : ?>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<?php echo $this->session->flashdata('create_error'); ?>
+</div>
+<?php endif; ?>
+
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart(uri_string(), array('class' => 'cms-form')); ?>
 
@@ -11,13 +18,13 @@
 	
 	<br />
 
-	<input placeholder="Starting date" class="datepicker span3" type="text" name="startdate" />
-	<input placeholder="Starting time" class="timepicker span2" type="text" name="starttime" />
+	<input placeholder="Starting date" class="datepicker span3" type="text" name="startdate" value="<?php echo isset($data) ? date('Y-m-d', strtotime($data['startdate'])) : set_value("startdate"); ?>" />
+	<input placeholder="Starting time" class="timepicker span2" type="text" name="starttime" value="<?php echo isset($data) ? date('H:i', strtotime($data['startdate'])) : set_value("starttime"); ?>" />
 
 	<br />
 
-	<input placeholder="Ending date" class="datepicker span3" type="text" name="enddate" />
-	<input placeholder="Ending time" class="timepicker span2" type="text" name="endtime" />
+	<input placeholder="Ending date" class="datepicker span3" type="text" name="enddate" value="<?php echo isset($data) ? date('Y-m-d', strtotime($data['enddate'])) : set_value("enddate"); ?>" />
+	<input placeholder="Ending time" class="timepicker span2" type="text" name="endtime" value="<?php echo isset($data) ? date('H:i', strtotime($data['enddate'])) : set_value("endtime"); ?>" />
 
 	<br />
 
