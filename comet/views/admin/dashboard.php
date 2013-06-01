@@ -15,7 +15,7 @@
 			<ul id="matches-tab" class="match-list tab-pane fade in active">
 				<?php foreach ($matches as $match): ?>
 				<li>
-					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" width="50" height="50" />
+					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" style="width: 50px; height: 50px;" />
 					<p>
 						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
 						<span><?php echo date('H:i', strtotime($match->date)); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
@@ -25,12 +25,16 @@
 			</ul>
 
 			<ul id="events-tab" class="match-list tab-pane fade in">
-				<?php foreach ($matches as $match): ?>
+				<?php foreach ($events as $event): ?>
+				<?php
+					if(isset($event->image)) $eventImage = $event->image;
+					else $eventImage = 'nopic.jpg';
+				?>
 				<li>
-					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" width="50" height="50" />
+					<img src="<?php echo base_url(); ?>/uploads/events/<?php echo $eventImage; ?>" alt="" style="width: 50px; height: 50px;" />
 					<p>
-						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
-						<span><?php echo date('H:i', strtotime($match->date)); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
+						<a href="<?php echo base_url(); ?>events/show/<?php echo $event->id; ?>" target="_blank"><?php echo $event->name; ?></a> <br />
+						<span><?php echo date('H:i', strtotime($event->startdate)); ?></span>
 					</p>
 				</li>
 				<?php endforeach; ?>

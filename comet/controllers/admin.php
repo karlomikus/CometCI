@@ -5,12 +5,14 @@ class Admin extends Backend_Controller {
     public function index() 
     {
         $this->load->model('matches/matches_m');
+        $this->load->model('events/events_m');
         $this->load->model('comet_m');
         $this->load->library('CPULoad');
 
         $this->template
             ->set('title', 'Dashboard')
             ->set('matches', $this->matches_m->get_upcoming_matches())
+            ->set('events', $this->events_m->get_all())
             ->set('visits', $this->comet_m->get_visits_stats(5))
             ->set('countcomments', $this->comet_m->count_table_rows('comments'))
             ->set('countposts', $this->comet_m->count_table_rows('forum_replies'))
