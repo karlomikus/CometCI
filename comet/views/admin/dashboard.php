@@ -25,13 +25,15 @@
 			</ul>
 
 			<ul id="events-tab" class="match-list tab-pane fade in">
+				<?php foreach ($matches as $match): ?>
 				<li>
-					<img src="http://placehold.it/50x50" alt="pic" />
+					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" width="50" height="50" />
 					<p>
-						<a href="#">Team Coolermaster2</a> <br />
-						<span>18:45 - ESL Master LEague</span>
+						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
+						<span><?php echo date('H:i', strtotime($match->date)); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
 					</p>
 				</li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>
@@ -64,26 +66,63 @@
 					<?php $resultstr = array(); foreach ($commentstats as $stat): ?>
 						<?php $resultstr[] = $stat->total; ?>
 					<?php endforeach; ?>
-					<?php echo implode(",", $resultstr); ?>
+					<?php
+						if(count($resultstr) == 1) {
+							array_unshift($resultstr, '0');
+							echo implode(",", $resultstr);
+						}
+						elseif(!empty($resultstr)) {
+							echo implode(",", $resultstr);
+						}
+						else echo '0,0';
+					?>
 				</span>
 			</div>
 		</div>
 		<div class="row-fluid mini-stats">
 			<div class="span7">
-				<h4>53</h4>
-				<small>Total Posts</small>
+				<h4><?php echo $countposts; ?></h4>
+				<small>Total Forum Posts</small>
 			</div>
 			<div class="span4">
-				<span class="inlinesparkline">5,6,7,9,9,6,8,10,8,4,6,7</span>
+				<span class="inlinesparkline">
+					<?php $resultstr = array(); foreach ($postsstats as $stat): ?>
+						<?php $resultstr[] = $stat->total; ?>
+					<?php endforeach; ?>
+					<?php
+						if(count($resultstr) == 1) {
+							array_unshift($resultstr, '0');
+							echo implode(",", $resultstr);
+						}
+						elseif(!empty($resultstr)) {
+							echo implode(",", $resultstr);
+						}
+						else echo '0,0';
+					?>
+				</span>
 			</div>
 		</div>
 		<div class="row-fluid mini-stats">
 			<div class="span7">
-				<h4>64</h4>
+				<h4><?php echo $countopics; ?></h4>
 				<small>Total Topics</small>
 			</div>
 			<div class="span4">
-				<span class="inlinesparkline">5,6,7,9,9,6,8,10,8,4,6,7</span>
+				<span class="inlinesparkline">
+					<?php $resultstr = array(); foreach ($topicsstats as $stat): ?>
+						<?php $resultstr[] = $stat->total; ?>
+					<?php endforeach; ?>
+					<?php
+						if(count($resultstr) == 1) {
+							array_unshift($resultstr, '0');
+							echo implode(",", $resultstr);
+						}
+						elseif(!empty($resultstr)) {
+							echo implode(",", $resultstr);
+						}
+						else echo '0,0';
+					?>
+				</span>
 			</div>
 		</div>
 	</div>

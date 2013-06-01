@@ -16,7 +16,7 @@ class Comments extends Frontend_Controller {
 		$this->load->helper('htmlpurifier');
 
 		$this->form_validation->set_rules('content', 'Comment content', 'trim|required|min_length[5]|xss_clean');
-
+		// TODO: Honey pot method for fighting spam
 		if($this->ion_auth->logged_in() && $this->form_validation->run()) 
 		{
 			$data = array(

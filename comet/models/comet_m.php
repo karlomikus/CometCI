@@ -2,6 +2,12 @@
 
 class Comet_m extends MY_Model {
 
+	/**
+	 * Get visits by chosen month.
+	 * 
+	 * @param  int $month Month
+	 * @return object
+	 */
 	public function get_visits_stats($month)
 	{
 		$this->db->where('MONTH(date)', $month);
@@ -11,6 +17,14 @@ class Comet_m extends MY_Model {
 		return $this->db->get('site_views')->result();
 	}
 
+	/**
+	 * Updates (unique) site view. Works by checking
+	 * if visitor's IP or user ID is already in the database,
+	 * if it's not then inserts a view into the database
+	 * 
+	 * @param  int $userID User ID
+	 * @return object
+	 */
 	public function update_site_views($userID = NULL)
 	{
 		// Set MY_Model table
@@ -32,25 +46,43 @@ class Comet_m extends MY_Model {
 		}
 	}
 
-	public function count_comments()
+	// TODO: Make count and stats into 2 seperate functions
+	/**
+	 * Count all record in $table
+	 * @param  string $table Table name
+	 * @return int
+	 */
+	public function count_table_rows($table)
 	{
-		$query = $this->db->get('comments');
-		return $query->num_rows(); 
+		$query = $this->db->get($table);
+		return $query->num_rows();
 	}
 
-	public function comment_stats()
+	/**
+	 * Counts all records made in last 7 days
+	 * @param  string $table Table name
+	 * @return object
+	 */
+	public function generate_stats($table)
 	{
 		$weekAgo = date("Y-m-d", strtotime("-1 week"));
-		$where = 'date >= "'.$weekAgo.'" AND date <= "'.date("Y-m-d").'"';
+		$where = 'date >= "'.$weekAgo.'" AND date <= "'.date("Y-m-d", strtotime("+1 day")).'"';
 
 		$this->db->select('date');
 		$this->db->select('COUNT(*) as total');
 		$this->db->where($where);
+		$this->db->order_by('date', 'asc');
 		$this->db->group_by('DAY(date)');
 
-		return $query = $this->db->get('comments')->result();
+		return $query = $this->db->get($table)->result();
 	}
 
+	/**
+	 * Check if specific user ID or IP has result in the database
+	 * @param  int  $ip     IP converted to long
+	 * @param  int  $userID UserID
+	 * @return boolean
+	 */
 	private function has_viewed($ip, $userID = NULL)
 	{
 		$this->_table = 'site_views';

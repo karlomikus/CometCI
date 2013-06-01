@@ -32,3 +32,7 @@
         <?php endforeach;?>
     </tbody>
 </table>
+
+<div class="pagination pagination-right pagination-large">
+    <?php echo $pagination; ?>
+</div>

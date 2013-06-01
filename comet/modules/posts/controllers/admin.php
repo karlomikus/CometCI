@@ -42,7 +42,7 @@ class Admin extends Backend_Controller {
 		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
 
-		$this->pagination->initialize($config);		
+		$this->pagination->initialize($config);
 		$this->posts_m->limit($this->perPage, $page);
 
 		$linkData->page = $page;

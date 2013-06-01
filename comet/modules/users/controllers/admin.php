@@ -2,15 +2,49 @@
 
 class Admin extends Backend_Controller {
 
-	public function index()
+	private $perPage = 10;
+
+	public function index($page = 0)
 	{
+		$this->load->model('users_m');
+		$this->load->library('pagination');
+
+		$count = $this->users_m->count_all();
+
+		$config['base_url'] = base_url()."admin/users/index/";
+		$config['total_rows'] = $count;
+		$config['per_page'] = $this->perPage;
+		$config['uri_segment'] = 4;
+
+		$config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+		$config['next_link'] = '<i class="icon-angle-right"></i>';
+		$config['prev_link'] = '<i class="icon-angle-left"></i>';
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
+
+		$this->pagination->initialize($config);
+
+		$this->users_m->limit($this->perPage, $page);
+
 		$data['users'] = $this->ion_auth->users()->result();
-		foreach ($data['users'] as $k => $user)  {
+		foreach ($data['users'] as $k => $user)
+		{
 			$data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 		}
 
 		$this->template
 			->set('title', 'Users')
+			->set('pagination', $this->pagination->create_links())
+			->set('total', $count)
 			->build('admin/main', $data);
 	}
 
