@@ -20,7 +20,7 @@
         <img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo $data['logo']; ?>" alt="" width="100" height="100" />
         <hr />
         <?php endif; ?>
-        <p>Choose team logo</p> <a class="btn btn-cms-orange show-file-input" href="#"><i class="icon-cloud-upload"></i></a>
+        <p>Choose team logo</p> <a class="btn btn-cms-orange show-file-input" href="#file-input"><i class="icon-cloud-upload"></i></a>
     </div>
 
     <button type="submit" class="btn btn-large btn-cms-orange">Save label</button>
