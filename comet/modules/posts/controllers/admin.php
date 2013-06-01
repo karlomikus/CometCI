@@ -3,6 +3,7 @@
 class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/posts/';
+	private $perPage = 15;
 
 	public function __construct()
 	{
@@ -12,8 +13,8 @@ class Admin extends Backend_Controller {
 
 		$this->load->model('posts_m');
 	}
-
-	public function index($page = 0, $sortBy = NULL, $sortOrder = NULL)
+	
+	public function index($sortBy = 'date', $sortOrder = 'desc', $page = 0)
 	{
 		$this->load->library('pagination');
 		$count = $this->posts_m->count_all();
@@ -21,18 +22,37 @@ class Admin extends Backend_Controller {
 		if(isset($sortBy) && isset($sortOrder)) $this->posts_m->order_by($sortBy, $sortOrder);
 		else $this->posts_m->order_by('date', 'desc');
 
-		$config['base_url'] = base_url().'admin/posts/index/';
+		$config['base_url'] = base_url()."admin/posts/index/$sortBy/$sortOrder/";
 		$config['total_rows'] = $count;
-		$config['per_page'] = 15;
-		$config['uri_segment'] = 3;
+		$config['per_page'] = $this->perPage;
+		$config['uri_segment'] = 6;
 
-		$this->posts_m->limit(15, $page);
+		$config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+		$config['next_link'] = '<i class="icon-angle-right"></i>';
+		$config['prev_link'] = '<i class="icon-angle-left"></i>';
+		$config['full_tag_open'] = '<ul>';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>';
+		$config['prev_tag_close'] = '</li>';
 
-		$this->pagination->initialize($config);
+		$this->pagination->initialize($config);		
+		$this->posts_m->limit($this->perPage, $page);
+
+		$linkData->page = $page;
+		$linkData->sortOrderLink = ($sortOrder == 'asc') ? 'desc' : 'asc';
+		$linkData->currentOrder = $sortBy;
 
 		$this->template
 			->set('title', 'Posts')
 			->set('posts', $this->posts_m->get_all())
+			->set('linkdata', $linkData)
 			->set('pagination', $this->pagination->create_links())
 			->build('admin/main');
 	}
@@ -40,20 +60,18 @@ class Admin extends Backend_Controller {
 	public function create()
 	{
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('title', 'Post title', 'required');
 		$this->form_validation->set_rules('body', 'Post Content', 'required');
 		$this->form_validation->set_rules('label', 'Post label', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
-			$this->load->helper('htmlpurifier');
-			$clean_html = html_purify($this->input->post('body'), 'wysiwyg');
-			
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
 				'title' => $this->input->post('title'),
-				'body' => $clean_html,
+				'body' => html_purify($this->input->post('body'), 'wysiwyg'),
 				'date' => date('Y-m-d H:i:s'),
 				'teaser' => $this->input->post('teaser'),
 				'author' => $this->user->user_id,
@@ -66,8 +84,10 @@ class Admin extends Backend_Controller {
 			$this->posts_m->insert($data);
 			redirect('admin/posts');
 		}
-		else {
+		else
+		{
 			$this->load->model('labels/labels_m');
+
 			$this->template
 				->set('labels', $this->labels_m->get_all())
 				->set('title', 'Create post')
@@ -78,20 +98,18 @@ class Admin extends Backend_Controller {
 	public function edit($id = 0)
 	{
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('title', 'Post title', 'required');
 		$this->form_validation->set_rules('body', 'Post Content', 'required');
 		$this->form_validation->set_rules('label', 'Post label', 'required');
 
-		if ($this->form_validation->run() == TRUE) {
-
-			$this->load->helper('htmlpurifier');
-			$clean_html = html_purify($this->input->post('body'));
-
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
 				'title' => $this->input->post('title'),
-				'body' => $clean_html,
+				'body' => html_purify($this->input->post('body')),
 				'date' => date('Y-m-d H:i:s'),
 				'teaser' => $this->input->post('teaser'),
 				'author' => $this->user->user_id,
@@ -104,8 +122,10 @@ class Admin extends Backend_Controller {
 			$this->posts_m->update($id, $data);
 			redirect('admin/posts');
 		}
-		else {
+		else
+		{
 			$this->load->model('labels/labels_m');
+			
 			$this->template
 				->set('title', 'Edit post')
 				->set('data', $this->posts_m->as_array()->get($id))

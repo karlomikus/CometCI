@@ -422,7 +422,8 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	border: none;
 }
 
-.tbl-custom thead th a { color: #22c7b6; }
+.tbl-custom thead th a { color: #fff; }
+.tbl-custom thead th i { color: #22c7b6; }
 .tbl-custom thead th a:hover,
 .tbl-custom thead th a:focus,
 .tbl-custom thead th a:active { color: #fff; }
@@ -788,6 +789,34 @@ input, textarea, .uneditable-input { width: 300px; }
 	margin-bottom: 20px;
 }
 
+/* Pagination */
+.pagination-large ul > li:first-child > a, .pagination-large ul > li:first-child > span,
+.pagination-large ul > li:last-child > a, .pagination-large ul > li:last-child > span {
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
+.pagination ul {
+	box-shadow: none;
+}
+
+.pagination ul > li > a:hover, .pagination ul > li > a:focus,
+.pagination ul > .active > a, .pagination ul > .active > span {
+	background-color: #4e5867;
+	color: #fff; 
+}
+
+.pagination ul > li > a,
+.pagination ul > li > span {
+	border: none;
+}
+
+.pagination-large ul > li > a,
+.pagination-large ul > li > span {
+	color: #4e5867;
+	padding: 10px 15px;
+}
 
 /* Alerts */
 .alert {

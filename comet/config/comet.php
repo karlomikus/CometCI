@@ -18,7 +18,10 @@ $config['mod_max_posts'] = 6;
 $config['wi_max_matches'] = 6;
 $config['wi_max_posts'] = 6;
 
-$config['comet_date_format'] = 'Y';
+/**
+ * Pagination
+ */
+
 
 /* End of file comet.php */
 /* Location: .//C/wamp/www/cms/comet/config/comet.php */

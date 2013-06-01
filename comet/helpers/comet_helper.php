@@ -282,12 +282,30 @@ function get_layout($moduleName = '')
 	else return 'default.twig';
 }
 
-function sort_link($module, $sortBy, $sortKey)
+/**
+ * Makes table column a link containg sort url.
+ * 
+ * @param  string $module        Module name
+ * @param  string $column        Table column name
+ * @param  string $order         Ascending or descending order
+ * @param  int $page             Current page
+ * @param  string $currentColumn Current selected column
+ * @return string                Full link with an icon
+ */
+function sort_link($module, $column, $order, $page, $currentColumn)
 {
-	$icon = '<i class="icon-angle-down"></i>'; // Desc
-	if($sortKey == 'asc') $icon = '<i class="icon-angle-up"></i>'; // Asc
+	$iconDesc = '<i class="icon-angle-up"></i>';
+	$iconAsc = '<i class="icon-angle-down"></i>';
+	$orderBy = strtolower($column);
 
-	return '<a href="'.base_url().'admin/'.$module.'/index/'.$sortBy.'/'.$sortKey.'">'.$icon.'</a>';
+	if($orderBy == $currentColumn)
+	{
+		if($order == 'asc') $icon = $iconAsc;
+		else $icon = $iconDesc;
+	}
+	else $icon = '';
+
+	return "<a href=\"".base_url()."admin/$module/index/$orderBy/$order/$page\">$column</a> $icon";
 }
 
 /**
@@ -296,7 +314,7 @@ function sort_link($module, $sortBy, $sortKey)
  * then injects it into the layout
  * 
  * @param  string $name Widget name without "wi_"
- * @return object      Module object
+ * @return object       Module object
  */
 function widget($name) 
 {

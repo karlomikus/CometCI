@@ -14,11 +14,11 @@
 
 	<ul class="check-list">
 		<li>
-			<input id="check-clan" type="checkbox" name="clan" value="1" />
+			<input id="check-clan" type="checkbox" name="clan" value="1" <?php echo @$data['clan'] == 1 ? 'checked' : ''; ?>/>
 			<label for="check-clan">Clan news (Only clan members can see this news)</label>
 		</li>
 		<li>
-			<input id="check-featured" type="checkbox" name="featured" value="1" />
+			<input id="check-featured" type="checkbox" name="featured" value="1" <?php echo @$data['featured'] == 1 ? 'checked' : ''; ?>/>
 			<label for="check-featured">Featured news (Shown in featured news widget)</label>
 		</li>
 	</ul>
@@ -29,11 +29,11 @@
 
 	<ul class="check-list">
 		<li>
-			<input id="check-publish" type="radio" name="state" value="1" checked>
+			<input id="check-publish" type="radio" name="state" value="1" <?php echo @$data['state'] == 1 ? 'checked' : ''; ?>>
 			<label for="check-publish">Publish post now</label>
 		</li>
 		<li>
-			<input id="check-draft" type="radio" name="state" value="0">
+			<input id="check-draft" type="radio" name="state" value="0" <?php echo @$data['state'] == 0 ? 'checked' : ''; ?>>
 			<label for="check-draft">Save post as draft</label>
 		</li>
 	</ul>
