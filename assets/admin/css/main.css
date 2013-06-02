@@ -841,6 +841,11 @@ input, textarea, .uneditable-input { width: 300px; }
 	margin: 0;
 }
 
+.tooltip {
+	font-size: 14px;
+	border-radius: 0;
+}
+
 /* Misc. */
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }

@@ -18,7 +18,7 @@
 					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" style="width: 50px; height: 50px;" />
 					<p>
 						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
-						<span><?php echo date('H:i', strtotime($match->date)); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
+						<span><?php echo cms_time($match->date); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
 					</p>
 				</li>
 				<?php endforeach; ?>
@@ -34,7 +34,7 @@
 					<img src="<?php echo base_url(); ?>/uploads/events/<?php echo $eventImage; ?>" alt="" style="width: 50px; height: 50px;" />
 					<p>
 						<a href="<?php echo base_url(); ?>events/show/<?php echo $event->id; ?>" target="_blank"><?php echo $event->name; ?></a> <br />
-						<span><?php echo date('H:i', strtotime($event->startdate)); ?></span>
+						<span>Starting at <?php echo cms_time($event->startdate); ?></span>
 					</p>
 				</li>
 				<?php endforeach; ?>

@@ -8,6 +8,11 @@ $(document).ready(function() {
 // Tooltip -----------------------------------
 	$('.js_tooltip').tooltip();
 
+	$('#page-name').on('keyup', function()	{
+		var slug = $(this).val().replace(/[^a-zA-Z0-9-]/g, '-').toLowerCase().replace(/--+/g, '-');
+		$('#page-slug').val(slug);
+	});
+
 // Sidebar tabs -----------------------------------
 	if($.cookie('activeTabGroup') == null) $.cookie('activeTabGroup', '#dashboard-tab', { expires: 7, path: '/' });
 	$($.cookie('activeTabGroup')).addClass('active');
@@ -246,7 +251,7 @@ function handleImageFile(evt) {
 	trigger: "manual"
 	});
 
-// Custom checkboxes
+// Custom checkboxes -----------------------------------
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
 		radioClass: 'iradio_square-blue',
@@ -261,8 +266,6 @@ function handleImageFile(evt) {
 		format: 'HH:i',
 		interval: 10
 	});
-
-
 
 }); // End of jQuery document load
 

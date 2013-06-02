@@ -320,3 +320,23 @@ function widget($name)
 {
 	return Modules::run('wi_'.$name);
 }
+
+/**
+ * Automatically generate nice URL from string
+ * @param  string $str       Original text
+ * @param  array  $replace   Replace text
+ * @param  string $delimiter Delimiter
+ * @return string            Clean string
+ */
+setlocale(LC_ALL, 'en_US.UTF8');
+function makePageSlug($str, $replace = array(), $delimiter = '-')
+{
+	if(!empty($replace)) $str = str_replace((array)$replace, ' ', $str);
+	$clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+	$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+	$clean = strtolower(trim($clean, '-'));
+	$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+	$clean = strtolower(trim($clean, '-'));
+
+	return $clean;
+}

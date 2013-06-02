@@ -5,7 +5,7 @@
 </div>
 <?php endif; ?>
 
-<table class="table tbl-custom">
+<table class="table tbl-custom tbl-sortable">
 	<thead>
 		<tr>
 			<!-- <th width="1"></th> -->
@@ -16,7 +16,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($forums as $forum): ?>
+		<?php $i = 1; foreach ($forums as $forum): ?>
 		<tr>
 			<!-- <td><a href=""><i class="icon-ellipsis-vertical icon-large"></i></a></td> -->
 			<td><?php echo $forum->name; ?></td>
@@ -30,6 +30,6 @@
 				</ul>
 			</td>
 		</tr>
-		<?php endforeach;?>
+		<?php $i++; endforeach;?>
 	</tbody>
 </table>

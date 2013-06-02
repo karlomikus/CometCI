@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 22, 2013 at 04:47 PM
+-- Generation Time: Jun 02, 2013 at 05:19 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -35,7 +35,123 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `parent_id` int(11) DEFAULT NULL COMMENT 'for multilevel comments',
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=112 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `poster_id`, `content`, `module`, `module_link`, `parent_id`, `date`) VALUES
+(2, 4, 'a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris', 'posts', '41', NULL, '2013-05-04 09:43:34'),
+(3, 5, 'erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada', 'posts', '32', NULL, '2013-05-28 18:31:42'),
+(4, 1, 'Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec', 'posts', '28', NULL, '2013-05-12 19:02:15'),
+(5, 3, 'In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu.', 'posts', '33', NULL, '2013-05-14 06:34:34'),
+(6, 4, 'Praesent eu dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus.', 'posts', '40', NULL, '2013-05-08 09:32:52'),
+(7, 2, 'Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante', 'posts', '26', NULL, '2013-05-03 07:03:50'),
+(8, 1, 'facilisis vitae, orci. Phasellus dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada', 'posts', '30', NULL, '2013-05-13 17:47:07'),
+(9, 3, 'elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor', 'posts', '28', NULL, '2013-05-26 22:40:13'),
+(10, 2, 'non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus', 'posts', '31', NULL, '2013-05-28 20:15:46'),
+(11, 5, 'magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh', 'posts', '25', NULL, '2013-05-30 10:20:47'),
+(12, 5, 'mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla', 'posts', '34', NULL, '2013-05-18 22:04:35'),
+(13, 1, 'laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim.', 'posts', '42', NULL, '2013-05-23 17:41:05'),
+(14, 2, 'libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum sociis', 'posts', '36', NULL, '2013-05-05 15:14:35'),
+(15, 4, 'orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque', 'posts', '44', NULL, '2013-05-17 01:23:27'),
+(16, 4, 'nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit', 'posts', '29', NULL, '2013-05-04 12:43:21'),
+(17, 3, 'lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est', 'posts', '44', NULL, '2013-05-06 00:25:11'),
+(18, 3, 'non, feugiat nec, diam. Duis mi enim, condimentum eget, volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean', 'posts', '35', NULL, '2013-05-09 23:35:12'),
+(19, 2, 'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu', 'posts', '30', NULL, '2013-05-28 18:57:28'),
+(20, 1, 'sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id', 'posts', '29', NULL, '2013-05-21 15:45:55'),
+(21, 1, 'Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget', 'posts', '34', NULL, '2013-05-03 02:09:57'),
+(22, 2, 'tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer', 'posts', '44', NULL, '2013-05-17 16:09:32'),
+(23, 1, 'nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy', 'posts', '41', NULL, '2013-05-26 14:20:29'),
+(24, 3, 'et netus et malesuada fames ac turpis egestas. Fusce aliquet magna a neque.', 'posts', '26', NULL, '2013-05-03 21:20:44'),
+(25, 5, 'et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero mauris, aliquam eu, accumsan sed, facilisis vitae, orci. Phasellus', 'posts', '31', NULL, '2013-05-12 10:31:04'),
+(26, 5, 'porta elit, a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus', 'posts', '30', NULL, '2013-05-25 18:22:40'),
+(27, 2, 'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis', 'posts', '33', NULL, '2013-05-06 03:46:10'),
+(28, 1, 'at, iaculis quis, pede. Praesent eu dui. Cum sociis natoque penatibus et magnis dis parturient montes,', 'posts', '29', NULL, '2013-05-22 17:38:55'),
+(29, 5, 'ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu', 'posts', '28', NULL, '2013-05-03 10:23:16'),
+(30, 3, 'malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis.', 'posts', '36', NULL, '2013-05-25 15:37:51'),
+(31, 3, 'velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas,', 'posts', '44', NULL, '2013-05-15 15:54:55'),
+(32, 2, 'dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue', 'posts', '27', NULL, '2013-05-12 08:33:05'),
+(33, 5, 'sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor', 'posts', '43', NULL, '2013-05-21 16:12:02'),
+(34, 3, 'dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum.', 'posts', '41', NULL, '2013-05-10 22:57:52'),
+(35, 4, 'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam', 'posts', '39', NULL, '2013-05-23 21:21:45'),
+(36, 1, 'quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin', 'posts', '25', NULL, '2013-05-18 14:09:14'),
+(37, 4, 'adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget', 'posts', '26', NULL, '2013-05-17 02:49:17'),
+(38, 3, 'sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient', 'posts', '44', NULL, '2013-05-12 23:55:31'),
+(39, 3, 'felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc', 'posts', '41', NULL, '2013-05-17 11:43:48'),
+(40, 3, 'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum', 'posts', '35', NULL, '2013-05-03 04:26:06'),
+(41, 1, 'Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non,', 'posts', '35', NULL, '2013-05-14 16:39:21'),
+(42, 4, 'sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel', 'posts', '31', NULL, '2013-05-16 05:55:01'),
+(43, 2, 'elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus libero', 'posts', '32', NULL, '2013-05-21 04:36:39'),
+(44, 3, 'ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor', 'posts', '25', NULL, '2013-05-11 18:54:40'),
+(45, 4, 'amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est', 'posts', '27', NULL, '2013-05-21 00:00:29'),
+(46, 5, 'In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis', 'posts', '34', NULL, '2013-05-05 12:43:50'),
+(47, 5, 'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis', 'posts', '33', NULL, '2013-05-03 02:37:06'),
+(48, 1, 'risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare,', 'posts', '26', NULL, '2013-05-07 09:07:16'),
+(49, 3, 'tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus', 'posts', '30', NULL, '2013-05-25 03:05:49'),
+(50, 5, 'augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna.', 'posts', '30', NULL, '2013-05-08 07:02:28'),
+(51, 3, 'justo. Proin non massa non ante bibendum ullamcorper. Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue', 'posts', '42', NULL, '2013-05-06 22:50:41'),
+(52, 4, 'mi tempor lorem, eget mollis lectus pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate,', 'posts', '30', NULL, '2013-05-09 23:23:18'),
+(53, 3, 'non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris', 'posts', '35', NULL, '2013-05-11 18:42:57'),
+(54, 5, 'Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor.', 'posts', '39', NULL, '2013-05-07 12:55:52'),
+(55, 3, 'Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,', 'posts', '36', NULL, '2013-05-24 06:12:46'),
+(56, 3, 'urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit', 'posts', '26', NULL, '2013-05-12 12:00:22'),
+(57, 2, 'ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula', 'posts', '31', NULL, '2013-05-26 08:29:44'),
+(58, 1, 'magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus', 'posts', '36', NULL, '2013-05-29 12:09:32'),
+(59, 3, 'pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum,', 'posts', '27', NULL, '2013-05-04 17:48:32'),
+(60, 1, 'massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit,', 'posts', '39', NULL, '2013-05-05 10:07:45'),
+(61, 2, 'dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id', 'posts', '28', NULL, '2013-05-27 03:29:04'),
+(62, 2, 'libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur', 'posts', '42', NULL, '2013-05-13 00:40:34'),
+(63, 3, 'Cras eu tellus eu augue porttitor interdum. Sed auctor odio', 'posts', '44', NULL, '2013-05-20 12:51:30'),
+(64, 1, 'turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a', 'posts', '34', NULL, '2013-05-20 05:04:58'),
+(65, 2, 'at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed pharetra, felis eget', 'posts', '32', NULL, '2013-05-13 00:11:49'),
+(66, 2, 'ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate,', 'posts', '41', NULL, '2013-05-16 03:28:59'),
+(67, 4, 'gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante.', 'posts', '41', NULL, '2013-05-03 05:35:46'),
+(68, 4, 'Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam', 'posts', '25', NULL, '2013-05-19 11:24:55'),
+(69, 1, 'nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit', 'posts', '35', NULL, '2013-05-20 07:31:10'),
+(70, 1, 'consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum.', 'posts', '35', NULL, '2013-05-07 22:05:50'),
+(71, 1, 'natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat.', 'posts', '29', NULL, '2013-05-12 03:09:47'),
+(72, 5, 'Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices', 'posts', '29', NULL, '2013-05-16 04:10:26'),
+(73, 5, 'metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec', 'posts', '31', NULL, '2013-05-03 04:57:38'),
+(74, 5, 'dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus', 'posts', '37', NULL, '2013-05-22 18:48:33'),
+(75, 5, 'consequat enim diam vel arcu. Curabitur ut odio vel est', 'posts', '37', NULL, '2013-05-13 19:13:02'),
+(76, 2, 'natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'posts', '36', NULL, '2013-05-06 20:29:35'),
+(77, 5, 'dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante.', 'posts', '42', NULL, '2013-05-16 02:17:46'),
+(78, 5, 'est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo', 'posts', '27', NULL, '2013-05-07 16:25:22'),
+(79, 3, 'ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis.', 'posts', '33', NULL, '2013-05-04 13:29:45'),
+(80, 3, 'dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque', 'posts', '35', NULL, '2013-05-05 14:32:18'),
+(81, 4, 'mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac', 'posts', '37', NULL, '2013-05-10 09:47:51'),
+(82, 5, 'Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque', 'posts', '40', NULL, '2013-05-23 18:02:49'),
+(83, 5, 'ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam', 'posts', '32', NULL, '2013-05-27 21:31:00'),
+(84, 4, 'ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate,', 'posts', '35', NULL, '2013-05-09 01:31:24'),
+(85, 5, 'ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis,', 'posts', '42', NULL, '2013-05-21 23:30:29'),
+(86, 3, 'convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a,', 'posts', '25', NULL, '2013-05-02 03:18:05'),
+(87, 4, 'ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras', 'posts', '29', NULL, '2013-05-04 13:23:26'),
+(88, 3, 'quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt', 'posts', '28', NULL, '2013-05-15 07:19:22'),
+(89, 2, 'risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus,', 'posts', '29', NULL, '2013-05-17 20:38:09'),
+(90, 3, 'Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo.', 'posts', '33', NULL, '2013-05-27 22:07:53'),
+(91, 4, 'mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus', 'posts', '32', NULL, '2013-05-21 15:38:06'),
+(92, 2, 'pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi', 'posts', '30', NULL, '2013-05-13 18:01:46'),
+(93, 4, 'Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non', 'posts', '32', NULL, '2013-05-16 05:30:21'),
+(94, 1, 'Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus', 'posts', '39', NULL, '2013-05-10 05:02:42'),
+(95, 3, 'Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum', 'posts', '27', NULL, '2013-05-24 01:17:13'),
+(96, 5, 'faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing. Mauris molestie', 'posts', '31', NULL, '2013-05-29 10:39:56'),
+(97, 1, 'nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras', 'posts', '37', NULL, '2013-05-07 05:36:47'),
+(98, 1, 'aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio.', 'posts', '41', NULL, '2013-05-25 13:42:20'),
+(99, 5, 'diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed', 'posts', '29', NULL, '2013-05-01 02:23:30'),
+(100, 4, 'risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum', 'posts', '33', NULL, '2013-05-07 18:56:55'),
+(101, 3, 'mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede.', 'posts', '33', NULL, '2013-05-18 07:16:06'),
+(102, 1, 'asfsaf', 'posts', '44', NULL, '2013-05-31 15:32:26'),
+(103, 1, '+65+56', 'posts', '44', NULL, '2013-05-31 15:32:40'),
+(104, 1, 'nhfgjnfgjnfg', 'posts', '45', NULL, '2013-06-01 16:20:15'),
+(105, 1, 'hjkhj', 'posts', '45', NULL, '2013-06-01 16:20:30'),
+(106, 1, 'fdhdfhdfh', 'posts', '45', NULL, '2013-06-01 16:21:04'),
+(107, 1, 'asfas', 'posts', '45', NULL, '2013-06-01 16:23:11'),
+(108, 1, 'fdhdfh', 'posts', '45', NULL, '2013-06-01 16:23:32'),
+(109, 1, 'dfhdfh', 'posts', '45', NULL, '2013-06-01 16:23:34'),
+(110, 1, 'dfhdfhdf', 'posts', '45', NULL, '2013-06-01 16:23:36'),
+(111, 1, 'fdhdfhfd', 'posts', '45', NULL, '2013-06-01 16:23:42');
 
 -- --------------------------------------------------------
 
@@ -317,18 +433,21 @@ CREATE TABLE IF NOT EXISTS `events` (
   `name` varchar(150) NOT NULL,
   `startdate` datetime NOT NULL,
   `enddate` datetime NOT NULL,
-  `image` varchar(50) NOT NULL,
-  `link` varchar(255) NOT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `name`, `startdate`, `enddate`, `image`, `link`, `description`) VALUES
-(1, 'aaaaaaa', '2013-05-22 15:32:05', '2013-05-22 15:32:05', '1.png', 'aaaa', 'aaaaaaaaa');
+(1, 'The International 2013', '2013-05-22 15:32:05', '2013-05-22 15:32:05', '1.png', 'aaaa', 'aaaaaaaaa'),
+(2, 'The Defense 3', '2013-06-21 17:00:00', '2013-08-03 20:00:00', NULL, 'http://www.the-defense.com/en/start', 'As announced yesterday we invited 16 teams to fight for the three remaining slots in the fourth season of The Defense. This qualifier will start tonight. Find out everything about the format, schedule, coverage, and the participants. '),
+(3, 'G1 League Dota 2', '2013-05-29 05:30:00', '2013-06-18 00:00:00', '3.png', 'http://g1.2p.com/dota2/', 'Kaipi and mousesports will be bowing out of the G-1 League Western qualifier after being eliminated from the tournament by Team Liquid and Dignitas respectively...'),
+(4, 'Testing eventm', '2013-05-14 00:40:00', '2013-05-31 10:10:00', '4.png', 'http://ellislab.com/codeigniter/user-guide/libraries/form_validation.html#validationrules', 'Note: These rules can also be called as discrete functions. For example:\r\n$this->form_validation->required($string);');
 
 -- --------------------------------------------------------
 
@@ -344,6 +463,7 @@ CREATE TABLE IF NOT EXISTS `forum_forums` (
   `date` datetime NOT NULL,
   `private` int(11) NOT NULL DEFAULT '0',
   `clan` int(11) NOT NULL DEFAULT '0',
+  `sort` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
@@ -351,13 +471,13 @@ CREATE TABLE IF NOT EXISTS `forum_forums` (
 -- Dumping data for table `forum_forums`
 --
 
-INSERT INTO `forum_forums` (`id`, `label`, `name`, `description`, `date`, `private`, `clan`) VALUES
-(1, 5, 'Test Forum2', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.2', '2013-05-08 11:37:33', 0, 0),
-(2, 9, 'Offtopic', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:31', 0, 0),
-(3, 9, 'General discussion', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:42', 0, 0),
-(4, 9, 'General news', '', '2013-05-08 12:06:42', 0, 0),
-(9, 9, 'Moderators only', '', '2013-05-11 20:25:59', 0, 0),
-(10, 9, 'Testni Forum #3', '', '2013-05-12 17:46:48', 1, 0);
+INSERT INTO `forum_forums` (`id`, `label`, `name`, `description`, `date`, `private`, `clan`, `sort`) VALUES
+(1, 5, 'Test Forum2', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.2', '2013-05-08 11:37:33', 0, 0, 0),
+(2, 9, 'Offtopic', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:31', 0, 0, 0),
+(3, 9, 'General discussion', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '2013-05-08 11:42:42', 0, 0, 0),
+(4, 9, 'General news', '', '2013-05-08 12:06:42', 0, 0, 0),
+(9, 9, 'Moderators only', '', '2013-05-11 20:25:59', 0, 0, 0),
+(10, 9, 'Testni Forum #3', '', '2013-05-12 17:46:48', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -399,7 +519,7 @@ CREATE TABLE IF NOT EXISTS `forum_replies` (
   `content` text NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `forum_replies`
@@ -409,7 +529,9 @@ INSERT INTO `forum_replies` (`id`, `topic`, `poster`, `content`, `date`) VALUES
 (1, 37, 1, 'Hey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\nHey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\nHey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\n', '2013-05-14 14:10:06'),
 (2, 37, 1, 'Podcast\r\n\r\nCheck out the PHP Town Hall podcast to hear me and Phil Sturgeon rant about life, liberty, and the pursuit of decent code.\r\n\r\n    Episode 6 - PSR-X and the Mexican Standoff   04.19.2013\r\n    Episode 5 - PHPness Gate, Sexism and Mental Illness   03.03.2013\r\n    Episode 4: PHP''s Vision, Beards, and Cake   02.15.2013\r\n', '2013-05-14 14:10:18'),
 (3, 39, 1, '![IMAGE](http://i.imgur.com/oqerAVW.jpg "")', '2013-05-15 12:00:08'),
-(4, 36, 1, '$this->db->wh**ere(''sticky'', ''1'');$this->db->w**here(''sticky'', ''1'');', '2013-05-15 19:00:30');
+(4, 36, 1, '$this->db->wh**ere(''sticky'', ''1'');$this->db->w**here(''sticky'', ''1'');', '2013-05-15 19:00:30'),
+(5, 40, 1, 'asfasf', '2013-06-01 16:04:45'),
+(6, 40, 1, 'gsddfg', '2013-06-01 16:04:47');
 
 -- --------------------------------------------------------
 
@@ -429,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   `locked` int(11) NOT NULL DEFAULT '0',
   `last_modified` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `forum_topics`
@@ -439,8 +561,39 @@ INSERT INTO `forum_topics` (`id`, `forum`, `author`, `title`, `date`, `sticky`, 
 (35, 3, 11, 'sdgdsg', '2013-05-12 15:47:19', 0, 'dsgdsg', 2, 0, '2013-05-12'),
 (36, 3, 11, 'asgasg', '2013-05-12 15:54:50', 0, 'asgasg', 7, 0, '2013-05-15'),
 (37, 3, 1, 'Dis is srs topic!', '2013-05-14 13:48:29', 0, 'Hey, I’m Ben Edmunds. I’m passionate about building and leading teams to create awesome web and mobile apps. I’ve written a few open source libraries and have had the pleasure of being involved with some interesting projects. You can see my work on GitHub.\r\n', 78, 0, '2013-05-14'),
-(38, 3, 1, 'Markdown test', '2013-05-15 11:48:57', 0, '**Cool header**\r\n\r\nI wanna know that how to _disable_ the grabber in the textarea!\r\n\r\nI mean that triangle thing which appears in the right-bottom corner of the textarea.\r\n\r\n> Please help me out!\r\n\r\nThanks in advance!', 4, 0, '2013-05-15'),
-(39, 3, 1, 'Slika!', '2013-05-15 11:51:32', 0, '![Image](http://i.imgur.com/rI6o1rH.jpg "Title")', 5, 0, '2013-05-15');
+(38, 3, 1, 'Markdown test', '2013-05-15 11:48:57', 0, '**Cool header**\r\n\r\nI wanna know that how to _disable_ the grabber in the textarea!\r\n\r\nI mean that triangle thing which appears in the right-bottom corner of the textarea.\r\n\r\n> Please help me out!\r\n\r\nThanks in advance!', 5, 0, '2013-05-15'),
+(39, 3, 1, 'Slika!', '2013-05-15 11:51:32', 0, '![Image](http://i.imgur.com/rI6o1rH.jpg "Title")', 6, 0, '2013-05-15'),
+(40, 1, 1, 'Brijes?', '2013-06-01 16:04:39', 0, 'sfasfsaf', 3, 0, '2013-06-01'),
+(41, 1, 1, 'asfsafsa', '2013-06-01 16:29:54', 0, 'gasgasg', 0, 0, '2013-06-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `date` datetime NOT NULL,
+  `type` enum('public','private') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_files`
+--
+
+CREATE TABLE IF NOT EXISTS `gallery_files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gallery` int(11) NOT NULL,
+  `file` varchar(50) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -504,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `description` varchar(100) NOT NULL,
   `permissionID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `groups`
@@ -513,8 +666,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
 INSERT INTO `groups` (`id`, `name`, `description`, `permissionID`) VALUES
 (1, 'admin', 'Administrator', 0),
 (2, 'members', 'General User', 0),
-(6, 'clan', 'Clan members', 0),
-(7, 'moderators', 'Can edit, delete forum posts, make announcements, make sticky topics...', 0);
+(6, 'clan', 'Clan members', 0);
 
 -- --------------------------------------------------------
 
@@ -553,7 +705,7 @@ CREATE TABLE IF NOT EXISTS `labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `banner` varchar(30) NOT NULL DEFAULT '0',
+  `banner` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
@@ -565,9 +717,8 @@ INSERT INTO `labels` (`id`, `name`, `description`, `banner`) VALUES
 (5, 'Articles', 'Nostrud vice cray, marfa tonx readymade nesciunt ennui. Fugiat helvetica cosby sweater laboris duis. ', ''),
 (6, 'Coverage', 'Nostrud vice cray, marfa tonx readymade nesciunt ennui. Fugiat helvetica cosby sweater laboris duis. ', ''),
 (7, 'Clan News', 'Quinoa leggings mumblecore cillum ea, direct trade duis culpa chambray banh mi Austin 90''s PBR.', '0'),
-(8, 'Site News', 'Laboris ullamco laborum nisi, id qui dreamcatcher photo booth stumptown mixtape wayfarers. Farm-to-table etsy meggings pug est intelligentsia.', '0'),
-(9, 'Private forums', '', '0'),
-(10, 'Public foums', '', '0');
+(9, 'Private forums', 'risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque ', '0'),
+(10, 'Public foums', 'A grassroots success, Seattle rapper\n<a href="https://play.spotify.com/artist/3JhNCzhSMTxs9WLGJJxWOY">Macklemore</a>\nnot only climbed to number two on the Billboard 200 album charts, but with little mainstream help, his 2012 sophomore release debuted with only\n<a href="https://play.spotify.com/artist/3gd8FJtBJtkRxdfbTu19U2">Mumford & Sons</a>\nin his way for the number one spot.', '0');
 
 -- --------------------------------------------------------
 
@@ -601,22 +752,67 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `team-players` text NOT NULL,
   `matchlink` varchar(100) NOT NULL,
   `type` tinyint(1) DEFAULT NULL,
+  `event` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
 
 --
 -- Dumping data for table `matches`
 --
 
-INSERT INTO `matches` (`id`, `team`, `opponent`, `date`, `game`, `report`, `status`, `opponent-players`, `team-players`, `matchlink`, `type`) VALUES
-(17, 2, 3, '2013-03-18 12:00:00', 6, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.0', 2, 'xboct,dendi,blyat', '2,3,4', 'ss', 2),
-(20, 2, 7, '2013-05-01 12:23:00', 10, '<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n\r\n<blockquote>\r\n<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over.</p>\r\n</blockquote>\r\n\r\n<p><strong>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar.</strong> Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n', 0, 'lorem, ipsum, dolor, sit, amet', '', 'http://kami-design.com/', 4),
-(21, 5, 3, '2013-05-02 12:23:00', 10, '<p>Report content</p>\r\n', 0, '', '', '', 0),
-(22, 5, 5, '2013-05-02 14:24:00', 2, '<p>Report content</p>\r\n', 0, '', '', '', 0),
-(23, 2, 7, '2013-05-02 18:24:00', 11, '<p>Report content</p>\r\n', 0, '', '', '', 0),
-(24, 5, 6, '2013-05-10 10:00:00', 10, '<p>Report content</p>\r\n', 1, '', '4,9,10', '', 2),
-(25, 5, 9, '2013-05-22 15:00:00', 3, '<p>Report content</p>\r\n', 1, '', '', '', 0),
-(26, 5, 6, '2013-05-20 09:51:00', 4, '<p>Report content</p>\r\n', 1, '', '', '', 0);
+INSERT INTO `matches` (`id`, `team`, `opponent`, `date`, `game`, `report`, `status`, `opponent-players`, `team-players`, `matchlink`, `type`, `event`) VALUES
+(17, 2, 3, '2013-03-18 12:00:00', 6, 'One of the nice things that we get for free when using async event handling is the ability to monitor the progress of the file read; useful for large files, catching errors, and figuring out when a read is complete.\r\n\r\nThe onloadstart and onprogress events can be used to monitor the progress of a read.\r\n\r\nThe example below demonstrates displaying a progress bar to monitor the status of a read. To see the progress indicator in action, try a large file or one from a remote drive.0', 2, 'xboct,dendi,blyat', '2,3,4', 'ss', 2, 0),
+(20, 2, 7, '2013-05-01 12:23:00', 10, '<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n\r\n<blockquote>\r\n<p>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar. Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over.</p>\r\n</blockquote>\r\n\r\n<p><strong>Mustache carles sriracha, flannel four loko odio accusamus scenester in nisi keytar.</strong> Pug street art nulla echo park twee. Before they sold out bushwick iphone, commodo swag banksy american apparel neutra chambray kale chips elit narwhal exercitation ut pour-over. Chillwave food truck accusamus next level vero delectus tattooed aesthetic, nostrud pariatur portland art party kale chips yr. Placeat carles etsy, mustache pop-up tofu reprehenderit scenester iphone ea terry richardson VHS esse enim plaid. Carles narwhal vero ethical magna pariatur. Jean shorts cillum fingerstache exercitation chambray food truck, ex aute bushwick art party sunt commodo est.</p>\r\n', 0, 'lorem, ipsum, dolor, sit, amet', '', 'http://kami-design.com/', 4, 0),
+(21, 5, 3, '2013-05-02 12:23:00', 10, '<p>Report content</p>\r\n', 0, '', '', '', 0, 0),
+(22, 5, 5, '2013-05-02 14:24:00', 2, '<p>Report content</p>\r\n', 0, '', '', '', 0, 0),
+(23, 2, 7, '2013-05-02 18:24:00', 11, '<p>Report content</p>\r\n', 0, '', '', '', 0, 0),
+(24, 5, 6, '2013-05-10 10:00:00', 10, '<p>Report content</p>\r\n', 1, '', '4,9,10', '', 2, 0),
+(25, 5, 9, '2013-05-22 15:00:00', 3, '<p>Report content</p>\r\n', 1, '', '', '', 0, 0),
+(26, 5, 6, '2013-05-20 09:51:00', 4, '<p>Report content</p>\r\n', 1, '', '', '', 0, 0),
+(27, 5, 8, '2013-01-05 23:10:12', 7, 'sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris', 0, NULL, '', '', 4, 0),
+(28, 5, 5, '2012-11-30 23:53:04', 18, 'Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim', 0, NULL, '', '', 4, 0),
+(29, 5, 9, '2013-05-14 23:25:00', 3, '<p>Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula</p>\r\n', 0, '', '', '', 4, 0),
+(30, 2, 6, '2012-07-15 03:44:58', 11, 'et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a', 0, NULL, '', '', 4, 0),
+(31, 5, 3, '2012-08-03 02:01:30', 1, 'Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac,', 0, NULL, '', '', 4, 0),
+(32, 6, 3, '2012-12-09 02:21:37', 8, 'ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec,', 0, NULL, '', '', 4, 0),
+(33, 6, 3, '2012-09-24 17:11:13', 9, 'varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim. Curabitur', 0, NULL, '', '', 4, 0),
+(34, 2, 6, '2012-09-15 03:57:51', 4, 'fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam', 0, NULL, '', '', 4, 0),
+(37, 2, 5, '2013-01-13 01:48:28', 19, 'vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet,', 0, NULL, '', '', 4, 0),
+(39, 6, 5, '2012-10-22 13:32:43', 11, 'dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia', 0, NULL, '', '', 4, 0),
+(40, 5, 7, '2012-08-09 12:29:58', 8, 'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque', 0, NULL, '', '', 4, 0),
+(41, 6, 8, '2013-04-21 03:44:48', 18, 'mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed pharetra,', 0, NULL, '', '', 4, 0),
+(42, 5, 9, '2013-04-10 09:22:00', 3, 'scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis', 0, NULL, '', '', 4, 0),
+(43, 6, 7, '2012-06-28 13:52:20', 6, 'Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante.', 0, NULL, '', '', 4, 0),
+(44, 6, 5, '2012-09-27 02:04:55', 1, 'id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing', 0, NULL, '', '', 4, 0),
+(45, 2, 5, '2013-04-05 02:31:05', 2, 'Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec', 0, NULL, '', '', 4, 0),
+(47, 5, 9, '2012-10-02 16:39:11', 6, 'Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer', 0, NULL, '', '', 4, 0),
+(48, 2, 9, '2012-07-23 23:46:12', 3, 'viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare', 0, NULL, '', '', 4, 0),
+(49, 5, 8, '2012-12-26 14:22:55', 1, 'Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed', 0, NULL, '', '', 4, 0),
+(51, 5, 8, '2012-09-27 06:28:01', 20, 'eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia', 0, NULL, '', '', 4, 0),
+(52, 6, 3, '2013-05-08 12:06:11', 12, 'nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit', 0, NULL, '', '', 4, 0),
+(54, 2, 3, '2013-02-23 16:21:05', 4, 'malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor lorem, eget mollis lectus pede et risus. Quisque libero lacus, varius', 0, NULL, '', '', 4, 0),
+(55, 6, 7, '2012-12-11 05:32:43', 8, 'Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris', 0, NULL, '', '', 4, 0),
+(56, 2, 5, '2012-09-01 22:52:57', 4, 'vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede.', 0, NULL, '', '', 4, 0),
+(57, 5, 6, '2012-07-23 22:33:30', 18, 'dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh', 0, NULL, '', '', 4, 0),
+(58, 2, 7, '2012-08-30 12:49:14', 4, 'sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc', 0, NULL, '', '', 4, 0),
+(60, 2, 3, '2012-09-09 09:41:15', 19, 'metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus', 0, NULL, '', '', 4, 0),
+(61, 6, 7, '2012-10-21 12:22:19', 9, 'eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus', 0, NULL, '', '', 4, 0),
+(62, 6, 7, '2012-05-29 12:14:19', 14, 'tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod', 0, NULL, '', '', 4, 0),
+(63, 5, 6, '2013-01-03 02:20:42', 6, 'nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue', 0, NULL, '', '', 4, 0),
+(64, 6, 8, '2013-05-08 02:14:04', 5, 'Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum', 0, NULL, '', '', 4, 0),
+(65, 2, 7, '2013-03-25 14:41:04', 3, 'pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia', 0, NULL, '', '', 4, 0),
+(66, 2, 6, '2013-02-24 07:25:51', 2, 'varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend.', 0, NULL, '', '', 4, 0),
+(67, 2, 7, '2012-09-20 22:56:59', 15, 'at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt', 0, NULL, '', '', 4, 0),
+(68, 6, 6, '2012-08-21 03:43:59', 4, 'magna. Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus justo sit amet nulla. Donec non justo. Proin non massa non', 0, NULL, '', '', 4, 0),
+(70, 6, 9, '2013-05-12 05:58:59', 20, 'Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing. Mauris molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet', 0, NULL, '', '', 4, 0),
+(71, 5, 6, '2013-03-05 05:02:01', 14, 'vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui.', 0, NULL, '', '', 4, 0),
+(72, 5, 8, '2013-01-15 23:32:42', 11, 'est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat', 0, NULL, '', '', 4, 0),
+(73, 6, 3, '2013-03-10 21:11:06', 11, 'ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat.', 0, NULL, '', '', 4, 0),
+(74, 5, 7, '2012-12-20 16:15:00', 11, 'lectus pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat,', 0, NULL, '', '', 4, 0),
+(75, 5, 8, '2012-11-13 22:08:18', 7, 'consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante', 0, NULL, '', '', 4, 0),
+(77, 5, 7, '2013-05-02 01:00:00', 3, '<p>Report content</p>', 1, '', '', '', 3, 3),
+(79, 5, 5, '2013-05-22 00:30:00', 5, '<p>Report content</p>', 0, '', '', '', 0, 0),
+(81, 5, 6, '2013-05-08 00:40:00', 3, '<p>Report content</p>', 0, '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -630,21 +826,7 @@ CREATE TABLE IF NOT EXISTS `matches_files` (
   `file` varchar(30) NOT NULL,
   `type` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `matches_files`
---
-
-INSERT INTO `matches_files` (`id`, `match_id`, `file`, `type`) VALUES
-(1, 17, '17_1_1362660242.jpg', 'screenshot'),
-(2, 17, '17_2_1362660242.jpg', 'screenshot'),
-(3, 17, '17_3_1362660242.jpg', 'screenshot'),
-(4, 17, '17_4_1362660242.jpg', 'screenshot'),
-(5, 20, '20_1_1367413556.jpg', 'screenshot'),
-(6, 20, '20_2_1367413556.jpg', 'screenshot'),
-(7, 20, '20_3_1367413556.jpg', 'screenshot'),
-(8, 20, '20_4_1367413556.jpg', 'screenshot');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -658,41 +840,15 @@ CREATE TABLE IF NOT EXISTS `matches_scores` (
   `opponent` int(11) NOT NULL,
   `team` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=140 ;
 
 --
 -- Dumping data for table `matches_scores`
 --
 
 INSERT INTO `matches_scores` (`id`, `match`, `opponent`, `team`) VALUES
-(1, 2, 1, 2),
-(2, 2, 3, 4),
-(3, 2, 5, 6),
-(4, 3, 32, 12),
-(5, 3, 23, 24),
-(6, 3, 22, 21),
-(7, 4, 12, 4),
-(8, 4, 2, 5),
-(9, 4, 4, 11),
-(10, 5, 12, 10),
-(11, 5, 10, 5),
-(12, 6, 1, 1),
-(13, 7, 23, 23),
-(14, 8, 22, 22),
-(15, 9, 2, 2),
-(16, 10, 2, 2),
-(17, 11, 2, 2),
-(18, 12, 2, 2),
-(19, 13, 3, 3),
-(20, 14, 2, 2),
-(21, 15, 2, 2),
-(22, 16, 3, 3),
 (23, 17, 2, 2),
 (24, 17, 3, 1),
-(25, 18, 0, 0),
-(26, 18, 12, 12),
-(27, 18, 1, 1),
-(28, 19, 8, 12),
 (32, 21, 1, 1),
 (33, 22, 12, 10),
 (34, 22, 10, 12),
@@ -704,7 +860,58 @@ INSERT INTO `matches_scores` (`id`, `match`, `opponent`, `team`) VALUES
 (40, 20, 0, 1),
 (41, 20, 0, 1),
 (42, 25, 0, 0),
-(43, 26, 0, 0);
+(43, 26, 0, 0),
+(44, 27, 11, 11),
+(45, 28, 14, 11),
+(47, 30, 9, 15),
+(48, 31, 8, 5),
+(49, 32, 9, 5),
+(50, 33, 5, 5),
+(51, 34, 6, 9),
+(54, 37, 8, 13),
+(56, 39, 9, 9),
+(57, 40, 6, 7),
+(58, 41, 11, 12),
+(59, 42, 9, 7),
+(60, 43, 8, 8),
+(61, 44, 13, 9),
+(62, 45, 9, 6),
+(64, 47, 7, 13),
+(65, 48, 12, 8),
+(66, 49, 13, 14),
+(68, 51, 10, 8),
+(69, 52, 13, 14),
+(71, 54, 6, 10),
+(72, 55, 9, 8),
+(73, 56, 13, 5),
+(74, 57, 5, 7),
+(75, 58, 7, 8),
+(77, 60, 13, 14),
+(78, 61, 6, 6),
+(79, 62, 11, 9),
+(80, 63, 14, 7),
+(81, 64, 12, 12),
+(82, 65, 6, 9),
+(83, 66, 11, 12),
+(84, 67, 12, 8),
+(85, 68, 10, 14),
+(87, 70, 9, 13),
+(88, 71, 15, 6),
+(89, 72, 13, 15),
+(90, 73, 8, 5),
+(91, 74, 8, 13),
+(92, 75, 5, 5),
+(93, 76, 10, 15),
+(94, 76, 2, 8),
+(95, 77, 0, 0),
+(96, 78, 1, 1),
+(97, 78, 1, 1),
+(98, 78, 1, 2),
+(99, 79, 0, 0),
+(101, 81, 0, 0),
+(115, 29, 6, 5),
+(138, 80, 1, 2),
+(139, 80, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -737,7 +944,7 @@ INSERT INTO `modules` (`id`, `name`, `description`, `link`, `enabled`, `layout`)
 (8, 'Matchstats', 'Check your clan match performance statistics', 'matchstats', 1, NULL),
 (9, 'Modules', 'Probably shouldn''t touch this module', 'modules', 1, NULL),
 (10, 'Opponents', 'Manage match opponents', 'opponents', 1, NULL),
-(11, 'Pages', 'Manage site pages', 'pages', 0, NULL),
+(11, 'Pages', 'Manage site pages', 'pages', 1, NULL),
 (12, 'Permissions', 'Manage user permissions', 'permissions', 0, NULL),
 (13, 'Posts', 'Manage news posts', 'posts', 1, NULL),
 (14, 'Roster', 'Mangae team members', 'roster', 1, NULL),
@@ -756,9 +963,9 @@ CREATE TABLE IF NOT EXISTS `opponents` (
   `name` varchar(50) NOT NULL,
   `info` text NOT NULL,
   `gameID` int(11) NOT NULL,
-  `logo` varchar(30) NOT NULL,
+  `logo` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `opponents`
@@ -767,10 +974,11 @@ CREATE TABLE IF NOT EXISTS `opponents` (
 INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 (3, 'Team Liquid', 'In December 2012, Team Liquid entered the Dota 2 scene by picking up a North American squad consisting of FLUFFNSTUFF, ixmike88, Bulba, Korok, and TC.', 10, '31.png'),
 (5, 'Na''Vi', 'Natus Vincere (Na`Vi) is a Ukrainian multigaming e-Sports organization. It is the first team in Counter-Strike history to win three major tournaments in one calendar year - Intel Extreme Masters, Electronic Sports World Cup and World Cyber Games 2010. In 2011, Na`Vi.DotA won the $1 000 000 grand prize at The International, the first ever DotA 2 tournament.', 10, '5.png'),
-(6, 'Fnatic.eu', 'The Fnatic Team is a professional video gaming team, consisting of players from across the globe who all make a living through competing in video game tournaments.\r\n\r\nFnatic is considered to have world class squads in Counter-Strike, StarCraft II, League of Legends, Dota 2, ShootMania: Storm and Call of Duty. ', 11, '6.jpg'),
+(6, 'Fnatic.eu', 'The Fnatic Team is a professional video gaming team, consisting of players from across the globe who all make a living through competing in video game tournaments.\n\nFnatic is considered to have world class squads in Counter-Strike, StarCraft II, League of Legends, Dota 2, ShootMania: Storm and Call of Duty. ', 11, '6.jpg'),
 (7, 'Evil Geniuses', 'Founded in 1999, Evil Geniuses (Team EG) have grown to become a leading new media agency which specializes in contracting pro gamers, executing online and offline broadcasts, and developing unique marketing initiatives aimed at attracting and influencing gamers worldwide.With support from popular brands such as Intel, Monster Energy, Kingston HyperX, and others, EG are North America’s premier professional gaming team and a world leader in e-sports. Players and teams within EG, such as Justin “JWong” Wong, Greg “IdrA” Fields, and Isaac “Azael” Cummings-Bentley, have brought home championship trophies from every major gaming tournament circuit in the world and continue to be influential leaders of gamers everywhere.', 10, '7.jpg'),
 (8, 'Invictus Gaming', 'Invictus Gaming is a platform focused on e-sports and other business about e-sports. Many top-level professional gamers worked for it. One aim of IG is to become the best e-sports club in the world. At present, IG have already integrated all the members of Dota 2, SC2, LOL from CCM club. After several years’ observation, e-sports industry was found to be in a chaotic period. Events like club closes down due to the poor operation, wage arrears, irregular competition, reward arrears always happen. The foundation of IG will stop these from happening again. It is a sign that the chaotic period will end in the near future. IG will create a upscale platform for its gamer. The irregular training, unreasonable payment, reward arrears and other problems will be eliminated and players can get a comprehensive development. Besides, IG will give its player more opportunities to attend commercial avtivities to maximize their values and share benefits with IG. IG plans to enter into campus and periodically hold a match for the e-sports fan to compete with the club stars. To respond to e-sports fans’ support, IG club and its players will closely contact with fans through blog, QQ, YY etc. And challenge match, teaching vedio, award-winning program will be publicly reached. ', 10, '8.jpg'),
-(9, 'The Alliance', 'In April 2013, Swedish team No Tidehunter (consisting of s4, AdmiralBulldog, Akke, EGM, and Loda) announced the creation of The Alliance with StarCraft II player NaNiwa.', 10, '9.jpg');
+(9, '[A]lliance', 'In April 2013, Swedish team No Tidehunter (consisting of s4, AdmiralBulldog, Akke, EGM, and Loda) announced the creation of The Alliance with StarCraft II player NaNiwa.', 10, '91.png'),
+(10, 'Test bez ikone', 'Test bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikoneTest bez ikone', 15, NULL);
 
 -- --------------------------------------------------------
 
@@ -780,13 +988,26 @@ INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `layout` varchar(255) DEFAULT NULL,
-  `navigation` varchar(100) NOT NULL,
-  `class` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `navigation` varchar(100) DEFAULT NULL,
+  `date` datetime NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `access` enum('public','clan','registered') NOT NULL DEFAULT 'public',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `name`, `content`, `layout`, `navigation`, `date`, `slug`, `description`, `access`) VALUES
+(1, 'Not so cool anymore', '<p>We have some comp<strong>letely unexpected, tragic news to </strong>share. On Thursday, we lost a very dear friend and founding member of our close-knit Oculus family, Andrew Reisse.</p>\r\n<img alt="Andrew in the Rift" src="http://www.oculusvr.com/wp-content/uploads/2013/06/andrew_rift_small.jpg" />\r\n<p>&nbsp;</p>\r\n\r\n<p>Andrew was a brilliant computer graphics engineer, an avid photographer<a href="http://www.reisse.net">(1)</a> and hiker who loved nature, and a loyal friend. Andrew was unique in so many interesting ways. He was extraordinarily kind and utterly selfless. He was a mentor and an inspiration to everyone around him.</p>\r\n\r\n<p>Some of us have known Andrew since college, and have worked with him at multiple companies beginning with Scaleform in Maryland which he helped start at age 19, then at Gaikai in Aliso Viejo which brought him out to California, and finally at Oculus where he was a co-founder and lead engineer.</p>\r\n\r\n<p>Andrew&rsquo;s contributions span far and wide in the video game industry. His code is embedded in thousands of games played by millions of people around the world.</p>\r\n\r\n<p><em>Before Oculus</em><br />\r\nWhile studying Computer Science at University of Maryland College Park, he ended up sharing a dorm room with Michael Antonov second semester of his freshman year. He loved games, but even more, he loved the technology behind them. Just for fun, he made his own 3D rendering engine that could load Quake maps. That same year, the two met Brendan Iribe and set out to make a UI system for game developers, which was first used in Civilization IV and would later become Scaleform GFx &ndash; used by thousands of video games.</p>\r\n<img alt="Scaleform Team" src="http://www.oculusvr.com/wp-content/uploads/2013/06/scaleform_team_small.jpg" />\r\n<p>&nbsp;</p>\r\n\r\n<p>Andrew was a freethinker and stood by his opinions and ideals. He was against corporate agreements that restrict an employee&rsquo;s ability to contribute to open source side projects. When pushed by Autodesk to sign such an agreement, Andrew opted instead to join Brendan at Gaikai, the cloud streaming company, in California. Michael and Nate joined Andrew and Brendan a week later, where the team worked on Gaikai&rsquo;s cloud gaming platform and SDK until they started Oculus. Andrew continued his work on open-source projects all the while.</p>\r\n\r\n<p><em>At Oculus</em></p>\r\n<img alt="Oculus Team" src="http://static.oculusvr.com/website/2012/10/compNY.jpg" /><br />\r\nAndrew&rsquo;s impact on the software and hardware we&rsquo;ve developed at Oculus is immeasurable. He was a lead on the Oculus SDK, the Unreal Engine integration, Hawken VR, and nearly every demo we&rsquo;ve shown since the company inception. Despite all his work, he never bragged or boasted. When he wasn&rsquo;t programming at the office, he was learning, reading his favorite web site &mdash; slashdot.org &mdash; or helping other teammates brainstorm and innovate.\r\n<p>He believed in what we&rsquo;re building and always pushed the team to be better than we thought we could be.</p>\r\n<img alt="Andrew at the Office" src="http://www.oculusvr.com/wp-content/uploads/2013/06/Andrew_Oculus_Office.jpg" />\r\n<p>Andrew was taken from us long before his time. Words cannot express how sorely he will be missed or how deeply our sympathy runs for his family.</p>\r\n\r\n<p>Andrew, you will always be in our thoughts and never forgotten. We love you, Reisse.</p>\r\n\r\n<p><strong>Andrew&rsquo;s photography can be found at <a href="http://www.reisse.net">www.reisse.net</a>.</strong></p>\r\n', 'default.twig', 'Sad page', '2013-06-02 16:58:00', 'kustom-slug', 'Andrew was taken from us long before his time.', 'clan'),
+(6, 'Another page', '<p>The following is a list of all the native rules that are available to use:</p>\r\n\r\n<table border="0" cellpadding="0" cellspacing="1" >\r\n <tbody>\r\n  <tr>\r\n   <th>Rule</th>\r\n   <th>Parameter</th>\r\n   <th>Description</th>\r\n   <th>Example</th>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>required</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element is empty.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>matches</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element does not match the one in the parameter.</td>\r\n   <td>matches[form_item]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>is_unique</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is not unique to the table and field name in the parameter.</td>\r\n   <td>is_unique[table.field]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>min_length</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is shorter then the parameter value.</td>\r\n   <td>min_length[6]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>max_length</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is longer then the parameter value.</td>\r\n   <td>max_length[12]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>exact_length</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is not exactly the parameter value.</td>\r\n   <td>exact_length[8]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>greater_than</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is less than the parameter value or not numeric.</td>\r\n   <td>greater_than[8]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>less_than</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is greater than the parameter value or not numeric.</td>\r\n   <td>less_than[8]</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>alpha</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than alphabetical characters.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>alpha_numeric</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than alpha-numeric characters.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>alpha_dash</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than alpha-numeric characters, underscores or dashes.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>numeric</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than numeric characters.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>integer</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than an integer.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>decimal</strong></td>\r\n   <td>Yes</td>\r\n   <td>Returns FALSE if the form element is not exactly the parameter value.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>is_natural</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than a natural number: 0, 1, 2, 3, etc.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>is_natural_no_zero</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element contains anything other than a natural number, but not zero: 1, 2, 3, etc.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>valid_email</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the form element does not contain a valid email address.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>valid_emails</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if any value provided in a comma separated list is not a valid email.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>valid_ip</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the supplied IP is not valid. Accepts an optional parameter of &quot;IPv4&quot; or &quot;IPv6&quot; to specify an IP format.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n  <tr>\r\n   <td><strong>valid_base64</strong></td>\r\n   <td>No</td>\r\n   <td>Returns FALSE if the supplied string contains anything other than valid Base64 characters.</td>\r\n   <td>&nbsp;</td>\r\n  </tr>\r\n </tbody>\r\n</table>\r\n\r\n<p><strong>Note:</strong> These rules can also be called as discrete functions. For example:</p>\r\n<code>$this-&gt;form_validation-&gt;required($string);</code>\r\n\r\n<p><strong>Note:</strong> You can also use any native PHP functions that permit one parameter.</p>\r\n', 'fullwidth.twig', 'Pager', '2013-06-02 17:09:00', 'another-page', 'The following is a list of all the native rules that are available to use', 'public'),
+(7, 'Using Arrays as Field Names', '<h1>File Helper</h1>\r\n\r\n<p>The File Helper file contains functions that assist in working with files.</p>\r\n\r\n<h2>Loading this Helper</h2>\r\n\r\n<p>This helper is loaded using the following code:</p>\r\n<code>$this-&gt;load-&gt;helper(&#39;file&#39;);</code>\r\n\r\n<p>The following functions are available:</p>\r\n\r\n<h2>read_file&#40;&#39;<var>path</var>&#39;&#41;</h2>\r\n\r\n<p>Returns the data contained in the file specified in the path. Example:</p>\r\n<code>$string = read_file&#40;&#39;./path/to/file.php&#39;&#41;;</code>\r\n\r\n<p>The path can be a relative or full server path. Returns FALSE (boolean) on failure.</p>\r\n\r\n<p><strong>Note:</strong> The path is relative to your main site index.php file, NOT your controller or view files. CodeIgniter uses a front controller so paths are always relative to the main site index.</p>\r\n\r\n<p>If your server is running an open_basedir restriction this function might not work if you are trying to access a file above the calling script.</p>\r\n', 'default.twig', 'Array', '2013-06-02 17:18:00', 'using-arrays-as-field', 'Returns the data contained in the file specified in the path. Example:', 'registered');
 
 -- --------------------------------------------------------
 
@@ -799,7 +1020,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `title` varchar(50) NOT NULL,
   `body` text NOT NULL,
   `date` datetime NOT NULL,
-  `teaser` text NOT NULL,
+  `teaser` text,
   `author` int(11) NOT NULL,
   `label` int(11) DEFAULT NULL,
   `featured` tinyint(1) NOT NULL DEFAULT '0',
@@ -808,7 +1029,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `views` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `label` (`label`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `posts`
@@ -818,9 +1039,9 @@ INSERT INTO `posts` (`id`, `title`, `body`, `date`, `teaser`, `author`, `label`,
 (1, 'Lorem ipsum dolor sit amet', '<p>These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.These are examples of different ways to use the Foundation Grid. Foundation uses <code>box-sizing: border-box</code> so that borders and padding do not affect the overall width of the columns, making the math dead-simple. Since Foundation is mobile-first, we''ll stack content by default. You do have access to an entirely separate small grid to use up to the 768px breakpoint. This means you can create some pretty complex layouts and even drop columns if you want.</p>\r\n', '2013-05-02 11:07:33', 'Create powerful multi-device layouts quickly and easily with the 12-column, nestable Foundation grid. If you''re familiar with grid systems, you''ll feel right at home. If not, you''ll learn quickly.', 1, 6, 0, 0, 1, 62),
 (2, 'Post title 2', '<p>Fanny pack cillum try-hard tempor proident, mumblecore nostrud deserunt godard semiotics fugiat chillwave. Small batch id whatever put a bird on it gluten-free, readymade vero. Mustache cosby sweater street art cupidatat labore culpa ugh pariatur, kogi chillwave banksy umami aliquip enim. Bespoke ad stumptown deep v, vero 3 wolf moon est gluten-free pitchfork trust fund quis kogi. Sriracha sed proident mumblecore lo-fi. Hashtag dolor letterpress chambray odd future freegan, williamsburg dreamcatcher biodiesel duis. Occupy ex retro, pinterest authentic vice mcsweeney''s synth readymade williamsburg cosby sweater tonx.</p>\r\n', '2013-05-02 11:08:03', 'Foundation is developed in Sass, which is powerful CSS pre-processor that helps you write cleaner, more organized, CSS that you can more easily maintain over time without the typical headaches of vanilla CSS. On top of our minimal styling, we''ve written powerful Javascript plugins that will make useful interactions easier to implement across screen sizes.', 1, 6, 0, 0, 1, 49),
 (3, 'CK Editor Example', '<p> <strong>Apollo 11</strong></p>\r\n\r\n<p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="http://en.wikipedia.org/wiki/Neil_Armstrong">Neil Armstrong</a> and <a href="http://en.wikipedia.org/wiki/Buzz_Aldrin">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>\r\n\r\n<p>Armstrong spent about <span style="text-decoration:line-through;">three and a half</span> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5 kg) of lunar material for return to Earth. A third member of the mission, <a href="http://en.wikipedia.org/wiki/Michael_Collins_(astronaut)">Michael Collins</a>, piloted the <a href="http://en.wikipedia.org/wiki/Apollo_Command/Service_Module">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>\r\n\r\n<h3>Broadcasting and <em>quotes</em></h3>\r\n\r\n<p>Broadcast on live TV to a world-wide audience, Armstrong stepped onto the lunar surface and described the event as:</p>\r\n\r\n<blockquote>\r\n<p>One small step for [a] man, one giant leap for mankind.</p>\r\n</blockquote>\r\n\r\n<p>Apollo 11 effectively ended the <a href="http://en.wikipedia.org/wiki/Space_Race">Space Race</a> and fulfilled a national goal proposed in 1961 by the late U.S. President <a href="http://en.wikipedia.org/wiki/John_F._Kennedy">John F. Kennedy</a> in a speech before the United States Congress:</p>\r\n\r\n<blockquote>\r\n<p>[...] before this decade is out, of landing a man on the Moon and returning him safely to the Earth.</p>\r\n</blockquote>\r\n\r\n<h3>Technical details</h3>\r\n\r\n<table border="1" cellpadding="5" cellspacing="0"><caption><strong>Mission crew</strong></caption>\r\n <thead><tr><th scope="col">Position</th>\r\n   <th scope="col">Astronaut</th>\r\n  </tr></thead><tbody><tr><td>Commander</td>\r\n   <td>Neil A. Armstrong</td>\r\n  </tr><tr><td>Command Module Pilot</td>\r\n   <td>Michael Collins</td>\r\n  </tr><tr><td>Lunar Module Pilot</td>\r\n   <td>Edwin "Buzz" E. Aldrin, Jr.</td>\r\n  </tr></tbody></table><p>Launched by a <strong>Saturn V</strong> rocket from <a href="http://en.wikipedia.org/wiki/Kennedy_Space_Center">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="http://en.wikipedia.org/wiki/NASA">NASA</a>''s Apollo program. The Apollo spacecraft had three parts:</p>\r\n\r\n<ol><li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>\r\n <li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>\r\n <li><strong>Lunar Module</strong> for landing on the Moon.</li>\r\n</ol><p>After being sent to the Moon by the Saturn V''s upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="http://en.wikipedia.org/wiki/Mare_Tranquillitatis">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="http://en.wikipedia.org/wiki/Pacific_Ocean">Pacific Ocean</a> on July 24.</p>\r\n\r\n<hr /><p><small>Source: <a href="http://en.wikipedia.org/wiki/Apollo_11">Wikipedia.org</a></small></p>\r\n', '2013-05-06 12:25:55', 'Apollo 11 was the spaceflight that landed the first humans, Americans Neil Armstrong and Buzz Aldrin, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.', 1, 5, 0, 0, 1, 78),
-(4, 'elit sed consequat auctor, nunc', 'metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2013-05-01 04:50:41', 'nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt,', 9, 8, 0, 0, 1, 185),
+(4, 'elit sed consequat auctor, nunc', 'metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2013-05-01 04:50:41', 'nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt,', 9, NULL, 0, 0, 1, 186),
 (25, 'ligula tortor, dictum eu, placerat', 'ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit', '2013-04-21 02:44:29', 'mollis nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem,', 10, 6, 0, 0, 1, 181),
-(26, 'velit. Pellentesque ultricies dignissim lacus.', 'Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus', '2013-05-09 11:40:32', 'Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor', 9, 6, 0, 0, 1, 149),
+(26, 'velit. Pellentesque ultricies dignissim lacus.', 'Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus', '2013-05-09 11:40:32', 'Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor', 9, 6, 0, 0, 1, 151),
 (27, 'risus odio, auctor vitae, aliquet', 'egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis.', '2013-04-20 06:42:18', 'vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu.', 1, 6, 0, 0, 1, 97),
 (28, 'tempor bibendum. Donec felis orci,', 'nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet,', '2013-04-10 05:58:48', 'ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec', 8, 6, 0, 0, 1, 83),
 (29, 'dignissim lacus. Aliquam rutrum lorem', 'mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing. Mauris molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor', '2013-04-05 20:05:39', 'bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus', 1, 6, 0, 0, 1, 222),
@@ -835,8 +1056,9 @@ INSERT INTO `posts` (`id`, `title`, `body`, `date`, `teaser`, `author`, `label`,
 (38, 'eu augue porttitor interdum. Sed', 'scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a,', '2013-04-18 00:27:55', 'pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem', 2, 6, 0, 0, 1, 193),
 (40, 'cursus. Integer mollis. Integer tincidunt', 'dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor, est ac mattis semper, dui lectus rutrum urna, nec luctus felis purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris', '2013-05-01 13:12:53', 'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas', 4, 6, 0, 0, 1, 111),
 (41, 'mollis dui, in sodales elit', 'quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu vel quam dignissim pharetra. Nam ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales elit', '2013-04-20 12:39:34', 'urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a,', 2, 6, 0, 0, 1, 253),
-(42, 'est, vitae sodales nisi magna', 'vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing', '2013-04-17 02:43:00', 'Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,', 1, 6, 0, 0, 1, 242),
-(44, 'Phasellus dolor elit, pellentesque a,', 'Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare', '2013-05-08 06:57:45', 'risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque', 8, 6, 0, 0, 1, 53);
+(42, 'est, vitae sodales nisi magna', 'vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing', '2013-04-17 02:43:00', 'Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,', 1, 6, 0, 0, 1, 243),
+(44, 'Phasellus dolor elit, pellentesque a,', 'Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare', '2013-05-08 06:57:45', 'risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque', 8, 6, 0, 0, 1, 60),
+(45, 'Draft type2', '<p>Tested on All <a href="http://sporkweb.com/live-previews/Mobilized-2/1-darkbg/3-red/layout09.html#">Major</a> Email Clients by <a href="http://sporkweb.com/live-previews/Mobilized-2/1-darkbg/3-red/layout09.html#">Cras Aenean</a> Although Mobilized was created with responsiveness and scalability on top of mind, ''old'' email clients like Outlook ''07 and ''10 were never sacrificed.2</p>\r\n\r\n<p> </p>\r\n', '2013-06-01 11:38:32', '\r\nWorking on yet another branding project with our amazing team. Stand by for some more revealing shots soon.\r\n2\r\nProps to @Matt_Yow for his stellar icon and type work on this project so far.\r\n\r\nCreated with the Focus Lab team\r\n', 1, 6, 1, 0, 0, 10);
 
 -- --------------------------------------------------------
 
@@ -999,10 +1221,9 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `games` varchar(50) NOT NULL,
+  `games` varchar(50) DEFAULT NULL,
   `banner` varchar(20) DEFAULT NULL,
   `logo` varchar(20) DEFAULT NULL,
-  `type` tinyint(1) NOT NULL,
   `countryID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
@@ -1011,10 +1232,10 @@ CREATE TABLE IF NOT EXISTS `teams` (
 -- Dumping data for table `teams`
 --
 
-INSERT INTO `teams` (`id`, `name`, `description`, `games`, `banner`, `logo`, `type`, `countryID`) VALUES
-(2, 'Test Team', 'Quis synth messenger bag vegan meggings nihil locavore, ad polaroid blue bottle. 3 wolf moon labore etsy tonx try-hard mollit, cray sunt VHS brooklyn wayfarers street art four loko aliqua velit. ', '2', '', '21.jpg', 0, 55),
-(5, 'Test team 2', 'Nulla tousled next level, sustainable kogi locavore eu keytar organic elit williamsburg. Nulla vinyl retro dolor, artisan semiotics direct trade sustainable mollit.', '10', '', '5.jpg', 0, 55),
-(6, 'Counter Strike Squad', 'CodeIgniter uses a modified version of the Active Record Database Pattern. This pattern allows information to be retrieved, inserted, and updated in your database with minimal scripting. In some cases only one or two lines of code are necessary to perform a database action. CodeIgniter does not require that each database table be its own class file. It instead provides a more simplified interface.', '6,7,8', NULL, NULL, 1, 83);
+INSERT INTO `teams` (`id`, `name`, `description`, `games`, `banner`, `logo`, `countryID`) VALUES
+(2, 'Test Team', 'Quis synth messenger bag vegan meggings nihil locavore, ad polaroid blue bottle. 3 wolf moon labore etsy tonx try-hard mollit, cray sunt VHS brooklyn wayfarers street art four loko aliqua velit. ', '2', '2_banner.png', '21.jpg', 55),
+(5, 'Test team 2', 'Nulla tousled next level, sustainable kogi locavore eu keytar organic elit williamsburg. Nulla vinyl retro dolor, artisan semiotics direct trade sustainable mollit.', '3,10', '5_banner.png', '5.png', 55),
+(6, 'Counter Strike Squad', 'CodeIgniter uses a modified version of the Active Record Database Pattern. This pattern allows information to be retrieved, inserted, and updated in your database with minimal scripting. In some cases only one or two lines of code are necessary to perform a database action. CodeIgniter does not require that each database table be its own class file. It instead provides a more simplified interface.', '6,7,8', NULL, NULL, 83);
 
 -- --------------------------------------------------------
 
@@ -1028,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `teams_members` (
   `user_id` int(11) NOT NULL,
   `position` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table `teams_members`
@@ -1040,14 +1261,14 @@ INSERT INTO `teams_members` (`id`, `team_id`, `user_id`, `position`) VALUES
 (27, 5, 8, NULL),
 (28, 5, 9, NULL),
 (29, 5, 10, NULL),
-(35, 2, 2, NULL),
-(36, 2, 3, NULL),
-(37, 2, 4, NULL),
-(38, 2, 5, NULL),
 (54, 6, 1, NULL),
 (55, 6, 4, NULL),
 (56, 6, 5, NULL),
-(57, 6, 7, NULL);
+(57, 6, 7, NULL),
+(58, 2, 2, NULL),
+(59, 2, 3, NULL),
+(60, 2, 4, NULL),
+(61, 2, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -1084,7 +1305,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `dob`, `gender`, `country`, `avatar`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1369240056, 1, 'Karlo', 'Mikus', '2013-05-15 00:00:00', NULL, NULL, '12.png'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, '9d029802e28cd9c768e8e62277c0df49ec65c48c', 1268889823, 1370192569, 1, 'Karlo', 'Mikus', '2013-05-15 00:00:00', NULL, NULL, '12.png'),
 (2, '\0\0', 'test', 'c9677e8112319f649747a8b05708d010221e6b41', NULL, 'test@test.com', NULL, NULL, NULL, NULL, 1361107053, 1361107053, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, '\0\0', 'test2', 'b4bbb3960ac42732f74d08c1927f97003ef9bb6b', NULL, 'test2@test.com', NULL, NULL, NULL, NULL, 1361107377, 1361107377, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '\0\0', 'johndoe', 'f406c4e029784051584774587294de88047f74a0', NULL, 'john@doe.com', NULL, NULL, NULL, NULL, 1361112609, 1361112609, 1, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1134,10 +1355,33 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_pm`
+-- Table structure for table `users_perms`
 --
 
-CREATE TABLE IF NOT EXISTS `user_pm` (
+CREATE TABLE IF NOT EXISTS `users_perms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` int(11) NOT NULL,
+  `group` int(11) NOT NULL,
+  `allow` enum('0','1') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `users_perms`
+--
+
+INSERT INTO `users_perms` (`id`, `module`, `group`, `allow`) VALUES
+(6, 1, 6, '1'),
+(7, 2, 6, '1'),
+(8, 3, 6, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_pm`
+--
+
+CREATE TABLE IF NOT EXISTS `users_pm` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) NOT NULL,
   `title` varchar(150) NOT NULL,

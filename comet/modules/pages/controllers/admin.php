@@ -2,65 +2,57 @@
 
 class Admin extends Backend_Controller {
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
-		$this->load->model('labels_m');
+
+		$this->load->model('pages_m');
 	}
 
-	public function index() {
-		
+	public function index()
+	{	
+		$this->load->helper('text');
+
 		$this->template
-			->set('title', 'Labels')
-			->set('labels', $this->labels_m->get_all())
+			->set('title', 'Pages')
+			->set('pages', $this->pages_m->get_all())
 			->build('admin/main');
 	}
 
-	public function create() {
-
+	public function create()
+	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
 
-		if ($this->form_validation->run() == TRUE) {
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[25]|min_length[3]|is_unique[pages.slug]');
+		$this->form_validation->set_rules('access', 'Access level', 'required');
+		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[3]|max_length[20]');
+		$this->form_validation->set_rules('content', 'Content', 'required');
 
-			$next_id = $this->labels_m->get_next_id();
-
-			if (!empty($_FILES['banner']['name'])) {
-				$config['upload_path']   = $this->folder_path;
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
-				$config['file_name']     = $next_id;
-				$this->upload->initialize($config);
-
-				if ($this->upload->do_upload('banner')) {
-					$file_data = $this->upload->data();
-				}
-				else {
-					echo 'file fail';
-					//redirect('admin/teams');
-				}
-			}
-
-			if(isset($file_data) and !empty($file_data['file_name'])) $file = $file_data['file_name'];
-			else $file = '0';
-
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
-				'name' => $this->input->post('title'),
+				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'slug' => makePageSlug($this->input->post('slug')),
+				'content' => $this->input->post('content'),
+				'navigation' => $this->input->post('navigation'),
+				'layout' => $this->input->post('layout'),
+				'date' => date('Y-m-d H:i'),
+				'access' => $this->input->post('access')
 			);
 
-			$this->labels_m->insert($data);
-			redirect('admin/labels');
+			$this->pages_m->insert($data);
+			redirect('admin/pages');
 		}
-		else {
-
+		else
+		{
 			$this->template
-				->set('title', 'Create label')
+				->set('title', 'Create page')
+				->set('layouts', $this->template->get_theme_layouts('default'))
 				->build('admin/form');
 		}
 	}
@@ -69,52 +61,44 @@ class Admin extends Backend_Controller {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
 
-		if ($this->form_validation->run() == TRUE) {
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[25]|min_length[3]');
+		$this->form_validation->set_rules('access', 'Access level', 'required');
+		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[3]|max_length[20]');
+		$this->form_validation->set_rules('content', 'Content', 'required');
 
-			if (!empty($_FILES['banner']['name'])) {
-				$config['upload_path']   = $this->folder_path;
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '0';
-				$config['max_width']     = '600';
-				$config['max_height']    = '200';
-				$config['file_name']     = $next_id;
-				$this->upload->initialize($config);
-
-				if ($this->upload->do_upload('banner')) {
-					$file_data = $this->upload->data();
-				}
-				else {
-					echo 'file fail';
-					//redirect('admin/teams');
-				}
-			}
-			
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
-				'name' => $this->input->post('title'),
+				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description'),
-				'banner' => $file
+				'slug' => makePageSlug($this->input->post('slug')),
+				'content' => $this->input->post('content'),
+				'navigation' => $this->input->post('navigation'),
+				'layout' => $this->input->post('layout'),
+				'date' => date('Y-m-d H:i'),
+				'access' => $this->input->post('access')
 			);
 
-			$this->labels_m->update($id, $data);
-			redirect('admin/labels');
+			$this->pages_m->update($id, $data);
+			redirect('admin/pages');
 		}
-		else {
+		else
+		{
 			$this->template
-				->set('title', 'Edit label')
-				->set('data', $this->labels_m->as_array()->get($id))
+				->set('title', 'Edit page')
+				->set('data', $this->pages_m->as_array()->get($id))
+				->set('layouts', $this->template->get_theme_layouts('default'))
 				->build('admin/form');
 		}
 	}
 
-	public function delete($id = 0) {
-		$this->label = $this->labels_m->get($id);
-		$filepath_banner = $this->folder_path.$this->label->banner;
-		unlink($filepath_banner);
-		$this->labels_m->delete($id);
-		redirect('admin/labels');
+	public function delete($id = 0)
+	{
+		$this->pages_m->delete($id);
+		redirect('admin/pages');
 	}
 }

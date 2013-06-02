@@ -47,8 +47,7 @@ $route['admin/(login|logout)']			    = 'admin/$1';
 $route['admin/([a-zA-Z0-9_-]+)']            = '$1/admin/index';
 $route['users/profile/(:num)']            	= 'users/profile/index/$1';
 
-//$route['admin/(:any)']    	= 'admin/$1/index';
-
+$route['page/(:any)']            			= 'pages/page/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
