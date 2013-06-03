@@ -16,6 +16,7 @@ class Admin extends Backend_Controller {
 			$data = array(
 				'sitename' => $this->input->post('sitename'),
 				'clanname' => $this->input->post('clanname'),
+				'clantag' => $this->input->post('clantag'),
 				'adminmail' => $this->input->post('adminmail'),
 				'comments' => $this->input->post('comments'),
 				'commentsdelay' => $this->input->post('commentdelay'),

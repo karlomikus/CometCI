@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "posts";
+$route['default_controller'] = 'posts';
 $route['404_override'] = '';
 
 $route['admin/help/([a-zA-Z0-9_-]+)']       = 'admin/help/$1';

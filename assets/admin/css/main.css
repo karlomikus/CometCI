@@ -42,6 +42,12 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 	-webkit-box-shadow: 0 1px 0 #fff;
 }
 
+label.input-label {
+	font-size: 16px;
+	color: #f5696c;
+	font-weight: lighter;
+}
+
 .js_select, .js_select_game, .js_select_country, .js_select_no_search {
 	margin-bottom: 20px;
 	box-shadow: 0 1px 0 #fff;
@@ -787,6 +793,11 @@ input, textarea, .uneditable-input { width: 300px; }
 	border-right: 1px solid #a0a6af;
 	padding: 20px;
 	margin-bottom: 20px;
+}
+
+.tab-pane input:last-child,
+.tab-pane ul:last-child li:last-child {
+	margin: 0;
 }
 
 /* Pagination */

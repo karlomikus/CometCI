@@ -1,4 +1,5 @@
 <?php echo validation_errors(); ?>
+
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-cogs"></i> Global settings</a></li>
 	<li><a href="#tab2" data-toggle="tab"><i class="icon-gamepad"></i> Clan settings</a></li>
@@ -12,12 +13,17 @@
 
 	<!-- Global settings -->
 	<div class="tab-pane active" id="tab1">
+
+		<label class="input-label">Site name</label>
 		<input placeholder="Site name" class="input-xxlarge" type="text" name="sitename" value="<?php echo $data->sitename; ?>" />
-
+	
+		<label class="input-label">Admin Email</label>
 		<input placeholder="Admin email" class="input-xlarge" type="text" name="adminmail" value="<?php echo $data->adminmail; ?>" />
-
+		
+		<label class="input-label">Home page</label>
 		<input placeholder="Home module" class="input-xlarge inputip" type="text" name="homemodule" title="Module which will be your frontpage" value="<?php echo $data->homemodule; ?>" />
-
+		
+		<label class="input-label">Default theme and layout</label>
 		<select placeholder="Select default theme" name="theme" class="js_select input-xlarge">
 			<option></option>
 			<?php foreach($themes as $theme): ?>
@@ -43,17 +49,24 @@
 				<label for="check-close-website">Close website</label>
 			</li>
 		</ul>
-
-		<input placeholder="Comment delay" class="inputip" type="text" name="commentdelay" title="Time in seconds between comment posts" value="<?php echo $data->commentsdelay; ?>" />
-
+		
+		<label class="input-label">Site closed message</label>
 		<textarea placeholder="Site closed message" name="closedmsg" class="input-xxlarge"><?php echo $data->closedmsg; ?></textarea>
 
-		<input placeholder="Analytics code" class="input-xlarge" type="text" name="analytics" value="<?php echo $data->analytics; ?>" />
+		<label class="input-label">Delay comment posts</label>
+		<input placeholder="Comment delay" class="inputip" type="text" name="commentdelay" title="Time in seconds between comment posts" value="<?php echo $data->commentsdelay; ?>" />
+		
+		<label class="input-label">Analyitics code</label>
+		<input class="input-xlarge" type="text" name="analytics" value="<?php echo $data->analytics; ?>" />
 	</div>
 	
 	<!-- Clan Settings -->
 	<div class="tab-pane" id="tab2">
-		<input placeholder="Clan name" type="text" name="clanname" value="<?php echo $data->clanname; ?>" />
+		<label class="input-label">Clan Name</label>
+		<input type="text" name="clanname" value="<?php echo $data->clanname; ?>" />
+
+		<label class="input-label">Clan Tag</label>
+		<input type="text" name="clantag" value="<?php echo $data->clantag; ?>" />
 	</div>
 	
 	<!-- User settings -->

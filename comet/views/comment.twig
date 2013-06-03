@@ -1,3 +1,9 @@
+{% if errors|default is not empty %}
+<div data-alert class="alert-box">
+	{{errors}}
+</div>
+{% endif %}
+
 {% for comment in data %}
 <div class="panel">
 	<div class="row">

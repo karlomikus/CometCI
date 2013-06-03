@@ -16,9 +16,21 @@ class Comments extends Frontend_Controller {
 		$this->load->helper('htmlpurifier');
 
 		$this->form_validation->set_rules('content', 'Comment content', 'trim|required|min_length[5]|xss_clean');
+
 		// TODO: Honey pot method for fighting spam
 		if($this->ion_auth->logged_in() && $this->form_validation->run()) 
 		{
+			$lastComment = $this->comments_m->getLastUserComment($this->user->id);
+			$timeComment = strtotime($lastComment[0]->date);
+			$timeDiff = time() - $timeComment;
+			
+			// Flood protection
+			if($timeDiff <= $this->setting->commentsdelay)
+			{
+				$this->session->set_flashdata('comment_error', 'You\'re typing too fast!');
+				redirect($module.'/show/'.$module_link);
+			}
+
 			$data = array(
 				'content' => html_purify($this->input->post('content'), 'comment'),
 				'poster_id' => $this->user->id,
@@ -26,11 +38,13 @@ class Comments extends Frontend_Controller {
 				'module_link' => $module_link,
 				'date' => date('Y-m-d H:i:s')
 			);
+
 			$this->comments_m->insert($data);
 			redirect($module.'/show/'.$module_link);
 		}
 		else 
 		{
+			$this->session->set_flashdata('comment_error', validation_errors('', ''));
 			redirect($module.'/show/'.$module_link);
 		}
 	}
