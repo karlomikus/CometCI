@@ -4,17 +4,42 @@ class Comet_m extends MY_Model {
 
 	/**
 	 * Get visits by chosen month.
-	 * 
 	 * @param  int $month Month
-	 * @return object
+	 * @return array
 	 */
 	public function get_visits_stats($month)
 	{
+		$this->load->helper('date');
+
+		// First get total visits by date from database
 		$this->db->where('MONTH(date)', $month);
 		$this->db->group_by('DAY(date)');
 		$this->db->select('date, COUNT(*) AS total');
+		$result = $this->db->get('site_views')->result();
 
-		return $this->db->get('site_views')->result();
+		// Set starting variables
+		$monthStartDay = date('Y-'.$month.'-01');
+		$numberOfDaysInMonth = days_in_month($month);
+
+		// Fill all dates with zero views
+		$range = array();
+		for($i = 0; $i <= $numberOfDaysInMonth; $i++)
+		{
+			$dateIncrement = date("Y-m-d", strtotime($monthStartDay." +".$i." day"));
+			$range[$dateIncrement] = 0;
+		}
+
+		// Remove starting day of next month
+		array_pop($range);
+
+		// Fill dates with real values
+		foreach ($result as $visit)
+		{
+			$formatDate = date('Y-m-d', strtotime($visit->date));
+			$range[$formatDate] = $visit->total;
+		}
+
+		return $range;
 	}
 
 	/**

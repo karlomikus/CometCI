@@ -151,11 +151,9 @@
 	new Morris.Line({
 		element: 'cms-page-views',
 		data: [
-		<?php
-		if($visits != NULL) {
-		foreach ($visits as $visit): ?>
-			{ month: '<?php echo date("Y-m-d", strtotime($visit->date)); ?>', value: <?php echo $visit->total; ?> },
-		<?php endforeach; } else { echo '{ month: '.date("Y-m-d").', value: 0 }'; } ?>
+		<?php foreach ($visits as $date => $total): ?>
+			{ month: '<?php echo $date; ?>', value: <?php echo $total; ?> },
+		<?php endforeach; ?>
 		],
 		lineColors: ['#9b9eaf'],
 		pointFillColors: ['#D64644'],

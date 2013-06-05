@@ -17,7 +17,7 @@ class Admin extends Backend_Controller {
             ->set('title', 'Dashboard')
             ->set('matches', $this->matches_m->get_upcoming_matches())
             ->set('events', $this->events_m->get_all())
-            ->set('visits', $this->comet_m->get_visits_stats(5))
+            ->set('visits', $this->comet_m->get_visits_stats(date('m')))
             ->set('countcomments', $this->comet_m->count_table_rows('comments'))
             ->set('countposts', $this->comet_m->count_table_rows('forum_replies'))
             ->set('countopics', $this->comet_m->count_table_rows('forum_topics'))

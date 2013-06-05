@@ -10,7 +10,8 @@ $config['cms_time_format'] = 'H:i';
 /**
  * Modules
  */
-$config['mod_max_posts'] = 6;
+$config['mod_max_posts'] = 6; 		// Posts per page
+$config['mod_max_matches'] = 20;	// Matches per page
 
 /**
  * Widgets

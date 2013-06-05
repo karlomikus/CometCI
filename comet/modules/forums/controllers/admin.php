@@ -29,17 +29,26 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$name = $this->input->post('name');
+
 			$data = array(
-				'name' => $this->input->post('name'),
+				'name' => $name,
 				'label' => $this->input->post('label'),
 				'date' => date('Y-m-d H:i:s'),
 				'clan' => $this->input->post('clan'),
 				'private' => $this->input->post('private'),
 				'description' => $this->input->post('description')
 			);
+
 			$this->forums_m->insert_forum($data);
 			$forumID = $this->db->insert_id();
 
+			// Insert slug
+			$slug = makePageSlug($forumID.'-'.$name);
+			$dataSlug = array('slug' => $slug);
+			$this->forums_m->update_forum($forumID, $dataSlug);
+
+			// Insert mods
 			$mods = $this->input->post('mods');
 			$this->forums_m->add_moderators($mods, $forumID);
 

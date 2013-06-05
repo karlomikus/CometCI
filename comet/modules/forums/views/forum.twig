@@ -43,7 +43,7 @@
 		</tbody>
 	</table>
 {% else %}
-	No topics!
+	<div class="panel">No topics, go <a href="{{base_url()}}forums/newtopic/{{forumID}}">make one</a>.</div>
 {% endif %}
 
 {{pagination}}
