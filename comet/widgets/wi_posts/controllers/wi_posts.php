@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_posts extends Widget_Controller {
+class Wi_posts extends Frontend_Controller {
 	
 	public function index()
 	{

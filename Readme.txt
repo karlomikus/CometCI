@@ -1,16 +1,17 @@
-Current version: 0.02 Alpha
+Current version: 0.1
 
 Codeigniter plugins:
 * twiggy parser
 * hmvc
 * ion auth
+* template
+* html purifier
+* php markdown
 
 Changelog:
+v0.1
+- Initial release
 
-v0.02 Alpha
-- Enabled CSRF (You must use form_open() as from now!)
-- Added forum module
-- New admin layout and logic
-
-v0.01
-- Initial version
+Bugs / TODO:
+- Make related posts
+- After submitting comment return by page slug not page id

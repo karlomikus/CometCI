@@ -1,23 +1,27 @@
+<h6>{{ total_comments }} Comments:</h6>
+
 {% if errors|default is not empty %}
 <div data-alert class="alert-box">
-	{{errors}}
+	{{ errors }}
 </div>
 {% endif %}
 
 {% for comment in data %}
-<div class="panel">
-	<div class="row">
-		<div class="large-2 columns hide-for-small">{{get_avatar(comment.poster_id, true)}}</div>
-		<p class="large-10 columns">
-			{{comment.content}}
-			<br />
-			<small>
-				Posted by {{get_username(comment.poster_id)}} on {{comment.date}}
-				{% if comment.poster_id == user.user_id or is_admin == true %}
-				[<a href="{{base_url()}}comments/delete/{{comment.id}}">delete</a>]
-				{% endif %}
-			</small>
-		</p>
+<div class="comment">
+	<div class="comment-avatar hide-for-small">
+		{{ get_avatar(comment.poster_id, true) }}
+	</div>
+	<div class="comment-content">
+		<header>
+			<h5>
+				{{ get_username(comment.poster_id) }} <br />
+				<small>{{ cms_date(comment.date) }} - {{ cms_time(comment.date) }}</small>
+			</h5>
+			{% if comment.poster_id == user.user_id or is_admin == true %}
+				<div><a class="tiny button" href="{{ base_url() }}comments/delete/{{ comment.id }}">delete</a></div>
+			{% endif %}
+		</header>
+		<p>{{ parse_markdown(comment.content) }}</p>
 	</div>
 </div>
 {% endfor %}

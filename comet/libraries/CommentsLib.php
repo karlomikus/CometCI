@@ -48,13 +48,15 @@ class CommentsLib {
 	 */
 	private function display() 
 	{
-		$comment_data = $this->ci->comments_m->get_comments($this->module, $this->module_link);
+		$comment_data  = $this->ci->comments_m->get_comments($this->module, $this->module_link);
+		$comment_total = $this->ci->comments_m->count_comments($this->module, $this->module_link);
 
 		$admin = FALSE;
 		if($this->ci->ion_auth->is_admin()) $admin = TRUE;
 
 		return $this->ci->template
 			->set('data', $comment_data)
+			->set('total_comments', $comment_total)
 			->set('is_admin', $admin)
 			->set('errors', $this->ci->session->flashdata('comment_error'))
 			->load_view('comment.twig');

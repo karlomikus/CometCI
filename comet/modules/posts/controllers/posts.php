@@ -14,7 +14,7 @@ class Posts extends Frontend_Controller {
 		$this->load->library('pagination');
 		$this->load->model('posts_m');
 
-		$count = $this->posts_m->count_all();
+		$count = $this->posts_m->count_by('state', '1');
 		$this->posts_m->order_by('id', 'desc');
 		$this->posts_m->limit($this->config->item('mod_max_posts'), $page);
 
@@ -42,18 +42,34 @@ class Posts extends Frontend_Controller {
 		$this->pagination->initialize($config);
 
 		$this->template
-			->set('posts', $this->posts_m->get_all())
+			->set('posts', $this->posts_m->get_many_by('state', '1'))
 			->set('pagination', $this->pagination->create_links())
 			->build('main.twig');
 	}
 
-	public function show($id = 0) 
+	public function show($id = '') 
 	{
+		if(empty($id)) show_404();
 		$this->load->model('posts_m');
-		$this->posts_m->update_views($id);
+
+		if(is_numeric($id))
+		{
+			$data = $this->posts_m->get($id);
+			if(empty($data)) show_404();
+			$postID = $id;
+			$this->posts_m->update_views($id);
+		}
+		else
+		{
+			$data = $this->posts_m->get_by('slug', $id);
+			if(empty($data)) show_404();
+			$postID = $this->posts_m->get_id_from_slug($id);
+			$this->posts_m->update_views($postID);
+		}
+
 		$this->template
-			->set('post', $this->posts_m->get($id))
-			->set('comments', $this->commentslib->render('posts', $id))
+			->set('post', $data)
+			->set('comments', $this->commentslib->render('posts', $postID))
 			->build('show.twig');
 	}
 
@@ -62,11 +78,14 @@ class Posts extends Frontend_Controller {
 		$this->load->model('posts_m');
 		$this->load->model('labels/labels_m');
 
-		if(isset($label) && $label != 0) $posts = $this->posts_m->as_array()->get_by('label', $label);
+		if(!empty($label)) $posts = $this->posts_m->get_many_by('label', $label);
 		else $posts = $this->posts_m->get_all();
+
+		$currentLabel = (!empty($label)) ? get_label_name($label) : 'all';
 
 		$this->template
 			->set('posts', $posts)
+			->set('currentlabel', $currentLabel)
 			->set('labels', $this->labels_m->get_all())
 			->build('archive.twig');
 	}

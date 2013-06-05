@@ -24,6 +24,20 @@ myMarkdownSettings = {
     ]
 }
 
+comments = {
+    nameSpace:          'markdown', // Useful to prevent multi-instances CSS conflict
+    resizeHandle:       false,
+    onShiftEnter:       {keepDefault:false, openWith:'\n\n'},
+    markupSet: [
+        {name:'Bold', key:"B", openWith:'**', closeWith:'**', className: 'editor-bold'},
+        {name:'Italic', key:"I", openWith:'_', closeWith:'_', className: 'editor-italic'},
+        {name:'Link', key:"L", openWith:'[', closeWith:']([![Url:!:http://]!] "[![Title]!]")', placeHolder:'Your text to link here...', className: 'editor-link'},
+        {separator:'---------------' },
+        {name:'Picture', key:"P", replaceWith:'![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")', className: 'editor-picture'},  
+        {name:'Quotes', openWith:'> ', className: 'editor-quotes'}
+    ]
+}
+
 // mIu nameSpace to avoid conflict.
 miu = {
     markdownTitle: function(markItUp, char) {

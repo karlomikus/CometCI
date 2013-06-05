@@ -1,5 +1,5 @@
 <div class="row">
-	<p class="large-12 columns text-center"><strong>{{get_game_name(match.game)}}</strong> played on <strong>{{match.date}}</strong></p>
+	<p class="large-12 columns text-center"><strong>{{get_game_name(match.game)}}</strong> played on <strong>{{cms_date(match.date)}} - {{cms_time(match.date)}}</strong></p>
 </div>
 <div class="row match">
 	<div class="large-2 columns textright" style="font-size: 22px; line-height: 150px;">
@@ -9,8 +9,8 @@
 		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" /><br />
 		{{get_opponent_name(match.opponent)}}
 	</div>
-	<div class="large-2 columns textcenter" style="line-height: 150px;">
-		<h3>VS</h3>
+	<div class="large-2 columns textcenter" style="font-size: 22px; line-height: 150px;">
+		VS
 	</div>
 	<div class="large-3 columns textcenter">
 		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" /><br />
@@ -41,7 +41,9 @@
 </table>
 
 <div class="panel">
-	{{match.report}}
+	<p>
+		{{match.report}}
+	</p>
 </div>
 
 {% if get_match_screenshots(match.id)|length > 0 %}

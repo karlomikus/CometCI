@@ -1,20 +1,27 @@
 <dl class="sub-nav">
 	<dt>Filter:</dt>
-	<dd class="active"><a href="#">All</a></dd>
+	<dd {% if currentlabel == 'all' %} class="active" {% endif %}><a href="{{base_url()}}posts/archive/">All</a></dd>
 	{% for label in labels %}
-	<dd><a href="{{base_url()}}posts/archive/{{label.id}}">{{label.name}}</a></dd>
+	<dd {% if currentlabel == label.name %} class="active" {% endif %}><a href="{{base_url()}}posts/archive/{{label.id}}">{{label.name}}</a></dd>
 	{% endfor %}
 </dl>
 
-<pre><?php print_r($posts); ?></pre>
+<hr />
 
-
-<?php foreach ($posts as $post): ?>
-	<?php print_r($post); ?>
-	<?php echo $post->title; ?>
-<?php endforeach; ?>
-
-{% for post in posts %}
-	<a href="{{base_url()}}posts/show/{{post.id}}">{{post.title}}</a>
-	<hr />
-{% endfor %}
+{% if posts|default is not empty %}
+	{% for post in posts %}
+		<div class="panel">
+			<div class="row">
+				<div class="large-7 column">
+					<small>{{post.date}} by {{get_username(post.author)}}</small>
+					<h5>{{post.title}}</h5>
+				</div>
+				<div class="large-5 column text-right">
+					<a href="{{base_url()}}post/{{post.slug}}" class="small button">Read</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% else %}
+	No posts
+{% endif %}

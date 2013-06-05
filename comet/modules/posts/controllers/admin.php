@@ -69,8 +69,11 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$title = $this->input->post('title');
+			$slug  = makePageSlug($title);
+
 			$data = array(
-				'title' => $this->input->post('title'),
+				'title' => $title,
 				'body' => html_purify($this->input->post('body'), 'wysiwyg'),
 				'date' => date('Y-m-d H:i:s'),
 				'teaser' => $this->input->post('teaser'),
@@ -78,6 +81,7 @@ class Admin extends Backend_Controller {
 				'label' => $this->input->post('label'),
 				'featured' => $this->input->post('featured'),
 				'clan' => $this->input->post('clan'),
+				'slug' => $slug,
 				'state' => $this->input->post('state') // 1 - Publish now, 0 - Draft
 			);    
 
@@ -137,6 +141,7 @@ class Admin extends Backend_Controller {
 	public function delete($id = 0)
 	{
 		$this->posts_m->delete($id);
+		$this->posts_m->delete_post_comments($id);
 
 		redirect('admin/posts');
 	}

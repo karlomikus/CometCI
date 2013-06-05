@@ -2,7 +2,8 @@
 
 class Wi_matches extends Frontend_Controller {
 
-	public function index() {
+	public function index()
+	{
 		$this->load->model('matches/matches_m');
 		$this->matches_m->order_by('date', 'DESC');
 		$this->matches_m->limit($this->config->item('wi_max_matches'));

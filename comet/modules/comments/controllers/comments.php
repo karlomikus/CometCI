@@ -15,6 +15,8 @@ class Comments extends Frontend_Controller {
 		$this->load->model('comments_m');
 		$this->load->helper('htmlpurifier');
 
+		//$redirect_link = $module.'/show/'.$module_link;
+
 		$this->form_validation->set_rules('content', 'Comment content', 'trim|required|min_length[5]|xss_clean');
 
 		// TODO: Honey pot method for fighting spam
@@ -28,7 +30,7 @@ class Comments extends Frontend_Controller {
 			if($timeDiff <= $this->setting->commentsdelay)
 			{
 				$this->session->set_flashdata('comment_error', 'You\'re typing too fast!');
-				redirect($module.'/show/'.$module_link);
+				redirect($this->agent->referrer());
 			}
 
 			$data = array(
@@ -40,12 +42,12 @@ class Comments extends Frontend_Controller {
 			);
 
 			$this->comments_m->insert($data);
-			redirect($module.'/show/'.$module_link);
+			redirect($this->agent->referrer());
 		}
 		else 
 		{
 			$this->session->set_flashdata('comment_error', validation_errors('', ''));
-			redirect($module.'/show/'.$module_link);
+			redirect($this->agent->referrer());
 		}
 	}
 

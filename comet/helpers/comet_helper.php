@@ -66,7 +66,10 @@ function get_opponent_logo($id)
 	$CI =& get_instance();
 	$CI->load->model('opponents/opponents_m');
 
-	return $CI->opponents_m->get($id)->logo;
+	$logo = $CI->opponents_m->get($id)->logo;
+	if(empty($logo)) $logo = 'nopic.jpg';
+
+	return $logo;
 }
 
 /**
@@ -79,7 +82,10 @@ function get_team_logo($id)
 	$CI =& get_instance();
 	$CI->load->model('teams/teams_m');
 
-	return $CI->teams_m->get($id)->logo;
+	$logo = $CI->teams_m->get($id)->logo;
+	if(empty($logo)) $logo = 'nopic.jpg';
+
+	return $logo;
 }
 
 /**
@@ -251,6 +257,11 @@ function get_event_data($eventID = 0)
 	return $CI->events_m->get($eventID);
 }
 
+/**
+ * Format date by format defined in cms
+ * @param  string $date Date string
+ * @return string
+ */
 function cms_date($date = '')
 {
 	$CI =& get_instance();
@@ -260,6 +271,11 @@ function cms_date($date = '')
 	return date($CI->config->item('cms_date_format'), $dateFormat);
 }
 
+/**
+ * Format time by format defined in cms
+ * @param  string $date Date string
+ * @return string
+ */
 function cms_time($time = '')
 {
 	$CI =& get_instance();
@@ -269,7 +285,11 @@ function cms_time($time = '')
 	return date($CI->config->item('cms_time_format'), $timeFormat);
 }
 
-
+/**
+ * Get layout defined only to be used for $moduleName
+ * @param  string $moduleName Name of the module
+ * @return string Layout filename
+ */
 function get_layout($moduleName = '')
 {
 	$CI =& get_instance();
@@ -312,13 +332,27 @@ function sort_link($module, $column, $order, $page, $currentColumn)
  * Wrapper function for easier access
  * in twig parser. Loads module
  * then injects it into the layout
- * 
  * @param  string $name Widget name without "wi_"
  * @return object       Module object
  */
 function widget($name) 
 {
 	return Modules::run('wi_'.$name);
+}
+
+/**
+ * Load ellipsize through this helper so it can
+ * be accessed in widgets twig parser. Need to find
+ * a better way to do this!
+ * @param  string $string String to be shortened
+ * @param  int    $length
+ * @return string
+ */
+function helper_ellip($string, $length)
+{
+	$CI =& get_instance();
+	$CI->load->helper('text');
+	return ellipsize($string, $length); 
 }
 
 /**
@@ -336,6 +370,7 @@ function makePageSlug($str, $replace = array(), $delimiter = '-')
 	$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
 	$clean = strtolower(trim($clean, '-'));
 	$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+	$clean = (strlen($clean) > 35) ? substr($clean, 0, 35) : $clean;
 	$clean = strtolower(trim($clean, '-'));
 
 	return $clean;

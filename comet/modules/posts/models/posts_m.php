@@ -9,4 +9,14 @@ class Posts_m extends MY_Model {
 		parent::update($id, array('views' => $total_views));
 	}
 
+	public function get_id_from_slug($slug)
+	{
+		$data = parent::get_by('slug', $slug);
+		return $data->id;
+	}
+
+	public function delete_post_comments($id)
+	{
+		$this->db->delete('comments', array('module' => 'posts', 'module_link' => $id)); 
+	}
 }

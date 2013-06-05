@@ -1,8 +1,19 @@
 <hr />
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/markdown.js"></script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/editor.css" />
+
 {{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link) }}
 
-	<textarea placeholder="Write a comment" name="content" style="height: 100px;"></textarea>
+	<textarea class="markitup" placeholder="Write a comment" name="content"></textarea>
 
 	<input class="small button" type="submit" value="POST COMMENT" name="save" />
 
 {{ form_close() }}
+
+<script type="text/javascript" >
+   $(document).ready(function() {
+      $(".markitup").markItUp(comments);
+   });
+</script>

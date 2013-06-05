@@ -80,7 +80,47 @@ a:hover, a:focus { color: #399EB5; }
 	float: right;
 }
 
+/* Comments */
+.comment, .comment-content header {
+	overflow: hidden;
+}
 
+.comment {
+	margin-bottom: 20px; 
+}
+
+.comment h5 {
+	margin-top: 0;
+}
+
+.comment-content header h5 {
+	float: left;
+	width: 50%;
+}
+
+.comment-content header div {
+	float: right;
+	width: 30%;
+	text-align: right;
+}
+
+.comment-avatar {
+	float: left;
+	width: 10%;
+	padding-right: 10px;
+}
+
+.comment-content {
+	float: left;
+	width: 90%;
+	background: #f2f2f2;
+	padding: 15px;
+}
+
+.comment-content p {
+	color: #555555;
+	margin-bottom: 0;
+}
 
 .markdown .editor-bold a {
 	background-image:url(images/bold.png);
