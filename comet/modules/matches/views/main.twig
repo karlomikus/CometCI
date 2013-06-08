@@ -1,4 +1,4 @@
-<table width="100%">
+<table class="pure-table pure-table-horizontal">
   <thead>
     <tr>
       <th>Opponent</th>
@@ -11,14 +11,14 @@
   <tbody>
 	{% for match in matches %}
 		<tr>
-	      <td>{{get_opponent_name(match.opponent)}}</td>
-	      <td>{{get_game_name(match.game)}}</td>
-	      <td>{{match.date}}</td>
-	      <td>{{get_match_score(match.id)}}</td>
-	      <td><a href="{{base_url()}}matches/show/{{match.id}}"><i class="icon-reorder"></i></a></td>
+	      <td>{{ get_opponent_name(match.opponent) }}</td>
+	      <td>{{ get_game_name(match.game) }}</td>
+	      <td>{{ match.date }}</td>
+	      <td>{{ get_match_score(match.id) }}</td>
+	      <td><a href="{{ base_url() }}matches/show/{{ match.id }}"><i class="icon-reorder"></i></a></td>
 	    </tr>
 	{% endfor %}
   </tbody>
 </table>
 
-{{pagination}}
+{{ pagination }}

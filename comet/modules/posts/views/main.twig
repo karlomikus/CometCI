@@ -1,14 +1,21 @@
 {% for post in posts %}
 	<div class="panel">
-		<h4 class="subheader">{{post.title}} <br /><small>{{cms_date(post.date)}} in {{get_label_name(post.label)}}</small></h4>
+		<h4>{{ post.title }} <br />
+			<small>
+				<time>{{ cms_date(post.date )}}</time>
+				in {{ get_label_name(post.label) }}
+			</small>
+		</h4>
 		<p>
-			{{post.teaser}}
+			{{ post.teaser }}
 			<br />
-			<a href="{{base_url()}}post/{{post.slug}}">read more...</a>
+			<a href="{{ base_url() }}post/{{ post.slug }}">read more...</a>
 		</p>
 	</div>
 {% endfor %}
 
-<div class="text-right"><a href="{{base_url()}}posts/archive">Posts archive</a></div>
+<div class="text-right">
+	<a class="pure-button" href="{{ base_url() }}posts/archive">Posts archive</a>
+</div>
 
-{{pagination}}
+{{ pagination }}

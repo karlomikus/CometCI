@@ -1,17 +1,19 @@
 <h6>{{ total_comments }} Comments:</h6>
 
 {% if errors|default is not empty %}
-<div data-alert class="alert-box">
+<div class="alert-box">
 	{{ errors }}
 </div>
 {% endif %}
 
 {% for comment in data %}
-<div class="comment">
-	<div class="comment-avatar hide-for-small">
+<article class="comment">
+
+	<aside class="comment-avatar">
 		{{ get_avatar(comment.poster_id, true) }}
-	</div>
-	<div class="comment-content">
+	</aside>
+
+	<section class="comment-content">
 		<header>
 			<h5>
 				{{ get_username(comment.poster_id) }} <br />
@@ -22,6 +24,7 @@
 			{% endif %}
 		</header>
 		<p>{{ parse_markdown(comment.content) }}</p>
-	</div>
-</div>
+	</section>
+
+</article>
 {% endfor %}

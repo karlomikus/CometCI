@@ -25,17 +25,18 @@ class Matches extends Frontend_Controller {
 		$config['uri_segment'] = 3;
 
 		// Template
+		// TODO: Export this to file
 		$config['next_link'] = '&raquo;';
 		$config['prev_link'] = '&laquo;';
-		$config['full_tag_open'] = '<ul class="pagination">';
-		$config['full_tag_close'] = '</ul>';
+		$config['full_tag_open'] = '<div class="pure-menu pure-menu-open pure-menu-horizontal"><ul>';
+		$config['full_tag_close'] = '</ul></div>';
 		$config['num_tag_open'] = '<li>';
 		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="current"><a href="">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['next_tag_open'] = '<li class="arrow">';
+		$config['cur_tag_open'] = '<li class="pure-menu-selected">';
+		$config['cur_tag_close'] = '</li>';
+		$config['next_tag_open'] = '<li>';
 		$config['next_tag_close'] = '</li>';
-		$config['prev_tag_open'] = '<li class="arrow">';
+		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
 
 		// Let's do this

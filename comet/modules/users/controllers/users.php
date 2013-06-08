@@ -8,6 +8,8 @@ class Users extends Frontend_Controller {
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		$this->template
+			->set_layout(get_layout(__CLASS__));
 	}
 
 	public function index()

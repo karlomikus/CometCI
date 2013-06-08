@@ -1,0 +1,127 @@
+/* Base */
+img { display: block; }
+img, object, embed { height: auto; max-width: 100%; }
+
+/* Matches */
+.win-color { }
+.lose-color { }
+.draw-color { }
+
+/* Comments */
+.comment, .comment-content header {
+	overflow: hidden;
+}
+
+.comment {
+	margin-bottom: 20px; 
+}
+
+.comment h5 {
+	margin-top: 0;
+}
+
+.comment-content header h5 {
+	float: left;
+	width: 50%;
+}
+
+.comment-content header div {
+	float: right;
+	width: 30%;
+	text-align: right;
+}
+
+.comment-avatar {
+	float: left;
+	width: 10%;
+}
+
+.comment-content {
+	float: left;
+	width: 90%;
+	background: #f2f2f2;
+}
+
+.comment-content p {
+	color: #555555;
+	margin-bottom: 0;
+}
+
+/* Forums */
+
+/* Widgets */
+.wi_default {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.wi_default li { overflow: hidden; margin-bottom: 5px; }
+
+.wi_default img {
+	float: left;
+	margin-right: 7px;
+}
+
+.wi_default span { float: right; }
+
+/* Editor */
+.markdown .editor-bold a {
+	background-image:url(images/bold.png);
+}
+.markdown .editor-italic a {
+	background-image:url(images/italic.png);
+}
+.markdown .editor-link a {
+	background-image:url(images/link.png);
+}
+.markdown .editor-bullet-list a {
+	background-image:url(images/list-bullet.png);
+}
+.markdown .editor-numeric-list a {
+	background-image:url(images/list-numeric.png);
+}
+.markdown .editor-picture a {
+	background-image:url(images/picture.png); 
+}
+.markdown .editor-quotes a	{
+	background-image:url(images/quotes.png);
+}
+.markdown .editor-code a	{
+	background-image:url(images/code.png);
+}
+
+.markdown {
+	margin-bottom: 15px;
+}
+
+.markItUp {
+	width: 100%;
+}
+
+.markItUpButton {
+	background: #B73A3A;
+	padding: 5px;
+}
+.markItUpButton:hover {
+	background: #399EB5;
+}
+
+.markItUpHeader ul .markItUpSeparator {
+	height: 35px;
+	margin: 0 5px;
+	background: #fff;
+}
+
+.markItUpEditor {
+	font: inherit;
+	font-size: 14px;
+	resize: none;
+	width: 100%;
+	height: 200px !important;
+}
+
+/* Misc */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }

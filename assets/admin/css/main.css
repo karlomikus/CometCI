@@ -235,6 +235,15 @@ label.input-label {
 .mini-stats div:first-child small { font-size: 14px; }
 .mini-stats div:last-child { padding: 20px; }
 
+.rss-news-feed h4 { margin-top: 0; }
+.rss-news-feed p { margin-bottom: 0; }
+.rss-news-feed article { padding: 20px 20px 0 20px; }
+.rss-news-feed article:last-child { padding-bottom: 20px;}
+
+.admin-notes p { border-left: 2px solid #FCC063; padding: 20px; }
+.admin-notes form { padding: 0 20px; }
+.admin-notes small { color: #999999; }
+
 /* Calendar / Fixtures */
 .cms-calendar {
 	border: 4px solid #D64644;

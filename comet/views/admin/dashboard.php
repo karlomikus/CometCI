@@ -67,19 +67,7 @@
 			</div>
 			<div class="span4">
 				<span class="inlinesparkline">
-					<?php $resultstr = array(); foreach ($commentstats as $stat): ?>
-						<?php $resultstr[] = $stat->total; ?>
-					<?php endforeach; ?>
-					<?php
-						if(count($resultstr) == 1) {
-							array_unshift($resultstr, '0');
-							echo implode(",", $resultstr);
-						}
-						elseif(!empty($resultstr)) {
-							echo implode(",", $resultstr);
-						}
-						else echo '0,0';
-					?>
+					<?php echo $commentstats; ?>
 				</span>
 			</div>
 		</div>
@@ -90,19 +78,7 @@
 			</div>
 			<div class="span4">
 				<span class="inlinesparkline">
-					<?php $resultstr = array(); foreach ($postsstats as $stat): ?>
-						<?php $resultstr[] = $stat->total; ?>
-					<?php endforeach; ?>
-					<?php
-						if(count($resultstr) == 1) {
-							array_unshift($resultstr, '0');
-							echo implode(",", $resultstr);
-						}
-						elseif(!empty($resultstr)) {
-							echo implode(",", $resultstr);
-						}
-						else echo '0,0';
-					?>
+					<?php echo $postsstats; ?>
 				</span>
 			</div>
 		</div>
@@ -113,22 +89,57 @@
 			</div>
 			<div class="span4">
 				<span class="inlinesparkline">
-					<?php $resultstr = array(); foreach ($topicsstats as $stat): ?>
-						<?php $resultstr[] = $stat->total; ?>
-					<?php endforeach; ?>
-					<?php
-						if(count($resultstr) == 1) {
-							array_unshift($resultstr, '0');
-							echo implode(",", $resultstr);
-						}
-						elseif(!empty($resultstr)) {
-							echo implode(",", $resultstr);
-						}
-						else echo '0,0';
-					?>
+					<?php echo $topicsstats; ?>
 				</span>
 			</div>
 		</div>
+		<div class="row-fluid mini-stats">
+			<div class="span7">
+				<h4><?php echo $countusers; ?></h4>
+				<small>Total users</small>
+			</div>
+			<div class="span4">
+				<span class="inlinesparkline">
+					<?php echo $userstats; ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="span4 cms-box admin-notes">
+		<p>
+			Just a reminder that tomorrow we have lorem ipsum dolor sit amet to do!
+			<br />
+			<small>added by: admin &dash; <a href="#">remove</a></small>
+		</p>
+		<p>
+			Hey John Doe, could you please finish that article that we discussed?
+			<br />
+			<small>added by: admin &dash; <a href="#">remove</a></small>
+		</p>
+		<p>
+			We should totally finish that theme we started a week ago.
+			<br />
+			<small>added by: John Doe &dash; <a href="#">remove</a></small>
+		</p>
+		<br>
+		<?php echo form_open(uri_string(), array('class' => 'cms-form')); ?>
+			<textarea placeholder="Write a note..." name="notecontent" class="input-block-level"></textarea>
+			<button type="submit" class="btn btn-cms-orange">post</button>
+		<?php echo form_close(); ?>
+	</div>
+	<div class="span4 cms-box rss-news-feed">
+		<article>
+			<h4><a href="#" target="_blank">Open beta v1.5 Released!</a></h4>
+			<p>Topcoat is CSS for clean and fast web apps, with code for both desktop and mobile devices. It includes a huge number of elements, including toggles, actions...</p>
+		</article>
+		<article>
+			<h4><a href="#" target="_blank">New release upcoming</a></h4>
+			<p>Kraken is a lightweight, mobile-first, front-end boilerplate that's style agnostic. It includes a CSS reset, responsive grid, typography...</p>
+		</article>
+		<article>
+			<h4><a href="#" target="_blank">Huge giveaway annouced</a></h4>
+			<p>The best websites out there are the ones with character. Or characters for that matter. Adding a mascot or even just some cartoon human character...</p>
+		</article>
 	</div>
 </div>
 

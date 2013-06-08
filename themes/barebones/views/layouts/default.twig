@@ -1,0 +1,70 @@
+{{template.partials.head}}
+
+<body>
+
+	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+	<div id="wrap">
+
+		<header>
+			<nav class="pure-menu pure-menu-open pure-menu-horizontal">
+				<a href="{{base_url('/')}}" class="pure-menu-heading">{{clanname}}</a>
+
+				<ul>
+					<li><a href="{{base_url('posts')}}">Posts</a></li>
+					<li><a href="{{base_url('matches')}}">Matches</a></li>
+					<li><a href="{{base_url('roster')}}">Roster</a></li>
+					<li><a href="{{base_url('forums')}}">Forums</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<hr />
+
+		<div class="pure-g">
+			<section class="pure-u-2-3">
+				
+				<div class="content">
+					{{ template.body }}
+				</div>
+
+			</section>
+
+			<aside class="sidebar pure-u-1-3">
+				
+				<article>
+					<h3>User Area</h3>
+					{{ widget('user') }}
+				</article>
+
+				<article>
+					<h3>Latest Matches</h3>
+					{{ widget('matches') }}
+				</article>
+
+				<article>
+					<h3>Latest Posts</h3>
+					{{ widget('posts') }}
+				</article>
+
+				<article>
+					<h3>Latest Topics</h3>
+					{{ widget('topics') }}
+				</article>
+
+			</aside>
+		</div>
+
+		<hr />
+
+		<footer>
+			Copyright &copy; {{ date('Y') }} - {{ clanname }}
+		</footer>
+
+	</div>
+
+</body>
+
+{{ template.partials.foot }}
+
+</html>

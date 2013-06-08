@@ -1,19 +1,17 @@
-<hr />
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/jquery.markitup.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/markdown.js"></script>
+{% set formClass = { 'class': 'pure-form pure-form-stacked' } %}
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/editor.css" />
+{{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link, formClass) }}
 
-{{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link) }}
+<fieldset>
 
-	<textarea class="markitup" placeholder="Write a comment" name="content"></textarea>
+	<legend>Post a comment</legend>
 
-	<input class="small button" type="submit" value="POST COMMENT" name="save" />
+	<textarea placeholder="Write a comment" name="content"></textarea>
+
+	<br />
+
+	<button type="submit" class="pure-button pure-button-primary" name="save">Post comment</button>
+
+</fieldset>
 
 {{ form_close() }}
-
-<script type="text/javascript" >
-   $(document).ready(function() {
-      $(".markitup").markItUp(comments);
-   });
-</script>

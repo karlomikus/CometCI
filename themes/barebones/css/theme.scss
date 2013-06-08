@@ -1,0 +1,92 @@
+/* theme.scss */
+$siteWidth: 1100px;
+$siteBg: #191818;
+$siteFont: Open Sans;
+
+$primaryColor: #0e90d2;
+$secondaryColor: #f37b1d;
+$muteColor: #666;
+
+@mixin pureBox {
+	padding: 20px;
+	background: rgba(0,0,0,0.05);
+	margin-bottom: 20px;
+}
+
+/* Global */
+html { background: $siteBg; }
+
+body {
+	width: $siteWidth;
+	margin: 0 auto;
+	font-family: $siteFont, sans-serif;
+	font-size: 1em;
+
+	#wrap {
+		background: #fff;
+		margin: 40px 0;
+		padding: 20px;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+	color: $primaryColor;
+
+	&:hover {
+		color: $secondaryColor;
+	}
+}
+
+p {
+	margin: 0;
+	line-height: 1.5em;
+}
+
+small {
+	color: $muteColor;
+}
+
+hr {
+	border: 0;
+	margin: 20px 0;
+	color: rgba(0,0,0,0.15);
+	background: rgba(0,0,0,0.15);
+	height: 1px;
+}
+
+textarea {
+	width: 100%;
+	resize: none;
+	margin-bottom: 10px;
+	display: block;
+
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 3px #DDDDDD inset;
+    font-size: 0.8em;
+    padding: 0.5em 0.6em;
+}
+
+/* Content */
+.content {
+	padding-right: 20px;
+}
+
+.sidebar {
+
+	article {
+		padding-bottom: 20px;
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+}
+
+.panel {
+	@include pureBox;
+}

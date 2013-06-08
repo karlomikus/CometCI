@@ -4,8 +4,6 @@ class Wi_user extends Frontend_Controller {
 
 	public function index() {
 		$this->load->helper('form');
-		// $this->parser->addFunction('form_open');
-		// $this->parser->addFunction('form_close');
 
 		$logged_in = FALSE;
 		if ($this->ion_auth->logged_in()) $logged_in = TRUE;
@@ -16,7 +14,7 @@ class Wi_user extends Frontend_Controller {
 			->set('login_alerts', $this->session->flashdata('login_alerts'))
 			->set('logged_in', $logged_in)
 			->set('is_admin', $is_admin)
-			->set('form_open', form_open('users/login'))
+			->set('form_open', form_open('users/login', array('class' => 'pure-form')))
 			->load_view('../widgets/wi_user/views/main.twig');
 	}
 

@@ -1,14 +1,5 @@
-<h4>{{post.title}}</h4>
-<p>{{post.body}}</p>
-
-<div class="panel">
-	<p>
-		<strong>Author:</strong> {{get_username(post.author)}} <br />
-		<strong>Created on:</strong> {{cms_date(post.date)}} - {{cms_time(post.date)}} <br />
-		<strong>Posted in:</strong> {{get_label_name(post.label)}} <br />
-		<strong>Views:</strong> {{post.views}} <br />
-	</p>
-</div>
+<h2>{{ post.title }}</h2>
+<p>{{ post.body }}</p>
 
 <hr />
 

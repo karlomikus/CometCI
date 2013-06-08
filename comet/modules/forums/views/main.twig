@@ -25,12 +25,3 @@
 	</tbody>
 </table>
 {% endfor %}
-
-<div class="panel">
-	Users online last hour: <br />
-	<ul class="users-online">
-		{% for user in last_online %}
-		<li>{{get_username(user.id)}}</li>
-		{% endfor %}
-	</ul>
-</div>

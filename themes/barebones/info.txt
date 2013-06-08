@@ -1,0 +1,4 @@
+Barebones Site Theme
+Karlo "eGGzy" Mikus
+Version 2.0
+Simple template to show you how easy is to convert ordinary HTML to Comet CMS theme. Made with PURE framework

@@ -18,12 +18,17 @@ class Admin extends Backend_Controller {
             ->set('matches', $this->matches_m->get_upcoming_matches())
             ->set('events', $this->events_m->get_all())
             ->set('visits', $this->comet_m->get_visits_stats(date('m')))
+
             ->set('countcomments', $this->comet_m->count_table_rows('comments'))
             ->set('countposts', $this->comet_m->count_table_rows('forum_replies'))
             ->set('countopics', $this->comet_m->count_table_rows('forum_topics'))
+            ->set('countusers', $this->comet_m->count_table_rows('users'))
+
             ->set('commentstats', $this->comet_m->generate_stats('comments'))
             ->set('postsstats', $this->comet_m->generate_stats('forum_replies'))
             ->set('topicsstats', $this->comet_m->generate_stats('forum_topics'))
+            ->set('userstats', $this->comet_m->generate_stats('users'))
+
             ->build('admin/dashboard');
     }
 

@@ -46,7 +46,6 @@ class Comet_m extends MY_Model {
 	 * Updates (unique) site view. Works by checking
 	 * if visitor's IP or user ID is already in the database,
 	 * if it's not then inserts a view into the database
-	 * 
 	 * @param  int $userID User ID
 	 * @return object
 	 */
@@ -71,7 +70,6 @@ class Comet_m extends MY_Model {
 		}
 	}
 
-	// TODO: Make count and stats into 2 seperate functions
 	/**
 	 * Count all record in $table
 	 * @param  string $table Table name
@@ -90,16 +88,36 @@ class Comet_m extends MY_Model {
 	 */
 	public function generate_stats($table)
 	{
-		$weekAgo = date("Y-m-d", strtotime("-1 week"));
-		$where = 'date >= "'.$weekAgo.'" AND date <= "'.date("Y-m-d", strtotime("+1 day")).'"';
+		$dateColumn = 'date';
+		if($table == 'users') $dateColumn = 'created_on';
 
-		$this->db->select('date');
+		$weekAgo = date("Y-m-d", strtotime("-1 week"));
+		$where = $dateColumn.' >= "'.$weekAgo.'" AND '.$dateColumn.' <= "'.date("Y-m-d", strtotime("+1 day")).'"';
+
+		// Users table uses unix timestamps as date columns so we need to do some converting
+		if($table == 'users') $where = $dateColumn.' >= UNIX_TIMESTAMP("'.$weekAgo.'") AND '.$dateColumn.' <= UNIX_TIMESTAMP("'.date("Y-m-d", strtotime("+1 day")).'")';
+
+		if($table == 'users') $this->db->select('FROM_UNIXTIME('.$dateColumn.') as date');
+		else $this->db->select($dateColumn);
+
 		$this->db->select('COUNT(*) as total');
 		$this->db->where($where);
-		$this->db->order_by('date', 'asc');
-		$this->db->group_by('DAY(date)');
+		$this->db->order_by($dateColumn, 'asc');
 
-		return $query = $this->db->get($table)->result();
+		if($table == 'users') $this->db->group_by('DAY(FROM_UNIXTIME('.$dateColumn.'))');
+		else $this->db->group_by('DAY('.$dateColumn.')');
+
+		$query = $this->db->get($table)->result();
+
+		$dayOffset = (date('w') + 6) % 7;
+
+		$range  = array_fill(0, 7, 0);
+		foreach ($query as $row) {
+			$key = (date("w", strtotime($row->date)) + ($dayOffset + 2)) % 7; // 6 + 3 [cet]
+			$range[$key] = $row->total;
+		}
+
+		return implode(',', $range);
 	}
 
 	/**
