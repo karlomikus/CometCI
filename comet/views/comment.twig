@@ -1,7 +1,7 @@
-<h6>{{ total_comments }} Comments:</h6>
+<h3>{{ total_comments }} Comments:</h3>
 
 {% if errors|default is not empty %}
-<div class="alert-box">
+<div class="cms-alert">
 	{{ errors }}
 </div>
 {% endif %}
@@ -9,18 +9,14 @@
 {% for comment in data %}
 <article class="comment">
 
-	<aside class="comment-avatar">
-		{{ get_avatar(comment.poster_id, true) }}
-	</aside>
-
 	<section class="comment-content">
 		<header>
-			<h5>
+			<h4>
 				{{ get_username(comment.poster_id) }} <br />
 				<small>{{ cms_date(comment.date) }} - {{ cms_time(comment.date) }}</small>
-			</h5>
+			</h4>
 			{% if comment.poster_id == user.user_id or is_admin == true %}
-				<div><a class="tiny button" href="{{ base_url() }}comments/delete/{{ comment.id }}">delete</a></div>
+				<div><a class="pure-button pure-button-xsmall" href="{{ base_url() }}comments/delete/{{ comment.id }}">delete</a></div>
 			{% endif %}
 		</header>
 		<p>{{ parse_markdown(comment.content) }}</p>

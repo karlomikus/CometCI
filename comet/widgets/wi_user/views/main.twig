@@ -1,30 +1,28 @@
 {% if login_alerts|length > 0 %}
-	<div class="alert-box alert">{{ login_alerts }}</div>
+	<div class="cms-alert">{{ login_alerts }}</div>
 {% endif %}
 
 {% if logged_in == false %}
-
 	{{ form_open }}
 		<input placeholder="Username/Mail" type="text" name="identity" />
 
 		<input placeholder="Password" type="password" name="password" />
+
 		<br />
 
-		<button class="pure-button" type="submit">Login</button>
-		<br />
-
+		<button class="pure-button pure-button-primary" type="submit">Login</button>
+		or
 		<a class="small button" href="{{ base_url }}users/register">Register</a>
 	</form>
-
 {% else %}
-
 	<ul class="square">
-		<li>Welcome back: {{user.username}}</li>
-		<li><a href="{{base_url()}}users/profile">Profile</a></li>
-		{% if is_admin == true %}
-			<li><a href="{{base_url()}}admin" target="_blank">Control Panel</a></li>
-		{% endif %}
-		<li><a href="{{base_url()}}users/logout">Logout</a></li>
-	</ul>
+		<li>Welcome back: {{ user.username }}</li>
+		<li><a href="{{ base_url() }}users/profile">Profile</a></li>
 
+		{% if is_admin == true %}
+			<li><a href="{{ base_url() }}admin" target="_blank">Control Panel</a></li>
+		{% endif %}
+
+		<li><a href="{{ base_url() }}users/logout">Logout</a></li>
+	</ul>
 {% endif %}

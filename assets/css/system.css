@@ -7,41 +7,40 @@ img, object, embed { height: auto; max-width: 100%; }
 .lose-color { }
 .draw-color { }
 
+.cms-alert {
+	background: #0e90d2;
+	color: #fff;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.cms-alert a {
+	color: rgba(255,255,255,0.8);
+	text-decoration: underline;
+}
+
+.cms-alert a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
 /* Comments */
-.comment, .comment-content header {
-	overflow: hidden;
-}
-
-.comment {
-	margin-bottom: 20px; 
-}
-
-.comment h5 {
-	margin-top: 0;
-}
-
-.comment-content header h5 {
+.comment-content header { overflow: hidden; }
+.comment { margin-bottom: 20px; }
+.comment h4 { margin-top: 0; }
+.comment-content header h4 {
 	float: left;
 	width: 50%;
 }
-
 .comment-content header div {
 	float: right;
 	width: 30%;
 	text-align: right;
 }
-
-.comment-avatar {
-	float: left;
-	width: 10%;
-}
-
 .comment-content {
-	float: left;
-	width: 90%;
 	background: #f2f2f2;
+	padding: 10px;
 }
-
 .comment-content p {
 	color: #555555;
 	margin-bottom: 0;
@@ -125,3 +124,19 @@ img, object, embed { height: auto; max-width: 100%; }
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
+
+.pure-button-xsmall {
+    font-size: 70%;
+}
+
+.pure-button-small {
+    font-size: 85%;
+}
+
+.pure-button-large {
+    font-size: 110%;
+}
+
+.pure-button-xlarge {
+    font-size: 125%;
+}

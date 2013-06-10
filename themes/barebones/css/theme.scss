@@ -4,13 +4,21 @@ $siteBg: #191818;
 $siteFont: Open Sans;
 
 $primaryColor: #0e90d2;
-$secondaryColor: #f37b1d;
+$secondaryColor: #dd514c;
 $muteColor: #666;
 
 @mixin pureBox {
 	padding: 20px;
 	background: rgba(0,0,0,0.05);
 	margin-bottom: 20px;
+}
+
+@mixin inputModel {
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	background: #fff;
+	padding: 5px;
+	resize: none;
 }
 
 /* Global */
@@ -31,6 +39,14 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
+	color: #333333;
+}
+
+h1, h2, h3 {
+	border-bottom: 1px solid #E5E5E5;
+    padding: 0.3em 0;
+    width: 100%;
+    font-weight: normal;
 }
 
 a {
@@ -59,16 +75,13 @@ hr {
 	height: 1px;
 }
 
+input, select, textarea, button {
+	@include inputModel;
+}
+
 textarea {
 	width: 100%;
-	resize: none;
-	margin-bottom: 10px;
 	display: block;
-
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 3px #DDDDDD inset;
-    font-size: 0.8em;
-    padding: 0.5em 0.6em;
 }
 
 /* Content */

@@ -14,7 +14,7 @@ class Wi_user extends Frontend_Controller {
 			->set('login_alerts', $this->session->flashdata('login_alerts'))
 			->set('logged_in', $logged_in)
 			->set('is_admin', $is_admin)
-			->set('form_open', form_open('users/login', array('class' => 'pure-form')))
+			->set('form_open', form_open('users/login'))
 			->load_view('../widgets/wi_user/views/main.twig');
 	}
 

@@ -1,17 +1,9 @@
-{% set formClass = { 'class': 'pure-form pure-form-stacked' } %}
+<h3>Post a comment:</h3>
 
 {{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link, formClass) }}
 
-<fieldset>
-
-	<legend>Post a comment</legend>
-
 	<textarea placeholder="Write a comment" name="content"></textarea>
 
-	<br />
-
 	<button type="submit" class="pure-button pure-button-primary" name="save">Post comment</button>
-
-</fieldset>
 
 {{ form_close() }}
