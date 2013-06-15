@@ -257,6 +257,14 @@ function get_event_data($eventID = 0)
 	return $CI->events_m->get($eventID);
 }
 
+function count_gallery_items($galleryID = 0)
+{
+	$CI =& get_instance();
+	$CI->load->model('gallery/gallery_files_m', 'gallery');
+
+	return $CI->gallery->count_by('gallery', $galleryID);
+}
+
 /**
  * Format date by format defined in cms
  * @param  string $date Date string

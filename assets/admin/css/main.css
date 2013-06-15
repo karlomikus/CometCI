@@ -593,6 +593,24 @@ input, textarea, .uneditable-input { width: 300px; }
 	cursor: pointer !important;
 }
 
+/* Gallery */
+.gallery-list {
+	list-style: none;
+	margin: 0;
+}
+
+.gallery-list li {
+	display: inline-block;
+	background: #ccc;
+	padding: 5px;
+	margin: 0 15px 15px 0;
+}
+
+.gallery-list li img {
+	width: auto;
+	height: 100px;
+}
+
 /* Buttons */
 .btn-cms-orange {
 	background: #f5696c;
