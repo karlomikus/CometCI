@@ -1,0 +1,12 @@
+<ul class="gallery-list">
+	{% for gallery in galleries %}
+		<li>
+			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
+				<img src="http://placehold.it/150x150" alt="Pla" />
+			</a>
+			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
+				{{ gallery.name }}
+			</a>
+		</li>
+	{% endfor %}
+</ul>

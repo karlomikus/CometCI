@@ -48,6 +48,24 @@ img, object, embed { height: auto; max-width: 100%; }
 
 /* Forums */
 
+/* Gallery */
+.gallery-list, .gallery-pictures-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.gallery-list li, .gallery-pictures-list li {
+	display: inline-block;
+	margin: 0 15px 15px 0;
+	text-align: center;
+}
+
+.gallery-pictures-list li img {
+	height: 150px;
+	width: auto;
+}
+
 /* Widgets */
 .wi_default {
 	margin: 0;

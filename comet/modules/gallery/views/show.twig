@@ -1,0 +1,7 @@
+<ul class="gallery-pictures-list">
+	{% for picture in pictures %}
+		<li>
+			<img src="{{ base_url('uploads/' ~ picture.file) }}" alt="{{ picture.title }}" />
+		</li>
+	{% endfor %}
+</ul>

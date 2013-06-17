@@ -609,6 +609,7 @@ input, textarea, .uneditable-input { width: 300px; }
 .gallery-list li img {
 	width: auto;
 	height: 100px;
+	position: relative;
 }
 
 /* Buttons */

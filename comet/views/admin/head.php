@@ -15,7 +15,7 @@
 	<link href="<?php echo $this->assets->css('classic.date'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('classic.time'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('main'); ?>" rel="stylesheet">
-
+	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>
 	<script>var baseUrl = "<?php echo base_url(); ?>";</script>

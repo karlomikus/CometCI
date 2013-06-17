@@ -81,16 +81,8 @@ class Admin extends Backend_Controller {
 	public function images($galleryID = 0)
 	{
 		$this->load->model('gallery_files_m');
-
-		$this->template
-			->set('title', 'Edit images in gallery')
-			->set('data', $this->gallery_files_m->get_many_by('gallery', $galleryID))
-			->build('admin/images');
-	}
-
-	public function upload()
-	{
-		if (!$this->input->is_ajax_request()) redirect('admin/gallery'); // Wot u think u doin m8
+		$this->load->library('upload');
+		$this->load->library('form_validation');
 
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -98,53 +90,120 @@ class Admin extends Backend_Controller {
 		$config['max_width']     = '0';
 		$config['max_height']    = '0';
 
-		$this->load->model('gallery_files_m');
-		$this->load->library('upload');
-		$this->upload->initialize($config);
-
-		$message = '';
+		$file_data = NULL;
 		$data = NULL;
 
-		if(isset($_FILES['images']))
+		$this->form_validation->set_rules('width', 'Width', 'csrf_comet');
+		$this->form_validation->set_rules('height', 'Height', 'csrf_comet');
+
+		if($this->form_validation->run() == TRUE)
 		{
+			// Make a nice array
+			$_FILES = $this->multiple($_FILES);
 			$files = $_FILES;
-			$cpt = count($_FILES['images']['name']);
 
-			for($i = 0; $i < $cpt; $i++)
+			// Check if user selected images
+			if(isset($_FILES['images']))
 			{
-				$_FILES['images']['name'] 		= $files['images']['name'][$i];
-				$_FILES['images']['type']		= $files['images']['type'][$i];
-				$_FILES['images']['tmp_name']	= $files['images']['tmp_name'][$i];
-				$_FILES['images']['error']		= $files['images']['error'][$i];
-				$_FILES['images']['size']		= $files['images']['size'][$i];
+				// Go through the array
+				foreach ($_FILES['images'] as $key => $value)
+				{
+					// Create a new _FILES array which CI can process
+					$_FILES['images'] = $files['images'][$key];
+					$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('images'))
-				{
-					$file_data = $this->upload->data();
-				}
-				else
-				{
-					$message = $this->upload->display_errors('', '');
-                	$file_data = NULL;
+					// Save file data
+					if ($this->upload->do_upload('images')) $file_data = $this->upload->data();
+
+					if(!empty($file_data))
+					{
+						if($this->input->post('resize') == 1)
+						{
+							$newWidth = $this->input->post('width');
+							$newHeight = $this->input->post('height');
+
+							if(!empty($newWidth) && !empty($newHeight))
+							{
+								$newWidth = intval($newWidth);
+								$newHeight = intval($newHeight);
+							}
+
+							$image_config["image_library"] = "gd2";
+							$image_config["source_image"] = $file_data["full_path"];
+							$image_config['create_thumb'] = FALSE;
+							$image_config['maintain_ratio'] = TRUE;
+							$image_config['new_image'] = $file_data["file_path"];
+							$image_config['quality'] = "100%";
+							$image_config['width'] = $newWidth;
+							$image_config['height'] = $newHeight;
+							 
+							$this->load->library('image_lib');
+							$this->image_lib->initialize($image_config);
+
+							$this->image_lib->resize();
+						}
+
+						$data[] = array(
+							'gallery' => $galleryID,
+							'file' => $file_data['file_name'],
+							'title' => 'Title',
+							'description' => 'Description'
+						);
+					}
 				}
 
-				if(!empty($file_data))
-				{
-					$data[] = array(
-						'gallery' => 1,
-						'file' => $file_data['file_name'],
-						'title' => 'Title',
-						'description' => 'Description'
-					);
-				}
+				$this->gallery_files_m->insert_many($data);
+				redirect('admin/gallery/images/'.$galleryID);
 			}
-
-			$this->gallery_files_m->insert_many($data);
-			$message = 'Success!';
 		}
 
-		echo $message;
-		unset($data);
-		unset($files);
+		$this->template
+			->set('title', 'Edit images in gallery')
+			->set('id', $galleryID)
+			->set('data', $this->gallery_files_m->get_many_by('gallery', $galleryID))
+			->build('admin/images');
+	}
+
+	public function deletemany($id = 0)
+	{
+		$this->load->model('gallery_files_m', 'images');
+
+		$images = $this->input->post('todelete');
+
+		if(!empty($images) && is_array($images))
+		{
+			foreach ($images as $fileID)
+			{
+				$filename = $this->images->get_by('id', $fileID)->file;
+				unlink($this->folder_path.$filename);
+				$this->images->delete($fileID);
+			}
+		}
+
+		redirect('admin/gallery/images/'.$id);
+	}
+	private function multiple(array $_files, $top = TRUE)
+	{
+	    $files = array();
+	    foreach($_files as $name=>$file){
+	        if($top) $sub_name = $file['name'];
+	        else    $sub_name = $name;
+	       
+	        if(is_array($sub_name)){
+	            foreach(array_keys($sub_name) as $key){
+	                $files[$name][$key] = array(
+	                    'name'     => $file['name'][$key],
+	                    'type'     => $file['type'][$key],
+	                    'tmp_name' => $file['tmp_name'][$key],
+	                    'error'    => $file['error'][$key],
+	                    'size'     => $file['size'][$key],
+	                );
+	                $files[$name] = $this->multiple($files[$name], FALSE);
+	            }
+	        }else{
+	            $files[$name] = $file;
+	        }
+	    }
+	    return $files;
 	}
 }
