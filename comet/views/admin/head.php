@@ -9,11 +9,6 @@
 	<meta name="author" content="Karlo Mikus">
 
 	<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700,800|Sintony:400,700" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('bootstrap.min'); ?>" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('font-awesome.min'); ?>" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('select2'); ?>" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('classic.date'); ?>" rel="stylesheet">
-	<link href="<?php echo $this->assets->css('classic.time'); ?>" rel="stylesheet">
 	<link href="<?php echo $this->assets->css('main'); ?>" rel="stylesheet">
 	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

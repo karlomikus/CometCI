@@ -48,7 +48,3 @@
 
 	<button type="submit" class="btn btn-cms-orange">Update titles</button>
 <?php echo form_close(); ?>
-
-<script>
-	$('#desc').editable();
-</script>
