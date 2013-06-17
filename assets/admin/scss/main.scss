@@ -607,15 +607,37 @@ input, textarea, .uneditable-input { width: 300px; }
 
 .gallery-list li {
 	display: inline-block;
-	background: #ccc;
 	padding: 5px;
 	margin: 0 15px 15px 0;
+	background: rgba(0,0,0,0.05);
 }
 
 .gallery-list li img {
 	width: auto;
-	height: 100px;
-	position: relative;
+	height: 150px;
+	margin: 0 auto;
+	display: block;
+}
+
+.gallery-list input[type="text"] {
+	margin: 10px 0;
+	display: block;
+	width: 94%;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	box-shadow: none;
+	background: #fff;
+	border-bottom: 2px solid rgba(0,0,0,0.2);
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	font-family: inherit;
+}
+
+.gallery-list li .check-list li {
+	margin-bottom: 0 !important;
+	background: none;
 }
 
 /* Buttons */

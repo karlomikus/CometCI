@@ -1,7 +1,7 @@
 <ul class="gallery-pictures-list">
 	{% for picture in pictures %}
 		<li>
-			<img src="{{ base_url('uploads/' ~ picture.file) }}" alt="{{ picture.title }}" />
+			<a href="{{ base_url('uploads/' ~ picture.file) }}" target="_blank"><img src="{{ base_url('uploads/' ~ picture.file) }}" alt="{{ picture.title }}" /></a>
 		</li>
 	{% endfor %}
 </ul>

@@ -2,7 +2,7 @@
 	{% for gallery in galleries %}
 		<li>
 			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
-				<img src="http://placehold.it/150x150" alt="Pla" />
+				<img src="{{ base_url('uploads/' ~ show_gallery_preview(gallery.id)) }}" alt="Pla" />
 			</a>
 			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
 				{{ gallery.name }}

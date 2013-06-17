@@ -21,11 +21,13 @@ class Gallery extends Frontend_Controller {
 
 	public function show($id = 0)
 	{
-		//$this->load->model('gallery_m');
 		$this->load->model('gallery_files_m', 'images');
 
+		$data = NULL;
+		if(count_gallery_items($id) > 0) $data = $this->images->get_many_by('gallery', $id);
+
 		$this->template
-			 ->set('pictures', $this->images->get_many_by('gallery', $id))
+			 ->set('pictures', $data)
 			 ->build('show.twig');
 	}
 

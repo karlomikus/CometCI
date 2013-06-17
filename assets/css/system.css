@@ -61,7 +61,7 @@ img, object, embed { height: auto; max-width: 100%; }
 	text-align: center;
 }
 
-.gallery-pictures-list li img {
+.gallery-list li img, .gallery-pictures-list li img {
 	height: 150px;
 	width: auto;
 }

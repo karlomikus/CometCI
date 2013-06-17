@@ -164,15 +164,17 @@ class Admin extends Backend_Controller {
 			->build('admin/images');
 	}
 
-	public function deletemany($id = 0)
+	public function update($id = 0)
 	{
 		$this->load->model('gallery_files_m', 'images');
 
-		$images = $this->input->post('todelete');
+		$imagesDelete = $this->input->post('todelete');
+		$imagesUpdate = $this->input->post('toupdate');
 
-		if(!empty($images) && is_array($images))
+		// Delete action
+		if(!empty($imagesDelete) && is_array($imagesDelete))
 		{
-			foreach ($images as $fileID)
+			foreach ($imagesDelete as $fileID)
 			{
 				$filename = $this->images->get_by('id', $fileID)->file;
 				unlink($this->folder_path.$filename);
@@ -180,8 +182,19 @@ class Admin extends Backend_Controller {
 			}
 		}
 
+		// Rename action
+		if(!empty($imagesUpdate) && is_array($imagesUpdate))
+		{
+			foreach ($imagesUpdate as $imageID => $title)
+			{
+				$data = array('title' => $title);
+				$this->images->update($imageID, $data);
+			}
+		}
+
 		redirect('admin/gallery/images/'.$id);
 	}
+
 	private function multiple(array $_files, $top = TRUE)
 	{
 	    $files = array();

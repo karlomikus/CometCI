@@ -265,6 +265,15 @@ function count_gallery_items($galleryID = 0)
 	return $CI->gallery->count_by('gallery', $galleryID);
 }
 
+function show_gallery_preview($galleryID = 0)
+{
+	$CI =& get_instance();
+	$CI->load->model('gallery/gallery_files_m', 'gallery');
+	//$row = $this->article_model->get_by('title', 'Fuzzy Wuzzy');
+
+	return $CI->gallery->get_by('gallery', $galleryID)->file;
+}
+
 /**
  * Format date by format defined in cms
  * @param  string $date Date string

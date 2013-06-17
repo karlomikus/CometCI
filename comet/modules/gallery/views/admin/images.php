@@ -28,23 +28,30 @@
 	</div>
 <?php echo form_close(); ?>
 
-<?php echo form_open('admin/gallery/deletemany/'.$id, array('class' => 'cms-form' )); ?>
-
-	<h4>Existing images</h4>
+<?php echo form_open('admin/gallery/update/'.$id); ?>
+	
+	<?php if(!empty($data)): ?>
 
 	<ul class="gallery-list">
 		<?php foreach($data as $image): ?>
 			<li>
 				<img src="<?php echo base_url("uploads/".$image->file) ?>" alt="Image" />
-				<br />
-				<input type="text" value="<?php echo $image->title; ?>" />
-				<br />
-				<input type="checkbox" name="todelete[]" value="<?php echo $image->id; ?>" />
+
+				<input type="text" value="<?php echo $image->title; ?>" name="toupdate[<?php echo $image->id; ?>]" />
+				
+				<ul class="check-list">
+					<li>
+						<input id="check-img<?php echo $image->id; ?>" type="checkbox" name="todelete[]" value="<?php echo $image->id; ?>" />
+						<label for="check-img<?php echo $image->id; ?>">Delete image?</label>
+					</li>
+				</ul>
+
 			</li>
 		<?php endforeach; ?>
 	</ul>
 
-	<button type="submit" class="btn btn-cms-orange">Delete selected</button>
+	<button type="submit" class="btn btn-cms-orange">Update images</button>	
 
-	<button type="submit" class="btn btn-cms-orange">Update titles</button>
+	<?php endif; ?>
+
 <?php echo form_close(); ?>
