@@ -1,13 +1,10 @@
-<a class="btn btn-cms" href="<?php echo base_url('admin/modules/refresh'); ?>">Refresh module list</a>
-<br /><br />
-
 <table class="table tbl-custom">
 	<thead>
 		<tr>
 			<th width="200">Name</th>
 			<th width="400">Description</th>
 			<th class="text-center">Enabled</th>
-			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
+			<th class="action-add"><a href="<?php echo current_url().'/refresh';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>
 	<tbody>

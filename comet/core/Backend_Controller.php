@@ -7,11 +7,6 @@ class Backend_Controller extends MY_Controller {
 		parent::__construct();
 
 		// Set default scripts
-		$this->template->append_metadata(Assets::adminJs('bootstrap.min', 'js'));
-		$this->template->append_metadata(Assets::adminJs('select2.min', 'js'));
-		$this->template->append_metadata(Assets::adminJs('bootbox.min', 'js'));
-		$this->template->append_metadata(Assets::adminJs('jquery.icheck.min', 'js'));
-		$this->template->append_metadata(Assets::adminJs('jquery.cookie', 'js'));
 		$this->template->append_metadata(Assets::adminJs('main', 'js'));
 
 		//Set theme for backend

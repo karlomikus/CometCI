@@ -1,3 +1,9 @@
+//@prepros-append bootstrap.min.js
+//@prepros-append select2.min.js
+//@prepros-append bootbox.min.js
+//@prepros-append jquery.icheck.min.js
+//@prepros-append jquery.cookie.js
+
 $(document).ready(function() {
 // Table action list -----------------------------------
 	$(".tbl-custom tr").hover(function() {

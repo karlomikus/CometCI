@@ -5,10 +5,6 @@
 
 	<br />
 
-	<input placeholder="Link" type="text" name="link" value="<?php echo isset($data) ? $data->link : set_value("link"); ?>/" disabled />
-
-	<br />
-
 	<textarea placeholder="Description" name="description" style="width: 40%;" rows="5"><?php echo isset($data) ? $data->description : set_value("description"); ?></textarea>
 
 	<ul class="check-list">
