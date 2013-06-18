@@ -2,20 +2,42 @@
 
 class Modules_m extends MY_Model {
 
-	private $modules_path = 'modules/';
+	private $modules_path = 'modules/'; // TODO: Config module directory
 
+	/**
+	 * Returns an array of modules found in modules directory
+	 * @return array Array of module names
+	 */
 	public function list_modules()
 	{
 		$dir = opendir(APPPATH.$this->modules_path);
-		$ignored_modules = array('.', '..', 'countries');
+		$ignored_modules = array('.', '..');
 
-		while (($file = readdir($dir)) !== false) {
-			if(!in_array($file, $ignored_modules)) $modules[]->name = $file;
+		while (($file = readdir($dir)) !== false)
+		{
+			if(!in_array($file, $ignored_modules)) $modules[] = $file;
 		}
 
 		closedir($dir);
 
 		return $modules;
+	}
+
+	/**
+	 * Returns an array with currently all modules registered in database
+	 * @return array Array with module names
+	 */
+	public function list_db_modules()
+	{
+		$modulesDb = parent::get_all();
+
+		$dbModules = array();
+		foreach ($modulesDb as $mod)
+		{
+			$dbModules[] = $mod->link;
+		}
+
+		return $dbModules;
 	}
 
 	public function get_disabled_modules()

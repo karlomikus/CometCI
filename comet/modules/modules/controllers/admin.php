@@ -2,12 +2,6 @@
 
 class Admin extends Backend_Controller {
 
-	/**
-	 * Not really important in production enviroment.
-	 * Used when modules where first time added to the database.
-	 * Scans the module folder and creates table row for
-	 * every found.
-	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,21 +10,7 @@ class Admin extends Backend_Controller {
 		// No records in the database, lets change that
 		if($this->modules_m->count_all() == 0)
 		{
-			// Get all modules from directory
-			$modules = $this->modules_m->list_modules();
-			foreach ($modules as $module)
-			{
-				// Fill the data
-				$data = array(
-					'name' => ucfirst($module->name),
-					'description' => 'TODO',
-					'link' => $module->name,
-					'enabled' => '1',
-					'layout' => NULL
-				);
-				// DO IT!
-				$this->modules_m->insert($data);
-			}
+			$this->refresh();
 		}
 	}
 
@@ -70,6 +50,30 @@ class Admin extends Backend_Controller {
 				->set('layouts', $this->template->get_theme_layouts('default'))
 				->build('admin/form');
 		}		
+	}
+
+	public function refresh()
+	{
+		$modulesDir = $this->modules_m->list_modules();
+		$modulesDb = $this->modules_m->list_db_modules();
+
+		foreach ($modulesDir as $module)
+		{
+			if(!in_array($module, $modulesDb))
+			{
+				$data = array(
+					'name' => ucfirst($module),
+					'description' => 'TODO',
+					'link' => $module,
+					'enabled' => '1',
+					'layout' => NULL
+				);
+
+				$this->modules_m->insert($data);
+			}
+		}
+
+		redirect('admin/modules');
 	}
 
 	public function disable($id = 0)

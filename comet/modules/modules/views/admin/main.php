@@ -1,3 +1,6 @@
+<a class="btn btn-cms" href="<?php echo base_url('admin/modules/refresh'); ?>">Refresh module list</a>
+<br /><br />
+
 <table class="table tbl-custom">
 	<thead>
 		<tr>
@@ -12,7 +15,7 @@
 		<tr>
 			<td><?php echo $module->name; ?></td>
 			<td><?php echo $module->description; ?></td>
-			<td class="text-center"><?php echo $module->enabled ? '<i class="icon-ok-sign icon-large"></i>' : '<i class="icon-circle-blank icon-large"></i>'; ?></td>
+			<td class="text-center"><?php echo $module->enabled ? '<i class="icon-ok-sign icon-large icon-enable"></i>' : '<i class="icon-ok-sign icon-large icon-disable"></i>'; ?></td>
 			<td class="action">
 				<a class="action-icon" href="#">Action</a>
 				<ul class="action-list" style="display: none;">
