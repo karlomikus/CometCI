@@ -63,9 +63,9 @@ class Admin extends Backend_Controller {
 		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('title', 'Post title', 'required');
-		$this->form_validation->set_rules('body', 'Post Content', 'required');
-		$this->form_validation->set_rules('label', 'Post label', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('body', 'Content', 'required|min_length[5]');
+		$this->form_validation->set_rules('label', 'Label', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -76,14 +76,14 @@ class Admin extends Backend_Controller {
 				'title' => $title,
 				'body' => html_purify($this->input->post('body'), 'wysiwyg'),
 				'date' => date('Y-m-d H:i:s'),
-				'teaser' => $this->input->post('teaser'),
+				'teaser' => html_purify($this->input->post('teaser'), 'description'),
 				'author' => $this->user->user_id,
 				'label' => $this->input->post('label'),
 				'featured' => $this->input->post('featured'),
 				'clan' => $this->input->post('clan'),
 				'slug' => $slug,
-				'state' => $this->input->post('state') // 1 - Publish now, 0 - Draft
-			);    
+				'state' => $this->input->post('state')
+			);
 
 			$this->posts_m->insert($data);
 			redirect('admin/posts');
@@ -105,9 +105,9 @@ class Admin extends Backend_Controller {
 		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('title', 'Post title', 'required');
-		$this->form_validation->set_rules('body', 'Post Content', 'required');
-		$this->form_validation->set_rules('label', 'Post label', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('body', 'Content', 'required|min_length[5]');
+		$this->form_validation->set_rules('label', 'Label', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -115,13 +115,12 @@ class Admin extends Backend_Controller {
 				'title' => $this->input->post('title'),
 				'body' => html_purify($this->input->post('body'), 'wysiwyg'),
 				'date' => date('Y-m-d H:i:s'),
-				'teaser' => $this->input->post('teaser'),
-				'author' => $this->user->user_id,
+				'teaser' => html_purify($this->input->post('teaser'), 'description'),
 				'label' => $this->input->post('label'),
 				'featured' => $this->input->post('featured'),
 				'clan' => $this->input->post('clan'),
-				'state' => $this->input->post('state') // 1 - Publish now, 0 - Draft
-			);  
+				'state' => $this->input->post('state')
+			);
 
 			$this->posts_m->update($id, $data);
 			redirect('admin/posts');

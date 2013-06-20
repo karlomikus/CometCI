@@ -29,14 +29,15 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
+		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('link', 'Link', 'prep_url');
-		$this->form_validation->set_rules('startdate', 'Starting date', 'required');
-		$this->form_validation->set_rules('starttime', 'Starting time', 'required');
-		$this->form_validation->set_rules('enddate', 'Ending date', 'required');
-		$this->form_validation->set_rules('endtime', 'Ending time', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('startdate', 'Starting date', 'required|xss_clean');
+		$this->form_validation->set_rules('starttime', 'Starting time', 'required|xss_clean');
+		$this->form_validation->set_rules('enddate', 'Ending date', 'required|xss_clean');
+		$this->form_validation->set_rules('endtime', 'Ending time', 'required|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -66,7 +67,7 @@ class Admin extends Backend_Controller {
 
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'startdate' => $startDate,
 				'enddate' => $endDate,
 				'link' => $this->input->post('link'),
@@ -89,14 +90,15 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
+		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('link', 'Link', 'prep_url');
-		$this->form_validation->set_rules('startdate', 'Starting date', 'required');
-		$this->form_validation->set_rules('starttime', 'Starting time', 'required');
-		$this->form_validation->set_rules('enddate', 'Ending date', 'required');
-		$this->form_validation->set_rules('endtime', 'Ending time', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('startdate', 'Starting date', 'required|xss_clean');
+		$this->form_validation->set_rules('starttime', 'Starting time', 'required|xss_clean');
+		$this->form_validation->set_rules('enddate', 'Ending date', 'required|xss_clean');
+		$this->form_validation->set_rules('endtime', 'Ending time', 'required|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -130,7 +132,7 @@ class Admin extends Backend_Controller {
 			
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'startdate' => $startDate,
 				'enddate' => $endDate,
 				'link' => $this->input->post('link'),

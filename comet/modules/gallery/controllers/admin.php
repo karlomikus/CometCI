@@ -27,13 +27,13 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]');
+		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]|xss_clean');
 
 		if($this->form_validation->run())
 		{
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => $this->input->post('description', TRUE),
 				'access' => $this->input->post('access'),
 				'date' => date('Y-m-d H:i:s')
 			);
@@ -55,13 +55,13 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]');
+		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]|xss_clean');
 
 		if($this->form_validation->run())
 		{
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => $this->input->post('description', TRUE),
 				'access' => $this->input->post('access'),
 				'date' => date('Y-m-d H:i:s')
 			);
@@ -168,8 +168,8 @@ class Admin extends Backend_Controller {
 	{
 		$this->load->model('gallery_files_m', 'images');
 
-		$imagesDelete = $this->input->post('todelete');
-		$imagesUpdate = $this->input->post('toupdate');
+		$imagesDelete = $this->input->post('todelete', TRUE);
+		$imagesUpdate = $this->input->post('toupdate', TRUE);
 
 		// Delete action
 		if(!empty($imagesDelete) && is_array($imagesDelete))

@@ -27,9 +27,10 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
+		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url');
+		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]|xss_clean');
+		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -58,12 +59,12 @@ class Admin extends Backend_Controller {
 
 			$data = array(
 				'name' => $this->input->post('name'),
-				'width' => $this->input->post('width'),
-				'height' => $this->input->post('height'),
+				'width' => $this->input->post('width', TRUE),
+				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
-				'description' => $this->input->post('description'),
-				'code' => $this->input->post('code'),
+				'description' => htmly_purify($this->input->post('description'), 'description'),
+				'code' => $this->input->post('code', TRUE),
 				'image' => $file_data['file_name']
 			);
 
@@ -83,9 +84,10 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->library('upload');
+		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url');
+		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]|xss_clean');
+		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -119,12 +121,12 @@ class Admin extends Backend_Controller {
 			
 			$data = array(
 				'name' => $this->input->post('name'),
-				'width' => $this->input->post('width'),
-				'height' => $this->input->post('height'),
+				'width' => $this->input->post('width', TRUE),
+				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
-				'description' => $this->input->post('description'),
-				'code' => $this->input->post('code'),
+				'description' => htmly_purify($this->input->post('description'), 'description'),
+				'code' => $this->input->post('code', TRUE),
 				'image' => $fileBanner
 			);
 
