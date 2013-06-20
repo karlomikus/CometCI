@@ -28,7 +28,6 @@ class Admin extends Backend_Controller {
 			->set('upcoming', $this->matches_m->get_upcoming_matches())
 			->set('matches', $this->matches_m->get_matches(FALSE))
 			->build('admin/main');
-
 	}
 
 	public function create()
@@ -41,16 +40,16 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
 		$this->form_validation->set_rules('game', 'Game', 'required');
-		$this->form_validation->set_rules('report', 'Report', 'required');
+		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]|trim');
 		$this->form_validation->set_rules('date', 'Date', 'required');
 		$this->form_validation->set_rules('time', 'Time', 'required');
-		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url');
+		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 		    // Insert match data
-			$date = $this->input->post('date') .' '.$this->input->post('time');
-			$players = $this->input->post('team_players');
+			$date = $this->input->post('date', TRUE) .' '.$this->input->post('time', TRUE);
+			$players = $this->input->post('team_players', TRUE);
 			if(!empty($players)) $team_players = implode(",", $players);
 			else $team_players = NULL;
 
@@ -63,7 +62,7 @@ class Admin extends Backend_Controller {
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
-				'opponent-players' => $this->input->post('opplayers'),
+				'opponent-players' => $this->input->post('opplayers', TRUE),
 				'team-players' => $team_players,
 				'event' => $this->input->post('event')
 			);
@@ -72,8 +71,8 @@ class Admin extends Backend_Controller {
 			$match_id = $this->db->insert_id();
 
 			// Insert scores
-			$opponent_scores = $this->input->post('opponentscore');
-			$team_scores = $this->input->post('teamscore');
+			$opponent_scores = $this->input->post('opponentscore', TRUE);
+			$team_scores = $this->input->post('teamscore', TRUE);
 			$limit = count($team_scores);
 			$score_array = array();
 			for($i = 0; $i < $limit; $i++)
@@ -140,16 +139,16 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
 		$this->form_validation->set_rules('game', 'Game', 'required');
-		$this->form_validation->set_rules('report', 'Report', 'required');
+		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]|trim');
 		$this->form_validation->set_rules('date', 'Date', 'required');
 		$this->form_validation->set_rules('time', 'Time', 'required');
-		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url');
+		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 			// Prep data
-			$date = $this->input->post('date') .' '.$this->input->post('time');
-			$players = $this->input->post('team_players');
+			$date = $this->input->post('date', TRUE) .' '.$this->input->post('time', TRUE);
+			$players = $this->input->post('team_players', TRUE);
 			if(!empty($players)) $team_players = implode(",", $players);
 			else $team_players = NULL;
 
@@ -162,14 +161,14 @@ class Admin extends Backend_Controller {
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
-				'opponent-players' => $this->input->post('opplayers'),
+				'opponent-players' => $this->input->post('opplayers', TRUE),
 				'team-players' => $team_players
 			);
 			$this->matches_m->update($id, $data);
 
 			// Update scores
-			$opponent_scores = $this->input->post('opponentscore');
-			$team_scores = $this->input->post('teamscore');
+			$opponent_scores = $this->input->post('opponentscore', TRUE);
+			$team_scores = $this->input->post('teamscore', TRUE);
 			$limit = count($team_scores);
 			$score_array = array();
 			for($i = 0; $i < $limit; $i++) {
@@ -278,7 +277,7 @@ class Admin extends Backend_Controller {
 
 		if(isset($_POST) && isset($_POST['id']))
 		{
-			$id 		= (int)$_POST['id'];
+			$id 		= $this->input->post('id', TRUE);
 			$teamData 	= $this->teams_m->get_team_members($id);
 			$result 	= array();
 

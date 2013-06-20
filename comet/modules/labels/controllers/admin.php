@@ -28,7 +28,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -57,7 +57,7 @@ class Admin extends Backend_Controller {
 
 			$data = array(
 				'name' => $this->input->post('title'),
-				'description' => $this->input->post('description'),
+				'description' => $this->input->post('description', TRUE),
 				'banner' => $file_data['file_name']
 			);
 
@@ -78,7 +78,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -112,7 +112,7 @@ class Admin extends Backend_Controller {
 			
 			$data = array(
 				'name' => $this->input->post('title'),
-				'description' => $this->input->post('description'),
+				'description' => $this->input->post('description', TRUE),
 				'banner' => $fileBanner
 			);
 
