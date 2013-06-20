@@ -6,7 +6,7 @@ class Backend_Controller extends MY_Controller {
 	{
 		parent::__construct();
 
-		// Set default scripts
+		// Set default javascript
 		$this->template->append_metadata(Assets::adminJs('main', 'js'));
 
 		//Set theme for backend

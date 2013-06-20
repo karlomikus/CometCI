@@ -17,14 +17,15 @@ class MY_Controller extends MX_Controller {
 
 		// Set config items
 		$this->config->set_item('clanname', $this->settings->get(1)->clanname);
-
 		$this->setting = $this->settings->get(1);
 
 		// Set user
-		if($this->ion_auth->logged_in()) {
+		if($this->ion_auth->logged_in())
+		{
 			$this->user = $this->ion_auth->user()->row();
 		}
-		else {
+		else
+		{
 			$this->user = NULL;
 			$this->user->user_id = NULL;
 		}

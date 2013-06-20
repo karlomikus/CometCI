@@ -14,7 +14,6 @@
 			<ul id="dashboard-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Dashboard</li>
 				<li><a href="<?php echo site_url('admin/'); ?>">Startpage</a></li>
-				<li><a href="<?php echo site_url('admin/sitestats'); ?>">Site Statistics</a></li>
 				<li><a href="<?php echo site_url('admin/matchstats'); ?>">Clan Statistics</a></li>
 			</ul>
 			<ul id="content-tab" class="tab-pane fade in">
@@ -35,13 +34,11 @@
 				<li><a href="<?php echo site_url('admin/calendar'); ?>">Fixtures</a></li>
 				<li><a href="<?php echo site_url('admin/opponents'); ?>">Opponents</a></li>
 				<li><a href="<?php echo site_url('admin/games'); ?>">Games</a></li>
-<!-- 				<li><a href="<?php echo site_url('admin/sponsors'); ?>">Sponsors</a></li>
- -->			</ul>
+			</ul>
 			<ul id="users-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Users</li>
 				<li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
 				<li><a href="<?php echo site_url('admin/groups'); ?>">Groups</a></li>
-				<li><a href="<?php echo site_url('admin/permissions'); ?>">Permissions</a></li>
 			</ul>
 			<ul id="settings-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Settings</li>
