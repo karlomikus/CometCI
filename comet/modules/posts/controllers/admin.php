@@ -113,7 +113,7 @@ class Admin extends Backend_Controller {
 		{
 			$data = array(
 				'title' => $this->input->post('title'),
-				'body' => html_purify($this->input->post('body')),
+				'body' => html_purify($this->input->post('body'), 'wysiwyg'),
 				'date' => date('Y-m-d H:i:s'),
 				'teaser' => $this->input->post('teaser'),
 				'author' => $this->user->user_id,

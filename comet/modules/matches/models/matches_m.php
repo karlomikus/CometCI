@@ -122,13 +122,15 @@ class Matches_m extends MY_Model {
 	}
 
 	/**
-	 * Gets match outcome based on provided ID
-	 * @param  int  $id     Match ID
-	 * @param  boolean $text   If true returns text format of outcome
-	 * @param  boolean $format If true returns HTML format of outcome
-	 * @return mixed          Returns outcome
+	 * Gets match outcome based on given ID. You can specify format of
+	 * result as a second parameter. Use text to return result as a string
+	 * or use html to return result as a formatted HTML.
+	 * 
+	 * @param  int $id     Match ID
+	 * @param  string $format Return format
+	 * @return mixed
 	 */
-	public function get_match_outcome($id, $text = TRUE, $format = FALSE) 
+	public function get_match_outcome($id, $format = '') 
 	{
 		$home = $this->calculate_score('team', $id);
 		$away = $this->calculate_score('opponent', $id);
@@ -137,19 +139,24 @@ class Matches_m extends MY_Model {
 		if($home > $away) $outcome = 1; // WIN
 		elseif($home < $away) $outcome = 2; // LOSE
 
-		if($text) {
-			if($outcome == 1) $outcome_text = 'WIN';
-			elseif($outcome == 2) $outcome_text = 'LOSE';
-			else $outcome_text = 'DRAW';
+		if($format == 'text')
+		{
+			if($outcome == 1) $result = 'WIN';
+			elseif($outcome == 2) $result = 'LOSE';
+			else $result = 'DRAW';
+		}
+		elseif ($format == 'html')
+		{
+			if($outcome == 1) $result = '<span class="win-color">WIN</span>';
+			elseif($outcome == 2) $result = '<span class="lose-color">LOSE</span>';
+			else $result = '<span class="draw-color">DRAW</span>';
+		}
+		else
+		{
+			$result = $outcome;
 		}
 
-		if($text && $format) {
-			if($outcome == 1) $outcome_text = '<span class="win-color">WIN</span>';
-			elseif($outcome == 2) $outcome_text = '<span class="lose-color">LOSE</span>';
-			else $outcome_text = '<span class="draw-color">DRAW</span>';
-		}
-
-		return $text ? $outcome_text : $outcome;
+		return $result;
 	}
 
 	/**
