@@ -1,28 +1,53 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
- * Site
+ * Site-wide settings
  */
 $config['clanname'] = 'Team Comet';
 $config['cms_date_format'] = 'd.m.Y';
 $config['cms_time_format'] = 'H:i';
 
 /**
- * Modules
+ * Module-specific settings
  */
 $config['mod_max_posts'] = 6; 		// Posts per page
 $config['mod_max_matches'] = 20;	// Matches per page
 
 /**
- * Widgets
+ * Widget-specific setttings
  */
 $config['wi_max_matches'] = 6;
 $config['wi_max_posts'] = 6;
 
 /**
- * Pagination
+ * Frontend and backend pagination template
  */
+$config['pagination_frontend']['next_link'] = '&raquo;';
+$config['pagination_frontend']['prev_link'] = '&laquo;';
+$config['pagination_frontend']['full_tag_open'] = '<ul class="cms-pagination">';
+$config['pagination_frontend']['full_tag_close'] = '</ul>';
+$config['pagination_frontend']['num_tag_open'] = '<li>';
+$config['pagination_frontend']['num_tag_close'] = '</li>';
+$config['pagination_frontend']['cur_tag_open'] = '<li class="pagination-selected">';
+$config['pagination_frontend']['cur_tag_close'] = '</li>';
+$config['pagination_frontend']['next_tag_open'] = '<li>';
+$config['pagination_frontend']['next_tag_close'] = '</li>';
+$config['pagination_frontend']['prev_tag_open'] = '<li>';
+$config['pagination_frontend']['prev_tag_close'] = '</li>';
 
+$config['pagination_backend']['last_link'] = FALSE;
+$config['pagination_backend']['first_link'] = FALSE;
+$config['pagination_backend']['next_link'] = '<i class="icon-angle-right"></i>';
+$config['pagination_backend']['prev_link'] = '<i class="icon-angle-left"></i>';
+$config['pagination_backend']['full_tag_open'] = '<ul>';
+$config['pagination_backend']['full_tag_close'] = '</ul>';
+$config['pagination_backend']['num_tag_open'] = '<li>';
+$config['pagination_backend']['num_tag_close'] = '</li>';
+$config['pagination_backend']['cur_tag_open'] = '<li class="active"><a href="">';
+$config['pagination_backend']['cur_tag_close'] = '</a></li>';
+$config['pagination_backend']['next_tag_open'] = '<li>';
+$config['pagination_backend']['next_tag_close'] = '</li>';
+$config['pagination_backend']['prev_tag_open'] = '<li>';
+$config['pagination_backend']['prev_tag_close'] = '</li>';
 
 /* End of file comet.php */
-/* Location: .//C/wamp/www/cms/comet/config/comet.php */
+/* Location: ./comet/config/comet.php */

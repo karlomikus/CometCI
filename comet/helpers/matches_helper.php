@@ -5,7 +5,7 @@ function get_result($id, $side)
 	$CI =& get_instance();
 	$CI->load->model('matches/matches_m');
 
-	if($side = 1) $team = 'team';
+	if($side == 1) $team = 'team';
 	else $team = 'opponent';
 
 	return $CI->matches_m->calculate_score($team, $id);

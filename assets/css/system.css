@@ -6,6 +6,46 @@ p > img {
 	display: inline-block !important;
 }
 
+ul.image-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.image-list li {
+	display: inline-block;
+}
+
+ul.image-list li img {
+	width: 150px;
+	height: auto;
+}
+
+/* Pagination */
+ul.cms-pagination {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.cms-pagination li {
+	display: inline-block;
+	margin: 2px 5px;
+}
+
+ul.cms-pagination li a {
+	display: block;
+	padding: 0 5px;
+	background: #ccc;
+	border: 1px solid #ccc;
+	color: #000;
+}
+
+ul.cms-pagination li.pagination-selected {
+	border: 1px solid #ccc;
+	padding: 1px 6px;
+}
+
 /* Matches */
 .win-color { }
 .lose-color { }

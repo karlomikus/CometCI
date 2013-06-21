@@ -89,60 +89,6 @@ function get_team_logo($id)
 }
 
 /**
- * Gets match score in win/draw/lose string format
- *
- * @return string
- */
-function get_match_score($id) 
-{
-	$CI =& get_instance();
-	$CI->load->model('matches/matches_m');
-
-	return $CI->matches_m->get_match_outcome($id);
-}
-
-/**
- * Gets final result of the chosen team
- *
- * @return int
- */
-function get_result($id, $team = true) 
-{
-	$CI =& get_instance();
-	$CI->load->model('matches/matches_m');
-
-	if($team) $side = 'team';
-	else $side = 'opponent';
-
-	return $CI->matches_m->calculate_score($side, $id);
-}
-
-/**
- * Gets round results by match ID
- *
- * @return object
- */
-function get_scores($id) 
-{
-	$CI =& get_instance();
-	$CI->load->model('matches/matches_m');
-
-	return $CI->matches_m->get_scores($id);
-}
-/**
- * Gets match screenshots by match ID
- * @param  int $id Match ID
- * @return object     Database object
- */
-function get_match_screenshots($id) 
-{
-	$CI =& get_instance();
-	$CI->load->model('matches/matches_m');
-
-	return $CI->matches_m->get_match_screenshots($id);
-}
-
-/**
  * Gets list of all countries in the database
  * @return object Database object
  */

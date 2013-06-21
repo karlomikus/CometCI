@@ -1,61 +1,81 @@
-<div class="row">
-	<p class="large-12 columns text-center"><strong>{{get_game_name(match.game)}}</strong> played on <strong>{{cms_date(match.date)}} - {{cms_time(match.date)}}</strong></p>
+<div class="pure-g text-center">
+    <div class="pure-u-1-5">
+        <p>{{ get_result(match.id, 2) }}</p>
+    </div>
+
+    <div class="pure-u-1-5">
+        <p>
+        	<img src="{{ base_url() }}/uploads/opponents/{{ get_opponent_logo(match.opponent) }}" /><br />
+			{{ get_opponent_name(match.opponent) }}
+		</p>
+    </div>
+
+    <div class="pure-u-1-5">
+        <p>VS</p>
+    </div>
+
+    <div class="pure-u-1-5">
+        <p>
+        	<img src="{{ base_url() }}/uploads/teams/{{ get_team_logo(match.team) }}" /><br />
+			{{ get_team_name(match.team) }}
+		</p>
+    </div>
+
+    <div class="pure-u-1-5">
+        <p>{{ get_result(match.id, 1) }}</p>
+    </div>
 </div>
-<div class="row match">
-	<div class="large-2 columns textright" style="font-size: 22px; line-height: 150px;">
-		{{get_result(match.id, false)}}
-	</div>
-	<div class="large-3 columns textcenter">
-		<img src="{{base_url()}}/uploads/opponents/{{get_opponent_logo(match.opponent)}}" /><br />
-		{{get_opponent_name(match.opponent)}}
-	</div>
-	<div class="large-2 columns textcenter" style="font-size: 22px; line-height: 150px;">
-		VS
-	</div>
-	<div class="large-3 columns textcenter">
-		<img src="{{base_url()}}/uploads/teams/{{get_team_logo(match.team)}}" /><br />
-		{{get_team_name(match.team)}}
-	</div>
-	<div class="large-2 columns textleft" style="font-size: 22px; line-height: 150px;">
-		{{get_result(match.id)}}
-	</div>
-</div>
-<div class="row">
-	<p class="large-12 columns text-center">{{attribute(match, 'opponent-players')}}</p>
-</div>
-<table width="50%" style="margin: 20px auto;">
-	<tr>
-		<th></th>
-		<th>Opponent</th>
-		<th>Team</th>
-	</tr>
+
+<br />
+
+<table width="100%" class="pure-table pure-table-bordered">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Opponent</th>
+			<th>Team</th>
+		</tr>
+	</thead>
 	{% set i = 1 %}
 	{% for round in get_scores(match.id) %}
 	<tr>
-		<td class="textcenter">Round {{i}}:</td>
-		<td class="textcenter">{{round.opponent}}</td>
-		<td class="textcenter">{{round.team}}</td>
+		<td>Round {{ i }}:</td>
+		<td>{{ round.opponent }}</td>
+		<td>{{ round.team }}</td>
 	</tr>
 	{% set i = i + 1 %}
 	{% endfor %}
 </table>
 
+<br />
+<h3>Report</h3>
+
 <div class="panel">
 	<p>
-		{{match.report}}
+		<strong>{{ cms_date(match.date) }}</strong> - <strong>{{ cms_time(match.date) }}</strong><br />
+		{{ match.report }}
 	</p>
 </div>
 
 {% if get_match_screenshots(match.id)|length > 0 %}
-<h4>Screenshots:</h4>
+
+<h3>Screenshots</h3>
+
 <div class="panel">
-	<ul class="small-block-grid-4">
+
+	<ul class="image-list">
 	{% for screenshot in get_match_screenshots(match.id) %}
-		<li><a href="{{base_url()}}uploads/screenshots/{{screenshot.file}}" target="_blank"><img src="{{base_url()}}uploads/screenshots/{{screenshot.file}}" alt="Screenshot" /></a></li>
+
+		<li>
+			<a href="{{ base_url() }}uploads/screenshots/{{ screenshot.file }}" target="_blank">
+				<img src="{{ base_url() }}uploads/screenshots/{{ screenshot.file }}" alt="Screenshot" />
+			</a>
+		</li>
+
 	{% endfor %}
 	</ul>
+
 </div>
 {% endif %}
 
-<h4>Comments:</h4>
-{{comments}}
+{{ comments }}

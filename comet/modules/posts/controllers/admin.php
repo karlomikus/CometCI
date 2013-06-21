@@ -22,25 +22,11 @@ class Admin extends Backend_Controller {
 		if(isset($sortBy) && isset($sortOrder)) $this->posts_m->order_by($sortBy, $sortOrder);
 		else $this->posts_m->order_by('date', 'desc');
 
+		$config = $this->config->item('pagination_backend');
 		$config['base_url'] = base_url()."admin/posts/index/$sortBy/$sortOrder/";
 		$config['total_rows'] = $count;
 		$config['per_page'] = $this->perPage;
 		$config['uri_segment'] = 6;
-
-		$config['last_link'] = FALSE;
-		$config['first_link'] = FALSE;
-		$config['next_link'] = '<i class="icon-angle-right"></i>';
-		$config['prev_link'] = '<i class="icon-angle-left"></i>';
-		$config['full_tag_open'] = '<ul>';
-		$config['full_tag_close'] = '</ul>';
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="active"><a href="">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['next_tag_open'] = '<li>';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_tag_open'] = '<li>';
-		$config['prev_tag_close'] = '</li>';
 
 		$this->pagination->initialize($config);
 		$this->posts_m->limit($this->perPage, $page);
