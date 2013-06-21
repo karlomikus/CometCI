@@ -99,6 +99,27 @@ ul.cms-pagination li.pagination-selected {
 }
 
 /* Forums */
+.cms-forum-post-info {
+	overflow: hidden;
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	border-bottom: 1px solid #bcbcbc;
+}
+
+.cms-forum-post-info div { /* Username and date */
+	float: left;
+}
+
+.cms-forum-post-info p { /* Author actions */
+	float: right;
+}
+
+.cms-forum-post-info img { /* Avatar */
+	height: 50px;
+	width: auto;
+	float: left;
+	margin: 0 10px 0 0;
+}
 
 /* Gallery */
 .gallery-list, .gallery-pictures-list {

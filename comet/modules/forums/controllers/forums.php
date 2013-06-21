@@ -54,9 +54,7 @@ class Forums extends Frontend_Controller {
 		$this->pagination->initialize($config);
 
 		// Add missing functions from forum helper to twig parser
-		$this->parser->addFunction('count_replies');
-		$this->parser->addFunction('get_last_post_in_topic');
-		$this->parser->addFunction('get_views');
+		$this->parser->checkFunctions();
 
 		// Check privileges
 		$is_mod = FALSE;
@@ -75,11 +73,6 @@ class Forums extends Frontend_Controller {
 			->build('forum.twig');
 	}
 
-	/**
-	 * Shows forum topic with all replies,
-	 * first post is the original post
-	 * @param  integer $id Topic ID
-	 */
 	public function topic($id = 0)
 	{
 		$this->load->model('forums_m');
@@ -101,10 +94,6 @@ class Forums extends Frontend_Controller {
 			->build('topic.twig');
 	}
 
-	/**
-	 * Creates new topic in given forum
-	 * @param  integer $forumID Forum ID
-	 */
 	public function newtopic($forumID = 0)
 	{
 		$this->load->model('forums_m');
