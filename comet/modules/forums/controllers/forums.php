@@ -2,42 +2,24 @@
 
 class Forums extends Frontend_Controller {
 
-	/**
-	 * Maximum topics shown per forum page
-	 * @var integer
-	 */
 	public $max_topic_per_forum = 10;
-
-	/**
-	 * Maximum topic replies shown
-	 * @var integer
-	 */
 	public $max_topic_replies = 10;
 
-	/**
-	 * Sets some template variables that are need
-	 * all over the forum module
-	 */
 	function __construct()
 	{
 		parent::__construct();
+
 		$this->template
 			->set('logged_in', $this->ion_auth->logged_in())
 			->set_layout(get_layout(__CLASS__));
 	}
 
-	/**
-	 * Lists all available forums,
-	 * grouped by label
-	 */
 	public function index()
 	{
 		$this->load->model('forums_m');
 		$this->load->helper('forum');
 
-		$this->parser->addFunction('count_topics');
-		$this->parser->addFunction('count_replies_in_forum');
-		$this->parser->addFunction('get_mods');
+		$this->parser->checkFunctions();
 
 		$data = array();
 		$active_labels = $this->forums_m->get_active_forum_labels();
@@ -62,24 +44,11 @@ class Forums extends Frontend_Controller {
 		$this->load->library('pagination');
 
 		// Pagination configuration
+		$config = $this->config->item('pagination_frontend');
 		$config['base_url'] = base_url().'forums/forum/'.$id;
 		$config['total_rows'] = $this->forums_m->count_forum_topics($id);
 		$config['per_page'] = $this->max_topic_per_forum;
 		$config['uri_segment'] = 4;
-
-		// Oh god what is this?
-		$config['next_link'] = '&raquo;';
-		$config['prev_link'] = '&laquo;';
-		$config['full_tag_open'] = '<ul class="pagination">';
-		$config['full_tag_close'] = '</ul>';
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="current"><a href="">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['next_tag_open'] = '<li class="arrow">';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_tag_open'] = '<li class="arrow">';
-		$config['prev_tag_close'] = '</li>';
 
 		// Let's do this
 		$this->pagination->initialize($config);

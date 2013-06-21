@@ -8,6 +8,9 @@ class Users extends Frontend_Controller {
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+
+		$this->redirect_to = $this->agent->referrer();
+		
 		$this->template
 			->set_layout(get_layout(__CLASS__));
 	}
@@ -85,4 +88,4 @@ class Users extends Frontend_Controller {
 }
 
 /* End of file users.php */
-/* Location: ./application/controllers/users.php */
+/* Location: ./comet/controllers/users.php */

@@ -51,6 +51,7 @@ ul.cms-pagination li.pagination-selected {
 .lose-color { }
 .draw-color { }
 
+/* Alerts */
 .cms-alert {
 	background: #0e90d2;
 	color: #fff;
@@ -69,9 +70,16 @@ ul.cms-pagination li.pagination-selected {
 }
 
 /* Comments */
-.comment-content header { overflow: hidden; }
+.comment-content header {
+	overflow: hidden;
+	background: rgba(0,0,0,0.1);
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
 .comment { margin-bottom: 20px; }
-.comment h4 { margin-top: 0; }
+.comment h4 { margin: 0; }
+
 .comment-content header h4 {
 	float: left;
 	width: 50%;

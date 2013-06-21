@@ -5,12 +5,13 @@
 $config['clanname'] = 'Team Comet';
 $config['cms_date_format'] = 'd.m.Y';
 $config['cms_time_format'] = 'H:i';
+$config['linkify_users'] = TRUE;
 
 /**
  * Module-specific settings
  */
-$config['mod_max_posts'] = 6; 		// Posts per page
-$config['mod_max_matches'] = 20;	// Matches per page
+$config['mod_max_posts'] = 6;
+$config['mod_max_matches'] = 20;
 
 /**
  * Widget-specific setttings

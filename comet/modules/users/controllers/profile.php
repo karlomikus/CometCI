@@ -4,6 +4,14 @@ class Profile extends Frontend_Controller {
 
 	private $folder_path = './uploads/users/';
 
+	function __construct()
+	{
+		parent::__construct();
+		
+		$this->template
+			->set_layout(get_layout(__CLASS__));
+	}
+
 	public function index()
 	{
 		$option = false;

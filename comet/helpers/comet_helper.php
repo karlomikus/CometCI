@@ -154,16 +154,30 @@ function get_avatar($userID, $fulltag = FALSE)
 }
 
 /**
- * Gets username from user ID
- * @param  int $userID User ID
- * @return string         Username of the user
+ * Get username by $userID. You can optionally create
+ * link to user's profile page.
+ * 
+ * @param  int  $userID  User ID
+ * @param  boolean $linkify Create hyperlink
+ * @return string
  */
-function get_username($userID) 
+function get_username($userID, $linkify = TRUE) 
 {
 	$CI =& get_instance();
 
-	if(isset($CI->ion_auth->user($userID)->row()->username)) return $CI->ion_auth->user($userID)->row()->username;
-	else return NULL;
+	$do_links = $CI->config->item('linkify_users');
+	if(!$linkify) $do_links = FALSE;
+
+	$username = NULL;
+	if(isset($CI->ion_auth->user($userID)->row()->username))
+	{
+		$data = $CI->ion_auth->user($userID)->row()->username;
+
+		if($do_links) $username = '<a href="'.base_url().'users/profile/'.$userID.'">'.$data.'</a>';
+		else $username = $data;
+	}
+
+	return $username;
 }
 
 /**
@@ -259,7 +273,7 @@ function get_layout($moduleName = '')
 	$CI->load->model('modules/modules_m');
 	$module = strtolower($moduleName);
 
-	$moduleLayout = $CI->modules_m->get_by('name', $module)->layout;
+	$moduleLayout = @$CI->modules_m->get_by('name', $module)->layout;
 
 	if($CI->template->layout_exists($moduleLayout.'.twig')) return $moduleLayout.'.twig';
 	else return 'default.twig';

@@ -2,7 +2,8 @@
 
 class Wi_user extends Frontend_Controller {
 
-	public function index() {
+	public function index()
+	{
 		$this->load->helper('form');
 
 		$logged_in = FALSE;
