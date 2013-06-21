@@ -2,6 +2,10 @@
 img { display: block; }
 img, object, embed { height: auto; max-width: 100%; }
 
+p > img {
+	display: inline-block !important;
+}
+
 /* Matches */
 .win-color { }
 .lose-color { }

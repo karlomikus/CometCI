@@ -1,4 +1,104 @@
-﻿var CkEditorImageBrowser={folders:[],images:{},ckFunctionNum:null,init:function(){CkEditorImageBrowser.ckFunctionNum=CkEditorImageBrowser.getQueryStringParam("CKEditorFuncNum");CkEditorImageBrowser.initEventHandlers();CkEditorImageBrowser.loadData(decodeURIComponent(CkEditorImageBrowser.getQueryStringParam("listUrl")),function(){CkEditorImageBrowser.initFolderSwitcher()})},loadData:function(a,c){CkEditorImageBrowser.folders=[];CkEditorImageBrowser.images={};$.getJSON(a,function(a){$.each(a,function(a,
-b){"undefined"===typeof b.folder&&(b.folder="Images");CkEditorImageBrowser.ensureFolderCreated(b.folder);CkEditorImageBrowser.addImage(b.folder,b.image,b.thumb)});c()})},ensureFolderCreated:function(a){-1===CkEditorImageBrowser.folders.indexOf(a)&&(CkEditorImageBrowser.folders.push(a),CkEditorImageBrowser.images[a]=[])},addImage:function(a,c,e){CkEditorImageBrowser.images[a].push({imageUrl:c,thumbUrl:e})},initFolderSwitcher:function(){var a=$("#js-folder-switcher");a.find("option").remove();$.each(CkEditorImageBrowser.folders,
-function(c,e){$("<option></option>").val(c).text(e).appendTo(a)});1===CkEditorImageBrowser.folders.length&&a.hide();a.trigger("change")},renderImagesForFolder:function(a){var a=CkEditorImageBrowser.images[a],c=$("#js-template-image").html(),e=$("#js-images-container");e.html("");$.each(a,function(a,b){var d=c,d=d.replace("%imageUrl%",b.imageUrl),d=d.replace("%thumbUrl%",b.thumbUrl),d=$($.parseHTML(d));e.append(d)})},initEventHandlers:function(){$("#js-folder-switcher").change(function(){var a=parseInt($(this).val(),
-10);CkEditorImageBrowser.renderImagesForFolder(CkEditorImageBrowser.folders[a])});$(document).on("click",".js-image-link",function(){var a=$(this).data("url");window.opener.CKEDITOR.tools.callFunction(CkEditorImageBrowser.ckFunctionNum,a);window.close()})},getQueryStringParam:function(a){return(a=window.location.search.match(RegExp("[?|&]"+a+"=(.+?)[&|$]")))&&1<a.length?a[1]:null}};
+var CkEditorImageBrowser = {};
+
+CkEditorImageBrowser.folders = [];
+CkEditorImageBrowser.images = {}; //folder => list of images
+CkEditorImageBrowser.ckFunctionNum = null;
+
+CkEditorImageBrowser.init = function () {
+	CkEditorImageBrowser.ckFunctionNum = CkEditorImageBrowser.getQueryStringParam('CKEditorFuncNum');
+
+	CkEditorImageBrowser.initEventHandlers();
+
+	CkEditorImageBrowser.loadData(decodeURIComponent(CkEditorImageBrowser.getQueryStringParam('listUrl')), function () {
+		CkEditorImageBrowser.initFolderSwitcher();
+	});
+};
+
+CkEditorImageBrowser.loadData = function (url, onLoaded) {
+	CkEditorImageBrowser.folders = [];
+	CkEditorImageBrowser.images = {};
+
+	$.getJSON(url, function (list) {
+		$.each(list, function (_idx, item) {
+			if (typeof(item.folder) === 'undefined') {
+				item.folder = 'Images';
+			}
+
+			CkEditorImageBrowser.ensureFolderCreated(item.folder);
+			CkEditorImageBrowser.addImage(item.folder, item.image, item.thumb);
+		});
+
+		onLoaded();
+	});
+};
+
+CkEditorImageBrowser.ensureFolderCreated = function (folderName) {
+	if (CkEditorImageBrowser.folders.indexOf(folderName) === -1) {
+		CkEditorImageBrowser.folders.push(folderName);
+		CkEditorImageBrowser.images[folderName] = [];
+	}
+};
+
+CkEditorImageBrowser.addImage = function (folderName, imageUrl, thumbUrl) {
+	CkEditorImageBrowser.images[folderName].push({
+		"imageUrl": imageUrl,
+		"thumbUrl": thumbUrl
+	});
+};
+
+CkEditorImageBrowser.initFolderSwitcher = function () {
+	var $switcher = $('#js-folder-switcher');
+
+	$switcher.find('option').remove();
+
+	$.each(CkEditorImageBrowser.folders, function (idx, folderName) {
+		var $option = $('<option></option>').val(idx).text(folderName);
+		$option.appendTo($switcher);
+	});
+
+	if (CkEditorImageBrowser.folders.length === 1) {
+		$switcher.hide();
+	}
+
+	$switcher.trigger("change");
+};
+
+CkEditorImageBrowser.renderImagesForFolder = function (folderName) {
+	var images = CkEditorImageBrowser.images[folderName],
+		templateHtml = $('#js-template-image').html(),
+		$imagesContainer = $('#js-images-container');
+
+	$imagesContainer.html('');
+
+	$.each(images, function (idx, imageData) {
+		var html = templateHtml;
+		html = html.replace('%imageUrl%', imageData.imageUrl);
+		html = html.replace('%thumbUrl%', imageData.thumbUrl);
+
+		var $item = $($.parseHTML(html));
+
+		$imagesContainer.append($item);
+	});
+};
+
+CkEditorImageBrowser.initEventHandlers = function () {
+	$('#js-folder-switcher').change(function () {
+		var idx = parseInt($(this).val(), 10),
+			folderName = CkEditorImageBrowser.folders[idx];
+
+		CkEditorImageBrowser.renderImagesForFolder(folderName);
+	});
+
+	$(document).on('click', '.js-image-link', function () {
+		var imageUrl = $(this).data('url');
+		window.opener.CKEDITOR.tools.callFunction(CkEditorImageBrowser.ckFunctionNum, imageUrl);
+		window.close();
+	});
+};
+
+CkEditorImageBrowser.getQueryStringParam = function (name) {
+	var regex = new RegExp('[\?|&]' + name + '=(.+?)[\&|$]'),
+		result = window.location.search.match(regex);
+
+	return (result && result.length > 1 ? result[1] : null);
+};

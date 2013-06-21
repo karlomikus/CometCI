@@ -50,12 +50,15 @@ if (! function_exists('html_purify'))
 				case 'wysiwyg':
 					$config = HTMLPurifier_Config::createDefault();
 					$config->set('Core.Encoding', 'utf-8');
-					$config->set('HTML.Allowed', 'p[style],a[href|title],abbr[title],acronym[title],b,strong,blockquote[cite],code,em,i,strike,u,s,sub,sup,ol,ul,li,hr,img[src|alt|title|style],table[border|cellspacing|cellpadding|width|align|summary|bgcolor|style],tr,tbody,td[colspan|rowspan|width|height|align|valign|bgcolor],th[colspan|rowspan|width|height|align|valign],div,h1,h2,h3,h4,h5,h6');
+					$config->set('HTML.Allowed', 'p[style],a[href|title],abbr[title],acronym[title],b,strong,blockquote[cite],code,em,i,strike,u,s,sub,sup,ol,ul,li,hr,img[src|alt|title|style],table[border|cellspacing|cellpadding|width|align|summary|bgcolor|style],tr,tbody,td[colspan|rowspan|width|height|align|valign|bgcolor],th[colspan|rowspan|width|height|align|valign],div,h1,h2,h3,h4,h5,h6,object[width|height|data],param[name|value],embed[src|type|allowscriptaccess|allowfullscreen|width|height],iframe[src|allowfullscreen|frameborder|width|height]');
 					$config->set('HTML.SafeObject', TRUE);
+					$config->set('HTML.SafeEmbed', TRUE);
 					$config->set('Output.FlashCompat', TRUE);
 					$config->set('AutoFormat.AutoParagraph', TRUE);
 					$config->set('AutoFormat.Linkify', TRUE);
 					$config->set('AutoFormat.RemoveEmpty', TRUE);
+					$config->set('HTML.SafeIframe', true);
+					$config->set('URI.SafeIframeRegexp', '%^http://(www.youtube(?:-nocookie)?.com/embed/|player.vimeo.com/video/)%');
 					break;
 
 				case FALSE:

@@ -30,11 +30,11 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run())
 		{
-			$layout = $this->input->post('layout');
+			$layout = $this->input->post('layout', TRUE);
 			$layoutName = preg_replace("/\\.[^.\\s]{3,4}$/", "", $layout);
 
 			$data = array(
-				'description' => $this->input->post('description'),
+				'description' => $this->input->post('description', TRUE),
 				'enabled' => $this->input->post('enabled'),
 				'layout' => $layoutName
 			);

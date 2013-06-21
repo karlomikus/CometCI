@@ -4,7 +4,7 @@
 			<img src="{{ base_url() }}assets/games/{{ get_game_icon(match.game) }}" />
 			vs.
 			<a href="{{ base_url() }}matches/show/{{ match.id }}">{{ get_opponent_name(match.opponent) }}</a>
-			<span>{{ get_match_score(match.id) }}</span>
+			<span>{{ get_match_score(match.id, 'text') }}</span>
 		</li>
 	{% endfor %}
 </ul>

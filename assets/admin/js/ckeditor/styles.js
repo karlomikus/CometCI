@@ -45,18 +45,6 @@ CKEDITOR.stylesSet.add( 'default', [
 
 	/* Inline Styles */
 
-	// These are core styles available as toolbar buttons. You may opt enabling
-	// some of them in the Styles combo, removing them from the toolbar.
-	// (This requires the "stylescombo" plugin)
-	/*
-	{ name: 'Strong',			element: 'strong', overrides: 'b' },
-	{ name: 'Emphasis',			element: 'em'	, overrides: 'i' },
-	{ name: 'Underline',		element: 'u' },
-	{ name: 'Strikethrough',	element: 'strike' },
-	{ name: 'Subscript',		element: 'sub' },
-	{ name: 'Superscript',		element: 'sup' },
-	*/
-
 	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
 
 	{ name: 'Big',				element: 'big' },

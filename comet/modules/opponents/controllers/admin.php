@@ -27,7 +27,7 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name', 'Opponent name', 'required');
+		$this->form_validation->set_rules('name', 'Opponent name', 'required|min_length[4]|xss_clean');
 
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -49,7 +49,7 @@ class Admin extends Backend_Controller {
 
 			$data = array(
 				'name' => $this->input->post('name'),
-				'info' => $this->input->post('description'),
+				'info' => $this->input->post('description', TRUE),
 				'gameID' => $this->input->post('game'),
 				'logo' => $logo_data['file_name']
 			);
@@ -74,7 +74,7 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name', 'Opponent name', 'required');
+		$this->form_validation->set_rules('name', 'Opponent name', 'required|min_length[4]|xss_clean');
 
 		$config['upload_path']   = $this->folder_path;
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -104,7 +104,7 @@ class Admin extends Backend_Controller {
 
 			$data = array(
 				'name' => $this->input->post('name'),
-				'info' => $this->input->post('description'),
+				'info' => $this->input->post('description', TRUE),
 				'gameID' => $this->input->post('game'),
 				'logo' => $fileLogo
 			);

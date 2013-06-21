@@ -1,5 +1,8 @@
 CKEDITOR.editorConfig = function( config )
 {
+	config.extraPlugins = 'flash,justify,colorbutton,imagebrowser';
+	config.removePlugins = 'templates';
+
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 		{ name: 'links' },
@@ -23,4 +26,6 @@ CKEDITOR.editorConfig = function( config )
 	config.width = '65%';
 
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	config.imageBrowser_listUrl = 'list.json';
 };
