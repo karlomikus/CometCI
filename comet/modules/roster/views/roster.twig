@@ -1,6 +1,6 @@
 {% for team in data %}
 	<div class="panel">
-		<h5>{{team.name}}</h5>
+		<h3>{{team.name}}</h3>
 		<div>
 			{% for game in get_team_games(team.id) %}
 				{{get_game_icon(game, true)}} 
@@ -8,10 +8,10 @@
 		</div>
 		<p>{{team.description}}</p>
 		<p>
-			<strong>From:</strong> {{get_country_info(team.countryID, 'icon')}} {{get_country_info(team.countryID, 'name')}}
+			<strong>From:</strong> {{get_country(team.countryID, 'icon')}} {{get_country(team.countryID, 'name')}}
 		</p>
 		<hr />
-		<ul class="small-block-grid-5">
+		<ul class="cms-list">
 		{% for member in get_full_roster(team.id) %}
 			<li class="text-center">{{get_avatar(member.user_id, true)}} {{get_username(member.user_id)}}</li>
 		{% endfor %}

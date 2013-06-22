@@ -6,6 +6,16 @@ p > img {
 	display: inline-block !important;
 }
 
+ul.cms-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.cms-list li {
+	display: inline-block;
+}
+
 ul.image-list {
 	list-style: none;
 	margin: 0;
