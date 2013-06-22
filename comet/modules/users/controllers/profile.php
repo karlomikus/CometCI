@@ -14,11 +14,12 @@ class Profile extends Frontend_Controller {
 
 	public function index($id = '')
 	{
-		$option = FALSE;
-		if($this->ion_auth->logged_in()) $option = TRUE;
+		if(empty($id)) $id = $this->user->id;
 
-		if(empty($id)) $page_user = $this->user;
-		else $page_user = $this->ion_auth->user($id)->row();
+		$page_user = $this->ion_auth->user($id)->row();
+
+		$option = FALSE;
+		if($this->ion_auth->logged_in() && $this->user->id == $id) $option = TRUE;
 
 		$this->template
 			->set('userdata', $page_user)
@@ -28,6 +29,8 @@ class Profile extends Frontend_Controller {
 
 	public function edit($id = 0)
 	{
+		if($this->user->id != $id) redirect('profile/'.$id);
+
 		// Status messages
 		$messages = array();
 		

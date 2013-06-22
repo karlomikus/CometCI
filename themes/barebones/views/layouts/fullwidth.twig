@@ -1,0 +1,47 @@
+{{template.partials.head}}
+
+<body>
+
+	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+	<div id="wrap">
+
+		<header>
+			<nav class="pure-menu pure-menu-open pure-menu-horizontal">
+				<a href="{{base_url('/')}}" class="pure-menu-heading">{{clanname}}</a>
+
+				<ul>
+					<li><a href="{{base_url('posts')}}">Posts</a></li>
+					<li><a href="{{base_url('matches')}}">Matches</a></li>
+					<li><a href="{{base_url('roster')}}">Roster</a></li>
+					<li><a href="{{base_url('forums')}}">Forums</a></li>
+					<li><a href="{{base_url('gallery')}}">Gallery</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<hr />
+
+		<div class="pure-g">
+			<section class="pure-u-1">
+				
+				<div class="content">
+					{{ template.body }}
+				</div>
+
+			</section>
+		</div>
+
+		<hr />
+
+		<footer>
+			Copyright &copy; {{ date('Y') }} - {{ clanname }}
+		</footer>
+
+	</div>
+
+</body>
+
+{{ template.partials.foot }}
+
+</html>
