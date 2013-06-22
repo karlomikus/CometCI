@@ -1,17 +1,20 @@
-{% if is_loggedin %}
-<a href="{{site_url('users/profile/edit/1')}}" class="small button">Edit profile</a>
+{% set age = '-' %}
+{% if userdata.dob is defined %}
+{% set age = userdata.dob %}
 {% endif %}
 
-{% set age = '-' %}
-{% if data.dob is defined %}
-{% set age = data.dob %}
-{% endif %}
-<p>
-	<strong>Username:</strong> {{data.username}} <br />
-	<strong>Email:</strong> {{data.email}} <br />
-	<strong>Firstname:</strong> {{data.first_name}} <br />
-	<strong>Lastname:</strong> {{data.last_name}} <br />
-	<strong>Age:</strong> {{age}} <br />
-	<strong>Country:</strong> {{data.country}} <br />
-	<strong>Gender:</strong> {{data.gender}}
-</p>
+<div class="cms-profile-header">
+	<img class="cms-profile-avatar" src="{{ base_url() }}uploads/users/{{ get_avatar(userdata.id) }}" alt="avatar" />
+	<header>
+		<h3>
+			{{ userdata.username }}
+			{% if is_loggedin %}
+				<a href="{{ site_url('users/profile/edit/' ~ userdata.id) }}"><i class="icon-edit"></i></a>
+			{% endif %}
+		</h3>
+		<h4>{{ get_country(userdata.country, 'icon', TRUE) }} {{ userdata.first_name }} {{ userdata.last_name }}</h4>
+	</header>
+</div>
+
+<h3>About me:</h3>
+<p>{{ userdata.about }}</p>
