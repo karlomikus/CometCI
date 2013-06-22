@@ -1,3 +1,7 @@
+{% for message in messages %}
+	{{ message }}
+{% endfor %}
+
 {{ validation_errors() }}
 {{ form_open_multipart(current_url()) }}
 
@@ -52,14 +56,8 @@
 	<label>New password</label>
 	<input type="password" name="newpassword" />
 
-	<label>New password repeat</label>
-	<input type="password" name="newpasswordrepeat" />
-
 	<label>New email</label>
 	<input type="text" name="newmail" />
-
-	<label>New email repeat</label>
-	<input type="text" name="newmailrepeat" />
 
 	<label>Current password</label>
 	<input type="password" name="password" />

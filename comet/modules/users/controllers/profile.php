@@ -28,12 +28,14 @@ class Profile extends Frontend_Controller {
 
 	public function edit($id = 0)
 	{
-		// TODO: Error messages!
+		// Status messages
+		$messages = array();
 		
 		// Load required classes
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 
 		// Add missing functions to twig parser
 		$this->parser->checkFunctions();
@@ -63,7 +65,7 @@ class Profile extends Frontend_Controller {
 				'last_name' => $this->input->post('lastname', TRUE),
 				'dob' => $dateDob,
 				'gender' => $this->input->post('gender'),
-				'about' => $this->input->post('aboutme', TRUE),
+				'about' => html_purify($this->input->post('aboutme'), 'comment'),
 				'country' => $this->input->post('country')
 			);
 
@@ -76,7 +78,11 @@ class Profile extends Frontend_Controller {
 				$file_data = $this->upload->data();
 				unset($current_avatar);
 			}
-			else $file_data = NULL;
+			else
+			{
+				$file_data = NULL;
+				$messages[] = $this->upload->display_errors();
+			}
 
 			// Check if avatar was indeed uploaded
 			if(isset($file_data) and !empty($file_data['file_name'])) $data['avatar'] = $file_data['file_name'];
@@ -88,24 +94,36 @@ class Profile extends Frontend_Controller {
 				$currentPassword = $this->input->post('password', TRUE);
 				if(!isset($currentPassword)) redirect('profile/'.$id);
 
-				$username = get_username($id);
+				$identity = $this->session->userdata($this->config->item('identity', 'ion_auth'));
 
 				// Password change
 				if($this->input->post('newpassword'))
 				{
 					$newPassword = $this->input->post('newpassword', TRUE);
-					$newPasswordRepeat = $this->input->post('newpasswordrepeat', TRUE);
 
-					if($newPassword == $newPasswordRepeat)
+					if($this->ion_auth->change_password($identity, $currentPassword, $newPassword))
+						$messages[] = 'Password change successful!';
+					else
+						$messages[] = $this->ion_auth->errors();
+				}
+
+				// Email change
+				if($this->input->post('newmail'))
+				{
+					$this->load->helper('email');
+					$newMail = $this->input->post('newmail', TRUE);
+
+					if($this->ion_auth->hash_password_db($id, $currentPassword) && valid_email($newMail))
 					{
-						 $this->ion_auth->change_password($username, $currentPassword, $newPassword);
+						$data['email'] = $newMail;
+						$messages[] = 'Email change successful!';
 					}
 					else
-					{
-						// Error
-					}
+						$messages[] = 'Unable to change email';
 				}
 			}
+
+			$this->session->set_flashdata('profilemsgs', $messages);
 
 			// Update!
 			$this->ion_auth->update((int)$id, $data);
@@ -115,6 +133,7 @@ class Profile extends Frontend_Controller {
 		{
 			$this->template
 				->set('data', $this->ion_auth->user($id)->row())
+				->set('messages', $this->session->flashdata('profilemsgs'))
 				->build('editprofile.twig');
 		}		
 	}
