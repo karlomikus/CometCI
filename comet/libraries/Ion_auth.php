@@ -62,7 +62,7 @@ class Ion_auth
 		$this->lang->load('ion_auth');
 		$this->load->helper('cookie');
 
-		//Load the session, CI2 as a library, CI3 uses it as a driver
+		// Load the session, CI2 as a library, CI3 uses it as a driver
 		if (substr(CI_VERSION, 0, 1) == '2')
 		{
 			$this->load->library('session');
@@ -289,7 +289,7 @@ class Ion_auth
 	 * @return void
 	 * @author Mathew
 	 **/
-	public function register($username, $password, $email, $additional_data = array(), $group_name = array()) //need to test email activation
+	public function register($username, $password, $email, $additional_data = array(), $group_ids = array()) //need to test email activation
 	{
 		$this->ion_auth_model->trigger_events('pre_account_creation');
 
@@ -297,7 +297,7 @@ class Ion_auth
 
 		if (!$email_activation)
 		{
-			$id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $group_name);
+			$id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $group_ids);
 			if ($id !== FALSE)
 			{
 				$this->set_message('account_creation_successful');
@@ -313,7 +313,7 @@ class Ion_auth
 		}
 		else
 		{
-			$id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $group_name);
+			$id = $this->ion_auth_model->register($username, $password, $email, $additional_data, $group_ids);
 
 			if (!$id)
 			{
@@ -381,9 +381,7 @@ class Ion_auth
 		$this->ion_auth_model->trigger_events('logout');
 
 		$identity = $this->config->item('identity', 'ion_auth');
-		$this->session->unset_userdata($identity);
-		$this->session->unset_userdata('id');
-		$this->session->unset_userdata('user_id');
+                $this->session->unset_userdata( array($identity => '', 'id' => '', 'user_id' => '') );
 
 		//delete the remember me cookies if they exist
 		if (get_cookie('identity'))
@@ -418,9 +416,7 @@ class Ion_auth
 	{
 		$this->ion_auth_model->trigger_events('logged_in');
 
-		$identity = $this->config->item('identity', 'ion_auth');
-
-		return (bool) $this->session->userdata($identity);
+		return (bool) $this->session->userdata('identity');
 	}
 
 	/**
@@ -458,10 +454,14 @@ class Ion_auth
 	/**
 	 * in_group
 	 *
+	 * @param mixed group(s) to check
+	 * @param bool user id
+	 * @param bool check if all groups is present, or any of the groups
+	 *
 	 * @return bool
 	 * @author Phil Sturgeon
 	 **/
-	public function in_group($check_group, $id=false)
+	public function in_group($check_group, $id=false, $check_all = false)
 	{
 		$this->ion_auth_model->trigger_events('in_group');
 
@@ -490,13 +490,25 @@ class Ion_auth
 		{
 			$groups = (is_string($value)) ? $groups_array : array_keys($groups_array);
 
-			if (in_array($value, $groups))
+			/**
+			 * if !all (default), in_array
+			 * if all, !in_array
+			 */
+			if (in_array($value, $groups) xor $check_all)
 			{
-				return TRUE;
+				/**
+				 * if !all (default), true
+				 * if all, false
+				 */
+				return !$check_all;
 			}
 		}
 
-		return FALSE;
+		/**
+		 * if !all (default), false
+		 * if all, true
+		 */
+		return $check_all;
 	}
 
 }
