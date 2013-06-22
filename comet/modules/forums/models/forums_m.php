@@ -20,7 +20,7 @@ class Forums_m extends MY_Model {
 
 	public function delete_forum($id)
 	{
-		// Delete all posts in the forum
+		// TODO: Delete all posts in the forum
 		$this->_table = 'forum_forums';
 		parent::delete($id);
 	}
@@ -100,6 +100,38 @@ class Forums_m extends MY_Model {
 	{
 		$this->_table = 'forum_topics';
 		return parent::get($topicID);
+	}
+
+	public function is_locked($topicID)
+	{
+		$this->_table = 'forum_topics';
+		$query = parent::get($topicID);
+
+		if($query->locked == 1) return TRUE;
+		else return FALSE;
+	}
+
+	public function set_locked($topicID, $locked)
+	{
+		$this->db->set('locked', $locked);
+		$this->db->where('id', $topicID);
+		return $this->db->update('forum_topics');
+	}
+
+	public function is_sticky($topicID)
+	{
+		$this->_table = 'forum_topics';
+		$query = parent::get($topicID);
+
+		if($query->sticky == 1) return TRUE;
+		else return FALSE;
+	}
+
+	public function set_sticky($topicID, $sticky)
+	{
+		$this->db->set('sticky', $sticky);
+		$this->db->where('id', $topicID);
+		return $this->db->update('forum_topics');
 	}
 
 	/* Replies */

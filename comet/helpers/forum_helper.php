@@ -47,3 +47,11 @@ function get_mods($forumID)
 
 	return $CI->forums_m->get_moderators($forumID);
 }
+
+function get_forum_name($forumID)
+{
+	$CI =& get_instance();
+	$CI->load->model('forums/forums_m');
+
+	return $CI->forums_m->get_forum($forumID)->name;
+}

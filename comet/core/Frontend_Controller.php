@@ -26,6 +26,7 @@ class Frontend_Controller extends MY_Controller {
 		$this->template
 			->set('clanname', $this->config->item('clanname'))
 			->set_partial('head', 'head.twig')
+			->set_partial('foot', 'foot.twig')
 			->set_theme($activeTheme);
 	}
 }

@@ -1,10 +1,5 @@
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/jquery.markitup.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/markitup/markdown.js"></script>
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/editor.css" />
-
-{{validation_errors()}}
-{{form_open(uri_string())}}
+{{ validation_errors() }}
+{{ form_open(uri_string()) }}
 
 	<input placeholder="Topic title" type="text" name="title" />
 
@@ -16,12 +11,8 @@
 	</label>
 	{% endif %}
 
-	<button class="small button">Save topic</button>
-	
-{{form_close()}}
+	<br />
 
-<script type="text/javascript" >
-   $(document).ready(function() {
-      $(".markitup").markItUp(myMarkdownSettings);
-   });
-</script>
+	<button class="pure-button">Save topic</button>
+	
+{{ form_close() }}

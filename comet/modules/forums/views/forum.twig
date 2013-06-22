@@ -2,22 +2,24 @@
 	<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="pure-button pure-button-primary">
 		<i class="icon-plus"></i> New topic
 	</a>
-
-	{% if is_mod %}
-		<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="pure-button pure-button-primary">
-			<i class="icon-bullhorn"></i> New annoucement
-		</a>
-	{% endif %}
-
+	
 	<hr />
 {% endif %}
+
+<ul class="cms-breadcrumbs">
+	<li><a href="{{ base_url('forums') }}">Forum</a></li>
+	<li>&gt;</li>
+	<li><a href="{{ base_url('forums/' ~ forumID) }}">{{ get_forum_name(forumID) }}</a></li>
+</ul>
+
+<br />
 
 {% if data %}
 	<table width="100%" class="pure-table pure-table-bordered">
 		<tbody>
 		{% for topic in data %}
 			<tr>
-				<td width="30">
+				<td width="30" class="text-center">
 					{% if topic.sticky == 1 %}
 						<i class="icon-asterisk icon-large"></i>
 					{% else %}

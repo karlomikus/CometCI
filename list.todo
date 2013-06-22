@@ -1,0 +1,101 @@
++ ---------------------------------------------------------------------------- +
+| TODOS @ Saturday 22 June 2013 16:32                                          |
+| 1211 files scanned                                                           |
++ ---------------------------------------------------------------------------- +
+
+## CHANGED (2)
+1. ckeditor.js:423 function(){return this.getValue()!=
+2. ckeditor.js:515 function(){return!1},selectParentTab:function(){for(var a=this.getInputElement();(a=a.getParent())&&-1==a.$.className.search("cke_dialog_page_contents"););if(!a)return this;a=a.getAttribute("name");this._.dialog._.currentTabId!=a&&this._.dialog.selectPage(a);return this},focus:function(){this.selectParentTab().getInputElement().focus();return this},registerEvents:function(a){var b=
+
+## FIXME (1)
+1. HTMLPurifier.standalone.php:621  ^^ not always, see start and value of list items
+
+## NOTE (71)
+1. bootstrap.js:1444  POPOVER EXTENDS BOOTSTRAP-TOOLTIP.js
+2. comet-schema.sql:353  These rules can also be called as discrete functions. For example:\r\n$this->form_validation->required($string);');
+3. comet-schema.sql:964 </strong> These rules can also be called as discrete functions. For example:</p>\r\n<code>$this-&gt;form_validation-&gt;required($string);</code>\r\n\r\n<p><strong>Note:</strong> You can also use any native PHP functions that permit one parameter.</p>\r\n', 'fullwidth.twig', 'Pager', '2013-06-02 17:09:00', 'another-page', 'The following is a list of all the native rules that are available to use', 'public'),
+4. comet-schema.sql:965 </strong> The path is relative to your main site index.php file, NOT your controller or view files. CodeIgniter uses a front controller so paths are always relative to the main site index.</p>\r\n\r\n<p>If your server is running an open_basedir restriction this function might not work if you are trying to access a file above the calling script.</p>\r\n', 'default.twig', 'Array', '2013-06-02 17:18:00', 'using-arrays-as-field', 'Returns the data contained in the file specified in the path. Example:', 'registered'),
+5. index.php:18  If you change these, also change the error_reporting() code below
+6. autoload.php:78  This item is intended for use ONLY if you have created custom
+7. autoload.php:94  Do not include the "_lang" part of your file.  For example
+8. database.php:29  For MySQL and MySQLi databases, this setting is only used
+9. ion_auth.php:57  If you use bcrypt you will need to increase your password column character limit to (80)
+10. HTMLPurifier.standalone.php:2877  currently, it's not possible to override
+11. HTMLPurifier.standalone.php:7217  It's not appropriate to check whether or not this
+12. HTMLPurifier.standalone.php:9563  you can reduce the amount
+13. HTMLPurifier.standalone.php:14143  This will always be the first child, since any
+14. HTMLPurifier.standalone.php:14268  PAR<ELEM> cannot occur because PAR would have been
+15. HTMLPurifier.standalone.php:14477  this regex is extremely permissive
+16. HTMLPurifier.standalone.php:16108  you might think that it's rather
+17. HTMLPurifier.standalone.php:17510  if code "breaks" from the switch, it triggers a generic
+18. URI.DisableResources.txt:12 </em> While this directive has been available since 1.3.0,
+19. URI.Host.txt:15 </strong> This directive overrides %URI.Base because
+20. CodeIgniter.php:92  Since the config file data is cached it doesn't
+21. CodeIgniter.php:151  Order here is rather important as the UTF-8
+22. CodeIgniter.php:243  The Router class automatically validates the controller path using the router->_validate_request().
+23. Common.php:166  We use exit() rather then show_error() in order to avoid a
+24. Exceptions.php:70   Do not log messages from this constructor.
+25. Input.php:679  In PHP 5.4 get_magic_quotes_gpc() will always return 0 and
+26. Loader.php:1009  these should always be lowercase
+27. Output.php:177   If a file is cached, headers will not be sent.  We need to figure out
+28. Output.php:326   We use globals because we can't use $CI =& get_instance()
+29. Router.php:249  If there is no custom routing, this array will be
+30. Security.php:248  This function should only be used to deal with data
+31. Security.php:295  Use rawurldecode() so it does not remove plus signs
+32. Security.php:322  we deal with spaces between characters later.
+33. Security.php:323  preg_replace was found to be amazingly slow here on
+34. Security.php:343  XML tags are inadvertently replaced too:
+35. URI.php:104  some servers seem to have trouble with getenv() so we'll test it two ways
+36. DB.php:111  Since the active record class is optional
+37. DB_utility.php:121  Due to a bug in current() that affects some versions
+38. DB_utility.php:149  Due to a bug in current() that affects some versions
+39. DB_utility.php:183  Due to a bug in current() that affects some versions
+40. cubrid_driver.php:21  _DB is an extender class that the app controller
+41. mssql_driver.php:21  _DB is an extender class that the app controller
+42. mssql_driver.php:110  The brackets are required in the event that the DB name
+43. mysql_driver.php:21  _DB is an extender class that the app controller
+44. mysqli_driver.php:21  _DB is an extender class that the app controller
+45. oci8_driver.php:21  _DB is an extender class that the app controller
+46. odbc_driver.php:21  _DB is an extender class that the app controller
+47. pdo_driver.php:21  _DB is an extender class that the app controller
+48. postgre_driver.php:21  _DB is an extender class that the app controller
+49. sqlite_driver.php:23  _DB is an extender class that the app controller
+50. sqlsrv_driver.php:21  _DB is an extender class that the app controller
+51. date_helper.php:551  Don't change the order of these even though
+52. file_helper.php:338  this is NOT an accurate way of determining file mime types, and is here strictly as a convenience
+53. url_helper.php:368  There's a bit of extra code here to deal with
+54. ftp_lang.php:8  This feature is only available in PHP 5 or higher.";
+55. Cart.php:175  These can be user-specified by setting the $this->product_id_rules variable.
+56. Cart.php:185  These can be user-specified by setting the $this->product_name_rules variable.
+57. Email.php:388  In PHP 5.4 get_magic_quotes_gpc() will always return 0 and
+58. Form_validation.php:117  Due to a bug in current() that affects some versions
+59. Form_validation.php:157   The key
+60. Image_lib.php:156   We need to figure out how to determine image
+61. Image_lib.php:1019  The horizontal
+62. Pagination.php:327  Sometimes we can end up with a double slash
+63. Profiler.php:24  At some point it would be good to move all the HTML in this class
+64. Profiler.php:127  At some point we should turn this into a template that can
+65. Upload.php:251  This can fail if the server has an open_basdir restriction.
+66. Xmlrpc.php:953  If the XML validates, then we do not have to worry about
+67. jquery.js:2641  IE uppercases css property names, but if we were to .toLowerCase()
+68. jquery.js:3228  button is not normalized, so don't use it
+69. jquery.js:6922  we've included the "window" in window.getComputedStyle
+70. jquery.js:9479  when an element has margin: auto the offsetLeft and marginLeft
+71. zepto.js:684  when an element has margin: auto the offsetLeft and marginLeft
+
+## TODO (15)
+1. flash.js:361  We need something better than a fixed size here.
+2. Frontend_Controller.php:14  Remove this and model dependecies
+3. comments_helper.php:3  Transfer this helper to library (maybe)
+4. comments.php:20  Honey pot method for fighting spam
+5. admin.php:9  Make unlabeled forums only visible to admins with a warning to fix them
+6. admin.php:50  SECURITY CHECK
+7. modules_m.php:5  Config module directory
+8. HTMLPurifier.standalone.php:137  make the config merge in, instead of replace
+9. HTMLPurifier.standalone.php:1295  Is this htmlspecialchars() call really necessary?
+10. HTMLPurifier.standalone.php:9630  optimization: test directly for !important and ! important
+11. HTMLPurifier.standalone.php:13354  create custom child-definition for noscript that
+12. HTMLPurifier.standalone.php:13360  convert this to new syntax, main problem is getting
+13. HTMLPurifier.standalone.php:14555  make me configurable
+14. cubrid_result.php:97  later version of CUBRID will provide primary_key
+15. zepto.js:983  possibly support events on plain old objects)
