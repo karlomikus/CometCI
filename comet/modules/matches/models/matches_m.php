@@ -20,11 +20,13 @@ class Matches_m extends MY_Model {
 	 */
 	public function get_matches($all = TRUE) 
 	{
-		if($all) {
+		if($all)
+		{
 			parent::order_by('date', 'DESC');
 			return parent::get_all();
 		}
-		else {
+		else
+		{
 			parent::order_by('date', 'DESC');
 			$this->db->select('*');
 			$this->db->where('status !=', '1');

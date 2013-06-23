@@ -27,6 +27,8 @@
 				
 				<div class="content">
 					{{ template.body }}
+					<hr />
+					{{ widget('featured_post') }}
 				</div>
 
 			</section>
@@ -36,6 +38,11 @@
 				<article>
 					<h3>User Area</h3>
 					{{ widget('user') }}
+				</article>
+
+				<article>
+					<h3>Upcoming Match</h3>
+					{{ widget('upcoming') }}
 				</article>
 
 				<article>

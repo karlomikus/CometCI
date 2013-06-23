@@ -12,12 +12,13 @@
 
 		<button class="pure-button pure-button-primary" type="submit">Login</button>
 		or
-		<a class="small button" href="{{ base_url }}users/register">Register</a>
+		<a href="{{ base_url }}users/register">Register</a>
 	</form>
 {% else %}
-	<ul class="square">
+	<ul class="cms-list list-vertical">
 		<li>Welcome back: {{ user.username }}</li>
 		<li><a href="{{ base_url() }}profile">Profile</a></li>
+		<li><a href="{{ base_url() }}messages">Private messages</a></li>
 
 		{% if is_admin == true %}
 			<li><a href="{{ base_url() }}admin" target="_blank">Control Panel</a></li>

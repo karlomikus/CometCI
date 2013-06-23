@@ -34,3 +34,21 @@ function get_match_result($matchID, $format = '')
 
 	return $CI->matches_m->get_match_outcome($matchID, $format);
 }
+
+function get_logo($id, $team)
+{
+	$CI =& get_instance();
+
+	if($team == 'opponent')
+	{
+		$CI->load->model('opponents/opponents_m');
+		$result = $CI->opponents_m->get($id);
+	}
+	else
+	{
+		$CI->load->model('teams/teams_m');
+		$result = $CI->teams_m->get($id);
+	}
+
+	return $result->logo;
+}

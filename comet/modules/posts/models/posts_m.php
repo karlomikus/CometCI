@@ -19,4 +19,9 @@ class Posts_m extends MY_Model {
 	{
 		$this->db->delete('comments', array('module' => 'posts', 'module_link' => $id)); 
 	}
+
+	public function get_featured_posts()
+	{
+		return parent::get_many_by('featured', 1);
+	}
 }
