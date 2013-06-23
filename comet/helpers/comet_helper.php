@@ -2,12 +2,6 @@
 /**
  * Basic helper functions to make using of CMS easier
  */
-
-/**
- * Returns game name based on game id
- *
- * @return string
- */
 function get_game_name($id) 
 {
 	$CI =& get_instance();
@@ -16,11 +10,6 @@ function get_game_name($id)
 	return $CI->games_m->get($id)->name;
 }
 
-/**
- * Returns filename of game icon
- *
- * @return string
- */
 function get_game_icon($id, $format = FALSE) 
 {
 	$CI =& get_instance();
@@ -30,11 +19,8 @@ function get_game_icon($id, $format = FALSE)
 	else return $CI->games_m->get($id)->icon;
 }
 
-/**
- * Returns opponent name based on opponent id
- *
- * @return string
- */
+/* ================ */
+
 function get_opponent_name($id) 
 {
 	$CI =& get_instance();
@@ -43,11 +29,6 @@ function get_opponent_name($id)
 	return $CI->opponents_m->get($id)->name;
 }
 
-/**
- * Returns team name based on team id
- *
- * @return string
- */
 function get_team_name($id) 
 {
 	$CI =& get_instance();
@@ -56,42 +37,8 @@ function get_team_name($id)
 	return $CI->teams_m->get($id)->name;
 }
 
-/**
- * Returns file name based on opponent id
- *
- * @return string
- */
-function get_opponent_logo($id) 
-{
-	$CI =& get_instance();
-	$CI->load->model('opponents/opponents_m');
+/* ================ */
 
-	$logo = $CI->opponents_m->get($id)->logo;
-	if(empty($logo)) $logo = 'nopic.jpg';
-
-	return $logo;
-}
-
-/**
- * Returns file name based on team id
- *
- * @return string
- */
-function get_team_logo($id) 
-{
-	$CI =& get_instance();
-	$CI->load->model('teams/teams_m');
-
-	$logo = $CI->teams_m->get($id)->logo;
-	if(empty($logo)) $logo = 'nopic.jpg';
-
-	return $logo;
-}
-
-/**
- * Gets list of all countries in the database
- * @return object Database object
- */
 function get_countries() 
 {
 	$CI =& get_instance();
@@ -100,13 +47,6 @@ function get_countries()
 	return $CI->countries_m->get_all();
 }
 
-/**
- * Get country information
- * @param  int  $id   Country ID
- * @param  string  $type What info do you want, name or icon
- * @param  boolean $format Should it return HTML formatted flag image
- * @return string
- */
 function get_country($id, $what = 'name', $format = TRUE)
 {
 	if(!isset($id)) return;
@@ -126,11 +66,6 @@ function get_country($id, $what = 'name', $format = TRUE)
 	}
 }
 
-/**
- * Get label name from label ID
- * @param  int $id 	Label ID
- * @return string   Name of the label
- */
 function get_label_name($id) 
 {
 	$CI =& get_instance();
@@ -184,6 +119,23 @@ function get_username($userID, $linkify = TRUE)
 	}
 
 	return $username;
+}
+
+function get_user_id($username)
+{
+	$CI =& get_instance();
+	$CI->db->where('username', $username);
+	$query = $CI->db->get('users');
+
+	return $query->row()->id;
+}
+
+function check_pms($userID)
+{
+	$CI =& get_instance();
+	$CI->load->model('messages/messages_m', 'msg');
+
+	return $CI->msg->check_pms($userID);
 }
 
 /**

@@ -32,4 +32,4 @@ class Roster extends Frontend_Controller {
 }
 
 /* End of file roster.php */
-/* Location: modules/roster/controllers/roster.php */
+/* Location: ./modules/roster/controllers/roster.php */

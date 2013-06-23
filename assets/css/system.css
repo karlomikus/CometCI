@@ -110,12 +110,28 @@ ul.cms-pagination li.pagination-selected {
 
 /* Featured post */
 .cms-featured-post {
-	border: 2px solid gold;
+	border: 2px solid #e3516a;
 }
 
 .cms-featured-post h3 {
 	padding-top: 0;
 	margin-bottom: 10px;
+}
+
+/* Messages */
+.cms-pm {
+	border-bottom: 1px solid #ccc;
+	background: #f2f2f2;
+	padding: 7px;
+}
+
+.cms-pm span {
+	color: #e3516a;
+	font-weight: bold;
+}
+
+.cms-pm small {
+	float: right;
 }
 
 /* Comments */
