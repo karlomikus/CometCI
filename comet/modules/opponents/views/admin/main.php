@@ -1,7 +1,7 @@
 <table class="table tbl-custom">
     <thead>
         <tr>
-            <th colspan="2">Name</th>
+            <th colspan="2"><?php echo sort_link('opponents', 'Name', $linkdata->sortOrderLink, $linkdata->page, $linkdata->currentOrder); ?></th>
             <th>Description</th>
             <th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
         </tr>
@@ -27,3 +27,7 @@
         <?php endforeach;?>
     </tbody>
 </table>
+
+<div class="pagination pagination-right pagination-large">
+    <?php echo $pagination; ?>
+</div>

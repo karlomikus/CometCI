@@ -36,3 +36,5 @@ Bugs / TODO:
 - Remove model dependecies in frontend controller
 - Make $theme global
 - User permissions not quite yet done
+- Optimize views table
+- Separate unique views and regular views

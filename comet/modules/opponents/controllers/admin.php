@@ -3,6 +3,7 @@
 class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/opponents/';
+	private $perPage = 15;
 
 	public function __construct()
 	{
@@ -11,13 +12,34 @@ class Admin extends Backend_Controller {
 		$this->load->model('opponents_m');
 	}
 
-	public function index()
+	public function index($sortBy = 'name', $sortOrder = 'asc', $page = 0)
 	{
+		$this->load->library('pagination');
+		$count = $this->opponents_m->count_all();
+
 		$this->load->helper('text');
+
+		if(isset($sortBy) && isset($sortOrder)) $this->opponents_m->order_by($sortBy, $sortOrder);
+		else $this->opponents_m->order_by('name', 'desc');
+
+		$config = $this->config->item('pagination_backend');
+		$config['base_url'] = base_url()."admin/opponents/index/$sortBy/$sortOrder/";
+		$config['total_rows'] = $count;
+		$config['per_page'] = $this->perPage;
+		$config['uri_segment'] = 6;
+
+		$this->pagination->initialize($config);
+		$this->opponents_m->limit($this->perPage, $page);
+
+		$linkData->page = $page;
+		$linkData->sortOrderLink = ($sortOrder == 'asc') ? 'desc' : 'asc';
+		$linkData->currentOrder = $sortBy;
 
 		$this->template
 			->set('title', 'Opponents')
 			->set('opponents', $this->opponents_m->get_all())
+			->set('linkdata', $linkData)
+			->set('pagination', $this->pagination->create_links())
 			->build('admin/main');
 
 	}
