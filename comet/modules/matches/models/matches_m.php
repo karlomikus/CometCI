@@ -6,11 +6,28 @@ class Matches_m extends MY_Model {
 	 * Gets only upcoming matches
 	 * @return object Database object
 	 */
-	public function get_upcoming_matches() 
+	public function get_upcoming_matches($date = '') 
 	{
-		$this->db->select('*');
-		parent::order_by('date', 'DESC');
-		return $this->db->get_where('matches', array('status' => '1'))->result();
+		if(empty($date))
+		{
+			parent::order_by('date', 'DESC');
+			$query = parent::get_many_by('status', 1);
+		}
+		else
+		{
+			$dateDay = date('d', strtotime($date));
+			$dateMonth = date('m', strtotime($date));
+			$dateYear = date('Y', strtotime($date));
+
+			$this->db->order_by('date', 'desc');
+			$this->db->where('status', 1);
+			$this->db->where('DAY(date)', $dateDay);
+			$this->db->where('MONTH(date)', $dateMonth);
+			$this->db->where('YEAR(date)', $dateYear);
+			$query = $this->db->get('matches')->result();
+		}
+
+		return $query;
 	}
 
 	/**

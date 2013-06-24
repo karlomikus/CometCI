@@ -13,18 +13,23 @@
 		</ul>
 		<div class="box-content tab-content">
 			<ul id="matches-tab" class="match-list tab-pane fade in active">
+				<?php if(!empty($matches)): ?>
 				<?php foreach ($matches as $match): ?>
 				<li>
-					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_opponent_logo($match->opponent); ?>" alt="" style="width: 50px; height: 50px;" />
+					<img src="<?php echo base_url(); ?>/uploads/opponents/<?php echo get_logo($match->opponent, 'opponent'); ?>" alt="" style="width: 50px; height: 50px;" />
 					<p>
 						<a href="<?php echo base_url(); ?>matches/show/<?php echo $match->id; ?>" target="_blank"><?php echo get_opponent_name($match->opponent); ?></a> <br />
 						<span><?php echo cms_time($match->date); ?> - <?php echo !empty(get_event_data($match->event)->name) ? get_event_data($match->event)->name : 'Scrim'; ?></span>
 					</p>
 				</li>
 				<?php endforeach; ?>
+				<?php else: ?>
+				<li>No matches today.</li>
+				<?php endif; ?>
 			</ul>
 
 			<ul id="events-tab" class="match-list tab-pane fade in">
+				<?php if(!empty($events)): ?>
 				<?php foreach ($events as $event): ?>
 				<?php
 					if(isset($event->image)) $eventImage = $event->image;
@@ -38,6 +43,9 @@
 					</p>
 				</li>
 				<?php endforeach; ?>
+				<?php else: ?>
+					<li>No events today.</li>
+				<?php endif; ?>
 			</ul>
 		</div>
 	</div>
@@ -107,19 +115,9 @@
 	</div>
 	<div class="span4 cms-box admin-notes">
 		<p>
-			Just a reminder that tomorrow we have lorem ipsum dolor sit amet to do!
+			Hey, this widget is not finished yet!
 			<br />
-			<small>added by: admin &dash; <a href="#">remove</a></small>
-		</p>
-		<p>
-			Hey John Doe, could you please finish that article that we discussed?
-			<br />
-			<small>added by: admin &dash; <a href="#">remove</a></small>
-		</p>
-		<p>
-			We should totally finish that theme we started a week ago.
-			<br />
-			<small>added by: John Doe &dash; <a href="#">remove</a></small>
+			<small>added by: CMSAnnoucer &dash; <a href="#">remove</a></small>
 		</p>
 		<br>
 		<?php echo form_open(uri_string(), array('class' => 'cms-form')); ?>

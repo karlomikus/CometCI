@@ -109,11 +109,9 @@ class Comet_m extends MY_Model {
 
 		$query = $this->db->get($table)->result();
 
-		$dayOffset = (date('w') + 6) % 7;
-
 		$range  = array_fill(0, 7, 0);
 		foreach ($query as $row) {
-			$key = (date("w", strtotime($row->date)) + ($dayOffset + 2)) % 7; // 6 + 3 [cet]
+			$key = (date("w", strtotime($row->date)) + (date('w') + 5)) % 7;
 			$range[$key] = $row->total;
 		}
 

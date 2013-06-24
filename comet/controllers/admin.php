@@ -10,12 +10,16 @@ class Admin extends Backend_Controller {
     {
         $this->load->model('matches/matches_m');
         $this->load->model('events/events_m');
+        $this->load->helper('matches');
         $this->load->model('comet_m');
+
+        $upcomingMatches = $this->matches_m->get_upcoming_matches(date('Y-m-d'));
+        $upcomingEvents = $this->events_m->get_date_events(date('Y-m-d'));
 
         $this->template
             ->set('title', 'Dashboard')
-            ->set('matches', $this->matches_m->get_upcoming_matches())
-            ->set('events', $this->events_m->get_all())
+            ->set('matches', $upcomingMatches)
+            ->set('events', $upcomingEvents)
             ->set('visits', $this->comet_m->get_visits_stats(date('m')))
 
             ->set('countcomments', $this->comet_m->count_table_rows('comments'))

@@ -89,24 +89,27 @@ class Admin extends Backend_Controller {
 			// Process multiple file upload
 			$files = $_FILES;
 			$cpt = count($_FILES['userfile']['name']);
-			for($i = 0; $i < $cpt; $i++)
+			if(!empty($_FILES['userfile']['size'][0]))
 			{
-				$_FILES['userfile']['name'] 	= $files['userfile']['name'][$i];
-				$_FILES['userfile']['type']		= $files['userfile']['type'][$i];
-				$_FILES['userfile']['tmp_name']	= $files['userfile']['tmp_name'][$i];
-				$_FILES['userfile']['error']	= $files['userfile']['error'][$i];
-				$_FILES['userfile']['size']		= $files['userfile']['size'][$i];
-				$this->upload->initialize($this->set_upload_options($i, $match_id));
+				for($i = 0; $i < $cpt; $i++)
+				{
+					$_FILES['userfile']['name'] 	= $files['userfile']['name'][$i];
+					$_FILES['userfile']['type']		= $files['userfile']['type'][$i];
+					$_FILES['userfile']['tmp_name']	= $files['userfile']['tmp_name'][$i];
+					$_FILES['userfile']['error']	= $files['userfile']['error'][$i];
+					$_FILES['userfile']['size']		= $files['userfile']['size'][$i];
+					$this->upload->initialize($this->set_upload_options($i, $match_id));
 
-				if ($this->upload->do_upload('userfile'))
-				{
-					$file_data = $this->upload->data();
-					$this->matches_m->insert_files($match_id, $file_data['file_name']);
-				}
-				else
-				{
-					$this->session->set_flashdata('create_error', $_FILES['userfile']['name'].': '.$this->upload->display_errors('', ''));
-                	$file_data = NULL;
+					if ($this->upload->do_upload('userfile'))
+					{
+						$file_data = $this->upload->data();
+						$this->matches_m->insert_files($match_id, $file_data['file_name']);
+					}
+					else
+					{
+						$this->session->set_flashdata('create_error', $_FILES['userfile']['name'].': '.$this->upload->display_errors('', ''));
+	                	$file_data = NULL;
+					}
 				}
 			}
 
