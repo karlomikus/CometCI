@@ -11,9 +11,13 @@ class Wi_upcoming extends Frontend_Controller {
 		$this->matches_m->limit(1);
 		$query = $this->matches_m->get_upcoming_matches();
 
-		$match->opponentlogo = get_logo($query[0]->opponent, 'opponent');
-		$match->teamlogo = get_logo($query[0]->team, 'team');
-		$match->date = $query[0]->date;
+		$match = NULL;
+		if(!empty($query))
+		{
+			$match->opponentlogo = get_logo($query[0]->opponent, 'opponent');
+			$match->teamlogo = get_logo($query[0]->team, 'team');
+			$match->date = $query[0]->date;
+		}
 
 		echo $this->template
 			->set('match', $match)
