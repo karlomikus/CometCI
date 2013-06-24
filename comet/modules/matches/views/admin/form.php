@@ -13,7 +13,7 @@
 		<?php foreach($teams as $team): ?>
 		<option value="<?php echo $team->id; ?>" <?php echo isset($data) ? set_select('team', $data['team'], $team->id==$data['team'] ? TRUE : FALSE) : set_select('team'); ?>><?php echo $team->name; ?></option>
 		<?php endforeach; ?>
-	</select> <span class="ajax-load"><img src="<?php echo base_url(); ?>assets/admin/img/loading.gif" alt="Loading..." /></span>
+	</select>
 
 	<br />
 

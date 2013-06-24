@@ -6,7 +6,10 @@
 ?>
 	<header class="site-header">
 		<a class="avatar" href="<?php echo base_url(); ?>admin"><img src="<?php echo base_url(); ?>assets/admin/img/logo.png" width="32" height="32" /></a>
-		<h1><?php echo isset($title) ? $title : 'Undefined module'; ?></h1>
+		<h1>
+			<?php echo isset($title) ? $title : 'Undefined module'; ?>
+			<span class="ajax-load"><img src="<?php echo base_url(); ?>assets/admin/img/loading.gif" alt="Loading..." /></span>
+		</h1>
 		<ul>
 			<li class="first"></li>
 			<li><a href="<?php echo base_url(); ?>admin/logout"><img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" width="32" height="32" /></a></li>

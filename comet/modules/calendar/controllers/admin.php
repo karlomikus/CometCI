@@ -22,7 +22,7 @@ class Admin extends Backend_Controller {
 			{heading_row_start}<tr>{/heading_row_start}
 
 			{heading_previous_cell}<th><a href="{previous_url}"><i class="icon-chevron-left"></i></a></th>{/heading_previous_cell}
-			{heading_title_cell}<th colspan="{colspan}"><span class="ajax-load"><img src="'.base_url().'assets/admin/img/loading.gif" alt="Loading..." /></span>{heading}</th>{/heading_title_cell}
+			{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}
 			{heading_next_cell}<th><a href="{next_url}"><i class="icon-chevron-right"></i></a></th>{/heading_next_cell}
 
 			{heading_row_end}</tr>{/heading_row_end}
@@ -35,7 +35,7 @@ class Admin extends Backend_Controller {
 			{cal_cell_start}<td>{/cal_cell_start}
 
 			{cal_cell_content}{day}<br />{content}{/cal_cell_content}
-			{cal_cell_content_today}<div class="highlight"><a href="{content}">{day}</a></div>{/cal_cell_content_today}
+			{cal_cell_content_today}<div class="highlight">{day}<br />{content}</div>{/cal_cell_content_today}
 
 			{cal_cell_no_content}{day}{/cal_cell_no_content}
 			{cal_cell_no_content_today}<div class="highlight">{day}</div>{/cal_cell_no_content_today}
