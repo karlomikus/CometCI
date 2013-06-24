@@ -1,12 +1,18 @@
-<ul class="gallery-list">
-	{% for gallery in galleries %}
-		<li>
-			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
-				<img src="{{ base_url('uploads/' ~ show_gallery_preview(gallery.id)) }}" alt="Pla" />
-			</a>
-			<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
-				{{ gallery.name }}
-			</a>
-		</li>
-	{% endfor %}
-</ul>
+{% if galleries|default is not empty %}
+
+	<ul class="gallery-list">
+		{% for gallery in galleries %}
+			<li>
+				<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
+					<img src="{{ base_url('uploads/' ~ show_gallery_preview(gallery.id)) }}" alt="Pla" />
+				</a>
+				<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
+					{{ gallery.name }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+{% else %}
+	No galleries available.
+{% endif %}

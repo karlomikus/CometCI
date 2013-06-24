@@ -1,24 +1,30 @@
-<table class="pure-table pure-table-horizontal">
-  <thead>
-    <tr>
-      <th>Opponent</th>
-      <th>Game</th>
-      <th>Date</th>
-      <th>Result</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-	{% for match in matches %}
+{% if posts|default is not empty %}
+
+	<table class="pure-table pure-table-horizontal">
+	  <thead>
 		<tr>
-	      <td>{{ get_opponent_name(match.opponent) }}</td>
-	      <td>{{ get_game_name(match.game) }}</td>
-	      <td>{{ match.date }}</td>
-	      <td>{{ get_match_result(match.id, 'text') }}</td>
-	      <td><a href="{{ base_url() }}matches/show/{{ match.id }}"><i class="icon-reorder"></i></a></td>
-	    </tr>
-	{% endfor %}
-  </tbody>
-</table>
+		  <th>Opponent</th>
+		  <th>Game</th>
+		  <th>Date</th>
+		  <th>Result</th>
+		  <th></th>
+		</tr>
+	  </thead>
+	  <tbody>
+		{% for match in matches %}
+			<tr>
+			  <td>{{ get_opponent_name(match.opponent) }}</td>
+			  <td>{{ get_game_name(match.game) }}</td>
+			  <td>{{ match.date }}</td>
+			  <td>{{ get_match_result(match.id, 'text') }}</td>
+			  <td><a href="{{ base_url() }}matches/show/{{ match.id }}"><i class="icon-reorder"></i></a></td>
+			</tr>
+		{% endfor %}
+	  </tbody>
+	</table>
+
+{% else %}
+	No Matches available.
+{% endif %}
 
 {{ pagination }}

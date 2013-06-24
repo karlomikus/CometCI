@@ -1,29 +1,35 @@
-{% for label, forums in data %}
-<table width="100%" class="pure-table">
-	<thead>
-		<tr>
-			<th colspan="4">{{ get_label_name(label) }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for forum in forums %}
-		<tr>
-			<td width="5%"><i class="icon-folder-close"></i></td>
-			<td width="55%">
-				<a href="{{ base_url() }}forums/forum/{{ forum.id }}">{{ forum.name }}</a><br />
-				<span style="font-size: 12px;">
-					Moderators:
-					{% for mod in get_mods(forum.id) %}
-						{{ get_username(mod.user) }} 
-					{% endfor %}
-				</span>
-			</td>
-			<td width="20%">{{ count_topics(forum.id) }} Topics</td>
-			<td width="20%">{{ count_replies_in_forum(forum.id) }} Posts</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+{% if forums|default is not empty %}
 
-<br />
-{% endfor %}
+	{% for label, forums in data %}
+	<table width="100%" class="pure-table">
+		<thead>
+			<tr>
+				<th colspan="4">{{ get_label_name(label) }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for forum in forums %}
+			<tr>
+				<td width="5%"><i class="icon-folder-close"></i></td>
+				<td width="55%">
+					<a href="{{ base_url() }}forums/forum/{{ forum.id }}">{{ forum.name }}</a><br />
+					<span style="font-size: 12px;">
+						Moderators:
+						{% for mod in get_mods(forum.id) %}
+							{{ get_username(mod.user) }} 
+						{% endfor %}
+					</span>
+				</td>
+				<td width="20%">{{ count_topics(forum.id) }} Topics</td>
+				<td width="20%">{{ count_replies_in_forum(forum.id) }} Posts</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<br />
+	{% endfor %}
+
+{% else %}
+	No forums available.
+{% endif %}

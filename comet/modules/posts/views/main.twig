@@ -1,18 +1,24 @@
-{% for post in posts %}
-	<div class="panel">
-		<h4>{{ post.title }} <br />
-			<small>
-				<time>{{ cms_date(post.date )}}</time>
-				in {{ get_label_name(post.label) }}
-			</small>
-		</h4>
-		<p>
-			{{ post.teaser }}
-			<br />
-			<a href="{{ base_url() }}post/{{ post.slug }}">read more...</a>
-		</p>
-	</div>
-{% endfor %}
+{% if posts|default is not empty %}
+
+	{% for post in posts %}
+		<div class="panel">
+			<h4>{{ post.title }} <br />
+				<small>
+					<time>{{ cms_date(post.date )}}</time>
+					in {{ get_label_name(post.label) }}
+				</small>
+			</h4>
+			<p>
+				{{ post.teaser }}
+				<br />
+				<a href="{{ base_url() }}post/{{ post.slug }}">read more...</a>
+			</p>
+		</div>
+	{% endfor %}
+
+{% else %}
+	No posts available.
+{% endif %}
 
 <div class="text-right">
 	<a class="pure-button" href="{{ base_url() }}posts/archive">Posts archive</a>
