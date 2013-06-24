@@ -20,6 +20,7 @@ class Matches extends Frontend_Controller {
 
 		$count = $this->matches_m->count_all();
 		$this->matches_m->limit($this->config->item('mod_max_matches'), $page);
+		$this->matches_m->order_by('date', 'desc');
 
 		// Pagination configuration
 		$config = $this->config->item('pagination_frontend');

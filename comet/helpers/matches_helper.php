@@ -39,6 +39,8 @@ function get_logo($id, $team)
 {
 	$CI =& get_instance();
 
+	$nopic = 'nopic.jpg';
+
 	if($team == 'opponent')
 	{
 		$CI->load->model('opponents/opponents_m');
@@ -50,5 +52,5 @@ function get_logo($id, $team)
 		$result = $CI->teams_m->get($id);
 	}
 
-	return $result->logo;
+	return empty($result->logo) ? $nopic : $result->logo;
 }

@@ -5,7 +5,7 @@
 
     <div class="pure-u-1-5">
         <p>
-        	<img src="{{ base_url() }}/uploads/opponents/{{ get_opponent_logo(match.opponent) }}" /><br />
+        	<img src="{{ base_url() }}/uploads/opponents/{{ get_logo(match.opponent, 'opponent') }}" /><br />
 			{{ get_opponent_name(match.opponent) }}
 		</p>
     </div>
@@ -16,7 +16,7 @@
 
     <div class="pure-u-1-5">
         <p>
-        	<img src="{{ base_url() }}/uploads/teams/{{ get_team_logo(match.team) }}" /><br />
+        	<img src="{{ base_url() }}/uploads/teams/{{ get_logo(match.team, 'team') }}" /><br />
 			{{ get_team_name(match.team) }}
 		</p>
     </div>
