@@ -21,6 +21,7 @@ HTML / CSS / JS:
 * Bootbox
 * iCheck
 * jQuery Cookie
+* SlimBox 2
 
 [ Probably forgot something here... ]
 

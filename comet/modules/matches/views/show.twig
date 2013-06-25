@@ -67,7 +67,7 @@
 	{% for screenshot in get_match_screenshots(match.id) %}
 
 		<li>
-			<a href="{{ base_url() }}uploads/screenshots/{{ screenshot.file }}" target="_blank">
+			<a href="{{ base_url() }}uploads/screenshots/{{ screenshot.file }}" target="_blank" rel="lightbox-matches">
 				<img src="{{ base_url() }}uploads/screenshots/{{ screenshot.file }}" alt="Screenshot" />
 			</a>
 		</li>

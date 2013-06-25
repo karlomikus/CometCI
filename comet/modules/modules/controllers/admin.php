@@ -47,7 +47,7 @@ class Admin extends Backend_Controller {
 			$this->template
 				->set('title', 'Edit module')
 				->set('data', $this->modules_m->get($id))
-				->set('layouts', $this->template->get_theme_layouts('default'))
+				->set('layouts', $this->template->get_theme_layouts($this->setting->theme))
 				->build('admin/form');
 		}		
 	}
