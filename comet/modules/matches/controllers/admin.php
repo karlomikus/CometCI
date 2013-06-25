@@ -40,16 +40,21 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
 		$this->form_validation->set_rules('game', 'Game', 'required');
-		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required');
-		$this->form_validation->set_rules('time', 'Time', 'required');
-		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]');
+		$this->form_validation->set_rules('date', 'Date', 'required|htmlspecialchars|trim|xss_clean');
+		$this->form_validation->set_rules('time', 'Time', 'required|htmlspecialchars|trim|xss_clean');
+
+		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|htmlspecialchars|trim|xss_clean');
+		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('opplayers', 'Opponent player list', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 		    // Insert match data
-			$date = $this->input->post('date', TRUE) .' '.$this->input->post('time', TRUE);
-			$players = $this->input->post('team_players', TRUE);
+			$date = $this->input->post('date') .' '.$this->input->post('time');
+
+			$players = $this->input->post('team_players');
 			if(!empty($players)) $team_players = implode(",", $players);
 			else $team_players = NULL;
 
@@ -62,7 +67,7 @@ class Admin extends Backend_Controller {
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
-				'opponent-players' => $this->input->post('opplayers', TRUE),
+				'opponent-players' => $this->input->post('opplayers'),
 				'team-players' => $team_players,
 				'event' => $this->input->post('event')
 			);
@@ -142,16 +147,21 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('opponent', 'Opponent', 'required');
 		$this->form_validation->set_rules('team', 'Team', 'required');
 		$this->form_validation->set_rules('game', 'Game', 'required');
-		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]|trim');
-		$this->form_validation->set_rules('date', 'Date', 'required');
-		$this->form_validation->set_rules('time', 'Time', 'required');
-		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('report', 'Report', 'required|min_length[4]');
+		$this->form_validation->set_rules('date', 'Date', 'required|htmlspecialchars|trim|xss_clean');
+		$this->form_validation->set_rules('time', 'Time', 'required|htmlspecialchars|trim|xss_clean');
+
+		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|htmlspecialchars|trim|xss_clean');
+		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('opplayers', 'Opponent player list', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 			// Prep data
-			$date = $this->input->post('date', TRUE) .' '.$this->input->post('time', TRUE);
-			$players = $this->input->post('team_players', TRUE);
+			$date = $this->input->post('date') .' '.$this->input->post('time');
+
+			$players = $this->input->post('team_players');
 			if(!empty($players)) $team_players = implode(",", $players);
 			else $team_players = NULL;
 
@@ -164,7 +174,7 @@ class Admin extends Backend_Controller {
 				'type' => $this->input->post('type'),
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
-				'opponent-players' => $this->input->post('opplayers', TRUE),
+				'opponent-players' => $this->input->post('opplayers'),
 				'team-players' => $team_players
 			);
 			$this->matches_m->update($id, $data);

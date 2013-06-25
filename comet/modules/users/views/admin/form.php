@@ -1,14 +1,23 @@
+<?php echo validation_errors(); ?>
 <?php echo form_open(uri_string(), array('class' => 'cms-form')); ?>
 
     <input placeholder="Username" type="text" name="username" value="<?php echo isset($userdata) ? $userdata['username'] : set_value("username"); ?>" />
 
+    <br />
+
     <input placeholder="Email" type="text" name="email" value="<?php echo isset($userdata) ? $userdata['email'] : set_value("email"); ?>" />
+
+    <br />
 
     <input placeholder="Password" type="password" name="password" />
 
+    <br />
+
     <input placeholder="Confirm password" type="password" name="password_confirm" />
 
-    <select placeholder="Choose default group(s)" class="js_select input-xlarge" name="groups[]" multiple>
+    <br />
+
+    <select placeholder="Choose default group(s)" class="js_select input-xlarge no-margin-input" name="groups[]" multiple>
         <option value=""></option>
         <?php foreach($groups as $group): ?>
         <?php 

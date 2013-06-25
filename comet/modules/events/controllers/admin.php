@@ -31,9 +31,9 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('link', 'Link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url|trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('startdate', 'Starting date', 'required|xss_clean');
 		$this->form_validation->set_rules('starttime', 'Starting time', 'required|xss_clean');
 		$this->form_validation->set_rules('enddate', 'Ending date', 'required|xss_clean');
@@ -92,9 +92,9 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|min_length[5]|xss_clean');
 		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('link', 'Link', 'prep_url|xss_clean');
+		$this->form_validation->set_rules('link', 'Link', 'prep_url|trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('startdate', 'Starting date', 'required|xss_clean');
 		$this->form_validation->set_rules('starttime', 'Starting time', 'required|xss_clean');
 		$this->form_validation->set_rules('enddate', 'Ending date', 'required|xss_clean');

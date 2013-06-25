@@ -602,6 +602,9 @@ input, textarea, .uneditable-input { width: 300px; }
 	cursor: pointer !important;
 }
 
+.no-margin-input { margin-bottom: 0 !important; }
+span.help-block { margin-bottom: 20px; font-size: 14px; }
+
 /* Gallery */
 .gallery-list {
 	list-style: none;

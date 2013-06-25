@@ -28,7 +28,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('title', 'Title', 'required|htmlspecialchars|trim|min_length[4]|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{

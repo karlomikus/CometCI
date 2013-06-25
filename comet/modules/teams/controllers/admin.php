@@ -26,7 +26,8 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Team name', 'required');
+		$this->form_validation->set_rules('name', 'Team name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('description', 'Description', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -110,7 +111,8 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Team name', 'required');
+		$this->form_validation->set_rules('name', 'Team name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('description', 'Description', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE) {
 

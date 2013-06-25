@@ -19,7 +19,7 @@ class Admin extends Backend_Controller {
 
 	public function adduser($id = 0)
 	{
-		$users = $this->input->post('users');
+		$users = $this->input->post('users', true);
 		$this->roster_m->add_to_roster($users, $id);
 		
 		redirect('admin/roster');

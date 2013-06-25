@@ -27,7 +27,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('name', 'Gallery name', 'required|trim|htmlspecialchars|min_length[5]|xss_clean');
 
 		if($this->form_validation->run())
 		{
@@ -55,7 +55,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('name', 'Gallery name', 'required|min_length[5]|xss_clean');
+		$this->form_validation->set_rules('name', 'Gallery name', 'required|trim|htmlspecialchars|min_length[5]|xss_clean');
 
 		if($this->form_validation->run())
 		{
@@ -93,8 +93,8 @@ class Admin extends Backend_Controller {
 		$file_data = NULL;
 		$data = NULL;
 
-		$this->form_validation->set_rules('width', 'Width', 'csrf_comet');
-		$this->form_validation->set_rules('height', 'Height', 'csrf_comet');
+		$this->form_validation->set_rules('width', 'Width', 'numeric|xss_clean|trim');
+		$this->form_validation->set_rules('height', 'Height', 'numeric|xss_clean|trim');
 
 		if($this->form_validation->run() == TRUE)
 		{

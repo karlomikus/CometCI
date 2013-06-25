@@ -29,8 +29,8 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]|xss_clean');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url|xss_clean');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[5]|max_length[20]|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|htmlspecialchars|prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -63,7 +63,7 @@ class Admin extends Backend_Controller {
 				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
-				'description' => htmly_purify($this->input->post('description'), 'description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'code' => $this->input->post('code', TRUE),
 				'image' => $file_data['file_name']
 			);
@@ -86,8 +86,8 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[20]|xss_clean');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|prep_url|xss_clean');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[5]|max_length[20]|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|htmlspecialchars|prep_url|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
 		{
@@ -125,13 +125,13 @@ class Admin extends Backend_Controller {
 				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
-				'description' => htmly_purify($this->input->post('description'), 'description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'code' => $this->input->post('code', TRUE),
 				'image' => $fileBanner
 			);
 
 			$this->banners_m->update($id, $data);
-			redirect('admin/labels');
+			redirect('admin/banners');
 		}
 		else
 		{

@@ -39,3 +39,5 @@ Bugs / TODO:
 - User permissions not quite yet done
 - Optimize views table
 - Separate unique views and regular views
+- Remove die() error throwing from groups
+- Admin error messages

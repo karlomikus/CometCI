@@ -20,11 +20,12 @@ class Admin extends Backend_Controller {
 	public function create()
 	{
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
 		$this->load->model('labels/labels_m');
 
-		$this->form_validation->set_rules('name', 'Forum name', 'required');
+		$this->form_validation->set_rules('name', 'Forum name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
 		$this->form_validation->set_rules('label', 'Label', 'required');
 
 		if ($this->form_validation->run() == TRUE)
@@ -37,7 +38,7 @@ class Admin extends Backend_Controller {
 				'date' => date('Y-m-d H:i:s'),
 				'clan' => $this->input->post('clan'),
 				'private' => $this->input->post('private'),
-				'description' => $this->input->post('description')
+				'description' => html_purify($this->input->post('description'), 'description')
 			);
 
 			$this->forums_m->insert_forum($data);
@@ -67,11 +68,12 @@ class Admin extends Backend_Controller {
 	public function edit($id = 0)
 	{
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
 		$this->load->model('labels/labels_m');
 
-		$this->form_validation->set_rules('name', 'Forum name', 'required');
+		$this->form_validation->set_rules('name', 'Forum name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
 		$this->form_validation->set_rules('label', 'Label', 'required');
 
 		if ($this->form_validation->run() == TRUE)
@@ -81,7 +83,7 @@ class Admin extends Backend_Controller {
 				'label' => $this->input->post('label'),
 				'clan' => $this->input->post('clan'),
 				'private' => $this->input->post('private'),
-				'description' => $this->input->post('description')
+				'description' => html_purify($this->input->post('description'), 'description')
 			);
 			$this->forums_m->update_forum($id, $data);
 
@@ -110,4 +112,4 @@ class Admin extends Backend_Controller {
 }
 
 /* End of file admin.php */
-/* Location: .//C/wamp/www/cms/comet/modules/forums/controllers/admin.php */
+/* Location: comet/modules/forums/controllers/admin.php */

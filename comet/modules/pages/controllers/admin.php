@@ -22,23 +22,24 @@ class Admin extends Backend_Controller {
 	public function create()
 	{
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
 		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[25]|min_length[3]|is_unique[pages.slug]');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[30]|min_length[3]|is_unique[pages.slug]');
 		$this->form_validation->set_rules('access', 'Access level', 'required');
-		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[3]|max_length[20]');
+		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[4]|htmlspecialchars|max_length[20]|xss_clean');
 		$this->form_validation->set_rules('content', 'Content', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'slug' => makePageSlug($this->input->post('slug')),
-				'content' => $this->input->post('content'),
+				'content' => html_purify($this->input->post('content'), 'wysiwyg'),
 				'navigation' => $this->input->post('navigation'),
 				'layout' => $this->input->post('layout'),
 				'date' => date('Y-m-d H:i'),
@@ -52,7 +53,7 @@ class Admin extends Backend_Controller {
 		{
 			$this->template
 				->set('title', 'Create page')
-				->set('layouts', $this->template->get_theme_layouts('default'))
+				->set('layouts', $this->template->get_theme_layouts($this->setting->theme))
 				->build('admin/form');
 		}
 	}
@@ -60,23 +61,24 @@ class Admin extends Backend_Controller {
 	public function edit($id = 0) {
 
 		$this->load->helper('form');
+		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
 		$this->template->append_metadata(Assets::adminJs('ckeditor', 'js/ckeditor'));
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[25]|min_length[3]');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|min_length[4]|xss_clean');
+		$this->form_validation->set_rules('slug', 'Page slug', 'required|max_length[30]|min_length[3]|is_unique[pages.slug]');
 		$this->form_validation->set_rules('access', 'Access level', 'required');
-		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[3]|max_length[20]');
+		$this->form_validation->set_rules('navigation', 'Navigation link name', 'trim|required|min_length[4]|htmlspecialchars|max_length[20]|xss_clean');
 		$this->form_validation->set_rules('content', 'Content', 'required');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 			$data = array(
 				'name' => $this->input->post('name'),
-				'description' => $this->input->post('description'),
+				'description' => html_purify($this->input->post('description'), 'description'),
 				'slug' => makePageSlug($this->input->post('slug')),
-				'content' => $this->input->post('content'),
+				'content' => html_purify($this->input->post('content'), 'wysiwyg'),
 				'navigation' => $this->input->post('navigation'),
 				'layout' => $this->input->post('layout'),
 				'date' => date('Y-m-d H:i'),
@@ -91,7 +93,7 @@ class Admin extends Backend_Controller {
 			$this->template
 				->set('title', 'Edit page')
 				->set('data', $this->pages_m->as_array()->get($id))
-				->set('layouts', $this->template->get_theme_layouts('default'))
+				->set('layouts', $this->template->get_theme_layouts($this->setting->theme))
 				->build('admin/form');
 		}
 	}

@@ -35,9 +35,9 @@ class Messages extends Frontend_Controller {
 		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('content', 'Content', 'required|min_length[4]');
-		$this->form_validation->set_rules('sendto', 'Send to', 'required|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('sendto', 'Send to', 'required|trim|htmlspecialchars|xss_clean');
 		// TODO: Check username validation
 
 		if ($this->form_validation->run() == TRUE)
@@ -59,62 +59,6 @@ class Messages extends Frontend_Controller {
 		{
 			$this->template
 				->build('form.twig');
-		}
-	}
-
-	public function edit($id = 0)
-	{
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-		$this->load->library('upload');
-
-		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
-
-		if ($this->form_validation->run() == TRUE)
-		{
-			if (!empty($_FILES['banner']['name']))
-			{
-				$config['upload_path']   = $this->folder_path;
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['max_size']      = '0';
-				$config['max_width']     = '1000';
-				$config['max_height']    = '1000';
-				$config['file_name']     = $id;
-				$this->upload->initialize($config);
-
-				if ($this->upload->do_upload('banner'))
-				{
-					$file_data = $this->upload->data();
-				}
-				else {
-					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
-                	$file_data = NULL;
-				}
-			}
-
-			// Found new file delete the old one
-			$fileBanner = $this->labels_m->get($id)->banner;
-			if(!empty($file_data))
-			{
-				unlink($this->folder_path.$fileBanner);
-				$fileBanner = $file_data['file_name'];
-			}
-			
-			$data = array(
-				'name' => $this->input->post('title'),
-				'description' => $this->input->post('description', TRUE),
-				'banner' => $fileBanner
-			);
-
-			$this->labels_m->update($id, $data);
-			redirect('admin/labels');
-		}
-		else
-		{
-			$this->template
-				->set('title', 'Edit label')
-				->set('data', $this->labels_m->as_array()->get($id))
-				->build('admin/form');
 		}
 	}
 

@@ -26,8 +26,8 @@ class Admin extends Backend_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name', 'Game name', 'required|xss_clean');
-        $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|max_length[4]|xss_clean|is_unique[games.shortcode]');
+        $this->form_validation->set_rules('name', 'Game name', 'required|trim|htmlspecialchars|xss_clean');
+        $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|trim|htmlspecialchars|max_length[4]|xss_clean|is_unique[games.shortcode]');
 
         $config['upload_path']   = $this->folder_path;
         $config['allowed_types'] = 'gif|jpg|png';
@@ -73,8 +73,8 @@ class Admin extends Backend_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name', 'Game name', 'required|xss_clean');
-        $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|max_length[4]|xss_clean');
+        $this->form_validation->set_rules('name', 'Game name', 'required|trim|htmlspecialchars|xss_clean');
+        $this->form_validation->set_rules('shortcode', 'Shortcode', 'required|trim|htmlspecialchars|max_length[4]|xss_clean');
 
         $config['upload_path']   = $this->folder_path;
         $config['allowed_types'] = 'gif|jpg|png';

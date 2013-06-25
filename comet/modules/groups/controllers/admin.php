@@ -21,21 +21,21 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name', 'Group name', 'required');
-		$this->form_validation->set_rules('description', 'Group description', 'trim');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|is_unique[groups.name]|xss_clean');
+		$this->form_validation->set_rules('description', 'Description', 'trim|htmlspecialchars|xss_clean');
 
-		if ($this->form_validation->run() == TRUE) {
-
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
 				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description')
 			);
-			$this->groups_m->insert($data);
 
+			$this->groups_m->insert($data);
 			redirect('admin/groups');
 		}
-		else {
-
+		else
+		{
 			$this->template
 			->set('title', 'Create group')
 			->build('admin/form');
@@ -49,21 +49,21 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name', 'Group name', 'required');
-		$this->form_validation->set_rules('description', 'Group description', 'trim');
+		$this->form_validation->set_rules('name', 'Name', 'required|trim|htmlspecialchars|is_unique[groups.name]|xss_clean');
+		$this->form_validation->set_rules('description', 'Description', 'trim|htmlspecialchars|xss_clean');
 
-		if ($this->form_validation->run() == TRUE) {
-
+		if ($this->form_validation->run() == TRUE)
+		{
 			$data = array(
 				'name' => $this->input->post('name'),
 				'description' => $this->input->post('description')
 			);
-			$this->groups_m->update($id, $data);
 
+			$this->groups_m->update($id, $data);
 			redirect('admin/groups');
 		}
-		else {
-
+		else
+		{
 			$this->template
 			->set('title', 'Edit group')
 			->set('data', $this->groups_m->as_array()->get($id))
@@ -71,8 +71,8 @@ class Admin extends Backend_Controller {
 		}
 	}
 
-	public function delete($id = 0) {
-
+	public function delete($id = 0)
+	{
 		if ($id == 1 || $id == 2) die('Trying to delete base groups!');
 
 		$this->groups_m->delete($id);
