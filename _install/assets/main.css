@@ -1,0 +1,59 @@
+body {
+	font-family: 'Alef', sans-serif;
+	font-size: 120%;
+	background: #eee;
+	margin: 40px 0;
+}
+
+a {
+	text-decoration: none;
+	color: #2673bb;
+}
+
+#wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#content {
+	background: #394c5a;
+	color: #fff;
+	line-height: 2em;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+.step {
+	padding: 15px;
+}
+
+.step h3 {
+	margin: 0;
+	border-bottom: 1px solid rgba(255,255,255,0.3);
+	color: #d5e3ed;
+}
+
+.action-bar {
+	padding: 20px;
+	text-align: right;
+}
+
+.install-button {
+	background: none;
+	border: 3px solid #e7574f;
+	color: #fff;
+	border-radius: 0;
+}
+
+.install-button:hover {
+	color: #fff;
+	background: rgba(0,0,0,0.2);
+}

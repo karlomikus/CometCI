@@ -23,6 +23,9 @@ class Frontend_Controller extends MY_Controller {
 			if($currentModule == $module->link) show_error('Module disabled!');
 		}
 
+		// Load comments library
+		$this->load->library('commentslib');
+
 		$this->template
 			->set('clanname', $this->config->item('clanname'))
 			->set_partial('head', 'head.twig')
