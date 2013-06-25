@@ -37,7 +37,11 @@ Bugs / TODO:
 - Remove model dependecies in frontend controller
 - Make $theme global
 - User permissions not quite yet done
-- Optimize views table
-- Separate unique views and regular views
+- Optimize visits table
+- Separate unique site visits and regular site visits
 - Remove die() error throwing from groups
 - Admin error messages
+- Finish missing paginations and sortings
+- Create unified module search
+- Create admincenter footer
+- Create module tips and help
