@@ -22,7 +22,6 @@
             <td class="action">
                 <a class="action-icon" href="#">Action</a>
                 <ul class="action-list" style="display: none;">
-                    <li><a href="<?php echo site_url('admin/users/delete/'.$user->id); ?>"><i class="icon-trash icon-large"></i></a></li>
                     <li><a href="<?php echo site_url('admin/users/edit/'.$user->id); ?>"><i class="icon-edit icon-large"></i></a></li>
                     <li><a href="<?php echo site_url('admin/users/status/'.$user->id); ?>"><i class="icon-<?php echo $user->active == 1 ? 'lock' : 'unlock'; ?> icon-large"></i></a></li>
                 </ul>

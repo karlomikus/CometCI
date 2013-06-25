@@ -113,8 +113,8 @@ class Admin extends Backend_Controller {
 
 	public function delete($id = 0)
 	{
-		if($this->ion_auth->delete_user($id)) redirect('admin/users');
-		else redirect('admin/users');		
+		//if($this->ion_auth->delete_user($id)) redirect('admin/users');
+		redirect('admin/users');		
 	}
 
 	public function status($userID)
