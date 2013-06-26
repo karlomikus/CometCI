@@ -2,7 +2,6 @@
 
 class Install extends MX_Controller {
 
-	private $installDir = '_install';
 	public $passIcon = '<i class="icon-ok-circle pass"></i>';
 	public $failIcon = '<i class="icon-remove-circle fail"></i>';
 
@@ -36,7 +35,7 @@ class Install extends MX_Controller {
 			'./comet/config/'
 		);
 
-		$databaseFile = './'.$this->installDir.'/database.php.inc';
+		$databaseFile = './_install/database.php.inc';
 		$uploadsDirectory = './uploads';
 
 		$data->phpVersion = $this->failIcon;

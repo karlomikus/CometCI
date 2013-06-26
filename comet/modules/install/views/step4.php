@@ -2,9 +2,17 @@
 	<h3>Installation successful</h3>
 
 	<p>
-		Congratulations!
-		Delete file, login link etc...
+		Congrats, installation is finished, please delete the following folders:
 	</p>
+
+	<ul>
+		<li>_install/</li>
+		<li>comet/modules/install/</li>
+	</ul>
+
+	<div class="note">
+		Not deleteing those directories can be a huge security risk!
+	</div>
 
 </article>
 
