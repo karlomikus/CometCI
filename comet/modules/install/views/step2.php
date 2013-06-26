@@ -1,17 +1,27 @@
 <article class="step step-2">
 	<h3>Server requirements</h3>
-	<p>Checking compatiblity</p>
+
+	<h4>Checking compatiblity</h4>
 	<ul>
-		<li>PHP Version: 5.3 - <?php echo $data->phpVersion; ?></li>
-		<li>MySQL Database: <?php echo $data->sqlInstalled; ?></li>
-		<li>GD Library: <?php echo $data->gdInstalled; ?></li>
+		<li><?php echo $data->phpVersion; ?> PHP v5.3</li>
+		<li><?php echo $data->sqlInstalled; ?> MySQL Database</li>
+		<li><?php echo $data->gdInstalled; ?> GD Library</li>
 	</ul>
-	<p>Checking CHMOD</p>
+
+	<h4>Checking folder access</h4>
 	<ul>
-		<li>uploads/* - <?php echo $data->dirUploads; ?></li>
-		<li>database.php.inc - <?php echo $data->dbFile; ?></li>
+		<?php foreach ($data->dirs as $dir => $status): ?>
+		<li>
+			<?php echo $status == 'pass' ? '<i class="icon-ok-circle pass"></i>' : '<i class="icon-remove-circle fail"></i>'; ?> 
+			<?php echo $dir; ?>
+		</li>
+		<?php endforeach; ?>
 	</ul>
-	<?php echo $data->settingChmod; ?>
+
+	<div class="note">
+		If automatic CHMOD fails you'll need manually set the required directories to CHMOD 0777.
+	</div>
+
 </article>
 
 <section class="action-bar">

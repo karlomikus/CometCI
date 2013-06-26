@@ -10,6 +10,10 @@ a {
 	color: #2673bb;
 }
 
+ul li {
+	line-height: 1.5em;
+}
+
 #wrapper {
 	width: 50%;
 	margin: 0 auto;
@@ -56,4 +60,27 @@ nav ul li {
 .install-button:hover {
 	color: #fff;
 	background: rgba(0,0,0,0.2);
+}
+
+.pass {
+	color: #67db7c;
+}
+
+.fail {
+	color: #e86866;
+}
+
+.note {
+	background: rgba(0,0,0,0.2);
+	padding: 10px 20px;
+}
+
+.input {
+	background-color: #394c5a !important;
+	color: #fff !important;
+	border: 2px solid rgba(255,255,255,0.3) !important;
+	border-radius: 0 !important;
+	height: 30px !important;
+	font-size: 18px !important;
+	width: 400px !important;
 }

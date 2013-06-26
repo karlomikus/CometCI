@@ -8,6 +8,7 @@ class Admin extends Backend_Controller {
      */
     public function index() 
     {
+        $this->load->helper('form');
         $this->load->model('matches/matches_m');
         $this->load->model('events/events_m');
         $this->load->helper('matches');

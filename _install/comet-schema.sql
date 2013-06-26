@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 24, 2013 at 10:41 AM
+-- Generation Time: Jun 26, 2013 at 12:20 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -453,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `games` (
   `icon` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shortcode` (`shortcode`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `games`
@@ -488,7 +488,12 @@ INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 (30, 'Quake Live', 'ql', 'ql.gif'),
 (31, 'Unreal Tournament 2004', 'ut24', 'ut24.gif'),
 (32, 'Fifa', 'fifa', 'fifa.gif'),
-(33, 'Battlefield Bad Company 2', 'bfbc', 'bfbc.gif');
+(33, 'Battlefield Bad Company 2', 'bfbc', 'bfbc.gif'),
+(34, 'Starcraft II', 'sc2', 'sc2.gif'),
+(35, 'Call of Duty: Black Ops', 'cdbo', 'cdbo.gif'),
+(36, 'Americas Army', 'aa', 'aa.gif'),
+(37, 'Left 4 Dead 2', 'l4d2', 'l4d2.gif'),
+(38, 'Quake 3', 'q3', 'q3.gif');
 
 -- --------------------------------------------------------
 
@@ -525,7 +530,14 @@ CREATE TABLE IF NOT EXISTS `labels` (
   `description` text NOT NULL,
   `banner` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `labels`
+--
+
+INSERT INTO `labels` (`id`, `name`, `description`, `banner`) VALUES
+(1, 'General News', 'All around news', NULL);
 
 -- --------------------------------------------------------
 
@@ -646,7 +658,7 @@ INSERT INTO `modules` (`id`, `name`, `description`, `link`, `enabled`, `layout`)
 (15, 'Settings', 'Change site settings', 'settings', 0, NULL),
 (16, 'Teams', 'Manage your clan squads', 'teams', 0, NULL),
 (17, 'Users', 'Manage users', 'users', 1, NULL),
-(18, 'Gallery', 'Make your own picture gallery', 'gallery', 1, 'default'),
+(18, 'Gallery', 'Make your own picture gallery', 'gallery', 1, 'fullwidth'),
 (19, 'Countries', 'TODO', 'countries', 0, NULL),
 (20, 'Events', 'TODO', 'events', 0, NULL),
 (21, 'Layouts', 'TODO', 'layouts', 0, NULL),
@@ -666,7 +678,33 @@ CREATE TABLE IF NOT EXISTS `opponents` (
   `gameID` int(11) NOT NULL,
   `logo` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Dumping data for table `opponents`
+--
+
+INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
+(1, 'Invictus Gaming', 'Invictus Gaming is the result of Wanda Enterprise director Wang Sicong acquiring Catastrophic Cruel Memory. The team was founded in 2011 and has DotA, Starcraft 2, and LoL teams.', 10, '1.jpg'),
+(2, 'Team DK', 'Formed in 2010, Team DK, dubbed the "Galacticos" of the Chinese scene, is one of the strongest Chinese DotA teams. ', 10, '2.jpg'),
+(3, 'FXOpen e-Sports', 'FXOpen e-Sports is a competitive gaming division of the forex trading company FXOpen.', 34, '3.png'),
+(4, 'Tong Fu', 'TongFu Gaming is an Esports organization backed by TongFu Porridge, a Chinese food company. Created in Sept. 2011, they are currently one of the top Chinese Dota 2 teams in addition to having a LoL division.', 10, '4.png'),
+(5, 'Vici Gaming', 'Vici Gaming was formed on the 21st of October, 2012 with the help of “Fengdidi”, who also had previously played in PanDarea Gaming under the name “PanPan”, handpicking highly skilled players that were high ranked on top of the Chinese DotA ladder at the time. ', 10, '5.jpg'),
+(6, 'Fnatic.eu', 'Fnatic is a professional gaming organization with registered offices in England, Australia and the Netherlands.', 10, '6.png'),
+(7, 'mouz', 'mousesports, often abbreviated mouz, is a German multigaming organization originally founded in 2002 as a Counter-Strike team.', 10, '7.jpg'),
+(8, 'Na''Vi', 'Natus Vincere (Latin for "born to win"), often abbreviated as Na`Vi', 10, '8.jpg'),
+(9, 'Team Dignitas', 'eam Dignitas is an International e-Sports team which is headquartered in Great Britain and which is among the best British gaming teams.', 10, '9.png'),
+(10, 'Team Liquid', 'Team Liquid is a professional team, founded in the Netherlands in 2000. Originally a Brood War clan, the team switched to SC2 during the SC2 Beta in 2010, and became one of the most successful foreign teams', 10, '10.png'),
+(11, 'Evil Geniuses', 'Evil Geniuses, often abbreviated EG, is one of the oldest North American professional gaming organizations.', 10, '11.png'),
+(12, 'LGD Gaming', 'LGD Gaming is a Chinese multigaming team sponsored by Guizhou Laogandie Food. It has two Dota 2 divisions and one League of Legends division. ', 10, '12.png'),
+(13, 'RattleSnake Gaming', 'RaTtLeSnAkE is a Chinese team that was formed January 18th, 2013. ', 10, '13.png'),
+(14, 'Team Zenith', 'The legacy of Team Zenith goes back a long way. The original Team Zenith was formed as the clan mVp in the last quarter of 2005. In August 2006, they were christened Team Zenith after being sponsored by HP and AMD. ', 10, '14.png'),
+(15, 'MUFC', 'MUFC is a Malaysian Dota 2 team formed in 2010. ', 10, '15.jpg'),
+(16, 'Mineski', 'Mineski is a progaming organization, focusing on building the Philippine Esports scene by providing coverage and events within the Philippines. They have two DOTA teams and one LoL team.', 10, '16.jpg'),
+(17, 'MiTH', 'MiTH (Made in Thailand) eSports is a Thai multigaming organization. Their Dota 2 team consists of TnK, LaKelz, aabBAA, sD, and r5r5. ', 10, '17.jpg'),
+(18, 'Team Empire', 'Team Empire is a Russian e-Sports organization. They have gaming divisions in Battlefield: Bad Company 2, Call of Duty 4, Heroes of Newerth, WarCraft III, Counter Strike, FIFA 2010, Quake Live, Team Fortress 2, Day of Defeat: Source, and StarCraft II. Empire created their StarCraft II division in November 2010.', 10, '18.png'),
+(19, 'Virtuos.pro', 'Virtus.pro is a very old Russian e-sports organization, mostly famous for their team in Counter-Strike 1.6 and their now disbanded, once world dominating DotA team. ', 10, '19.png'),
+(20, 'Absolute Legends', 'Absolute Legends is a multigaming team which acquired eSahara on March 22, 2012. They have a very successful League of Legends team as well as one of the top Dota 2 teams. ', 10, '20.png');
 
 -- --------------------------------------------------------
 
@@ -1126,28 +1164,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `about` mediumtext,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `dob`, `gender`, `country`, `avatar`, `about`) VALUES
-(1, '\0\0', 'administrator', 'd8e1f86a83015b3ed2822b6baf031170019478c4', '9462e8eee0', 'karlo@gmail.com', '', NULL, NULL, '097979875ef1cddc26b8e8016f3d5376c1560bfd', 1268889823, 1372066798, 1, 'admin@admin.com', 'Mikus', '1992-06-25 00:00:00', 'male', 55, '12.png', 'Checks if an email is a correctly formatted email. Note that is doesn''t actually prove the email will recieve mail, simply that it is a validly formed address.\r\n\r\nIt returns TRUE/FALSE'),
-(2, '\0\0', 'test', 'c9677e8112319f649747a8b05708d010221e6b41', NULL, 'test@test.com', NULL, NULL, NULL, NULL, 1361107053, 1361107053, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, '\0\0', 'test2', 'b4bbb3960ac42732f74d08c1927f97003ef9bb6b', NULL, 'test2@test.com', NULL, NULL, NULL, NULL, 1361107377, 1361107377, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '\0\0', 'johndoe', 'f406c4e029784051584774587294de88047f74a0', NULL, 'john@doe.com', NULL, NULL, NULL, NULL, 1361112609, 1361112609, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '\0\0', 'demouser', 'ab8ec30b82b677a58295f5b9acca8a274f4836f5', NULL, 'demo@demo.us', NULL, NULL, NULL, NULL, 1361112622, 1361112622, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '\0\0', 'comic', '70dd69dd59f781cb2526a94a7db844bd4498865f', NULL, 'comic@sans.com', '310b0e07fc5d4c9ae320ead15496a491b3725a3e', NULL, NULL, NULL, 1361112657, 1361112657, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '\0\0', 'updated', '88484160d2486d9bb2740b90624d642f0c320a71', NULL, 'asda1@asd.com', NULL, NULL, NULL, NULL, 1361878943, 1361878943, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, '\0\0', 'mmaric', '0dc1673757339d5160691754a5c5ceb6db70455d', NULL, 'maric@mm.com', NULL, NULL, NULL, NULL, 1362528738, 1362528738, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '\0\0', 'mtest', '590756944210dd0131717d50f4d4c0b16c952914', NULL, 'mtest@ssss.com', NULL, NULL, NULL, NULL, 1362528766, 1362528766, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, '\0\0', 'eggzy', '46971820a249b9fe32b331534f8758baa6aa2e94', NULL, 'eggzy12@gmail.com', NULL, NULL, NULL, 'cfb089722a82fc8818b2edfbe28142f96f14ad21', 1367704152, 1369161584, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, '\0\0', 'egzasa', '7f3aebf5d475de8c11d2c465d8ca7a439cbb2bc4', NULL, 'asfasf@gmsa.com', NULL, NULL, NULL, NULL, 1367705189, 1367705189, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, '\0\0', 'safas', '45872df6b1fa99acca78d66b0953147c24dc2128', NULL, 'karlo.mikus1@gmail.com', '79d996585c4b7b2ae87d6a8e1e5b847f05165d9c', NULL, NULL, NULL, 1368480086, 1368480086, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '\0\0', 'stats', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', NULL, 'stats@gmail.com', NULL, NULL, NULL, NULL, 1370517099, 1370517099, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, '\0\0', 'stats2', '2dfe83964f3273daee484b4c2264625bfd9575b8', NULL, 'st@st.com', '1cb3a1edc98855fc0298463764ceaf172fc65300', NULL, NULL, '47e3485a22ce9e07ad32191020d73c1730f64c36', 1370517269, 1370517310, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, '\0\0', 'ssssssssss', 'fc8f03ba66b1a38f99f52e04bc7bae4eb382784d', NULL, 'mtest@sssss.com', '53db31d95f84e569b00f96f73949f890b4111d1d', NULL, NULL, NULL, 1370688024, 1370688024, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1160,7 +1177,7 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `users_groups`
@@ -1177,14 +1194,14 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (9, 7, 2),
 (15, 8, 2),
 (16, 8, 6),
-(17, 9, 2),
-(18, 10, 2),
 (19, 11, 2),
 (20, 12, 2),
 (21, 13, 2),
 (22, 14, 2),
 (23, 15, 2),
-(24, 16, 2);
+(24, 16, 2),
+(25, 17, 2),
+(30, 9, 2);
 
 -- --------------------------------------------------------
 
