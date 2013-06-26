@@ -1,9 +1,5 @@
 <?php echo $template['partials']['head']; ?>
 <body>
-<?php
-	$avatar = 'noavatar.jpg';
-	if(isset($user->avatar)) $avatar = $user->avatar;
-?>
 	<header class="site-header">
 		<a class="avatar" href="<?php echo base_url(); ?>admin"><img src="<?php echo base_url(); ?>assets/admin/img/logo.png" width="32" height="32" /></a>
 		<h1>
@@ -12,7 +8,7 @@
 		</h1>
 		<ul>
 			<li class="first"></li>
-			<li><a href="<?php echo base_url(); ?>admin/logout"><img src="<?php echo base_url(); ?>uploads/users/<?php echo $avatar; ?>" width="32" height="32" /></a></li>
+			<li><a href="<?php echo base_url(); ?>admin/logout"><img src="<?php echo base_url(); ?>uploads/users/<?php echo get_avatar($user->id); ?>" width="32" height="32" /></a></li>
 			<!-- <li><a href="#"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-pm.png" alt="Messagess" /></a></li> -->
 			<li><a href="/cms" target="_blank"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-view.png" alt="View site" /></a></li>
 		</ul>

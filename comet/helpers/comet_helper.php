@@ -83,14 +83,19 @@ function get_label_name($id)
 function get_avatar($userID, $fulltag = FALSE) 
 {
 	$CI =& get_instance();
-	
 	$avatar = $CI->ion_auth->user($userID)->row();
+
 	if(!$fulltag)
 	{
-		if(isset($avatar->avatar)) return $avatar->avatar;
+		if(!empty($avatar->avatar) && file_exists('./uploads/users/'.$avatar->avatar)) return $avatar->avatar;
 		return 'noavatar.jpg';
 	}
-	if(isset($avatar->avatar)) return '<img src="'.base_url().'uploads/users/'.$avatar->avatar.'" alt="avatar" />';
+
+	if(!empty($avatar->avatar) && file_exists('./uploads/users/'.$avatar->avatar))
+	{
+		return '<img src="'.base_url().'uploads/users/'.$avatar->avatar.'" alt="avatar" />';
+	}
+
 	return '<img src="'.base_url().'uploads/users/noavatar.jpg" alt="avatar" />';
 }
 
