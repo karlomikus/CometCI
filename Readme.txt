@@ -1,6 +1,11 @@
 Current version: 0.1
 
-Clan Comet is a content management system aimed at esport teams who need powerfule website solution. It's made on Codeigniter PHP framework, and comes with a ton of features! 
+Clan Comet is a content management system aimed at esport teams who need powerfule website solution. It's made on Codeigniter PHP framework, and comes with a ton of features!
+
+Installing:
+1. Upload all the files on server.
+2. Visit: www.yoursite.com/install
+3. Follow the steps
 
 Codeigniter plugins:
 * twiggy parser
@@ -30,12 +35,10 @@ v0.1
 - Initial release
 
 Bugs / TODO:
-- Make related posts
 - After submitting comment return by page slug not page id
 - Honey pot anti-spam method for comments
 - Make a note about unlabeled forums
 - Remove model dependecies in frontend controller
-- Make $theme global
 - User permissions not quite yet done
 - Optimize visits table
 - Separate unique site visits and regular site visits
