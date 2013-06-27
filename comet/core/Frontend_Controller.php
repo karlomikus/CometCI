@@ -7,11 +7,9 @@ class Frontend_Controller extends MY_Controller {
 		parent::__construct();
 
 		// Load required libs
-		$this->load->model('settings/settings_m', 'settings');
 		$this->load->model('modules/modules_m', 'modules');
 
-		// Set variables
-		$activeTheme = $this->settings->get_site_theme(); // TODO: Remove this and model dependecies
+		// Get modules info
 		$disabledModules = $this->modules->get_disabled_modules();
 		$currentModule = $this->router->fetch_module();
 
@@ -19,7 +17,8 @@ class Frontend_Controller extends MY_Controller {
 		if(!empty($this->setting->closed)) show_error($this->setting->closedmsg);
 
 		// Go through array and check for disabled modules
-		foreach ($disabledModules as $module) {
+		foreach ($disabledModules as $module)
+		{
 			if($currentModule == $module->link) show_error('Module disabled!');
 		}
 
@@ -30,6 +29,6 @@ class Frontend_Controller extends MY_Controller {
 			->set('clanname', $this->config->item('clanname'))
 			->set_partial('head', 'head.twig')
 			->set_partial('foot', 'foot.twig')
-			->set_theme($activeTheme);
+			->set_theme($this->activeTheme);
 	}
 }

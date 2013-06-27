@@ -2,8 +2,9 @@
 
 class MY_Controller extends MX_Controller {
 
-	public $user; // Contains information about currently logged in user
-	public $setting; // Contains site settings
+	public $user; 	  		// Contains information about currently logged in user
+	public $setting;  		// Contains site settings
+	public $activeTheme;	// Contains current active theme
 
 	public function __construct()
 	{
@@ -18,6 +19,7 @@ class MY_Controller extends MX_Controller {
 		// Set config items
 		$this->config->set_item('clanname', $this->settings->get(1)->clanname);
 		$this->setting = $this->settings->get(1);
+		$this->activeTheme = $this->settings->get_site_theme();
 
 		// Set user
 		if($this->ion_auth->logged_in())

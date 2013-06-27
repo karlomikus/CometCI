@@ -37,11 +37,9 @@ v0.1
 Bugs / TODO:
 - Honey pot anti-spam method for comments
 - Make a note about unlabeled forums
-- Remove model dependecies in frontend controller
 - User permissions not quite yet done
 - Optimize visits table
 - Separate unique site visits and regular site visits
-- Remove die() error throwing from groups
 - Admin error messages
 - Finish missing paginations and sortings
 - Create unified module search
