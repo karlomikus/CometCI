@@ -6,17 +6,12 @@ class Admin extends Backend_Controller {
 	{
 		$this->load->model('forums_m');
 
-		//TODO: Make unlabeled forums only visible to admins with a warning to fix them
-
 		$this->template
 			->set('forums', $this->forums_m->get_forums())
 			->set('title', 'Forums')
 			->build('admin/main');
 	}
 
-	/**
-	 * Creates forum
-	 */
 	public function create()
 	{
 		$this->load->helper('form');

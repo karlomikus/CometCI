@@ -35,7 +35,6 @@ v0.1
 - Initial release
 
 Bugs / TODO:
-- Make a note about unlabeled forums
 - User permissions not quite yet done
 - Optimize visits table
 - Separate unique site visits and regular site visits
