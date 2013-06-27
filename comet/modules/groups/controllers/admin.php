@@ -73,8 +73,12 @@ class Admin extends Backend_Controller {
 
 	public function delete($id = 0)
 	{
-		if ($id == 1 || $id == 2) die('Trying to delete base groups!');
-
+		// Dont delete admin, members and clan group, we kinda need them!
+		if ($id == 1 || $id == 2 || $id == 3)
+		{
+			$this->session->set_flashdata('messages', 'Trying to delete base groups!');
+			redirect('admin/groups');
+		}
 		$this->groups_m->delete($id);
 		redirect('admin/groups');
 	}

@@ -1,3 +1,5 @@
+<?php echo @$this->session->flashdata('messages'); ?>
+
 <table class="table tbl-custom">
     <thead>
         <tr>
@@ -13,7 +15,7 @@
             <td><?php echo $group->description; ?></td>
             <td class="action">
                 <a class="action-icon" href="#">Action</a>
-                <?php if($group->id == 1 || $group->id == 2): ?>
+                <?php if($group->id == 1 || $group->id == 2 || $group->id == 3): ?>
                 <?php else: ?>
                 <ul class="action-list" style="display: none;">
                     <li><a class="confirm-delete" href="<?php echo site_url('admin/groups/delete/'.$group->id); ?>"><i class="icon-trash icon-large"></i></a></li>

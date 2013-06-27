@@ -35,7 +35,6 @@ v0.1
 - Initial release
 
 Bugs / TODO:
-- After submitting comment return by page slug not page id
 - Honey pot anti-spam method for comments
 - Make a note about unlabeled forums
 - Remove model dependecies in frontend controller
