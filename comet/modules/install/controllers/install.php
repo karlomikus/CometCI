@@ -107,7 +107,7 @@ class Install extends MX_Controller {
 			// Insert SQL File
 			$this->load->database();
 			
-			$sqlFile = read_file('./_install/install.sql');
+			$sqlFile = read_file('./_install/comet-schema.sql');
 			$queryCommands = explode(';', $sqlFile);
 
 			foreach ($queryCommands as $query)

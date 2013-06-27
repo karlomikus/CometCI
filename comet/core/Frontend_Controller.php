@@ -24,7 +24,7 @@ class Frontend_Controller extends MY_Controller {
 		}
 
 		// Load comments library
-		$this->load->library('commentslib');
+		$this->load->library('CommentsLib');
 
 		$this->template
 			->set('clanname', $this->config->item('clanname'))
