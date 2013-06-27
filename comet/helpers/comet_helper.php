@@ -70,8 +70,11 @@ function get_label_name($id)
 {
 	$CI =& get_instance();
 	$CI->load->model('labels/labels_m');
-	if(!isset($id)) return "Undefined label";
-	return $CI->labels_m->get($id)->name;
+
+	$labelName = $CI->labels_m->get($id);
+	if(empty($labelName)) return 'Undefined';
+
+	return $labelName->name;
 }
 
 /**

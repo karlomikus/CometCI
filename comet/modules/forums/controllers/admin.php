@@ -106,7 +106,7 @@ class Admin extends Backend_Controller {
 	public function delete($id = 0)
 	{
 		$this->load->model('forums_m');
-		$this->groups_m->delete_forum($id);
+		$this->forums_m->delete_forum($id);
 		redirect('admin/forums');
 	}
 }
