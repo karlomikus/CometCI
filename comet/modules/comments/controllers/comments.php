@@ -17,9 +17,13 @@ class Comments extends Frontend_Controller {
 
 		$this->form_validation->set_rules('content', 'Comment content', 'trim|required|min_length[5]');
 
-		// TODO: Honey pot method for fighting spam
 		if($this->ion_auth->logged_in() && $this->form_validation->run()) 
 		{
+			// Found fields that need to be empty. Are you a spam bot?
+			$fakeField1 = $this->input->post('usernamef');
+			$fakeField2 = $this->input->post('emailf');
+			if(!empty($fakeField1) || !empty($fakeField2)) redirect($this->agent->referrer());
+
 			$lastComment = $this->comments_m->getLastUserComment($this->user->id);
 			$timeComment = strtotime($lastComment[0]->date);
 			$timeDiff = time() - $timeComment;
@@ -73,10 +77,10 @@ class Comments extends Frontend_Controller {
 				}
 				else 
 				{
-					redirect('/');
+					redirect($this->agent->referrer());
 				}
 			}
 		}
-		redirect('/');
+		redirect($this->agent->referrer());
 	}
 }

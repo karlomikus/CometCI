@@ -2,6 +2,11 @@
 
 {{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link, formClass) }}
 
+	<div style="display: none; visibility: hidden;">
+		<input type="text" name="usernamef" />
+		<input type="text" name="mailf" />
+	</div>
+
 	<textarea placeholder="Write a comment" name="content"></textarea>
 
 	<button type="submit" class="pure-button pure-button-primary" name="save">Post comment</button>

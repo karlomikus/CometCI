@@ -35,7 +35,6 @@ v0.1
 - Initial release
 
 Bugs / TODO:
-- Honey pot anti-spam method for comments
 - Make a note about unlabeled forums
 - User permissions not quite yet done
 - Optimize visits table
