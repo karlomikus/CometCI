@@ -23,13 +23,14 @@ class Forums extends Frontend_Controller {
 
 		$data = array();
 		$active_labels = $this->forums_m->get_active_forum_labels();
-		foreach ($active_labels as $label) {
+
+		foreach ($active_labels as $label)
+		{
 			$data[$label] = $this->forums_m->get_many_by('label', $label);
 		}
 
 		$this->template
 			->set('data', $data)
-			->set('last_online', $this->forums_m->last_online())
 			->build('main.twig');
 	}
 

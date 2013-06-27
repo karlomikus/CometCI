@@ -42,11 +42,15 @@ class Forums_m extends MY_Model {
 		$this->_table = 'forum_forums';
 		$labels = array();
 		$forums = parent::get_all();
-		foreach ($forums as $forum) {
-			if(!in_array($forum->label, $labels)) {
+
+		foreach ($forums as $forum)
+		{
+			if(!in_array($forum->label, $labels))
+			{
 				$labels[] = $forum->label;
 			}
 		}
+		
 		return $labels;
 	}
 
