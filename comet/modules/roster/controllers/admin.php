@@ -10,9 +10,11 @@ class Admin extends Backend_Controller {
 
 	public function index()
 	{
+		$this->load->helper('form');
 		$this->load->model('teams/teams_m');
 
 		$this->template
+			->set('title', 'Roster')
 			->set('teams', $this->teams_m->get_all())
 			->build('admin/main');
 	}

@@ -144,7 +144,7 @@
 <script>
 	$('.inlinesparkline').sparkline('html',{
 	    type: 'line',
-	    width: '150',
+	    width: '100%',
 	    height: '40',
 	    lineColor: '#9b9eaf',
 	    fillColor: '#eeeeee',

@@ -12,7 +12,7 @@
 		<img src="<?php echo base_url(); ?>uploads/labels/<?php echo $data['banner']; ?>" alt="" />
 		<hr />
 		<?php endif; ?>
-		<p>Choose label banner</p> <a class="btn btn-cms-orange show-file-input" href="#"><i class="icon-cloud-upload"></i></a>
+		<p>Choose label banner</p> <a class="btn btn-cms-orange show-file-input" href="#file-input"><i class="icon-cloud-upload"></i></a>
 	</div>
 
 	<button type="submit" class="btn btn-large btn-cms-orange">Save label</button>

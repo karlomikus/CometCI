@@ -45,8 +45,8 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('time', 'Time', 'required|htmlspecialchars|trim|xss_clean');
 
 		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|htmlspecialchars|trim|xss_clean');
-		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|numeric|xss_clean');
-		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('opplayers', 'Opponent player list', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
@@ -84,8 +84,8 @@ class Admin extends Backend_Controller {
 			{
 				$score_array[$i] = array(
 					'match' => $match_id,
-					'opponent' => $opponent_scores[$i],
-					'team' => $team_scores[$i]
+					'opponent' => intval($opponent_scores[$i]),
+					'team' => intval($team_scores[$i])
 				);
 			}
 			$this->matches_m->insert_scores($score_array);
