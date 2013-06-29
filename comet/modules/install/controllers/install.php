@@ -116,7 +116,7 @@ class Install extends MX_Controller {
 			}
 
 			// Add default user
-			$this->ion_auth->register($ausername, $apassword, $amail);
+			$this->ion_auth->register($ausername, $apassword, $amail, '', array(1));
 			$this->ion_auth->activate('1');
 
 			// Show final page
