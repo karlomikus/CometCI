@@ -1,8 +1,10 @@
 <article class="step step-2">
 	<h3>Installation successful</h3>
 
+	<?php echo @$this->session->flashdata('errors'); ?>
+
 	<p>
-		Congrats, installation is finished, please delete the following folders:
+		Congratulations, you have successfully installed Comet CMS. To access cms control panel first login with your account and choose control panel link in the user area. Also, please delete the following folders to stop any possible exploits:
 	</p>
 
 	<ul>
@@ -15,7 +17,3 @@
 	</div>
 
 </article>
-
-<section class="action-bar">
-	<a href="<?php echo base_url(); ?>" class="pure-button install-button">Visit website</a>
-</section>

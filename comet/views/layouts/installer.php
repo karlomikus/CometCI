@@ -18,10 +18,22 @@
 
 		<nav>
 			<ul>
-				<li><a href="#">Step 1</a></li>
-				<li><a href="#">Step 2</a></li>
-				<li><a href="#">Step 3</a></li>
-				<li><a href="#">Step 4</a></li>
+				<li>
+					<h3>1</h3>
+					<p>WELCOME <br /> <span>Preface</span></p>
+				</li>
+				<li>
+					<h3>2</h3>
+					<p>REQUIREMENTS <br /> <span>System config</span></p>
+				</li>
+				<li>
+					<h3>3</h3>
+					<p>CONNECT <br /> <span>Database &amp; user info</span></p>
+				</li>
+				<li>
+					<h3>4</h3>
+					<p>FINISH <br /> <span>Congratulations</span></p>
+				</li>
 			</ul>
 		</nav>
 
@@ -35,6 +47,16 @@
 				</div>
 			</div>
 
+		</section>
+
+		<section class="action-bar">
+			<?php if($stepLink == 'step4'): ?>
+				<button class="pure-button install-button" type="submit" onclick="document.forms[0].submit();">Next</button>
+			<?php elseif($stepLink == 'finish'): ?>
+				<a href="<?php echo base_url(); ?>" class="pure-button install-button">Visit website</a>
+			<?php else: ?>
+				<a href="<?php echo base_url(); ?>install/<?php echo $stepLink; ?>" class="pure-button install-button">Next</a>
+			<?php endif; ?>
 		</section>
 
 	</div>

@@ -4,7 +4,9 @@
 
 		<?php echo @$this->session->flashdata('errors'); ?>
 
-		<h4>MySQL Connection</h4>
+		<p>
+			Configure MySQL database connection. Make sure the database you are planning to use is created.
+		</p>
 
 		<input class="input" placeholder="Hostname" type="text" name="hostname" />
 		<br />
@@ -14,7 +16,9 @@
 		<br />
 		<input class="input" placeholder="Database" type="text" name="database" />
 
-		<h4>Administrator</h4>
+		<p>
+			Now create your default login credentials.
+		</p>
 
 		<input class="input" placeholder="Username" type="text" name="ausername" />
 		<br />
@@ -23,8 +27,4 @@
 		<input class="input" placeholder="Mail" type="text" name="amail" />
 
 	</article>
-
-	<section class="action-bar">
-		<button type="submit" class="pure-button install-button">Next</button>
-	</section>
 <?php echo form_close(); ?>

@@ -5,6 +5,8 @@ class Install extends MX_Controller {
 	public $passIcon = '<i class="icon-ok-circle pass"></i>';
 	public $failIcon = '<i class="icon-remove-circle fail"></i>';
 
+	private $sessionData = array();
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -15,12 +17,22 @@ class Install extends MX_Controller {
 
 	public function index()
 	{
+		$this->sessionData['step1'] = true;
+		$this->sessionData['step2'] = false;
+		$this->sessionData['step3'] = false;
+		$this->session->set_userdata($this->sessionData);
+
+		$stepLink = 'step2';
 		$this->template
+			->set('stepLink', $stepLink)
 			->build('step1');
 	}
 
 	public function step2()
 	{
+		$step1Passed = $this->session->userdata('step1');
+		if(!$step1Passed) redirect('install');
+
 		$data = new stdClass();
 
 		$writableDirectories = array(
@@ -48,21 +60,44 @@ class Install extends MX_Controller {
 		if(function_exists('mysql_connect')) 					  $data->sqlInstalled = $this->passIcon;
 		if (extension_loaded('gd') && function_exists('gd_info')) $data->gdInstalled = $this->passIcon;
 
+		if(version_compare(phpversion(),  '5.3', '>=') && function_exists('mysql_connect'))
+		{
+			$this->sessionData['step1'] = true;
+			$this->sessionData['step2'] = true;
+			$this->sessionData['step3'] = false;
+			$this->session->set_userdata($this->sessionData);
+		}
+
+		$stepLink = 'step3';
 		$this->template
 			->set('data', $data)
+			->set('stepLink', $stepLink)
 			->build('step2');
 	}
 
 	public function step3()
 	{
+		$stepPassed = $this->session->userdata('step2');
+		if(!$stepPassed) redirect('install/step2');
+
 		$this->load->helper('form');
 
+		$this->sessionData['step1'] = true;
+		$this->sessionData['step2'] = true;
+		$this->sessionData['step3'] = true;
+		$this->session->set_userdata($this->sessionData);
+
+		$stepLink = 'step4';
 		$this->template
+			->set('stepLink', $stepLink)
 			->build('step3');
 	}
 
 	public function step4()
 	{
+		$stepPassed = $this->session->userdata('step3');
+		if(!$stepPassed) redirect('install/step3');
+
 		$this->load->helper('file');
 		$this->load->library('form_validation');
 
@@ -86,6 +121,9 @@ class Install extends MX_Controller {
 			$apassword = $this->input->post('apassword');
 			$amail = $this->input->post('amail');
 
+			$hashPass = $this->ion_auth->hash_password($apassword);
+			$time = time();
+
 			// Let's create database config file first!
 			$cfgLocation = './_install/database.php.inc';
 			$cfgContent = read_file($cfgLocation);
@@ -105,22 +143,36 @@ class Install extends MX_Controller {
 			write_file('./comet/config/database.php', $cfgFinal);
 
 			// Insert SQL File
-			$this->load->database();
-			
-			$sqlFile = read_file('./_install/comet-schema.sql');
-			$queryCommands = explode(';', $sqlFile);
+			$queryCommands = array();
+			if(file_exists('./_install/comet-schema.sql'))
+			{
+				$sqlFile = read_file('./_install/comet-schema.sql');
+				$queryCommands = explode(';', $sqlFile);
+			}
+			else $this->session->set_flashdata('errors', 'Missing .sql install file!');
 
+			// Open MySQL Connection
+			$link = @mysql_connect($hostname, $username, $password);
+			@mysql_select_db($database, $link);
+
+			// Execute .sql file queries
 			foreach ($queryCommands as $query)
 			{
-				$this->db->simple_query($query);
+				@mysql_query($query);
 			}
 
-			// Add default user
-			$this->ion_auth->register($ausername, $apassword, $amail, '', array(1));
-			$this->ion_auth->activate('1');
+			$userQuery = "INSERT INTO users (username, password, email, created_on, last_login, active) VALUES ('$ausername', '$hashPass', '$amail', '$time', '$time', '1')";
+			$userGroupQuery = "INSERT INTO users_groups (user_id, group_id) VALUES (1, 1)";
+
+			// Finish MySQL queries
+			@mysql_query($userQuery);
+			@mysql_query($userGroupQuery);
+			mysql_close($link);
 
 			// Show final page
+			$stepLink = 'finish';
 			$this->template
+				->set('stepLink', $stepLink)
 				->build('step4');
 		}
 		else

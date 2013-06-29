@@ -1,30 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 3.5.7
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jun 29, 2013 at 11:48 AM
--- Server version: 5.5.24-log
--- PHP Version: 5.3.13
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `cms`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `banners`
---
 
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,12 +15,6 @@ CREATE TABLE IF NOT EXISTS `banners` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `comments`
---
-
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `poster_id` int(11) NOT NULL,
@@ -57,22 +26,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `countries`
---
-
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
   `code` char(2) DEFAULT NULL,
   `name` varchar(80) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=251 ;
-
---
--- Dumping data for table `countries`
---
 
 INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 (1, 'af', 'Afghanistan'),
@@ -326,12 +285,6 @@ INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 (249, 'zm', 'Zambia'),
 (250, 'zw', 'Zimbabwe');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `events`
---
-
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
@@ -342,12 +295,6 @@ CREATE TABLE IF NOT EXISTS `events` (
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forum_forums`
---
 
 CREATE TABLE IF NOT EXISTS `forum_forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -362,24 +309,12 @@ CREATE TABLE IF NOT EXISTS `forum_forums` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `forum_moderators`
---
-
 CREATE TABLE IF NOT EXISTS `forum_moderators` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `forum` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forum_replies`
---
 
 CREATE TABLE IF NOT EXISTS `forum_replies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -389,12 +324,6 @@ CREATE TABLE IF NOT EXISTS `forum_replies` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `forum_topics`
---
 
 CREATE TABLE IF NOT EXISTS `forum_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -410,12 +339,6 @@ CREATE TABLE IF NOT EXISTS `forum_topics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `galleries`
---
-
 CREATE TABLE IF NOT EXISTS `galleries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -424,12 +347,6 @@ CREATE TABLE IF NOT EXISTS `galleries` (
   `access` enum('public','private','clan') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `galleries_files`
---
 
 CREATE TABLE IF NOT EXISTS `galleries_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -440,12 +357,6 @@ CREATE TABLE IF NOT EXISTS `galleries_files` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `games`
---
-
 CREATE TABLE IF NOT EXISTS `games` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
@@ -454,10 +365,6 @@ CREATE TABLE IF NOT EXISTS `games` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `shortcode` (`shortcode`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
-
---
--- Dumping data for table `games`
---
 
 INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 (1, 'Battlefield 2142', '2142', '2142.gif'),
@@ -495,12 +402,6 @@ INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 (37, 'Left 4 Dead 2', 'l4d2', 'l4d2.gif'),
 (38, 'Quake 3', 'q3', 'q3.gif');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `groups`
---
-
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
@@ -509,20 +410,10 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data for table `groups`
---
-
 INSERT INTO `groups` (`id`, `name`, `description`, `permissionID`) VALUES
 (1, 'admin', 'Administrator', 0),
 (2, 'members', 'General User', 0),
 (3, 'clan', 'Clan members', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `labels`
---
 
 CREATE TABLE IF NOT EXISTS `labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -532,12 +423,6 @@ CREATE TABLE IF NOT EXISTS `labels` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `login_attempts`
---
-
 CREATE TABLE IF NOT EXISTS `login_attempts` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varbinary(16) NOT NULL,
@@ -545,12 +430,6 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `matches`
---
 
 CREATE TABLE IF NOT EXISTS `matches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -568,12 +447,6 @@ CREATE TABLE IF NOT EXISTS `matches` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `matches_files`
---
-
 CREATE TABLE IF NOT EXISTS `matches_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `match_id` int(11) NOT NULL,
@@ -582,12 +455,6 @@ CREATE TABLE IF NOT EXISTS `matches_files` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `matches_scores`
---
-
 CREATE TABLE IF NOT EXISTS `matches_scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `match` int(11) NOT NULL,
@@ -595,12 +462,6 @@ CREATE TABLE IF NOT EXISTS `matches_scores` (
   `team` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -613,12 +474,6 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `modules`
---
-
 CREATE TABLE IF NOT EXISTS `modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -629,12 +484,6 @@ CREATE TABLE IF NOT EXISTS `modules` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `opponents`
---
-
 CREATE TABLE IF NOT EXISTS `opponents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -643,10 +492,6 @@ CREATE TABLE IF NOT EXISTS `opponents` (
   `logo` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
-
---
--- Dumping data for table `opponents`
---
 
 INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 (1, 'Invictus Gaming', 'Invictus Gaming is the result of Wanda Enterprise director Wang Sicong acquiring Catastrophic Cruel Memory. The team was founded in 2011 and has DotA, Starcraft 2, and LoL teams.', 10, '1.jpg'),
@@ -670,12 +515,6 @@ INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 (19, 'Virtuos.pro', 'Virtus.pro is a very old Russian e-sports organization, mostly famous for their team in Counter-Strike 1.6 and their now disbanded, once world dominating DotA team. ', 10, '19.png'),
 (20, 'Absolute Legends', 'Absolute Legends is a multigaming team which acquired eSahara on March 22, 2012. They have a very successful League of Legends team as well as one of the top Dota 2 teams. ', 10, '20.png');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pages`
---
-
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -689,12 +528,6 @@ CREATE TABLE IF NOT EXISTS `pages` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `posts`
---
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -714,12 +547,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
   KEY `label` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `settings`
---
-
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `clanname` varchar(50) NOT NULL,
@@ -738,18 +565,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `settings`
---
-
 INSERT INTO `settings` (`id`, `clanname`, `clantag`, `sitename`, `adminmail`, `comments`, `commentsdelay`, `closed`, `closedmsg`, `analytics`, `theme`, `layout`, `homemodule`, `date`) VALUES
 (1, 'Team Comet', 'TC', 'Clan Comet Alpha', 'admin@local.host', 1, 3, 0, 'Site is down for maintenance', '', 'barebones', 'default', 'posts', '2013-06-08 15:15:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `site_views`
---
 
 CREATE TABLE IF NOT EXISTS `site_views` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -758,12 +575,6 @@ CREATE TABLE IF NOT EXISTS `site_views` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teams`
---
 
 CREATE TABLE IF NOT EXISTS `teams` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -776,12 +587,6 @@ CREATE TABLE IF NOT EXISTS `teams` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `teams_members`
---
-
 CREATE TABLE IF NOT EXISTS `teams_members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `team_id` int(11) NOT NULL,
@@ -789,12 +594,6 @@ CREATE TABLE IF NOT EXISTS `teams_members` (
   `position` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -819,21 +618,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `about` mediumtext,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users_groups`
---
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `users_groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

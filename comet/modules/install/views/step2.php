@@ -1,15 +1,21 @@
 <article class="step step-2">
 	<h3>Server requirements</h3>
 
-	<h4>Checking compatiblity</h4>
-	<ul>
+	<p>
+		Comet CMS requires at least PHP version 5.3, a MySQL database layer and a GD Library for manipulation of images. Please note that CMS will function without GD library but advanced features like image resizing wont be possible.
+	</p>
+
+	<ul class="no-list">
 		<li><?php echo $data->phpVersion; ?> PHP v5.3</li>
 		<li><?php echo $data->sqlInstalled; ?> MySQL Database</li>
 		<li><?php echo $data->gdInstalled; ?> GD Library</li>
 	</ul>
 
-	<h4>Checking folder access</h4>
-	<ul>
+	<p>
+		Some folders require to be writable by CMS. These include uploads folder and all it's subfolders and a config folder so this installer can create custom database.php file.
+	</p>
+
+	<ul class="no-list">
 		<?php foreach ($data->dirs as $dir => $status): ?>
 		<li>
 			<?php echo $status == 'pass' ? '<i class="icon-ok-circle pass"></i>' : '<i class="icon-remove-circle fail"></i>'; ?> 
@@ -23,7 +29,3 @@
 	</div>
 
 </article>
-
-<section class="action-bar">
-	<a href="<?php echo base_url('install/step3') ?>" class="pure-button install-button">Next</a>
-</section>
