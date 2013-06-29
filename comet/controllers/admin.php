@@ -17,6 +17,12 @@ class Admin extends Backend_Controller {
         $upcomingMatches = $this->matches_m->get_upcoming_matches(date('Y-m-d'));
         $upcomingEvents = $this->events_m->get_date_events(date('Y-m-d'));
 
+        $installFolder = false;
+        if(file_exists('./_install/'))
+        {
+            $installFolder = true;
+        }
+
         $this->template
             ->set('title', 'Dashboard')
             ->set('matches', $upcomingMatches)
@@ -32,6 +38,8 @@ class Admin extends Backend_Controller {
             ->set('postsstats', $this->comet_m->generate_stats('forum_replies'))
             ->set('topicsstats', $this->comet_m->generate_stats('forum_topics'))
             ->set('userstats', $this->comet_m->generate_stats('users'))
+
+            ->set('installer', $installFolder)
 
             ->build('admin/dashboard');
     }

@@ -2,6 +2,12 @@
 <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/js/jquery.sparkline.min.js"></script>
 
+<?php if($installer): ?>
+	<div class="alert alert-error">
+		Install folder exists and it presents a security risk, please delete "_install/" folder in root of website!
+	</div>
+<?php endif; ?>
+
 <div class="row-fluid">
 	<div class="span4 cms-box">
 		<header class="box-title">
