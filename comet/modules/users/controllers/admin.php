@@ -68,7 +68,7 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('username', 'Username', 'required|trim|htmlspecialchars|min_length[4]|max_length[16]|is_unique[users.username]|strtolower|xss_clean');
+		$this->form_validation->set_rules('username', 'Username', 'required|trim|htmlspecialchars|min_length[4]|max_length[16]|strtolower|xss_clean');
 		
 		if (isset($_POST) && !empty($_POST))
 		{

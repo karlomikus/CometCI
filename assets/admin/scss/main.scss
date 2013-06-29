@@ -813,6 +813,10 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 	box-shadow: none;
 }
 
+.modal-body {
+	overflow: hidden;
+}
+
 .modal-footer {
 	box-shadow: none;
 	border: none;
