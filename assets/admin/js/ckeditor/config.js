@@ -17,13 +17,13 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'about' }
 	];
 
-	config.format_tags = 'p;h1;h2;h3;pre';
+	config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
 
 	config.enterMode = CKEDITOR.ENTER_BR;
-    config.shiftEnterMode = CKEDITOR.ENTER_P;
+	config.shiftEnterMode = CKEDITOR.ENTER_P;
 
 	config.height = 350;
-	config.width = '65%';
+	config.width = '75%';
 
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
