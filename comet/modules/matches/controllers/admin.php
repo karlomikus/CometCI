@@ -45,8 +45,8 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('time', 'Time', 'required|htmlspecialchars|trim|xss_clean');
 
 		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|htmlspecialchars|trim|xss_clean');
-		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|xss_clean');
-		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'xss_clean');
+		$this->form_validation->set_rules('teamscore', 'Team scores', 'xss_clean');
 		$this->form_validation->set_rules('opplayers', 'Opponent player list', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
@@ -152,8 +152,8 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('time', 'Time', 'required|htmlspecialchars|trim|xss_clean');
 
 		$this->form_validation->set_rules('matchlink', 'Match link', 'prep_url|htmlspecialchars|trim|xss_clean');
-		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'trim|htmlspecialchars|numeric|xss_clean');
-		$this->form_validation->set_rules('teamscore', 'Team scores', 'trim|htmlspecialchars|numeric|xss_clean');
+		$this->form_validation->set_rules('opponentscore', 'Opponent scores', 'xss_clean');
+		$this->form_validation->set_rules('teamscore', 'Team scores', 'xss_clean');
 		$this->form_validation->set_rules('opplayers', 'Opponent player list', 'trim|htmlspecialchars|xss_clean');
 
 		if ($this->form_validation->run() == TRUE)
@@ -182,13 +182,14 @@ class Admin extends Backend_Controller {
 			// Update scores
 			$opponent_scores = $this->input->post('opponentscore', TRUE);
 			$team_scores = $this->input->post('teamscore', TRUE);
+			print_r($team_scores);
 			$limit = count($team_scores);
 			$score_array = array();
 			for($i = 0; $i < $limit; $i++) {
 				$score_array[$i] = array(
 					'match' => $id,
-					'opponent' => $opponent_scores[$i],
-					'team' => $team_scores[$i]
+					'opponent' => intval($opponent_scores[$i]),
+					'team' => intval($team_scores[$i])
 				);
 			}
 			$this->matches_m->update_scores($id, $score_array);
