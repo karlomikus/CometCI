@@ -8,6 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($galleries)): ?>
 		<?php foreach ($galleries as $gallery): ?>
 		<tr>
 			<td><a href="<?php echo site_url('admin/gallery/images/'.$gallery->id); ?>"><?php echo $gallery->name; ?></a></td>
@@ -22,5 +23,11 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="3" class="text-center">There are no galleries to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>

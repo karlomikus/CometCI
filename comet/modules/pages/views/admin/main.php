@@ -8,6 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($pages)): ?>
 		<?php foreach ($pages as $page): ?>
 		<tr>
 			<td><a href="<?php echo base_url(); ?>page/<?php echo $page->slug; ?>" target="_blank"><?php echo $page->name; ?></a></td>
@@ -22,5 +23,11 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="3" class="text-center">There are no pages to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>

@@ -9,6 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($posts)): ?>
 		<?php foreach ($posts as $post): ?>
 		<tr>
 			<td><?php echo $post->title; ?> <?php echo $post->state == 0 ? '<span class="label label-info">Draft</span>' : ''; ?></td>
@@ -24,6 +25,12 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="4" class="text-center">There are no posts to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>
 

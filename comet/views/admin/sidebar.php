@@ -43,6 +43,7 @@
 			<ul id="settings-tab" class="tab-pane fade in">
 				<li class="sidebar-title">Settings</li>
 				<li><a href="<?php echo site_url('admin/settings'); ?>">Site settings</a></li>
+				<li><a href="<?php echo site_url('admin/navigation'); ?>">Site navigation</a></li>
 				<li><a href="<?php echo site_url('admin/modules'); ?>">Modules</a></li>
 			</ul>
 		</section>

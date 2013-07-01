@@ -15,6 +15,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($events)): ?>
 		<?php foreach ($events as $event): ?>
 		<tr>
 			<td><?php echo $event->name; ?></td>
@@ -29,5 +30,11 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="3" class="text-center">There are no events to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>
