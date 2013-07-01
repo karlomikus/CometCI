@@ -217,7 +217,7 @@ function handleImageFile(evt) {
 }
 
 // Confirm delete -----------------------------------
-	$(".tbl-custom .confirm-delete").click(function(e) {
+	$(".confirm-delete").click(function(e) {
 		e.preventDefault(); // Prevent going to url after user clicks the link
 		var deleteLink = $(this).attr("href"); // Get link
 

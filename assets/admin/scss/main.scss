@@ -646,6 +646,52 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 	background: none;
 }
 
+/* Navigation module */
+.nav-module {
+	list-style: none;
+	margin: 0;
+	li {
+		padding: 15px;
+		background: #fff;
+		overflow: hidden;
+		margin-bottom: 10px;
+		.nav-name {
+			float: left;
+			span {
+				color: #ccc;
+				font-size: 16px;
+			}
+			h5 {
+				display: inline-block;
+				font-size: 20px;
+				font-weight: normal;
+				margin: 0;
+				padding: 0;
+			}
+			a {
+				color: #c1c5cc;
+				&:hover {
+					color: #f5696c;
+				}
+			}
+		}
+		.nav-link {
+			float: right;
+		}
+		.nav-add {
+			h5 {
+				a {
+					color: #b7b7b7;
+					&:hover {
+						color: #22c7b6;
+					}
+				}
+				border-bottom: 1px dashed #b7b7b7;
+			}
+		}
+	}
+}
+
 /* Buttons */
 .btn-cms-orange {
 	background: #f5696c;
