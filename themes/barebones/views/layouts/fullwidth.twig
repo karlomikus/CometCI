@@ -10,13 +10,7 @@
 			<nav class="pure-menu pure-menu-open pure-menu-horizontal">
 				<a href="{{base_url('/')}}" class="pure-menu-heading">{{clanname}}</a>
 
-				<ul>
-					<li><a href="{{base_url('posts')}}">Posts</a></li>
-					<li><a href="{{base_url('matches')}}">Matches</a></li>
-					<li><a href="{{base_url('roster')}}">Roster</a></li>
-					<li><a href="{{base_url('forums')}}">Forums</a></li>
-					<li><a href="{{base_url('gallery')}}">Gallery</a></li>
-				</ul>
+				{{ widget('navigation') }}
 			</nav>
 		</header>
 
