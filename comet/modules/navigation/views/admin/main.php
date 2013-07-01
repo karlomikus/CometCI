@@ -2,7 +2,7 @@
 	<?php foreach ($links as $navlink): ?>
 	<li>
 		<div class="nav-name">
-			<span><?php echo $navlink->sort; ?></span>
+			<span><?php echo empty($navlink->sort) ? '0' : $navlink->sort; ?></span>
 			<h5><?php echo $navlink->name; ?></h5>
 			<a href="<?php echo current_url().'/delete/'.$navlink->id;?>" class="confirm-delete"><i class="icon-remove-sign"></i></a>
 		</div>

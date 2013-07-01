@@ -35,18 +35,32 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$navLink = $this->input->post('navigation');
+			$slug = makePageSlug($this->input->post('slug'));
+
 			$data = array(
 				'name' => $this->input->post('name'),
 				'description' => html_purify($this->input->post('description'), 'description'),
-				'slug' => makePageSlug($this->input->post('slug')),
+				'slug' => $slug,
 				'content' => html_purify($this->input->post('content'), 'wysiwyg'),
-				'navigation' => $this->input->post('navigation'),
+				'navigation' => $navLink,
 				'layout' => $this->input->post('layout'),
 				'date' => date('Y-m-d H:i'),
 				'access' => $this->input->post('access')
 			);
 
 			$this->pages_m->insert($data);
+
+			// Create navigation link
+			$this->load->model('navigation/navigation_m');
+			$dataNav = array(
+				'name' => $navLink,
+				'link' => $slug,
+				'type' => 'uri'
+			);
+
+			$this->navigation_m->insert($dataNav);
+
 			redirect('admin/pages');
 		}
 		else
@@ -74,18 +88,35 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$navLink = $this->input->post('navigation');
+			$oldSlug = $this->pages_m->get($id)->slug;
+			$slug = makePageSlug($this->input->post('slug'));
+
 			$data = array(
 				'name' => $this->input->post('name'),
 				'description' => html_purify($this->input->post('description'), 'description'),
-				'slug' => makePageSlug($this->input->post('slug')),
+				'slug' => $slug,
 				'content' => html_purify($this->input->post('content'), 'wysiwyg'),
-				'navigation' => $this->input->post('navigation'),
+				'navigation' => $navLink,
 				'layout' => $this->input->post('layout'),
 				'date' => date('Y-m-d H:i'),
 				'access' => $this->input->post('access')
 			);
 
 			$this->pages_m->update($id, $data);
+
+			// Edit navigation link
+			$this->load->model('navigation/navigation_m');
+			
+			$this->navigation_m->delete_by(array('link' => $oldSlug));
+			$dataNav = array(
+				'name' => $navLink,
+				'link' => $slug,
+				'type' => 'uri'
+			);
+
+			$this->navigation_m->insert($dataNav);
+
 			redirect('admin/pages');
 		}
 		else
