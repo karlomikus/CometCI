@@ -1,13 +1,16 @@
-Current version: 0.1
+Clan Comet v0.3a
+================
 
 Clan Comet is a content management system aimed at esport teams who need powerfule website solution. It's made on Codeigniter PHP framework, and comes with a ton of features!
 
-Installing:
+Installing
+----------
 1. Upload all the files on server.
 2. Visit: www.yoursite.com/install
 3. Follow the steps
 
-Codeigniter plugins:
+Dependecies
+-----------
 * twiggy parser
 * hmvc
 * ion auth
@@ -15,7 +18,6 @@ Codeigniter plugins:
 * html purifier
 * php markdown
 
-HTML / CSS / JS:
 * Morris.js
 * CKEditor
 * MarkItUp
@@ -28,15 +30,16 @@ HTML / CSS / JS:
 * jQuery Cookie
 * SlimBox 2
 
-Licenses located in Legal/
+Changelog
+----------
+### v0.3a
+- First public release
 
-[ Probably forgot something here... ]
-
-Changelog:
-v0.1
+### v0.1
 - Initial release
 
-Bugs / TODO:
+TODO / Bugs
+-----------
 - User permissions not quite yet done
 - Optimize visits table
 - Separate unique site visits and regular site visits
