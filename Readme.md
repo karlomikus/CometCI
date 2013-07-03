@@ -35,7 +35,14 @@ Dependecies
 
 Changelog
 ----------
-### v0.3a
+### v0.3.1a, TBA
+- Added admin notes
+- Added footer
+- Added site navigation module and widget
+- Added missing folders
+- Updated installer
+
+### v0.3a, 2013-06-30
 - First public release
 
 ### v0.1

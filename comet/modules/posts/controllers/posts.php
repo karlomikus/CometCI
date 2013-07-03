@@ -13,6 +13,9 @@ class Posts extends Frontend_Controller {
 	{
 		$this->load->library('pagination');
 		$this->load->model('posts_m');
+		$this->load->helper('posts');
+
+		$this->parser->checkFunctions();
 
 		$count = $this->posts_m->count_by('state', '1');
 		$this->posts_m->order_by('id', 'desc');
