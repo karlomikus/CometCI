@@ -1,7 +1,7 @@
 Clan Comet v0.3a
 ================
 
-Clan Comet is a content management system aimed at esport teams who need powerfule website solution. It's made on Codeigniter PHP framework, and comes with a ton of features!
+Clan Comet is a content management system aimed at esport teams who need powerfull website solution. It's made on Codeigniter PHP framework, and comes with a ton of features!
 
 Installing
 ----------
@@ -11,24 +11,27 @@ Installing
 
 Dependecies
 -----------
-* twiggy parser
-* hmvc
-* ion auth
-* template
-* html purifier
-* php markdown
+### Codeigniter:
+* [Twig parser](https://github.com/zjvren/CI-Twig-Parser)
+* [HMVC](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc/)
+* [Ion Auth](http://benedmunds.com/ion_auth/)
+* [Template](http://getsparks.org/packages/template/show)
+* [HTML Purifier](http://htmlpurifier.org/)
+* [CI Markdown](https://github.com/jonlabelle/ci-markdown)
 
-* Morris.js
-* CKEditor
-* MarkItUp
-* Pick Date
-* Twitter Bootstrap
-* Font Awesome Icons
-* Select 2
-* Bootbox
-* iCheck
-* jQuery Cookie
-* SlimBox 2
+### HTML / Javascript
+* [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
+* [Pure.css](http://purecss.io/)
+* [Morris.js](http://www.oesmith.co.uk/morris.js/index.html)
+* [CKEditor](http://ckeditor.com/)
+* [MarkItUp](http://markitup.jaysalvat.com/home/)
+* [pickdate.js](http://amsul.ca/pickadate.js/)
+* [Font Awesome Icons](http://fortawesome.github.io/Font-Awesome/)
+* [Select 2](http://ivaynberg.github.io/select2/)
+* [Bootbox](http://bootboxjs.com/)
+* [iCheck](http://damirfoy.com/iCheck/)
+* [jQuery Cookie](https://github.com/carhartl/jquery-cookie)
+* [SlimBox 2](http://www.digitalia.be/software/slimbox2/)
 
 Changelog
 ----------
