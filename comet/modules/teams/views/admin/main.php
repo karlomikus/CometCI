@@ -14,6 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($teams)): ?>
 		<?php foreach ($teams as $team): ?>
 		<?php 
 			if(isset($team->logo)) $logo = $team->logo;
@@ -31,6 +32,12 @@
                 </ul>
 			</td>
 		</tr>
-	<?php endforeach;?>
+		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="3" class="text-center">There are no teams to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>

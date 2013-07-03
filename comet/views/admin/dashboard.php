@@ -120,15 +120,17 @@
 		</div>
 	</div>
 	<div class="span4 cms-box admin-notes">
-		<p>
-			Hey, this widget is not finished yet!
-			<br />
-			<small>added by: CMSAnnoucer &dash; <a href="#">remove</a></small>
-		</p>
+		<?php foreach ($notes as $note): ?>
+			<p id="<?php echo $note->id; ?>">
+				<?php echo $note->content; ?>
+				<br />
+				<small>added by: <?php echo get_username($note->author); ?> &dash; <a href="#">remove</a></small>
+			</p>
+		<?php endforeach; ?>
 		<br>
-		<?php echo form_open(uri_string(), array('class' => 'cms-form')); ?>
+		<?php echo form_open(uri_string(), array('class' => 'cms-form', 'id' => 'note-form')); ?>
 			<textarea placeholder="Write a note..." name="notecontent" class="input-block-level"></textarea>
-			<button type="submit" class="btn btn-cms-orange">post</button>
+			<button id="addNote" type="submit" class="btn btn-cms-orange">post</button> <div class="ajax-load-white"><img src="<?php echo base_url() ?>assets/admin/img/loadingwhite.gif" alt="Loading..." /></div>
 		<?php echo form_close(); ?>
 	</div>
 	<div class="span4 cms-box rss-news-feed">

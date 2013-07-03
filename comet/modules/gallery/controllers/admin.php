@@ -195,6 +195,13 @@ class Admin extends Backend_Controller {
 		redirect('admin/gallery/images/'.$id);
 	}
 
+	public function delete($id = 0)
+	{
+		// TODO: Delete gallery images
+		$this->gallery_m->delete($id);
+		redirect('admin/gallery');
+	}
+
 	private function multiple(array $_files, $top = TRUE)
 	{
 	    $files = array();

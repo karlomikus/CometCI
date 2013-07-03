@@ -11,11 +11,16 @@ class Admin extends Backend_Controller {
         $this->load->helper('form');
         $this->load->model('matches/matches_m');
         $this->load->model('events/events_m');
-        $this->load->helper('matches');
         $this->load->model('comet_m');
+        $this->load->model('notes/notes_m');
+        $this->load->helper('matches');
 
         $upcomingMatches = $this->matches_m->get_upcoming_matches(date('Y-m-d'));
         $upcomingEvents = $this->events_m->get_date_events(date('Y-m-d'));
+
+        $this->notes_m->order_by('date', 'desc');
+        $this->notes_m->limit(5);
+        $notes = $this->notes_m->get_all();
 
         $installFolder = false;
         if(file_exists('./_install/'))
@@ -40,14 +45,11 @@ class Admin extends Backend_Controller {
             ->set('userstats', $this->comet_m->generate_stats('users'))
 
             ->set('installer', $installFolder)
+            ->set('notes', $notes)
 
             ->build('admin/dashboard');
     }
 
-    /**
-     * Custom admin login page
-     * @return void
-     */
     public function login()
     {
         $this->load->library('form_validation');
@@ -76,7 +78,6 @@ class Admin extends Backend_Controller {
                 ->set_layout(null)
                 ->build('admin/login');
         }
-
     }
 
     public function logout()

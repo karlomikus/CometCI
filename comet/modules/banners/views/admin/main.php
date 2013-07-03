@@ -14,6 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($banners)): ?>
 		<?php foreach ($banners as $banner): ?>
 		<tr>
 			<td><?php echo ellipsize($banner->name, 20); ?></td>
@@ -27,5 +28,11 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="2" class="text-center">There are no banners to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>

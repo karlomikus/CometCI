@@ -14,6 +14,7 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($labels)): ?>
 		<?php foreach ($labels as $label): ?>
 		<tr>
 			<td><?php echo ellipsize($label->name, 20); ?></td>
@@ -27,5 +28,11 @@
 			</td>
 		</tr>
 		<?php endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="2" class="text-center">There are no labels to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>

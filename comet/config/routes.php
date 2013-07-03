@@ -41,10 +41,10 @@
 $route['default_controller'] = 'posts';
 $route['404_override'] = '';
 
-$route['admin/help/([a-zA-Z0-9_-]+)']       = 'admin/help/$1';
 $route['admin/([a-zA-Z0-9_-]+)/(:any)']	    = '$1/admin/$2';
-$route['admin/(login|logout)']			    = 'admin/$1';
+$route['admin/(login|logout|insertnote)']	= 'admin/$1';
 $route['admin/([a-zA-Z0-9_-]+)']            = '$1/admin/index';
+
 $route['profile']            				= 'users/profile';
 $route['profile/(:num)']            		= 'users/profile/index/$1';
 

@@ -56,22 +56,17 @@ $(document).ready(function() {
 		escapeMarkup: function(m) { return m; }
 	});
 
-// Cancel button -----------------------------------
-	$('.goback').click(function(){
-		history.back();
-	});
-
 // Match - Scores -----------------------------------
 	var scntDiv = $('#admin-scores');
 	var i = $('#admin-scores p').size() + 1;
 
-	$('#admin-scores-add').live('click', function() { //Add
+	$('#admin-scores-add').live('click', function() {
 		var inputhtml = '<p><input placeholder="Opponent score #'+i+'" class="reset-input input-large" type="text" name="opponentscore[]" /> <input placeholder="Team score #'+i+'" class="reset-input input-large" type="text" name="teamscore[]" /> <a href="#" class="admin-scores-remove btn btn-cms-orange"><i class="icon-minus"></i></a></p>';
 		$(inputhtml).appendTo(scntDiv);
 		i++;
 		return false;
 	});
-	$('.admin-scores-remove').live('click', function() { //Remove
+	$('.admin-scores-remove').live('click', function() {
 		if( i > 2 ) {
 			$(this).parents('p').remove();
 			i--;
@@ -80,10 +75,10 @@ $(document).ready(function() {
 	});
 
 // Show ajax loader -----------------------------------
-	$(".ajax-load").ajaxStart(function () {
+	$(".ajax-load, .ajax-load-white").ajaxStart(function () {
 		$(this).show();
 	});
-	$(".ajax-load").ajaxStop(function () {
+	$(".ajax-load, .ajax-load-white").ajaxStop(function () {
 		$(this).hide();
 	});
 
@@ -130,24 +125,6 @@ $(document).ready(function() {
 		});
 	});
 
-// Layout manager -----------------------------------
-	$("#layout-list").change(function(e) {
-		var layout 	= $(this).val();
-		$.ajax({
-			url: baseUrl+'admin/layouts/fetch_layout',
-			type: 'POST',
-			data: {
-				layout: layout,
-				csrf_comet: cct
-			},
-			dataType: 'html',
-			cache: false,
-			success: function(output) {
-				$('#layout-edit').val(output);
-			}
-		});
-	});
-
 // Screenshots input -----------------------------------
 	$(".addscreenshot").click(function() {
 		$("#screenshots ul").children('li:not(:last):not(.safe)').remove();
@@ -190,31 +167,22 @@ $(document).ready(function() {
 	$("#screenshotsfile").bind("change", handleImageFile);
 	$("#file-input").bind("change", handleImageFile);
 
-/**
- * Handles html image previews. Can display
- * image, file size, file name, etc...
- * Uses new FileReader class available only
- * on modern browsers
- * 
- * @param  {object} evt Event data
- * @return {void}
- */
-function handleImageFile(evt) {
-	var files = evt.target.files;
-	for (var i = 0, f; f = files[i]; i++) {
-		if (!f.type.match('image.*')) {
-			continue;
+	function handleImageFile(evt) {
+		var files = evt.target.files;
+		for (var i = 0, f; f = files[i]; i++) {
+			if (!f.type.match('image.*')) {
+				continue;
+			}
+			var reader = new FileReader();
+			reader.onload = (function(theFile) {
+				return function(e) {
+					$(fileSender).html(escape(theFile.name).trunc(35) +" <span>"+bytesToSize(theFile.size, 0)+"</span>");
+					$('#screenshots ul').prepend('<li><a href="#"><img src="'+e.target.result+'" alt="" /></a></li>');
+				};
+			})(f);
+			reader.readAsDataURL(f);
 		}
-		var reader = new FileReader();
-		reader.onload = (function(theFile) {
-			return function(e) {
-				$(fileSender).html(escape(theFile.name).trunc(35) +" <span>"+bytesToSize(theFile.size, 0)+"</span>");
-				$('#screenshots ul').prepend('<li><a href="#"><img src="'+e.target.result+'" alt="" /></a></li>');
-			};
-		})(f);
-		reader.readAsDataURL(f);
 	}
-}
 
 // Confirm delete -----------------------------------
 	$(".confirm-delete").click(function(e) {
@@ -257,6 +225,49 @@ function handleImageFile(evt) {
 	trigger: "manual"
 	});
 
+
+// Admin ajax notes -----------------------------------
+	$('#note-form').submit(function(e){
+		e.preventDefault();
+		var values = $(this).serialize();
+
+		$("#addNote").attr("disabled", true);
+
+		$.ajax({
+			url: baseUrl + 'admin/notes/insertnote',
+			type: 'post',
+			data: values,
+			dataType: 'json',
+			success: function(data){
+				$('<p id="'+ data.id +'">' + data.content + '<br /><small>added by: '+ data.author +' &dash; <a href="#">remove</a></small></p>').prependTo('.admin-notes').hide().slideDown();
+				$('#note-form > textarea').val('');
+				$("#addNote").attr("disabled", false);
+			},
+			error: function(){
+				alert("Unable to submit note, make sure that note is not empty or try again later.");
+				$("#addNote").attr("disabled", false);
+			}
+		});
+	});
+
+	$('.admin-notes').on('click', 'a', function(e){
+		e.preventDefault();
+		var noteID = $(this).parent().parent().attr('id');
+
+		$.ajax({
+			url: baseUrl + 'admin/notes/removenote/'+noteID,
+			success: function(data){
+				var selector = '.admin-notes #'+noteID;
+				$(selector).slideUp(500, function() {
+				    $(this).remove();
+				});
+			},
+			error: function(){
+				alert("Unable to submit note, make sure that note is not empty or try again later.");
+			}
+		});
+	});
+
 // Custom checkboxes -----------------------------------
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
@@ -265,13 +276,17 @@ function handleImageFile(evt) {
 	});
 
 // Date and time picker -----------------------------------
-	$('.datepicker').pickadate({
-		format: 'yyyy-mm-dd'
-	});
-	$('.timepicker').pickatime({
-		format: 'HH:i',
-		interval: 10
-	});
+	if($.fn.pickadate) {
+		$('.datepicker').pickadate({
+			format: 'yyyy-mm-dd'
+		});
+	}
+	if($.fn.pickadate) {
+		$('.timepicker').pickatime({
+			format: 'HH:i',
+			interval: 10
+		});
+	}
 
 }); // End of jQuery document load
 

@@ -59,7 +59,8 @@ label.input-label {
 	box-shadow: 0 1px 0 #fff;
 }
 
-.ajax-load { display: none; }
+.ajax-load, .ajax-load-white { display: none; }
+.ajax-load-white { float: right; }
 
 .win-color { color: #37cb61; }
 .lose-color { color: #e42a2a; }

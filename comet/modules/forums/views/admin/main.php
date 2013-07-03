@@ -8,7 +8,6 @@
 <table class="table tbl-custom tbl-sortable">
 	<thead>
 		<tr>
-			<!-- <th width="1"></th> -->
 			<th>Name</th>
 			<th>Label</th>
 			<th>Tags</th>
@@ -16,9 +15,9 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($forums)): ?>
 		<?php $i = 1; foreach ($forums as $forum): ?>
 		<tr>
-			<!-- <td><a href=""><i class="icon-ellipsis-vertical icon-large"></i></a></td> -->
 			<td><?php echo $forum->name; ?></td>
 			<td><?php echo get_label_name($forum->label); ?></td>
 			<td><span class="label label-info">Private</span></td>
@@ -31,5 +30,11 @@
 			</td>
 		</tr>
 		<?php $i++; endforeach;?>
+		<?php else: ?>
+		<tr>
+			<td colspan="3" class="text-center">There are no forums to show. Create a new one!</td>
+			<td class="text-right"><i class="icon-arrow-up"></i></td>
+		</tr>
+		<?php endif; ?>
 	</tbody>
 </table>
