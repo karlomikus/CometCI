@@ -135,16 +135,8 @@
 	</div>
 	<div class="span4 cms-box rss-news-feed">
 		<article>
-			<h4><a href="#" target="_blank">Open beta v1.5 Released!</a></h4>
-			<p>Topcoat is CSS for clean and fast web apps, with code for both desktop and mobile devices. It includes a huge number of elements, including toggles, actions...</p>
-		</article>
-		<article>
-			<h4><a href="#" target="_blank">New release upcoming</a></h4>
-			<p>Kraken is a lightweight, mobile-first, front-end boilerplate that's style agnostic. It includes a CSS reset, responsive grid, typography...</p>
-		</article>
-		<article>
-			<h4><a href="#" target="_blank">Huge giveaway annouced</a></h4>
-			<p>The best websites out there are the ones with character. Or characters for that matter. Adding a mascot or even just some cartoon human character...</p>
+			<h4><a href="http://comet.kami-design.com/" target="_blank">Open Alpha v0.3a Released</a></h4>
+			<p>Clan Comet has finally released alpha version. It's still not recommended for production use but you can test it locally or on web server...</p>
 		</article>
 	</div>
 </div>

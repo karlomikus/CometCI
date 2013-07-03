@@ -19,6 +19,10 @@
 
 *****************************************************/
 *, a:focus { outline: none; }
+html, body {
+  height: 100%;
+}
+
 body {
 	font-size: 16px;
 	font-family: 'Merriweather Sans', sans-serif;
@@ -116,7 +120,6 @@ label.input-label {
 	position: absolute;
 	left: 0;
 	top: 65px;
-	min-height: 100%;
 	overflow: hidden;
 }
 
@@ -968,6 +971,28 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 .tooltip {
 	font-size: 14px;
 	border-radius: 0;
+}
+
+/* Sticky footer */
+#wrap {
+  min-height: 100%;
+  margin-bottom: -40px;
+}
+#wrap:after {
+  content: "";
+  display: block;
+}
+.credits, #wrap:after {
+  height: 40px; 
+}
+
+/* Credits */
+.credits {
+	font-size: 12px;
+	padding: 0 20px;
+	background: #fff;
+	margin-left: 365px;
+	line-height: 40px;
 }
 
 /* Misc. */

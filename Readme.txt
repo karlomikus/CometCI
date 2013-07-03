@@ -28,6 +28,8 @@ HTML / CSS / JS:
 * jQuery Cookie
 * SlimBox 2
 
+Licenses located in Legal/
+
 [ Probably forgot something here... ]
 
 Changelog:
