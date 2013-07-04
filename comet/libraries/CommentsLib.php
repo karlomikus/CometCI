@@ -32,12 +32,14 @@ class CommentsLib {
 	 */
 	private function add() 
 	{
-		if($this->ci->ion_auth->logged_in()) {
+		if($this->ci->ion_auth->logged_in())
+		{
 			return $this->ci->template
 				->set('data', array('module' => $this->module, 'link' => $this->module_link))
 				->load_view('comment_add.twig');
 		}
-		else {
+		else
+		{
 			return $this->ci->template
 				->load_view('comment_disabled.twig');
 		}

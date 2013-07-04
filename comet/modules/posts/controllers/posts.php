@@ -14,6 +14,7 @@ class Posts extends Frontend_Controller {
 		$this->load->library('pagination');
 		$this->load->model('posts_m');
 		$this->load->helper('posts');
+		$this->load->helper('comments');
 
 		$this->parser->checkFunctions();
 

@@ -78,6 +78,15 @@ ul.cms-pagination li.pagination-selected {
 .lose-color { }
 .draw-color { }
 
+/* Posts */
+.cms-post-body p {
+	line-height: 1.8em;
+}
+
+.cms-post-title {
+	font-size: 24px;
+}
+
 /* Alerts */
 .cms-alert {
 	background: #0e90d2;

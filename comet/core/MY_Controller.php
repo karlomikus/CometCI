@@ -11,15 +11,15 @@ class MY_Controller extends MX_Controller {
 		parent::__construct();
 
 		// Enable debugging
-		$this->output->enable_profiler(FALSE);
+		$this->output->enable_profiler(true);
 
 		// Load libraries
 		$this->load->model('settings/settings_m', 'settings');
 
 		// Set config items
-		$this->config->set_item('clanname', $this->settings->get(1)->clanname);
 		$this->setting = $this->settings->get(1);
-		$this->activeTheme = $this->settings->get_site_theme();
+		$this->config->set_item('clanname', $this->setting->clanname);
+		$this->activeTheme = $this->setting->theme;
 
 		// Set user
 		if($this->ion_auth->logged_in())

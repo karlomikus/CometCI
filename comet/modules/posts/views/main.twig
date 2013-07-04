@@ -8,7 +8,7 @@
 					<br />
 					Author: {{ get_username(post.author) }}
 					<br />
-					13 Comments
+					{{ count_comments('posts', post.id) }} Comments
 				</div>
 				<div class="pure-u-2-3">
 					<h3 style="padding-top: 0px;"><a href="{{ base_url() }}post/{{ post.slug }}">{{ post.title }}</a> <br />

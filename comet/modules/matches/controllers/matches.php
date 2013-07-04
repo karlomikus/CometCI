@@ -33,7 +33,7 @@ class Matches extends Frontend_Controller {
 		$this->pagination->initialize($config);
 
 		$this->template
-			 ->set('matches', $this->matches_m->get_all())
+			 ->set('matches', $this->matches_m->get_matches(false))
 			 ->set('pagination', $this->pagination->create_links())
 			 ->build('main.twig');
 	}

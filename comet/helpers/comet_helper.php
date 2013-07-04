@@ -117,10 +117,11 @@ function get_username($userID, $linkify = TRUE)
 	$do_links = $CI->config->item('linkify_users');
 	if(!$linkify) $do_links = FALSE;
 
+	$query = $CI->ion_auth->user($userID)->row();
 	$username = NULL;
-	if(isset($CI->ion_auth->user($userID)->row()->username))
+	if(isset($query->username))
 	{
-		$data = $CI->ion_auth->user($userID)->row()->username;
+		$data = $query->username;
 
 		if($do_links) $username = '<a href="'.base_url().'profile/'.$userID.'">'.$data.'</a>';
 		else $username = $data;
