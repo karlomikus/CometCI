@@ -1,6 +1,3 @@
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -482,6 +479,51 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `enabled` int(1) NOT NULL DEFAULT '1',
   `layout` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+INSERT INTO `modules` (`id`, `name`, `description`, `link`, `enabled`, `layout`) VALUES
+(1, 'Banners', 'TODO', 'banners', 1, NULL),
+(2, 'Calendar', 'TODO', 'calendar', 1, NULL),
+(3, 'Comments', 'TODO', 'comments', 1, NULL),
+(4, 'Countries', 'TODO', 'countries', 1, NULL),
+(5, 'Events', 'TODO', 'events', 1, NULL),
+(6, 'Forums', 'TODO', 'forums', 1, NULL),
+(7, 'Gallery', 'TODO', 'gallery', 1, NULL),
+(8, 'Games', 'TODO', 'games', 1, NULL),
+(9, 'Groups', 'TODO', 'groups', 1, NULL),
+(10, 'Install', 'TODO', 'install', 1, NULL),
+(11, 'Labels', 'TODO', 'labels', 1, NULL),
+(12, 'Layouts', 'TODO', 'layouts', 1, NULL),
+(13, 'Matches', 'TODO', 'matches', 1, NULL),
+(14, 'Matchstats', 'TODO', 'matchstats', 1, NULL),
+(15, 'Messages', 'TODO', 'messages', 1, NULL),
+(16, 'Modules', 'TODO', 'modules', 1, NULL),
+(17, 'Opponents', 'TODO', 'opponents', 1, NULL),
+(18, 'Pages', 'TODO', 'pages', 1, NULL),
+(19, 'Permissions', 'TODO', 'permissions', 1, NULL),
+(20, 'Posts', 'TODO', 'posts', 1, NULL),
+(21, 'Roster', 'TODO', 'roster', 1, NULL),
+(22, 'Settings', 'TODO', 'settings', 0, NULL),
+(23, 'Teams', 'TODO', 'teams', 1, NULL),
+(24, 'Users', 'TODO', 'users', 1, NULL),
+(25, 'Navigation', 'TODO', 'navigation', 1, NULL),
+(26, 'Notes', 'TODO', 'notes', 1, NULL);
+
+CREATE TABLE IF NOT EXISTS `navigation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `type` enum('uri','url') NOT NULL,
+  `sort` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `notes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `author` int(11) NOT NULL,
+  `content` mediumtext NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `opponents` (
@@ -618,7 +660,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `about` mediumtext,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `users_groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
