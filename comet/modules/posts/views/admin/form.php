@@ -23,6 +23,14 @@
 		</li>
 	</ul>
 
+	<div class="cms-upload">
+		<?php if(isset($data) && !empty($data['image'])): ?>
+		<img src="<?php echo base_url(); ?>uploads/posts/<?php echo $data['image']; ?>" alt="" />
+		<hr />
+		<?php endif; ?>
+		<p>Choose post image</p> <a class="btn btn-cms-orange show-file-input" href="#file-input"><i class="icon-cloud-upload"></i></a>
+	</div>
+
 	<textarea placeholder="Teaser text" name="teaser" style="width: 40%;" rows="4"><?php echo isset($data) ? $data['teaser'] : set_value("teaser"); ?></textarea>
 
 	<textarea placeholder="Content" class="ckeditor" name="body" style="width: 40%;" rows="5"><?php echo isset($data) ? $data['body'] : set_value("body", "Content"); ?></textarea>
@@ -40,5 +48,6 @@
 
 	<button type="submit" class="btn btn-large btn-cms-orange">Save post</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
+	<input type="file" class="hidden" id="file-input" name="userfile" />
 
 <?php echo form_close(); ?>

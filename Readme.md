@@ -35,7 +35,15 @@ Dependecies
 
 Changelog
 ----------
-### v0.3.1a, TBA
+### v0.4.1, TBA
+- When adding new site navigation link sort field is auto incremented
+- Bugfix: Lowercased all country icons for case sensitive enviroment settings
+- Admin sidebar links now have title attribute
+- Changed database collation to ut8_unicode_ci
+- Bugfix: Date error while editing events
+- Added post-specific images when adding new post
+
+### v0.4, 2013-07-06
 - Added admin notes
 - Added footer
 - Added site navigation module and widget
@@ -58,3 +66,4 @@ TODO / Bugs
 - Create unified module search
 - Create admincenter footer
 - Create module tips and help
+- Image deletion
