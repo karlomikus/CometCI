@@ -129,6 +129,9 @@ class Admin extends Backend_Controller {
 				unlink($this->folder_path.$fileImage);
 				$fileImage = $file_data['file_name'];
 			}
+
+			$startDate = $this->input->post('startdate').' '.$this->input->post('starttime');
+			$endDate = $this->input->post('enddate').' '.$this->input->post('endtime');
 			
 			$data = array(
 				'name' => $this->input->post('name'),
