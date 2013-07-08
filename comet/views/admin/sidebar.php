@@ -1,11 +1,11 @@
 <aside class="sidebar-group">
 	<section class="sidebar-icon">
 		<ul>
-			<li><a href="#dashboard-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-dashboard.png" alt="Dashboard" /></a></li>
-			<li><a href="#content-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-content.png" alt="Content" /></a></li>
-			<li><a href="#clan-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-clan.png" alt="Clan" /></a></li>
-			<li><a href="#users-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-users.png" alt="Users" /></a></li>
-			<li><a href="#settings-tab" data-toggle="tab"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-settings.png" alt="Settings" /></a></li>
+			<li><a href="#dashboard-tab" data-toggle="tab" title="Dashboard"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-dashboard.png" alt="Dashboard" /></a></li>
+			<li><a href="#content-tab" data-toggle="tab" title="Site content"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-content.png" alt="Content" /></a></li>
+			<li><a href="#clan-tab" data-toggle="tab" title="Clan management"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-clan.png" alt="Clan" /></a></li>
+			<li><a href="#users-tab" data-toggle="tab" title="User management"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-users.png" alt="Users" /></a></li>
+			<li><a href="#settings-tab" data-toggle="tab" title="Site settings"><img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-settings.png" alt="Settings" /></a></li>
 			<li class="last"></li>
 		</ul>
 	</section>
