@@ -24,7 +24,7 @@
 
 	<br />
 
-	<input placeholder="Sort" class="input-small" type="text" name="sort" value="<?php echo isset($data) ? $data['sort'] : set_value("sort"); ?>" />
+	<input placeholder="Sort" class="input-small" type="text" name="sort" value="<?php echo $sortindex + 1 ?>" />
 
 	<br />
 

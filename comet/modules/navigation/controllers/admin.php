@@ -79,6 +79,7 @@ class Admin extends Backend_Controller {
 
 			$this->template
 				->set('title', 'Add navigation link')
+				->set('sortindex', $this->navigation_m->get_last_sort_index())
 				->set('pages', $pages)
 				->set('modules', $modules)
 				->build('admin/form');
