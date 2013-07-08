@@ -22,13 +22,13 @@ class MY_Controller extends MX_Controller {
 		$this->activeTheme = $this->setting->theme;
 
 		// Set user
+		$this->user = new stdClass();
 		if($this->ion_auth->logged_in())
 		{
 			$this->user = $this->ion_auth->user()->row();
 		}
 		else
 		{
-			$this->user = NULL;
 			$this->user->user_id = NULL;
 		}
 

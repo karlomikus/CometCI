@@ -1,34 +1,34 @@
 CREATE TABLE IF NOT EXISTS `banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
-  `url` varchar(255) NOT NULL,
-  `image` text,
-  `code` text,
-  `description` text,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` mediumtext COLLATE utf8_unicode_ci,
+  `code` mediumtext COLLATE utf8_unicode_ci,
+  `description` mediumtext COLLATE utf8_unicode_ci,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `poster_id` int(11) NOT NULL,
-  `content` text NOT NULL,
-  `module` varchar(50) NOT NULL,
-  `module_link` varchar(50) NOT NULL COMMENT 'example: ID of show posts',
+  `content` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `module_link` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'example: ID of show posts',
   `parent_id` int(11) DEFAULT NULL COMMENT 'for multilevel comments',
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(5) NOT NULL AUTO_INCREMENT,
-  `code` char(2) DEFAULT NULL,
-  `name` varchar(80) NOT NULL DEFAULT '',
+  `code` char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=251 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=251 ;
 
 INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 (1, 'af', 'Afghanistan'),
@@ -284,84 +284,84 @@ INSERT INTO `countries` (`id`, `code`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `startdate` datetime NOT NULL,
   `enddate` datetime NOT NULL,
-  `image` varchar(50) DEFAULT NULL,
-  `link` varchar(255) DEFAULT NULL,
-  `description` text NOT NULL,
+  `image` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `forum_forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` datetime NOT NULL,
   `private` int(11) NOT NULL DEFAULT '0',
   `clan` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) DEFAULT NULL,
-  `slug` varchar(35) DEFAULT NULL,
+  `slug` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `forum_moderators` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `forum` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `forum_replies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `topic` int(11) NOT NULL,
   `poster` int(11) NOT NULL,
-  `content` text NOT NULL,
+  `content` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `forum_topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `forum` int(11) NOT NULL,
   `author` int(11) NOT NULL,
-  `title` varchar(150) NOT NULL,
+  `title` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `sticky` int(1) DEFAULT NULL,
-  `content` text NOT NULL,
+  `content` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `views` int(11) DEFAULT '0',
   `locked` int(11) NOT NULL DEFAULT '0',
   `last_modified` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `galleries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `description` text,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci,
   `date` datetime NOT NULL,
-  `access` enum('public','private','clan') NOT NULL,
+  `access` enum('public','private','clan') COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `galleries_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gallery` int(11) NOT NULL,
-  `file` varchar(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` text NOT NULL,
+  `file` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `games` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(40) NOT NULL,
-  `shortcode` varchar(4) NOT NULL,
-  `icon` varchar(10) NOT NULL,
+  `name` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `shortcode` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `shortcode` (`shortcode`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=39 ;
 
 INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 (1, 'Battlefield 2142', '2142', '2142.gif'),
@@ -401,11 +401,11 @@ INSERT INTO `games` (`id`, `name`, `shortcode`, `icon`) VALUES
 
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `permissionID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 INSERT INTO `groups` (`id`, `name`, `description`, `permissionID`) VALUES
 (1, 'admin', 'Administrator', 0),
@@ -414,19 +414,19 @@ INSERT INTO `groups` (`id`, `name`, `description`, `permissionID`) VALUES
 
 CREATE TABLE IF NOT EXISTS `labels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `banner` varchar(30) DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `banner` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 CREATE TABLE IF NOT EXISTS `login_attempts` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varbinary(16) NOT NULL,
-  `login` varchar(100) NOT NULL,
+  `login` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `time` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `matches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -434,23 +434,23 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `opponent` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `game` int(11) NOT NULL,
-  `report` text NOT NULL,
+  `report` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(2) NOT NULL,
-  `opponent-players` text,
-  `team-players` text NOT NULL,
-  `matchlink` varchar(100) NOT NULL,
+  `opponent-players` mediumtext COLLATE utf8_unicode_ci,
+  `team-players` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `matchlink` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `type` tinyint(1) DEFAULT NULL,
   `event` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `matches_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `match_id` int(11) NOT NULL,
-  `file` varchar(30) NOT NULL,
-  `type` varchar(50) NOT NULL,
+  `file` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `matches_scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -458,28 +458,28 @@ CREATE TABLE IF NOT EXISTS `matches_scores` (
   `opponent` int(11) NOT NULL,
   `team` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from` int(11) NOT NULL,
   `to` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `content` mediumtext NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `link` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `enabled` int(1) NOT NULL DEFAULT '1',
-  `layout` varchar(255) DEFAULT NULL,
+  `layout` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
 
 INSERT INTO `modules` (`id`, `name`, `description`, `link`, `enabled`, `layout`) VALUES
 (1, 'Banners', 'TODO', 'banners', 1, NULL),
@@ -511,29 +511,29 @@ INSERT INTO `modules` (`id`, `name`, `description`, `link`, `enabled`, `layout`)
 
 CREATE TABLE IF NOT EXISTS `navigation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `type` enum('uri','url') NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` enum('uri','url') COLLATE utf8_unicode_ci NOT NULL,
   `sort` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` int(11) NOT NULL,
-  `content` mediumtext NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `opponents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `info` text NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `info` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `gameID` int(11) NOT NULL,
-  `logo` varchar(30) DEFAULT NULL,
+  `logo` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 (1, 'Invictus Gaming', 'Invictus Gaming is the result of Wanda Enterprise director Wang Sicong acquiring Catastrophic Cruel Memory. The team was founded in 2011 and has DotA, Starcraft 2, and LoL teams.', 10, '1.jpg'),
@@ -559,53 +559,53 @@ INSERT INTO `opponents` (`id`, `name`, `info`, `gameID`, `logo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `layout` varchar(255) DEFAULT NULL,
-  `navigation` varchar(100) DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `content` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `layout` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `navigation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` datetime NOT NULL,
-  `slug` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `access` enum('public','clan','registered') NOT NULL DEFAULT 'public',
+  `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `access` enum('public','clan','registered') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'public',
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL,
-  `body` text NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `body` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
-  `teaser` text,
+  `teaser` mediumtext COLLATE utf8_unicode_ci,
   `author` int(11) NOT NULL,
   `label` int(11) DEFAULT NULL,
   `featured` tinyint(1) NOT NULL DEFAULT '0',
   `clan` tinyint(1) NOT NULL DEFAULT '0',
   `state` tinyint(1) NOT NULL DEFAULT '1',
   `views` int(11) NOT NULL DEFAULT '0',
-  `slug` varchar(35) DEFAULT NULL,
+  `slug` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `label` (`label`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clanname` varchar(50) NOT NULL,
-  `clantag` varchar(10) NOT NULL,
-  `sitename` varchar(50) NOT NULL,
-  `adminmail` varchar(200) NOT NULL,
+  `clanname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `clantag` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `sitename` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `adminmail` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `comments` int(11) NOT NULL DEFAULT '1',
   `commentsdelay` int(11) DEFAULT NULL,
   `closed` int(11) NOT NULL DEFAULT '0',
-  `closedmsg` text,
-  `analytics` text,
-  `theme` varchar(50) NOT NULL,
-  `layout` varchar(100) DEFAULT NULL,
-  `homemodule` varchar(50) NOT NULL,
+  `closedmsg` mediumtext COLLATE utf8_unicode_ci,
+  `analytics` mediumtext COLLATE utf8_unicode_ci,
+  `theme` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `layout` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `homemodule` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 INSERT INTO `settings` (`id`, `clanname`, `clantag`, `sitename`, `adminmail`, `comments`, `commentsdelay`, `closed`, `closedmsg`, `analytics`, `theme`, `layout`, `homemodule`, `date`) VALUES
 (1, 'Team Comet', 'TC', 'Clan Comet Alpha', 'admin@local.host', 1, 3, 0, 'Site is down for maintenance', '', 'barebones', 'default', 'posts', '2013-06-08 15:15:59');
@@ -616,55 +616,55 @@ CREATE TABLE IF NOT EXISTS `site_views` (
   `user` int(11) DEFAULT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `teams` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `description` text NOT NULL,
-  `games` varchar(50) DEFAULT NULL,
-  `banner` varchar(20) DEFAULT NULL,
-  `logo` varchar(20) DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `games` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `banner` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `countryID` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `teams_members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `team_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `position` varchar(30) DEFAULT NULL,
+  `position` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varbinary(16) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(80) NOT NULL,
-  `salt` varchar(40) DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
-  `activation_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_code` varchar(40) DEFAULT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `salt` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `activation_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `forgotten_password_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `forgotten_password_time` int(11) unsigned DEFAULT NULL,
-  `remember_code` varchar(40) DEFAULT NULL,
+  `remember_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_on` int(11) unsigned NOT NULL,
   `last_login` int(11) unsigned DEFAULT NULL,
   `active` tinyint(1) unsigned DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
-  `gender` enum('male','female') DEFAULT NULL,
+  `gender` enum('male','female') COLLATE utf8_unicode_ci DEFAULT NULL,
   `country` int(11) DEFAULT NULL,
-  `avatar` varchar(15) DEFAULT NULL,
-  `about` mediumtext,
+  `avatar` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `about` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `users_groups` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
