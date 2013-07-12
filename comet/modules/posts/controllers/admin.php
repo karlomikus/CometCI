@@ -50,11 +50,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
-		$this->form_validation->set_rules('body', 'Content', 'required|min_length[5]');
-		$this->form_validation->set_rules('label', 'Label', 'required');
-
-		if ($this->form_validation->run() == TRUE)
+		if ($this->form_validation->run('posts') == TRUE)
 		{
 			$next_id = $this->posts_m->get_next_id();
 			$title = $this->input->post('title');
@@ -116,11 +112,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('upload');
 
-		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|xss_clean');
-		$this->form_validation->set_rules('body', 'Content', 'required|min_length[5]');
-		$this->form_validation->set_rules('label', 'Label', 'required');
-
-		if ($this->form_validation->run() == TRUE)
+		if ($this->form_validation->run('posts') == TRUE)
 		{
 			if (!empty($_FILES['userfile']['name']))
 			{

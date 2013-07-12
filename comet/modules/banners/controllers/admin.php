@@ -29,10 +29,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[5]|max_length[20]|htmlspecialchars|xss_clean');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|htmlspecialchars|prep_url|xss_clean');
-
-		if ($this->form_validation->run() == TRUE)
+		if ($this->form_validation->run('banners') == TRUE)
 		{
 			$next_id = $this->banners_m->get_next_id();
 
@@ -86,10 +83,7 @@ class Admin extends Backend_Controller {
 		$this->load->library('upload');
 		$this->load->helper('htmlpurifier');
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[5]|max_length[20]|htmlspecialchars|xss_clean');
-		$this->form_validation->set_rules('url', 'Banner URL', 'trim|required|htmlspecialchars|prep_url|xss_clean');
-
-		if ($this->form_validation->run() == TRUE)
+		if ($this->form_validation->run('banners') == TRUE)
 		{
 			if (!empty($_FILES['image']['name']))
 			{
