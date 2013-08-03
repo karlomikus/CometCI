@@ -8,8 +8,8 @@
 <table class="table tbl-custom">
 	<thead>
 		<tr>
-			<th>Name</th>
-			<th>Description</th>
+			<th>Image</th>
+			<th>Title</th>
 			<th class="action-add"><a href="<?php echo current_url().'/create';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>
 	</thead>
@@ -30,7 +30,7 @@
 		<?php endforeach;?>
 		<?php else: ?>
 		<tr>
-			<td colspan="2" class="text-center">There are no labels to show. Create a new one!</td>
+			<td colspan="2" class="text-center">There are no slides to show. Create a new one!</td>
 			<td class="text-right"><i class="icon-arrow-up"></i></td>
 		</tr>
 		<?php endif; ?>

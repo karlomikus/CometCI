@@ -64,6 +64,5 @@ TODO / Bugs
 - Admin error messages
 - Finish missing paginations and sortings
 - Create unified module search
-- Create admincenter footer
 - Create module tips and help
 - Image deletion

@@ -31,6 +31,7 @@ class Admin extends Backend_Controller {
 		$this->pagination->initialize($config);
 		$this->opponents_m->limit($this->perPage, $page);
 
+		$linkData = new stdClass();
 		$linkData->page = $page;
 		$linkData->sortOrderLink = ($sortOrder == 'asc') ? 'desc' : 'asc';
 		$linkData->currentOrder = $sortBy;

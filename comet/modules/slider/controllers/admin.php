@@ -8,17 +8,16 @@ class Admin extends Backend_Controller {
 	{
 		parent::__construct();
 
-		$this->load->model('labels_m');
+		$this->load->model('slider_m');
 	}
 
 	public function index()
 	{
 		$this->load->helper('text');
-		$this->labels_m->order_by('name', 'asc');
 
 		$this->template
-			->set('title', 'Labels')
-			->set('labels', $this->labels_m->get_all())
+			->set('title', 'Slider')
+			->set('slides', $this->slider_m->get_all())
 			->build('admin/main');
 	}
 
@@ -67,7 +66,7 @@ class Admin extends Backend_Controller {
 		else
 		{
 			$this->template
-				->set('title', 'Create label')
+				->set('title', 'Create new slide')
 				->build('admin/form');
 		}
 	}

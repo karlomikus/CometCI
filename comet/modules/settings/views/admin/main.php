@@ -1,10 +1,11 @@
 <?php echo validation_errors(); ?>
 
-<ul class="nav nav-tabs">
-	<li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-cogs"></i> Global settings</a></li>
-	<li><a href="#tab2" data-toggle="tab"><i class="icon-gamepad"></i> Clan settings</a></li>
-	<li><a href="#tab3" data-toggle="tab"><i class="icon-user"></i> User settings</a></li>
-	<li><a href="#tab4" data-toggle="tab"><i class="icon-tasks"></i> Backup</a></li>
+<ul class="nav nav-tabs nav-tabs-cms">
+	<li class="active"><a href="#tab1" data-toggle="tab">Global settings</a></li>
+	<li><a href="#tab2" data-toggle="tab">Clan settings</a></li>
+	<li><a href="#tab3" data-toggle="tab">User settings</a></li>
+	<li><a href="#tab4" data-toggle="tab">Backup</a></li>
+	<li class="pull-right">Last modified: <?php echo cms_date($data->date); ?> - <?php echo cms_time($data->date); ?></li>
 </ul>
 
 <?php echo form_open_multipart(uri_string(), array('class' => 'cms-form')); ?>
@@ -105,5 +106,3 @@
 </div>
 
 <?php echo form_close(); ?>
-
-Last modified: <?php echo $data->date; ?>

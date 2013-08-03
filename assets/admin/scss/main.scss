@@ -54,8 +54,9 @@ input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, 
 
 label.input-label {
 	font-size: 16px;
-	color: #f5696c;
-	font-weight: lighter;
+	color: #4e5867;
+	font-family: "Sintony";
+	font-weight: bold;
 }
 
 .js_select, .js_select_game, .js_select_country, .js_select_no_search {
@@ -993,6 +994,36 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 	background: #fff;
 	margin-left: 365px;
 	line-height: 40px;
+}
+
+/* Tabs */
+.nav-tabs-cms {
+	border: 0;
+	& > li {
+		margin-bottom: 0;
+	}
+}
+
+.nav-tabs-cms > .active > a, .nav-tabs-cms > .active > a:hover, .nav-tabs-cms > .active > a:focus {
+	border: 0;
+	background: #4e5867;
+	color: #fff;
+	box-shadow: inset 0 -3px 0 #424b58;
+}
+
+.nav-tabs > li > a {
+	padding: 13px 18px;
+	border: 0;
+	background: rgba(0,0,0,0.05);
+	color: #4e5867;
+	&:hover, &:focus, &:active {
+		border: 0 !important;
+		background: rgba(0,0,0,0.08);
+	}
+}
+
+.cms-form .tab-pane {
+	border: 0;
 }
 
 /* Misc. */

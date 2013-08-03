@@ -8,8 +8,10 @@ class Admin extends Backend_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('sitename', 'Site name', 'required|min_length[3]');
-		$this->form_validation->set_rules('clanname', 'Clan name', 'required|min_length[3]');
+		$this->form_validation->set_rules('sitename', 'Site name', 'required|min_length[3]|trim|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('clanname', 'Clan name', 'required|min_length[3]|trim|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('clantag', 'Clan tag', 'trim|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('adminmail', 'Admin email', 'trim|htmlspecialchars|valid_email|xss_clean');
 
 		if($this->form_validation->run())
 		{
@@ -19,6 +21,7 @@ class Admin extends Backend_Controller {
 				'clantag' => $this->input->post('clantag'),
 				'adminmail' => $this->input->post('adminmail'),
 				'comments' => $this->input->post('comments'),
+				'closedmsg' => $this->input->post('closedmsg'),
 				'commentsdelay' => $this->input->post('commentdelay'),
 				'closed' => $this->input->post('closed'),
 				'date' => date('Y-m-d H:i:s')

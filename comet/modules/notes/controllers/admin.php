@@ -22,7 +22,7 @@ class Admin extends Backend_Controller {
 
                 $this->note->insert($data);
 
-                $data['author'] = get_username($this->user->id);
+                $data['author'] = get_username($this->user->id, false);
                 $data['id'] = $nextID;
                 echo json_encode($data);
             }

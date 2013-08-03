@@ -124,7 +124,7 @@
 			<p id="<?php echo $note->id; ?>">
 				<?php echo $note->content; ?>
 				<br />
-				<small>added by: <?php echo get_username($note->author); ?> &dash; <a href="#">remove</a></small>
+				<small>added by: <?php echo get_username($note->author, false); ?> &dash; <a href="#">remove</a></small>
 			</p>
 		<?php endforeach; ?>
 		<br>
