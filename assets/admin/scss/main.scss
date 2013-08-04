@@ -4,6 +4,12 @@
 @import "classic.date";
 @import "classic.time";
 
+@mixin noRadius {
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+}
+
 /****************************************************
  ______ __                ______                        __   
 |      |  |.---.-.-----. |      |.-----.--------.-----.|  |_ 
@@ -197,6 +203,10 @@ label.input-label {
 	margin: 0;
 	color: #fff;
 	padding: 15px 15px 20px 15px;
+}
+
+.cms-box-content {
+	padding: 5px 20px 20px 20px;
 }
 
 #event-tabs {
@@ -1031,6 +1041,30 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 .text-left { text-align: left !important; }
 .text-right { text-align: right !important; }
 .hidden { display: none; visibility: hidden; box-shadow: none !important; margin: 0 !important; }
+
+/* Progress */
+.progress {
+	@include noRadius;
+	height: 10px;
+	.bar {
+		box-shadow: none;
+	}
+	.bar-success {
+		background: #37cb61;
+	}
+	.bar-warning {
+		background: #ffa200;
+	}
+	.bar-danger {
+		background: #e42a2a;
+	}
+}
+
+.progress-label {
+	span {
+		color: #ccc;
+	}
+}
 
 /* iCheck plugin Square skin */
 .icheckbox_square-blue,

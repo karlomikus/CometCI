@@ -117,7 +117,7 @@ class Matches_m extends MY_Model {
 	 * @param  string $type Win, lose or draw rate
 	 * @return int
 	 */
-	public function calculate_scores_rate($type = 'win')
+	public function calculate_scores_rate()
 	{
 		$this->db->select('match');
 		$this->db->select('sum(opponent) as score1', FALSE);
@@ -128,16 +128,21 @@ class Matches_m extends MY_Model {
 		$rateWin = 0;
 		$rateLose = 0;
 		$rateDraw = 0;
+
 		foreach($query as $match)
 		{
-			if($match->score1 > $match->score2) $rateWin += 1;
-			else if($match->score1 < $match->score2) $rateLose += 1;
-			else $rateDraw += 1;
+			if($match->score1 < $match->score2) $rateWin++;
+			else if($match->score1 > $match->score2) $rateLose++;
+			else if($match->score1 == $match->score2) $rateDraw++;
+			else { }
 		}
 
-		if($type == 'win') return $rateWin;
-		else if ($type == 'lose') return $rateLose;
-		else return $rateDraw;
+		$data = new stdClass();
+		$data->win = $rateWin;
+		$data->lose = $rateLose;
+		$data->draw = $rateDraw;
+
+		return $data;
 	}
 
 	/**

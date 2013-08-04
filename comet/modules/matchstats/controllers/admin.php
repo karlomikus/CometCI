@@ -11,10 +11,13 @@ class Admin extends Backend_Controller {
 
 	public function index()
 	{
+		$stats = $this->matches->calculate_scores_rate();
+
 		$data = new stdClass();
-		$data->totalWins = $this->matches->calculate_scores_rate('win');
-		$data->totalLoses = $this->matches->calculate_scores_rate('lose');
-		$data->totalDraws = $this->matches->calculate_scores_rate('draw');
+		$data->totalWins = $stats->win;
+		$data->totalLoses = $stats->lose;
+		$data->totalDraws = $stats->draw;
+		$data->totalMatches = $stats->win + $stats->lose + $stats->draw;
 
 		$this->template
 			->set('title', 'Match statistics')
