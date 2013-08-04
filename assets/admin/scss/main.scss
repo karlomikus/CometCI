@@ -209,6 +209,10 @@ label.input-label {
 	padding: 5px 20px 20px 20px;
 }
 
+.cms-box-content .stats-box:last-child {
+	margin-right: 0;
+}
+
 #event-tabs {
 	overflow: hidden;
 	list-style: none;
@@ -1050,10 +1054,10 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 		box-shadow: none;
 	}
 	.bar-success {
-		background: #37cb61;
+		background: #22c774;
 	}
 	.bar-warning {
-		background: #ffa200;
+		background: #ffb94b;
 	}
 	.bar-danger {
 		background: #e42a2a;
@@ -1062,8 +1066,30 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 
 .progress-label {
 	span {
-		color: #ccc;
+		color: #b9b9b9;
 	}
+}
+
+/* Stats, stats, stats */
+.stats-box {
+	h2 {
+		color: #22c7b6;
+		font-family: "Sintony", sans-serif;
+		line-height: 28px;
+		margin-top: 0;
+		i {
+			font-size: 20px;
+		}
+	}
+	small {
+		color: #b9b9b9;
+	}
+	line-height: 4px;
+	padding: 10px 20px 10px 0;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	float: left;
+	border-right: 1px solid #e4e4e4;
 }
 
 /* iCheck plugin Square skin */
