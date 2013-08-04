@@ -135,3 +135,72 @@
     <button type="submit" class="btn btn-large btn-cms-orange">Save match</button>
 	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
 <?php echo form_close(); ?>
+
+<script type="text/javascript">
+$(document).ready(function() {
+// Match - Scores -----------------------------------
+	var scntDiv = $('#admin-scores');
+	var i = $('#admin-scores p').size() + 1;
+
+	$('#admin-scores-add').live('click', function() {
+		var inputhtml = '<p><input placeholder="Opponent score #'+i+'" class="reset-input input-large" type="text" name="opponentscore[]" /> <input placeholder="Team score #'+i+'" class="reset-input input-large" type="text" name="teamscore[]" /> <a href="#" class="admin-scores-remove btn btn-cms-orange"><i class="icon-minus"></i></a></p>';
+		$(inputhtml).appendTo(scntDiv);
+		i++;
+		return false;
+	});
+	$('.admin-scores-remove').live('click', function() {
+		if( i > 2 ) {
+			$(this).parents('p').remove();
+			i--;
+		}
+		return false;
+	});
+
+// Match populate team input -----------------------------------
+	var team_id;
+	var cct = $("input[name=csrf_comet]").val(); // Get CSRF token
+	$(".teamdropdown").on("change", function (e){ 
+		team_id = $(".teamdropdown").select2("data").id; 
+		$.ajax({
+			url: baseUrl+'admin/matches/fetch_team_members',
+			type: 'POST',
+			data: {
+				id: team_id,
+				csrf_comet: cct
+			},
+			dataType: 'json',
+			cache: false,
+			success: function(output) {
+				$('#teamplayers').select2({
+					data: output,
+					multiple: true
+				});
+			}
+		});
+	});	
+
+// Screenshots input -----------------------------------
+	$(".addscreenshot").click(function() {
+		$("#screenshots ul").children('li:not(:last):not(.safe)').remove();
+		$("#screenshotsfile").click();
+	});
+
+	var deleteText = "delete ";
+	$(".safe img").toggle(function()
+	{
+		$(this).css("border", "2px solid #D64644");
+		$(this).parent().find('input:hidden').val(function(i,val)
+		{ 
+		    return 'delete ' + val;
+		});
+	}, function()
+	{
+		$(this).css("border", "2px solid transparent");
+		$(this).parent().find('input:hidden').val(function(i,val)
+		{ 
+		    if(val.indexOf(deleteText) != -1) return val.replace(deleteText, '');
+			else return val;
+		});
+	});
+});
+</script>

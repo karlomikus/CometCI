@@ -142,6 +142,50 @@
 </div>
 
 <script>
+$(document).ready(function() {
+// Admin ajax notes -----------------------------------
+	$('#note-form').submit(function(e){
+		e.preventDefault();
+		var values = $(this).serialize();
+
+		$("#addNote").attr("disabled", true);
+
+		$.ajax({
+			url: baseUrl + 'admin/notes/insertnote',
+			type: 'post',
+			data: values,
+			dataType: 'json',
+			success: function(data){
+				$('<p id="'+ data.id +'">' + data.content + '<br /><small>added by: '+ data.author +' &dash; <a href="#">remove</a></small></p>').prependTo('.admin-notes').hide().slideDown();
+				$('#note-form > textarea').val('');
+				$("#addNote").attr("disabled", false);
+			},
+			error: function(){
+				alert("Unable to submit note, make sure that note is not empty or try again later.");
+				$("#addNote").attr("disabled", false);
+			}
+		});
+	});
+
+	$('.admin-notes').on('click', 'a', function(e){
+		e.preventDefault();
+		var noteID = $(this).parent().parent().attr('id');
+
+		$.ajax({
+			url: baseUrl + 'admin/notes/removenote/'+noteID,
+			success: function(data){
+				var selector = '.admin-notes #'+noteID;
+				$(selector).slideUp(500, function() {
+				    $(this).remove();
+				});
+			},
+			error: function(){
+				alert("Unable to submit note, make sure that note is not empty or try again later.");
+			}
+		});
+	});
+
+// Small graphs -----------------------------------
 	$('.inlinesparkline').sparkline('html',{
 	    type: 'line',
 	    width: '100%',
@@ -157,6 +201,7 @@
 	    drawNormalOnTop: false
 	});
 
+// Visits graph -----------------------------------
 	new Morris.Line({
 		element: 'cms-page-views',
 		data: [
@@ -173,4 +218,5 @@
 		ykeys: ['value'],
 		labels: ['Visits']
 	});
+});
 </script>

@@ -56,97 +56,12 @@ $(document).ready(function() {
 		escapeMarkup: function(m) { return m; }
 	});
 
-// Match - Scores -----------------------------------
-	var scntDiv = $('#admin-scores');
-	var i = $('#admin-scores p').size() + 1;
-
-	$('#admin-scores-add').live('click', function() {
-		var inputhtml = '<p><input placeholder="Opponent score #'+i+'" class="reset-input input-large" type="text" name="opponentscore[]" /> <input placeholder="Team score #'+i+'" class="reset-input input-large" type="text" name="teamscore[]" /> <a href="#" class="admin-scores-remove btn btn-cms-orange"><i class="icon-minus"></i></a></p>';
-		$(inputhtml).appendTo(scntDiv);
-		i++;
-		return false;
-	});
-	$('.admin-scores-remove').live('click', function() {
-		if( i > 2 ) {
-			$(this).parents('p').remove();
-			i--;
-		}
-		return false;
-	});
-
 // Show ajax loader -----------------------------------
 	$(".ajax-load, .ajax-load-white").ajaxStart(function () {
 		$(this).show();
 	});
 	$(".ajax-load, .ajax-load-white").ajaxStop(function () {
 		$(this).hide();
-	});
-
-// Match populate team input -----------------------------------
-	var team_id;
-	var cct = $("input[name=csrf_comet]").val(); // Get CSRF token
-	$(".teamdropdown").on("change", function (e){ 
-		team_id = $(".teamdropdown").select2("data").id; 
-		$.ajax({
-			url: baseUrl+'admin/matches/fetch_team_members',
-			type: 'POST',
-			data: {
-				id: team_id,
-				csrf_comet: cct
-			},
-			dataType: 'json',
-			cache: false,
-			success: function(output) {
-				$('#teamplayers').select2({
-					data: output,
-					multiple: true
-				});
-			}
-		});
-	});
-
-// Calendar events -----------------------------------
-	$(".cms-calendar td a").click(function(e) {
-		e.preventDefault();
-		var date = $(this).attr("href").substr(1);
-		var hash = $.cookie('csrf_cookie_comet');
-		$.ajax({
-			url: baseUrl+'admin/calendar/fetch_event',
-			type: 'POST',
-			data: {
-				date: date,
-				csrf_comet: hash
-			},
-			dataType: 'html',
-			cache: false,
-			success: function(output) {
-				$('#event-list').html(output);
-			}
-		});
-	});
-
-// Screenshots input -----------------------------------
-	$(".addscreenshot").click(function() {
-		$("#screenshots ul").children('li:not(:last):not(.safe)').remove();
-		$("#screenshotsfile").click();
-	});
-
-	var deleteText = "delete ";
-	$(".safe img").toggle(function()
-	{
-		$(this).css("border", "2px solid #D64644");
-		$(this).parent().find('input:hidden').val(function(i,val)
-		{ 
-		    return 'delete ' + val;
-		});
-	}, function()
-	{
-		$(this).css("border", "2px solid transparent");
-		$(this).parent().find('input:hidden').val(function(i,val)
-		{ 
-		    if(val.indexOf(deleteText) != -1) return val.replace(deleteText, '');
-			else return val;
-		});
 	});
 
 // Custom file input -----------------------------------
@@ -225,49 +140,6 @@ $(document).ready(function() {
 	trigger: "manual"
 	});
 
-
-// Admin ajax notes -----------------------------------
-	$('#note-form').submit(function(e){
-		e.preventDefault();
-		var values = $(this).serialize();
-
-		$("#addNote").attr("disabled", true);
-
-		$.ajax({
-			url: baseUrl + 'admin/notes/insertnote',
-			type: 'post',
-			data: values,
-			dataType: 'json',
-			success: function(data){
-				$('<p id="'+ data.id +'">' + data.content + '<br /><small>added by: '+ data.author +' &dash; <a href="#">remove</a></small></p>').prependTo('.admin-notes').hide().slideDown();
-				$('#note-form > textarea').val('');
-				$("#addNote").attr("disabled", false);
-			},
-			error: function(){
-				alert("Unable to submit note, make sure that note is not empty or try again later.");
-				$("#addNote").attr("disabled", false);
-			}
-		});
-	});
-
-	$('.admin-notes').on('click', 'a', function(e){
-		e.preventDefault();
-		var noteID = $(this).parent().parent().attr('id');
-
-		$.ajax({
-			url: baseUrl + 'admin/notes/removenote/'+noteID,
-			success: function(data){
-				var selector = '.admin-notes #'+noteID;
-				$(selector).slideUp(500, function() {
-				    $(this).remove();
-				});
-			},
-			error: function(){
-				alert("Unable to submit note, make sure that note is not empty or try again later.");
-			}
-		});
-	});
-
 // Custom checkboxes -----------------------------------
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
@@ -290,24 +162,11 @@ $(document).ready(function() {
 
 }); // End of jQuery document load
 
-/**
- * Ellipsize a string
- * 
- * @type {string}
- */
 String.prototype.trunc = 
 function(n) {
 	return this.substr(0,n-1)+(this.length>n?'&hellip;':'');
 };
 
-/**
- * Transforms byte representation of file size into
- * human readable file size format
- * 
- * @param  {int} bytes     Size in bytes
- * @param  {int} precision Conversion precision
- * @return {string}
- */
 function bytesToSize(bytes, precision) {  
     var kilobyte = 1024;
     var megabyte = kilobyte * 1024;
