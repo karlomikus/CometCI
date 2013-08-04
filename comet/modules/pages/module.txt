@@ -1,0 +1,2 @@
+Pages
+Add customized static pages

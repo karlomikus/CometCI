@@ -16,6 +16,7 @@ class Admin extends Backend_Controller {
 
 	public function index()
 	{
+		$this->modules_m->order_by('name');
 		$this->template
 			->set('title', 'Modules')
 			->set('modules', $this->modules_m->get_all())
@@ -61,9 +62,11 @@ class Admin extends Backend_Controller {
 		{
 			if(!in_array($module, $modulesDb))
 			{
+				$meta = $this->modules_m->get_module_meta($module);
+
 				$data = array(
-					'name' => ucfirst($module),
-					'description' => 'TODO',
+					'name' => $meta->name,
+					'description' => $meta->description,
 					'link' => $module,
 					'enabled' => '1',
 					'layout' => NULL

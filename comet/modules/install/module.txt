@@ -1,0 +1,2 @@
+Comet installer
+Used to install Comet CMS base, you should probably delete this module!

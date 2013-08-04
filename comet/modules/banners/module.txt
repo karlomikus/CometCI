@@ -1,0 +1,2 @@
+Banners
+Manage site banners like advertisement and sponsors banners.

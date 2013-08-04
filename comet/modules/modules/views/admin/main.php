@@ -2,7 +2,7 @@
 	<thead>
 		<tr>
 			<th width="200">Name</th>
-			<th width="400">Description</th>
+			<th width="600">Description</th>
 			<th class="text-center">Enabled</th>
 			<th class="action-add"><a href="<?php echo current_url().'/refresh';?>"><img src="<?php echo base_url(); ?>assets/admin/img/icon-add.gif" alt="Add" /></a></th>
 		</tr>

@@ -1,0 +1,2 @@
+Clan Statistics
+Collects stats from your matches

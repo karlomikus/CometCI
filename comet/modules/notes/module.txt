@@ -1,0 +1,2 @@
+Admin Notes
+Used as a admin chat in dashboard

@@ -1,0 +1,2 @@
+Slider
+Adds content slider for your frontend

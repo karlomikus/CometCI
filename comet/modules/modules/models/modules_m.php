@@ -68,4 +68,22 @@ class Modules_m extends MY_Model {
 		$this->db->update('modules'); 
 	}
 
+	public function get_module_meta($module)
+	{
+		$file = APPPATH.$this->modules_path.$module.'/module.txt';
+		$meta = new stdClass();
+
+		$meta->name = ucfirst($module);
+		$meta->description = 'TODO';
+
+		if(file_exists($file))
+		{
+			$lines = file($file, FILE_IGNORE_NEW_LINES);
+			$meta->name = $lines[0];
+			$meta->description = $lines[1];
+		}
+		
+		return $meta;
+	}
+
 }
