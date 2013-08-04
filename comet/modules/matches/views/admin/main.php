@@ -55,3 +55,9 @@
 		<?php endif; ?>
 	</tbody>
 </table>
+<script type="text/javascript">
+	    $.pnotify({
+    title: 'Regular Notice',
+    text: 'Check me out! I\'m a notice.'
+    });
+</script>

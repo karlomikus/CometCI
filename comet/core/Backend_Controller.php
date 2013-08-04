@@ -9,6 +9,8 @@ class Backend_Controller extends MY_Controller {
 		// Set default javascript
 		$this->template->append_metadata(Assets::adminJs('main', 'js'));
 
+		$this->load->helper('form');
+
 		//Set theme for backend
 		$this->template
 			->set_partial('sidebar', 'admin/sidebar')

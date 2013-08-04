@@ -1,5 +1,6 @@
 //@prepros-append bootstrap.min.js
 //@prepros-append select2.min.js
+//@prepros-append jquery.pnotify.min.js
 //@prepros-append bootbox.min.js
 //@prepros-append jquery.icheck.min.js
 //@prepros-append jquery.cookie.js
@@ -9,6 +10,12 @@ $(document).ready(function() {
 	$(".tbl-custom tr").hover(function() {
 		$(this).find(".action-icon").toggleClass("action-icon-active");
 		$(this).find(".action-list").toggle();
+	});
+
+// Search form -----------------------------------
+	$("#cms-search").click(function(e) {
+		e.preventDefault();
+		$("#search-form form").animate({width: 'toggle'});
 	});
 
 // Tooltip -----------------------------------
