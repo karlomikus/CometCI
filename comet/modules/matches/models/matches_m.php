@@ -139,8 +139,7 @@ class Matches_m extends MY_Model {
 		{
 			if($match->score1 < $match->score2) $rateWin++;
 			else if($match->score1 > $match->score2) $rateLose++;
-			else if($match->score1 == $match->score2) $rateDraw++;
-			else { }
+			else $rateDraw++;
 		}
 
 		$data = new stdClass();

@@ -14,6 +14,7 @@ class Wi_matches extends Frontend_Controller {
 		$matches = array();
 		foreach ($query as $key => $value)
 		{
+			$matches[$key] 				= new stdClass();
 			$matches[$key]->id 			= $value->id;
 			$matches[$key]->opponent 	= $value->opponent;
 			$matches[$key]->game 		= $value->game;

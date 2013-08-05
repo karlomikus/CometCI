@@ -3,6 +3,7 @@
 class Admin extends Backend_Controller {
 
 	private $folder_path = './uploads/screenshots/';
+	private $perPage = 15;
 
 	public function __construct()
 	{
@@ -18,15 +19,37 @@ class Admin extends Backend_Controller {
 		$this->load->model('matches_m');
 	}
 
-	public function index()
+	public function index($sortBy = 'date', $sortOrder = 'desc', $page = 0)
 	{
 		$this->load->model('opponents/opponents_m');
 		$this->load->model('games/games_m');
+		$this->load->library('pagination');
+
+		$count = $this->matches_m->count_all();
+
+		if(isset($sortBy) && isset($sortOrder)) $this->matches_m->order_by($sortBy, $sortOrder);
+		else $this->matches_m->order_by('date', 'desc');
+
+		$config = $this->config->item('pagination_backend');
+		$config['base_url'] = base_url()."admin/matches/index/$sortBy/$sortOrder/";
+		$config['total_rows'] = $count;
+		$config['per_page'] = $this->perPage;
+		$config['uri_segment'] = 6;
+
+		$this->pagination->initialize($config);
+		$this->matches_m->limit($this->perPage, $page);
+
+		$linkData = new stdClass();
+		$linkData->page = $page;
+		$linkData->sortOrderLink = ($sortOrder == 'asc') ? 'desc' : 'asc';
+		$linkData->currentOrder = $sortBy;
 
 		$this->template
 			->set('title', 'Matches')
-			->set('upcoming', $this->matches_m->get_upcoming_matches())
+			//->set('upcoming', $this->matches_m->get_upcoming_matches())
 			->set('matches', $this->matches_m->get_matches(FALSE))
+			->set('linkdata', $linkData)
+			->set('pagination', $this->pagination->create_links())
 			->build('admin/main');
 	}
 

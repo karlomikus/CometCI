@@ -60,9 +60,8 @@ TODO / Bugs
 -----------
 - User permissions not quite yet done
 - Optimize visits table
-- Separate unique site visits and regular site visits
 - Admin error messages
 - Finish missing paginations and sortings
-- Create unified module search
+- Add datatables support instead of current buggy table ordering
 - Create module tips and help
 - Image deletion
