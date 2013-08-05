@@ -132,16 +132,15 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 <script>
 $(document).ready(function() {
 // Visits graph -----------------------------------
-	new Morris.Area({
+	new Morris.Bar({
 		element: 'year-graph',
 		data: <?php echo $data->generateStats; ?>,
-		lineColors: ['#22c774', '#ff8400', '#c64747'],
-		fillOpacity: 0.2,
-		smooth: true,
+		barColors: ['#22c774', '#ff8400', '#c64747'],
 		xkey: 'month',
+		stacked: true,
+		parseTime: false,
 		ykeys: ['wins', 'draws', 'loses'],
-		labels: ['Wins', 'Draws', 'Loses'],
-		behaveLikeLine: true
+		labels: ['Wins', 'Draws', 'Loses']
 	});
 });
 </script>

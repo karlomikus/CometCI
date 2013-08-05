@@ -54,7 +54,7 @@ class Comet_m extends MY_Model {
 		$formatted = "[";
 		foreach ($data as $date => $visits)
 		{
-			$formatted .= "{ month: '$date', value: $visits }, \n";
+			$formatted .= "{ day: '".date('d', strtotime($date)).".', value: $visits }, \n";
 		}
 		$formatted .= "]";
 

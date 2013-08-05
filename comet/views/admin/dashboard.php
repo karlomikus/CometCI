@@ -209,8 +209,8 @@ $(document).ready(function() {
 		pointFillColors: ['#D64644'],
 		fillOpacity: 0.4,
 		smooth: true,
-		xkey: 'month',
-		xLabelFormat: function(d) { return d.getDate(); },
+		xkey: 'day',
+		parseTime: false,
 		ykeys: ['value'],
 		labels: ['Visits']
 	});

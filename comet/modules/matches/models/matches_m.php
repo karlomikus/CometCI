@@ -377,8 +377,8 @@ class Matches_m extends MY_Model {
 		$formatted = "[";
 		$data = new stdClass();
 
-		for ($i=1; $i <= 12; $i++) { 
-			
+		for ($i=1; $i <= 12; $i++)
+		{ 
 			$this->db->select('date');
 			$this->db->select('match');
 			$this->db->select('sum(matches_scores.opponent) as score1');
@@ -402,7 +402,7 @@ class Matches_m extends MY_Model {
 				else $counterDraws++;
 			}
 
-			$formatted .= "{ month: '$year-$i', wins: $counterWins, draws: $counterDraws, loses: $counterLoses },\n";
+			$formatted .= "{ month: '".date('M', strtotime($year.'-'.$i))."', wins: $counterWins, draws: $counterDraws, loses: $counterLoses },\n";
 		}
 
 		$formatted .= "]";
