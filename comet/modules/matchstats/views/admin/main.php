@@ -134,20 +134,7 @@ $(document).ready(function() {
 // Visits graph -----------------------------------
 	new Morris.Area({
 		element: 'year-graph',
-		data: [
-			{ month: '2013-01', wins: 20, draws: 4, loses: 3 },
-			{ month: '2013-02', wins: 10, draws: 5, loses: 6 },
-			{ month: '2013-03', wins: 30, draws: 4, loses: 3 },
-			{ month: '2013-04', wins: 20, draws: 7, loses: 8 },
-			{ month: '2013-05', wins: 10, draws: 3, loses: 2 },
-			{ month: '2013-06', wins: 5, draws: 0, loses: 9 },
-			{ month: '2013-07', wins: 20, draws: 1, loses: 3 },
-			{ month: '2013-08', wins: 10, draws: 1, loses: 6 },
-			{ month: '2013-09', wins: 25, draws: 4, loses: 3 },
-			{ month: '2013-10', wins: 22, draws: 7, loses: 8 },
-			{ month: '2013-11', wins: 10, draws: 9, loses: 2 },
-			{ month: '2013-12', wins: 5, draws: 9, loses: 9 }
-		],
+		data: <?php echo $data->generateStats; ?>,
 		lineColors: ['#22c774', '#ff8400', '#c64747'],
 		fillOpacity: 0.2,
 		smooth: true,

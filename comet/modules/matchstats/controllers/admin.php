@@ -27,6 +27,8 @@ class Admin extends Backend_Controller {
 
 		$data->popularPlayers = $this->matches->get_popular_players();
 
+		$data->generateStats = $this->matches->get_year_matches_stats(2013);
+
 		$this->template
 			->set('title', 'Match statistics')
 			->set('data', $data)

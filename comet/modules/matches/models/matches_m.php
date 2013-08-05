@@ -320,6 +320,11 @@ class Matches_m extends MY_Model {
 		return $query->num_rows();
 	}
 
+	/**
+	 * Get top 5 most played games
+	 * @param  int $limit Limit the results
+	 * @return object
+	 */
 	public function get_popular_games($limit)
 	{
 		$this->db->select('game');
@@ -332,6 +337,11 @@ class Matches_m extends MY_Model {
 		return $query->result();
 	}
 
+	/**
+	 * Get top 5 most active teams
+	 * @param  int $limit Limit the results
+	 * @return object
+	 */
 	public function get_popular_teams($limit)
 	{
 		$this->db->select('team');
@@ -344,6 +354,10 @@ class Matches_m extends MY_Model {
 		return $query->result();
 	}
 
+	/**
+	 * Get top 5 most active players
+	 * @return array
+	 */
 	public function get_popular_players()
 	{
 		$query = $this->db->get('matches')->result();
@@ -356,5 +370,43 @@ class Matches_m extends MY_Model {
 		}
 
 		return array_count_values($result);
+	}
+
+	public function get_year_matches_stats($year)
+	{
+		$formatted = "[";
+		$data = new stdClass();
+
+		for ($i=1; $i <= 12; $i++) { 
+			
+			$this->db->select('date');
+			$this->db->select('match');
+			$this->db->select('sum(matches_scores.opponent) as score1');
+			$this->db->select('sum(matches_scores.team) as score2');
+			$this->db->group_by('match');
+			$this->db->from('matches_scores');
+			$this->db->join('matches', 'matches.id = matches_scores.id');
+			$this->db->where('YEAR(date)', $year);
+			$this->db->where('MONTH(date)', $i);
+			$query = $this->db->get()->result();
+
+			$counterWins = 0;
+			$counterDraws = 0;
+			$counterLoses = 0;
+
+
+			foreach ($query as $data)
+			{
+				if($data->score1 > $data->score2) $counterLoses++;
+				elseif($data->score1 < $data->score2) $counterWins++;
+				else $counterDraws++;
+			}
+
+			$formatted .= "{ month: '$year-$i', wins: $counterWins, draws: $counterDraws, loses: $counterLoses },\n";
+		}
+
+		$formatted .= "]";
+
+		return $formatted;
 	}
 }
