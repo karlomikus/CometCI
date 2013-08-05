@@ -70,9 +70,9 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 			<h4 class="header-thin">Top 5 Active Players</h4>
 		</div>
 
-		<?php arsort($data->popularPlayers); ?>
+		<?php arsort($data->popularPlayers); $i=0; ?>
 		<div class="cms-box-content">
-			<?php foreach (array_slice($data->popularPlayers, 0, 5) as $playerID => $rank): ?>
+			<?php foreach ($data->popularPlayers as $playerID => $rank): ?>
 				<div class="media">
 					<div class="pull-left">
 						<img src="<?php echo base_url(); ?>/uploads/users/<?php echo get_avatar($playerID); ?>" style="height: 50px;" />
@@ -82,7 +82,8 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 						Played in <?php echo $rank; ?> games
 					</div>
 				</div>
-			<?php endforeach; ?>
+				<?php if($i == 4) break; ?>
+			<?php $i++; endforeach; ?>
 		</div>
 	</div>
 
