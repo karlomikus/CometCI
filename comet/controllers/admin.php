@@ -18,6 +18,8 @@ class Admin extends Backend_Controller {
         $upcomingMatches = $this->matches_m->get_upcoming_matches(date('Y-m-d'));
         $upcomingEvents = $this->events_m->get_date_events(date('Y-m-d'));
 
+        $monthlyVisits = $this->comet_m->get_visits_stats(date('m'));
+
         $this->notes_m->order_by('date', 'desc');
         $this->notes_m->limit(5);
         $notes = $this->notes_m->get_all();
@@ -32,7 +34,7 @@ class Admin extends Backend_Controller {
             ->set('title', 'Dashboard')
             ->set('matches', $upcomingMatches)
             ->set('events', $upcomingEvents)
-            ->set('visits', $this->comet_m->get_visits_stats(date('m')))
+            ->set('visits', $monthlyVisits)
 
             ->set('countcomments', $this->comet_m->count_table_rows('comments'))
             ->set('countposts', $this->comet_m->count_table_rows('forum_replies'))
@@ -84,6 +86,13 @@ class Admin extends Backend_Controller {
     {
         $this->ion_auth->logout();
         redirect('admin/login');
+    }
+
+    public function update_graph($month)
+    {
+        if (!$this->input->is_ajax_request()) redirect('admin/');
+        $monthlyVisits = $this->comet_m->get_visits_stats($month);
+        return $monthlyVisits;
     }
 
 }

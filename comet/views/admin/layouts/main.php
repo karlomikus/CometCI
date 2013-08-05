@@ -10,14 +10,6 @@
 			</h1>
 			<ul>
 				<li class="first"></li>
-				<li id="search-form">
-					<?php echo form_open(); ?>
-						<input type="text" placeholder="Enter search term..." />
-					<?php echo form_close(); ?>
-					<a href="#" id="cms-search">
-						<img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-search.png" alt="View site" />
-					</a>
-				</li>
 				<li>
 					<a href="<?php echo base_url(); ?>" target="_blank">
 						<img src="<?php echo base_url(); ?>assets/admin/img/sidebar/icon-view.png" alt="View site" />

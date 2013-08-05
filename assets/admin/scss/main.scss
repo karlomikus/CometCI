@@ -624,31 +624,6 @@ input, textarea, .uneditable-input { width: 300px; }
 .no-margin-input { margin-bottom: 0 !important; }
 span.help-block { margin-bottom: 20px; font-size: 14px; }
 
-#search-form {
-	overflow: hidden;
-	form {
-		float: left;
-		display: none;
-	}
-	input {
-		width: 160px;
-		@include noRadius;
-		background: #2b2e33;
-		border-color: #232528;
-		margin: 17px 5px 0 20px;
-		color: #7d8591;
-		&:focus {
-			box-shadow: none;
-			color: #d0dae8;
-		}
-	}
-}
-
-a#cms-search {
-	float: right;
-	border-left: 0 !important;
-}
-
 /* Gallery */
 .gallery-list {
 	list-style: none;

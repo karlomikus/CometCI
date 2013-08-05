@@ -61,11 +61,11 @@
 				<h4 class="header-thin">Unique visits this month</h4>
 			</div>
 			<div class="span6 text-right">
-				<select name="month" id="stats-month">
+				<!-- <select name="month" id="stats-month">
 					<?php for($m = 1; $m <= 12; $m++): ?>
 						<option value="<?php echo $m; ?>" <?php echo (date("n") == $m) ? 'selected' : ''; ?>><?php echo date("F", mktime(0, 0, 0, $m)); ?></option>
 					<?php endfor; ?>
-				</select>
+				</select> -->
 			</div>
 		</div>
 		<div id="cms-page-views"></div>
@@ -204,11 +204,7 @@ $(document).ready(function() {
 // Visits graph -----------------------------------
 	new Morris.Line({
 		element: 'cms-page-views',
-		data: [
-		<?php foreach ($visits as $date => $total): ?>
-			{ month: '<?php echo $date; ?>', value: <?php echo $total; ?> },
-		<?php endforeach; ?>
-		],
+		data: <?php echo $visits; ?>,
 		lineColors: ['#9b9eaf'],
 		pointFillColors: ['#D64644'],
 		fillOpacity: 0.4,

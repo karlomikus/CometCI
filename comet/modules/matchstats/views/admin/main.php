@@ -43,13 +43,13 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 			</div>
 
 			<div class="stats-box">
-				<h2>WIN</h2>
-				<small>Last match result</small>
+				<h2><?php echo $data->totalMatches; ?></h2>
+				<small>Matches played</small>
 			</div>
 
 			<div class="stats-box">
-				<h2>3</h2>
-				<small>Matches per day</small>
+				<h2><?php echo $data->weekRate; ?></h2>
+				<small>Matches this week</small>
 			</div>
 		</div>
 	</div>
@@ -88,6 +88,20 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 	<div class="span4 cms-box">
 		<div class="header-white">
 			<h4 class="header-thin">Top 5 Best Games</h4>
+		</div>
+
+		<div class="cms-box-content">
+			<?php foreach ($data->popularGames as $gameRank): ?>
+				<div class="media">
+					<div class="pull-left">
+						<?php echo get_game_icon($gameRank->game, true); ?>
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading"><?php echo get_game_name($gameRank->game); ?></h5>
+						Played <?php echo $gameRank->rank; ?> times
+					</div>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 

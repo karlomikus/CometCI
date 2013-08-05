@@ -299,4 +299,36 @@ class Matches_m extends MY_Model {
 
 		return $query->result();
 	}
+
+	/**
+	 * Get number of matches played this week
+	 * @return int
+	 */
+	public function get_matches_in_week()
+	{
+		$today = getdate();
+		$weekStartDate 	= $today['mday'] - $today['wday'];
+		$weekEndDate 	= $today['mday'] - $today['wday'] + 6;
+
+		$startDate = $today['year'] .'-'.$today['mon'].'-'.$weekStartDate;
+		$endDate = $today['year'] .'-'.$today['mon'].'-'.$weekEndDate;
+
+		$this->db->where('date >= ', $startDate);
+		$this->db->where('date <=', $endDate);
+		$query = $this->db->get('matches');
+
+		return $query->num_rows();
+	}
+
+	public function get_popular_games($limit)
+	{
+		$this->db->select('game');
+		$this->db->select('COUNT(game) as rank');
+		$this->db->group_by('game');
+		$this->db->order_by('rank', 'DESC');
+		$this->db->limit($limit);
+		$query = $this->db->get('matches');
+
+		return $query->result();
+	}
 }

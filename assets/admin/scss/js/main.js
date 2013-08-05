@@ -12,12 +12,6 @@ $(document).ready(function() {
 		$(this).find(".action-list").toggle();
 	});
 
-// Search form -----------------------------------
-	$("#cms-search").click(function(e) {
-		e.preventDefault();
-		$("#search-form form").animate({width: 'toggle'});
-	});
-
 // Tooltip -----------------------------------
 	$('.js_tooltip').tooltip();
 

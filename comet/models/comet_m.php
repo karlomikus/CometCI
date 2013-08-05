@@ -7,7 +7,7 @@ class Comet_m extends MY_Model {
 	 * @param  int $month Month
 	 * @return array
 	 */
-	public function get_visits_stats($month)
+	public function get_visits_stats($month, $format = true)
 	{
 		$this->load->helper('date');
 
@@ -39,7 +39,26 @@ class Comet_m extends MY_Model {
 			$range[$formatDate] = $visit->total;
 		}
 
-		return $range;
+		if($format)
+		{
+			return $this->format_js_data($range);
+		}
+		else
+		{
+			return $range;
+		}
+	}
+
+	private function format_js_data($data)
+	{
+		$formatted = "[";
+		foreach ($data as $date => $visits)
+		{
+			$formatted .= "{ month: '$date', value: $visits }, \n";
+		}
+		$formatted .= "]";
+
+		return $formatted;
 	}
 
 	/**

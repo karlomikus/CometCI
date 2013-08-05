@@ -21,9 +21,6 @@
 		<label class="input-label">Admin Email</label>
 		<input placeholder="Admin email" class="input-xlarge" type="text" name="adminmail" value="<?php echo $data->adminmail; ?>" />
 		
-		<label class="input-label">Home page</label>
-		<input placeholder="Home module" class="input-xlarge inputip" type="text" name="homemodule" title="Module which will be your frontpage" value="<?php echo $data->homemodule; ?>" />
-		
 		<label class="input-label">Default theme and layout</label>
 		<select placeholder="Select default theme" name="theme" class="js_select input-xlarge">
 			<option></option>

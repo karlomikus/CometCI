@@ -6,7 +6,6 @@ class Admin extends Backend_Controller {
 	{
 		parent::__construct();
 		$this->load->model('matches/matches_m', 'matches');
-		$this->load->model('matchstats_m', 'stats');
 	}
 
 	public function index()
@@ -18,6 +17,10 @@ class Admin extends Backend_Controller {
 		$data->totalLoses = $stats->lose;
 		$data->totalDraws = $stats->draw;
 		$data->totalMatches = $stats->win + $stats->lose + $stats->draw;
+
+		$data->weekRate = $this->matches->get_matches_in_week();
+
+		$data->popularGames = $this->matches->get_popular_games(5);
 
 		$this->template
 			->set('title', 'Match statistics')
