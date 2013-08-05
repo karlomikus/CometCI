@@ -14,7 +14,7 @@
 		<ul id="dashboard-tab" class="tab-pane fade in">
 			<li class="sidebar-title">Dashboard</li>
 			<li><a href="<?php echo site_url('admin/'); ?>">Startpage</a></li>
-			<li><a href="<?php echo site_url('admin/matchstats'); ?>">Clan Statistics</a></li>
+			<li><a href="<?php echo site_url('admin/matchstats'); ?>">Match Statistics</a></li>
 		</ul>
 		<ul id="content-tab" class="tab-pane fade in">
 			<li class="sidebar-title">Content</li>

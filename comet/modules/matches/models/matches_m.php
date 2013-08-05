@@ -385,7 +385,7 @@ class Matches_m extends MY_Model {
 			$this->db->select('sum(matches_scores.team) as score2');
 			$this->db->group_by('match');
 			$this->db->from('matches_scores');
-			$this->db->join('matches', 'matches.id = matches_scores.id');
+			$this->db->join('matches', 'matches.id = matches_scores.match');
 			$this->db->where('YEAR(date)', $year);
 			$this->db->where('MONTH(date)', $i);
 			$query = $this->db->get()->result();

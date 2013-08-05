@@ -135,7 +135,7 @@ $(document).ready(function() {
 	new Morris.Bar({
 		element: 'year-graph',
 		data: <?php echo $data->generateStats; ?>,
-		barColors: ['#22c774', '#ff8400', '#c64747'],
+		barColors: ['#22c774', '#ffb94b', '#c64747'],
 		xkey: 'month',
 		stacked: true,
 		parseTime: false,

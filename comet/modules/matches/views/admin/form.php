@@ -19,7 +19,7 @@
 
 	<input placeholder="Date" class="span3 datepicker" type="text" name="date" value="<?php echo isset($data) ? date('Y-m-d', strtotime($data['date'])) : set_value("date"); ?>" />
 
-	<input placeholder="Time" class="span2 timepicker reset-input" type="text" name="time" value="<?php echo isset($data) ? date('H:i', strtotime($data['date'])) : set_value("date"); ?>" />
+	<input placeholder="Time" class="span2 timepicker reset-input" type="text" name="time" value="<?php echo isset($data) ? date('H:i', strtotime($data['date'])) : set_value("time"); ?>" />
 
 	<br />
 
