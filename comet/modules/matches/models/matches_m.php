@@ -82,6 +82,12 @@ class Matches_m extends MY_Model {
 		return false;
 	}
 
+	public function delete_scores($matchID) 
+	{
+		$this->db->where('match', $id);
+		return $this->db->delete('matches_scores');
+	}
+
 	/**
 	 * Gets all scores from a match
 	 * @param  int $id Match ID

@@ -261,6 +261,7 @@ class Admin extends Backend_Controller {
 	{
 		$this->matches_m->delete($id);
 		$this->matches_m->delete_files($id);
+		$this->matches_m->delete_scores($id);
 		
 		redirect('admin/matches');
 	}
