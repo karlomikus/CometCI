@@ -10,6 +10,8 @@ class Admin extends Backend_Controller {
 
 	public function index()
 	{
+		$this->load->helper('matches');
+
 		$stats = $this->matches->calculate_scores_rate();
 
 		$data = new stdClass();
@@ -21,6 +23,9 @@ class Admin extends Backend_Controller {
 		$data->weekRate = $this->matches->get_matches_in_week();
 
 		$data->popularGames = $this->matches->get_popular_games(5);
+		$data->popularTeams = $this->matches->get_popular_teams(5);
+
+		$data->popularPlayers = $this->matches->get_popular_players();
 
 		$this->template
 			->set('title', 'Match statistics')

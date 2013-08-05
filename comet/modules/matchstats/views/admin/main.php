@@ -70,18 +70,19 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 			<h4 class="header-thin">Top 5 Active Players</h4>
 		</div>
 
+		<?php arsort($data->popularPlayers); ?>
 		<div class="cms-box-content">
-
-			<div class="media">
-				<a class="pull-left" href="#">
-					<img class="media-object" src="<?php echo base_url(); ?>uploads/users/noavatar.jpg" alt="avatar" style="height: 50px;" />
-				</a>
-				<div class="media-body">
-					<h5 class="media-heading">administrator</h5>
-					Played in 15 games
+			<?php foreach (array_slice($data->popularPlayers, 0, 5) as $playerID => $rank): ?>
+				<div class="media">
+					<div class="pull-left">
+						<img src="<?php echo base_url(); ?>/uploads/users/<?php echo get_avatar($playerID); ?>" style="height: 50px;" />
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading"><?php echo get_username($playerID); ?></h5>
+						Played in <?php echo $rank; ?> games
+					</div>
 				</div>
-			</div>
-
+			<?php endforeach; ?>
 		</div>
 	</div>
 
@@ -107,7 +108,21 @@ $loseRate = ($data->totalLoses / $data->totalMatches) * 100;
 
 	<div class="span4 cms-box">
 		<div class="header-white">
-			<h4 class="header-thin">Top 5 Squads</h4>
+			<h4 class="header-thin">Top 5 Teams</h4>
+		</div>
+
+		<div class="cms-box-content">
+			<?php foreach ($data->popularTeams as $teamRank): ?>
+				<div class="media">
+					<div class="pull-left">
+						<img src="<?php echo base_url(); ?>/uploads/teams/<?php echo get_logo($teamRank->team, 'team'); ?>" style="height: 50px;" />
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading"><?php echo get_team_name($teamRank->team); ?></h5>
+						Played <?php echo $teamRank->rank; ?> times
+					</div>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 
@@ -124,11 +139,11 @@ $(document).ready(function() {
 			{ month: '2013-03', wins: 30, draws: 4, loses: 3 },
 			{ month: '2013-04', wins: 20, draws: 7, loses: 8 },
 			{ month: '2013-05', wins: 10, draws: 3, loses: 2 },
-			{ month: '2013-06', wins: 5, draws: 8, loses: 9 },
+			{ month: '2013-06', wins: 5, draws: 0, loses: 9 },
 			{ month: '2013-07', wins: 20, draws: 1, loses: 3 },
 			{ month: '2013-08', wins: 10, draws: 1, loses: 6 },
-			{ month: '2013-09', wins: 30, draws: 4, loses: 3 },
-			{ month: '2013-10', wins: 20, draws: 7, loses: 8 },
+			{ month: '2013-09', wins: 25, draws: 4, loses: 3 },
+			{ month: '2013-10', wins: 22, draws: 7, loses: 8 },
 			{ month: '2013-11', wins: 10, draws: 9, loses: 2 },
 			{ month: '2013-12', wins: 5, draws: 9, loses: 9 }
 		],

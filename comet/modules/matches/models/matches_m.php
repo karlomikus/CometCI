@@ -331,4 +331,30 @@ class Matches_m extends MY_Model {
 
 		return $query->result();
 	}
+
+	public function get_popular_teams($limit)
+	{
+		$this->db->select('team');
+		$this->db->select('COUNT(team) as rank');
+		$this->db->group_by('team');
+		$this->db->order_by('rank', 'DESC');
+		$this->db->limit($limit);
+		$query = $this->db->get('matches');
+
+		return $query->result();
+	}
+
+	public function get_popular_players()
+	{
+		$query = $this->db->get('matches')->result();
+
+		$result = array();
+		foreach ($query as $teamPlayers)
+		{
+			$playersArray = explode(',', $teamPlayers->{'team-players'});
+			$result = array_merge($result, $playersArray);
+		}
+
+		return array_count_values($result);
+	}
 }
