@@ -7,10 +7,16 @@
 
 $(document).ready(function() {
 // Table action list -----------------------------------
-	$(".tbl-custom tr").hover(function() {
-		$(this).find(".action-icon").toggleClass("action-icon-active");
-		$(this).find(".action-list").toggle();
-	});
+	$(".tbl-custom tr").hover(
+		function() {
+			$(this).find(".action-icon").addClass("action-icon-active");
+			$(this).find(".action-list").show();
+		},
+		function() {
+			$(this).find(".action-icon").removeClass("action-icon-active");
+			$(this).find(".action-list").hide();
+		}
+	);
 
 // Tooltip -----------------------------------
 	$('.js_tooltip').tooltip();
