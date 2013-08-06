@@ -5,15 +5,15 @@
 		<thead>
 			<tr>
 				<th>Module</th>
-				<th>Public rule</th>
-				<th>Admin rule</th>
+				<th><a id="check-all-public" href="#"><i class="icon-check-sign"></i></a> Public rule</th>
+				<th><a id="check-all-admin" href="#"><i class="icon-check-sign"></i></a> Admin rule</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach($modules as $module): ?>
 			<tr>
 				<td><?php echo $module->name; ?></td>
-				<td>
+				<td class="pub-boxes">
 					<ul class="check-list">
 						<li>
 							<input id="pub-<?php echo $module->name; ?>" type="checkbox" name="rules[public][]" value="<?php echo $module->id; ?>" <?php echo (isset($data[$module->id]) && $data[$module->id]['public'] == 'allow') ? 'checked' : ''; ?> />
@@ -21,7 +21,7 @@
 						</li>
 					</ul>
 				</td>
-				<td>
+				<td class="admin-boxes">
 					<ul class="check-list">
 						<li>
 							<input id="admin-<?php echo $module->name; ?>" type="checkbox" name="rules[admin][]" value="<?php echo $module->id; ?>" <?php echo (isset($data[$module->id]) && $data[$module->id]['admin'] == 'allow') ? 'checked' : ''; ?> />
@@ -33,10 +33,6 @@
 			<?php endforeach;?>
 		</tbody>
 	</table>
-
-	<p>
-		Editing access for $group group.
-	</p>
 
     <button type="submit" class="btn btn-large btn-cms-orange">Edit group access</button>
 	<a class="btn btn-large btn-cms" href="<?php echo base_url(); ?>admin/<?php echo $this->uri->segment(2); ?>">Cancel</a>

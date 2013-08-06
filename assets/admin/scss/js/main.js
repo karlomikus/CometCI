@@ -154,6 +154,17 @@ $(document).ready(function() {
 		increaseArea: '20%' // optional
 	});
 
+// Check all checkboxes -----------------------------------
+	$('#check-all-public').click(function(e) {
+		e.preventDefault();
+		$('.pub-boxes').find('input').iCheck('toggle');
+	});
+
+	$('#check-all-admin').click(function(e) {
+		e.preventDefault();
+		$('.admin-boxes').find('input').iCheck('toggle');
+	});
+
 // Date and time picker -----------------------------------
 	if($.fn.pickadate) {
 		$('.datepicker').pickadate({

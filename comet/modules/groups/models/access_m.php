@@ -8,8 +8,11 @@ class Access_m extends MY_Model {
 	{
 		if(!empty($array))
 		{
-			$publicValues = $array['public'];
-			$adminValues = $array['admin'];
+			$publicValues = array();
+			if(array_key_exists('public', $array)) $publicValues = $array['public'];
+			
+			$adminValues = array();
+			if(array_key_exists('admin', $array)) $adminValues = $array['admin'];
 
 			parent::delete_by('group_id', $groupID);
 

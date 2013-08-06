@@ -99,18 +99,21 @@ class Admin extends Backend_Controller {
 		else
 		{
 			$this->load->model('modules/modules_m');
+			$groupName = $this->groups_m->get($id)->name;
 
 			$dbData = $this->access->get_many_by('group_id', $id);
 			$dataArray = array();
+
 			foreach ($dbData as $key => $data)
 			{
 				$dataArray[$data->module_id] = array('public' => $data->public_rule, 'admin' => $data->admin_rule);
 			}
 
 			$this->template
-				->set('title', 'Edit group permissions')
+				->set('title', 'Edit '.$groupName.' permissions')
 				->set('modules', $this->modules_m->get_all())
 				->set('data', $dataArray)
+				->set('groupName', $groupName)
 				->build('admin/form_modules');
 		}
 	}
