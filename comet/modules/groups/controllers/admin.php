@@ -87,33 +87,30 @@ class Admin extends Backend_Controller {
 	{
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->model('permissions_m', 'access');
+		$this->load->model('access_m', 'access');
 
-		$this->form_validation->set_rules('module', 'Modules', 'required');
-
-		if($this->form_validation->run())
+		if(!empty($_POST))
 		{
-			$editedModules = $this->input->post('module');
+			$rules = $this->input->post('rules');
+			$this->access->insert_access_array($rules, $id);
 
-			foreach ($editedModules as $module)
-			{
-				$data = array(
-					'module' => $module,
-					'group' => $id,
-					'allow' => '1'
-				);
-
-				$this->access->insert($data);
-			}
 			redirect('admin/groups');
 		}
 		else
 		{
 			$this->load->model('modules/modules_m');
 
+			$dbData = $this->access->get_many_by('group_id', $id);
+			$dataArray = array();
+			foreach ($dbData as $key => $data)
+			{
+				$dataArray[$data->module_id] = array('public' => $data->public_rule, 'admin' => $data->admin_rule);
+			}
+
 			$this->template
 				->set('title', 'Edit group permissions')
 				->set('modules', $this->modules_m->get_all())
+				->set('data', $dataArray)
 				->build('admin/form_modules');
 		}
 	}

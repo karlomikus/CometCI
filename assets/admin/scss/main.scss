@@ -530,6 +530,15 @@ label.input-label {
 	background: rgba(0,0,0,0.08) !important;
 }
 
+.tbl-custom {
+	.check-list {
+		margin-top: 15px;
+		li {
+			margin-bottom: 0;
+		}
+	}
+}
+
 /* Table action list */
 .action-list {
 	list-style: none;
