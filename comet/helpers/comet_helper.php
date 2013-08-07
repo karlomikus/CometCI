@@ -201,6 +201,14 @@ function show_gallery_preview($galleryID = 0)
 	return $CI->gallery->get_by('gallery', $galleryID)->file;
 }
 
+function get_module_id($link)
+{
+	$CI =& get_instance();
+	$CI->load->model('modules/modules_m');
+
+	return $CI->modules_m->get_module_id_from_link($link);
+}
+
 /**
  * Format date by format defined in cms
  * @param  string $date Date string

@@ -22,6 +22,9 @@ class Frontend_Controller extends MY_Controller {
 			if($currentModule == $module->link) show_error('Module disabled!');
 		}
 
+		// Check access
+		$accessGranted = $this->ion_auth->check_access(get_module_id($currentModule));
+
 		// Load comments library
 		$this->load->library('CommentsLib');
 

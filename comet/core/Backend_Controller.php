@@ -9,6 +9,13 @@ class Backend_Controller extends MY_Controller {
 		// Set default javascript
 		$this->template->append_metadata(Assets::adminJs('main', 'js'));
 
+		// Show login page
+		$current_page = $this->uri->segment(1, '') . '/' . $this->uri->segment(2, 'index');
+		if (!$this->ion_auth->logged_in())
+		{
+			if($current_page != 'admin/login') redirect('admin/login');
+		}
+
 		//Set theme for backend
 		$this->template
 			->set_partial('sidebar', 'admin/sidebar')
@@ -16,11 +23,15 @@ class Backend_Controller extends MY_Controller {
 			->enable_parser(FALSE)
 			->set_layout('main', 'admin');
 
-		// Show login page
-		$current_page = $this->uri->segment(1, '') . '/' . $this->uri->segment(2, 'index');
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		// Check access
+		$currentModule = $this->router->fetch_module();
+		$accessGranted = $this->ion_auth->check_access(get_module_id($currentModule), 'admin');
+
+		if(!$accessGranted)
 		{
-			if($current_page != 'admin/login') redirect('admin/login');
+			// Allow access to dashboard
+			$this->session->set_flashdata('access_error', 'You don\'t have access to this module!');
+			if($current_page != 'admin/index') redirect('admin');
 		}
 	}
 }

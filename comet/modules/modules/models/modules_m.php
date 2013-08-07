@@ -86,4 +86,16 @@ class Modules_m extends MY_Model {
 		return $meta;
 	}
 
+	public function get_module_id_from_link($name)
+	{
+		$this->db->where('link', $name);
+		$this->db->from('modules');
+		$query = $this->db->get()->row();
+
+		$modID = 0;
+		if(!empty($query->id)) $modID = $query->id;
+
+		return $modID;
+	}
+
 }

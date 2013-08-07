@@ -1832,6 +1832,43 @@ class Ion_auth_model extends CI_Model
 		return TRUE;
 	}
 
+	/**
+	 * Check user group access
+	 * 
+	 * @author Karlo Mikus
+	 * @return bool
+	 */
+	public function check_access($moduleID, $siteSection = 'public')
+	{		
+		$this->db->where('module_id', $moduleID);
+		$moduleAccessData = $this->db->get('groups_access')->result();
+
+		if($siteSection == 'admin')
+		{
+			$allowedGroupsList = array(1);
+			foreach ($moduleAccessData as $access)
+			{
+				if($access->admin_rule == 'allow') $allowedGroupsList[] = $access->group_id;
+			}
+			
+			$usersGroups = $this->get_users_groups()->result();
+
+			$giveAccess = false;
+			foreach ($usersGroups as $group)
+			{
+				if(in_array($group->id, $allowedGroupsList)) $giveAccess = true;
+			}
+
+			if($giveAccess) return true;
+
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	public function set_hook($event, $name, $class, $method, $arguments)
 	{
 		$this->_ion_hooks->{$event}[$name] = new stdClass;

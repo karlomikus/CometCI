@@ -11,7 +11,7 @@ class MY_Controller extends MX_Controller {
 		parent::__construct();
 
 		// Enable debugging
-		$this->output->enable_profiler(false);
+		$this->output->enable_profiler(true);
 
 		// Load libraries
 		$this->load->model('settings/settings_m', 'settings');
@@ -23,14 +23,8 @@ class MY_Controller extends MX_Controller {
 
 		// Set user
 		$this->user = new stdClass();
-		if($this->ion_auth->logged_in())
-		{
-			$this->user = $this->ion_auth->user()->row();
-		}
-		else
-		{
-			$this->user->user_id = NULL;
-		}
+		if($this->ion_auth->logged_in()) $this->user = $this->ion_auth->user()->row();
+		else $this->user->user_id = NULL;
 
 		// Make user information available in templates
 		$this->template->set('user', $this->user);
