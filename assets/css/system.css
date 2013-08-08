@@ -1,3 +1,100 @@
+/* =================================
+   Typography
+   ================================= */
+.subtitle {
+	border-bottom: 2px solid #f1f1f1;
+	margin-bottom: 20px;
+}
+
+/* =================================
+   Comments
+   ================================= */
+.comment {
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+}
+
+.comment-actions {
+	float: right;
+	color: #d72727;
+}
+
+.comment .comment-avatar {
+	float: left;
+	width: 70px;
+	padding-bottom: 15px;
+}
+
+.comment-avatar img {
+	max-width: 70px;
+	display: block;
+	margin: auto;
+}
+
+.comment .comment-body {
+	margin-left: 85px;
+}
+
+.comment-add {
+	background: rgba(0,0,0,0.1);
+	border-top: 2px solid #3499d1;
+	padding: 15px;
+	padding-top: 7px;
+}
+
+.comment-add textarea {
+	width: 100%;
+	min-height: 100px;
+}
+
+/* =================================
+   Posts
+   ================================= */
+.post {
+	margin-bottom: 15px;
+}
+
+.post .post-media {
+	text-align: center;
+	background: rgba(0,0,0,0.2);
+}
+
+.post .post-media img {
+	display: block;
+	margin: auto;
+	max-height: 200px;
+	width: auto;
+}
+
+.post-footer {
+	color: #a1a1a1;
+}
+
+.post-body {
+	margin-bottom: 8px;
+}
+
+.post-show h3 small {
+	display: block;
+	font-size: 14px;
+}
+
+/* =================================
+   Alerts
+   ================================= */
+.alert {
+	background: #ffc;
+	color: #3e454c;
+	padding: 8px 10px;
+	margin-bottom: 15px;
+}
+
+.alert p {
+	margin: 0;
+	padding: 0;
+}
+
 /* Custom lists */
 ul.cms-list {
 	list-style: none;
@@ -40,56 +137,6 @@ ul.image-list li img {
 	display: inline-block;
 }
 
-/* =================================
-   Posts
-   ================================= */
-.post {
-	margin-bottom: 15px;
-}
-
-.post .post-media {
-	text-align: center;
-	background: rgba(0,0,0,0.2);
-}
-
-.post .post-media img {
-	display: block;
-	margin: auto;
-	max-height: 200px;
-	width: auto;
-}
-
-.post-footer {
-	color: #a1a1a1;
-}
-
-.post-body {
-	margin-bottom: 8px;
-}
-
-.post-show h3 small {
-	display: block;
-	font-size: 14px;
-}
-
-/* Alerts */
-.cms-alert {
-	background: #0e90d2;
-	color: #fff;
-	padding: 5px;
-	margin-bottom: 5px;
-}
-
-.cms-alert a {
-	color: rgba(255,255,255,0.8);
-	text-decoration: underline;
-}
-
-.cms-alert a:hover {
-	color: #fff;
-	text-decoration: none;
-}
-
 /* Upcoming match */
 .cms-upcoming-match {
 	text-align: center;
@@ -126,35 +173,6 @@ ul.image-list li img {
 
 .cms-pm small {
 	float: right;
-}
-
-/* Comments */
-.comment-content header {
-	overflow: hidden;
-	background: rgba(0,0,0,0.1);
-	padding: 5px;
-	margin-bottom: 5px;
-}
-
-.comment { margin-bottom: 20px; }
-.comment h4 { margin: 0; }
-
-.comment-content header h4 {
-	float: left;
-	width: 50%;
-}
-.comment-content header div {
-	float: right;
-	width: 30%;
-	text-align: right;
-}
-.comment-content {
-	background: #f2f2f2;
-	padding: 10px;
-}
-.comment-content p {
-	color: #555555;
-	margin-bottom: 0;
 }
 
 /* Forums */

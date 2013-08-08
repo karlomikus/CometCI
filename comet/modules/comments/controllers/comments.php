@@ -49,7 +49,7 @@ class Comments extends Frontend_Controller {
 		else 
 		{
 			$this->session->set_flashdata('comment_error', validation_errors('', ''));
-			redirect($this->agent->referrer());
+			redirect($this->agent->referrer().'#errors');
 		}
 	}
 

@@ -99,8 +99,7 @@ html {
 input[type=password],
 input[type=email],
 input[type=search],
-input[type=tel],
-textarea {
+input[type=tel] {
   font-weight: bold;
 }
 
@@ -143,15 +142,6 @@ textarea {
   height: auto;
   overflow: visible;
   left: 0;
-}
-
-/* Alert */
-.alert {
-  background-color: #ffc;
-  padding: 8px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 
 /* ==========================================================================

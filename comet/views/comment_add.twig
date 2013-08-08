@@ -1,14 +1,18 @@
-<h3>Post a comment:</h3>
+<div class="comment-add">
 
-{{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link, formClass) }}
+	<h4>Post a comment</h4>
 
-	<div style="display: none; visibility: hidden;">
-		<input type="text" name="usernamef" />
-		<input type="text" name="mailf" />
-	</div>
+	{{ form_open(base_url() ~ 'comments/add/' ~ data.module ~ '/' ~ data.link, formClass) }}
 
-	<textarea placeholder="Write a comment" name="content"></textarea>
+		<div style="display: none; visibility: hidden;">
+			<input type="text" name="usernamef" />
+			<input type="text" name="mailf" />
+		</div>
 
-	<button type="submit" class="pure-button pure-button-primary" name="save">Post comment</button>
+		<textarea placeholder="Write a comment" name="content"></textarea>
 
-{{ form_close() }}
+		<button type="submit" class="button" name="save">Post comment</button>
+
+	{{ form_close() }}
+
+</div>
