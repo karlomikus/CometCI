@@ -22,13 +22,15 @@ $config['wi_max_posts'] = 6;
 /**
  * Frontend and backend pagination template
  */
+$config['pagination_frontend']['last_link'] = FALSE;
+$config['pagination_frontend']['first_link'] = FALSE;
 $config['pagination_frontend']['next_link'] = '&raquo;';
 $config['pagination_frontend']['prev_link'] = '&laquo;';
-$config['pagination_frontend']['full_tag_open'] = '<ul class="cms-pagination">';
+$config['pagination_frontend']['full_tag_open'] = '<ul class="pagination">';
 $config['pagination_frontend']['full_tag_close'] = '</ul>';
 $config['pagination_frontend']['num_tag_open'] = '<li>';
 $config['pagination_frontend']['num_tag_close'] = '</li>';
-$config['pagination_frontend']['cur_tag_open'] = '<li class="pagination-selected">';
+$config['pagination_frontend']['cur_tag_open'] = '<li class="active">';
 $config['pagination_frontend']['cur_tag_close'] = '</li>';
 $config['pagination_frontend']['next_tag_open'] = '<li>';
 $config['pagination_frontend']['next_tag_close'] = '</li>';

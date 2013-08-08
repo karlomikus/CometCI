@@ -1,23 +1,21 @@
 {% if matches|default is not empty %}
 
-	<table class="pure-table pure-table-horizontal">
+	<table>
 	  <thead>
 		<tr>
 		  <th>Opponent</th>
 		  <th>Game</th>
 		  <th>Date</th>
 		  <th>Result</th>
-		  <th></th>
 		</tr>
 	  </thead>
 	  <tbody>
 		{% for match in matches %}
 			<tr>
-			  <td>{{ get_opponent_name(match.opponent) }}</td>
+			  <td><a href="{{ base_url() }}matches/show/{{ match.id }}">{{ get_opponent_name(match.opponent) }}</a></td>
 			  <td>{{ get_game_name(match.game) }}</td>
-			  <td>{{ match.date }}</td>
+			  <td>{{ cms_date(match.date) }}</td>
 			  <td>{{ get_match_result(match.id, 'text') }}</td>
-			  <td><a href="{{ base_url() }}matches/show/{{ match.id }}"><i class="icon-reorder"></i></a></td>
 			</tr>
 		{% endfor %}
 	  </tbody>

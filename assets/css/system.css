@@ -49,6 +49,35 @@
 }
 
 /* =================================
+   Pagination
+   ================================= */
+.pagination {
+	list-style: none;
+	padding: 0;
+	margin: 15px 0;
+	overflow: hidden;
+}
+
+.pagination li {
+	float: left;
+	min-width: 30px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+}
+
+.pagination li.active, .pagination li a:hover {
+	background: #2185c5;
+	color: #fff;
+}
+
+.pagination li a {
+	display: block;
+	min-width: 30px;
+	background: #f1f1f1;
+}
+
+/* =================================
    Posts
    ================================= */
 .post {
