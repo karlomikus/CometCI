@@ -1,0 +1,81 @@
+body {
+	background: #3e454c;
+	color: #2b3136;
+	font-family: "Open Sans", sans-serif;
+}
+
+/* =================================
+   Theme Layout
+   ================================= */
+#topbar {
+	background: #353b41;
+	border-bottom: 1px solid #4a535b;
+	color: #8b9197;
+	padding: 8px 0;
+}
+
+#content {
+	background: #fff;
+}
+
+#content-body, #content-sidebar {
+	padding: 15px;
+}
+
+#site-footer {
+	color: #91979d;
+	padding: 20px 0;
+}
+
+/* =================================
+   Main Site Header
+   ================================= */
+header h1 {
+	color: #e3ebf3;
+	margin-top: 20px;
+}
+
+.ad-banner {
+	background: #353b41;
+	color: #91979d;
+	height: 70px;
+	text-align: center;
+	line-height: 70px;
+	margin: 20px 0;
+}
+
+/* =================================
+   Main Site Navigation
+   ================================= */
+.main-nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	background: #ff7f66;
+	border-top: 1px solid #ffa585;
+}
+
+.main-nav ul li {
+	display: inline-block;
+	margin: 10px 20px;
+}
+
+.main-nav ul li a {
+	color: #fff6e5;
+	font-family: "Monda", sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.main-nav ul li a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* =================================
+   Sidebar Items
+   ================================= */
+#content-sidebar article h3 {
+	color: #3e454c;
+	border-bottom: 2px solid #7ecefd;
+}

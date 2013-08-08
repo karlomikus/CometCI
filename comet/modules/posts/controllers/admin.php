@@ -56,6 +56,7 @@ class Admin extends Backend_Controller {
 			$next_id = $this->posts_m->get_next_id();
 			$title = $this->input->post('title');
 			$slug  = makePageSlug($title);
+			$file_data = NULL;
 
 			if (!empty($_FILES['userfile']['name']))
 			{
@@ -67,15 +68,8 @@ class Admin extends Backend_Controller {
 				$config['file_name']     = $next_id;
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('userfile'))
-				{
-					$file_data = $this->upload->data();
-				}
-				else
-				{
-					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
-                	$file_data = NULL;
-				}
+				if($this->upload->do_upload('userfile')) $file_data = $this->upload->data();
+				else $this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
 			}
 
 			$data = array(

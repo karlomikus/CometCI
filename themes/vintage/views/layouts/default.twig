@@ -1,0 +1,100 @@
+{{template.partials.head}}
+
+<body>
+
+	<!--[if lt IE 8]>
+		<section class="container">
+			Did you know that your web browser is a bit old? Some of the content on this site might not work right as a result. <a href="http://whatbrowser.org">Upgrade your browser</a> for a faster, better, and safer web experience.
+		</section>
+	<![endif]-->
+
+	<div id="topbar">
+
+		<div class="container">
+			
+			<div class="clear">
+			
+				<div class="col six">Welcome to clanname homepage</div>
+
+				<div class="col six text-right">12 Users online</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<section class="container">
+
+		<header class="clear">
+			
+			<div class="col five tablet-full mobile-full">
+				<h1>{{clanname}}</h1>
+			</div>
+
+			<div class="col seven no-mobile">
+				<div class="ad-banner">Banner</div>
+			</div>
+
+		</header>
+
+		<nav class="main-nav">
+
+			{{ widget('navigation') }}
+
+		</nav>
+
+		<div class="clear" id="content">
+			
+			<section id="content-body" class="col eight tablet-full mobile-full">
+
+				{{ template.body }}
+
+			</section>
+
+			<aside id="content-sidebar" class="col four tablet-full mobile-full">
+
+				<article>
+					<h3>User Area</h3>
+					{{ widget('user') }}
+				</article>
+
+				<article>
+					<h3>Upcoming Match</h3>
+					{{ widget('upcoming') }}
+				</article>
+
+				<article>
+					<h3>Latest Matches</h3>
+					{{ widget('matches') }}
+				</article>
+
+				<article>
+					<h3>Latest Posts</h3>
+					{{ widget('posts') }}
+				</article>
+
+				<article>
+					<h3>Latest Topics</h3>
+					{{ widget('topics') }}
+				</article>
+
+				<article>
+					{{ widget('banners') }}
+				</article>
+
+			</aside>
+
+		</div>
+
+	</section>
+
+	<footer id="site-footer" class="text-center">
+		
+		Copyright &copy; {{ date('Y') }} - {{ clanname }}
+
+	</footer>
+
+	{{ template.partials.foot }}
+</body>
+</html>

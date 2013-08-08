@@ -11,7 +11,7 @@ class MY_Controller extends MX_Controller {
 		parent::__construct();
 
 		// Enable debugging
-		$this->output->enable_profiler(true);
+		$this->output->enable_profiler(false);
 
 		// Load libraries
 		$this->load->model('settings/settings_m', 'settings');
