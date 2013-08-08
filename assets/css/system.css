@@ -178,16 +178,6 @@ ul.image-list li img {
 	margin: 30px 0 0 0;
 }
 
-/* Featured post */
-.cms-featured-post {
-	border: 2px solid #e3516a;
-}
-
-.cms-featured-post h3 {
-	padding-top: 0;
-	margin-bottom: 10px;
-}
-
 /* Messages */
 .cms-pm {
 	border-bottom: 1px solid #ccc;
@@ -301,27 +291,6 @@ ul.image-list li img {
 }
 
 .wi_default span { float: right; }
-
-/* Misc */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.pure-button-xsmall {
-    font-size: 70%;
-}
-
-.pure-button-small {
-    font-size: 85%;
-}
-
-.pure-button-large {
-    font-size: 110%;
-}
-
-.pure-button-xlarge {
-    font-size: 125%;
-}
 
 /* Editor core */
 .markItUp * {

@@ -34,7 +34,8 @@ function get_team_name($id)
 	$CI =& get_instance();
 	$CI->load->model('teams/teams_m');
 
-	return $CI->teams_m->get($id)->name;
+	if(!empty($CI->teams_m->get($id)->name)) return $CI->teams_m->get($id)->name;
+	return 'Undefined';
 }
 
 /* ================ */
