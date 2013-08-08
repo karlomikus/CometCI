@@ -1,13 +1,18 @@
-<h3 class="cms-post-title">{{ post.title }}</h3>
+<div class="post-show">
 
-<p class="panel">
-	{{ post.teaser }}
-</p>
+	<h3 class="post-title">
+		{{ post.title }}
+		<small>{{ get_username(post.author, false) }} &dash; {{ cms_date(post.date )}}</small>
+	</h3>
 
-<div class="cms-post-body">
-	{{ post.body }}
+	<p>
+		{{ post.teaser }}
+	</p>
+
+	<div class="post-body">
+		{{ post.body }}
+	</div>
+	
 </div>
-
-<hr />
 
 {{comments}}

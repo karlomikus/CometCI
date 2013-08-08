@@ -1,11 +1,3 @@
-/* Base */
-img { display: block; }
-img, object, embed { height: auto; max-width: 100%; }
-
-p > img {
-	display: inline-block !important;
-}
-
 /* Custom lists */
 ul.cms-list {
 	list-style: none;
@@ -37,31 +29,6 @@ ul.image-list li img {
 	height: auto;
 }
 
-/* Pagination */
-ul.cms-pagination {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-ul.cms-pagination li {
-	display: inline-block;
-	margin: 2px 5px;
-}
-
-ul.cms-pagination li a {
-	display: block;
-	padding: 0 5px;
-	background: #ccc;
-	border: 1px solid #ccc;
-	color: #000;
-}
-
-ul.cms-pagination li.pagination-selected {
-	border: 1px solid #ccc;
-	padding: 1px 6px;
-}
-
 /* Breadcrumbs */
 .cms-breadcrumbs {
 	list-style: none;
@@ -73,18 +40,36 @@ ul.cms-pagination li.pagination-selected {
 	display: inline-block;
 }
 
-/* Matches */
-.win-color { }
-.lose-color { }
-.draw-color { }
-
-/* Posts */
-.cms-post-body p {
-	line-height: 1.8em;
+/* =================================
+   Posts
+   ================================= */
+.post {
+	margin-bottom: 15px;
 }
 
-.cms-post-title {
-	font-size: 24px;
+.post .post-media {
+	text-align: center;
+	background: rgba(0,0,0,0.2);
+}
+
+.post .post-media img {
+	display: block;
+	margin: auto;
+	max-height: 200px;
+	width: auto;
+}
+
+.post-footer {
+	color: #a1a1a1;
+}
+
+.post-body {
+	margin-bottom: 8px;
+}
+
+.post-show h3 small {
+	display: block;
+	font-size: 14px;
 }
 
 /* Alerts */
