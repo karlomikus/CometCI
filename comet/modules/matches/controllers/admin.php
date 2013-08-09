@@ -201,7 +201,8 @@ class Admin extends Backend_Controller {
 				'matchlink' => $this->input->post('matchlink'),
 				'status' => $this->input->post('status'),
 				'opponent-players' => $this->input->post('opplayers'),
-				'team-players' => $team_players
+				'team-players' => $team_players,
+				'event' => $this->input->post('event')
 			);
 			$this->matches_m->update($id, $data);
 

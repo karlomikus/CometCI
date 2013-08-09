@@ -54,3 +54,11 @@ function get_logo($id, $team)
 
 	return empty($result->logo) ? $nopic : $result->logo;
 }
+
+function get_event_data($eventID = 0)
+{
+	$CI =& get_instance();
+	$CI->load->model('events/events_m');
+
+	return $CI->events_m->get($eventID);
+}

@@ -2,7 +2,7 @@
 	
 	<div class="match-team team-logo">
 		<img src="{{ base_url() }}/uploads/teams/{{ get_logo(match.team, 'team') }}" />
-		<h4>{{ get_team_name(match.team) }}sssssssssss</h4>
+		<h4>{{ get_team_name(match.team) }}</h4>
 	</div>
 
 	<div class="match-score">
@@ -12,12 +12,12 @@
 			{{ get_result(match.id, 1) }}:{{ get_result(match.id, 2) }}
 		</span>
 		<br />
-		Event name
+		{{ event.name }}
 	</div>
 
 	<div class="match-opponent team-logo">
 		<img src="{{ base_url() }}/uploads/opponents/{{ get_logo(match.opponent, 'opponent') }}" />
-		<h4>{{ get_opponent_name(match.opponent) }}ssssssss</h4>
+		<h4>{{ get_opponent_name(match.opponent) }}</h4>
 	</div>
 
 </div>

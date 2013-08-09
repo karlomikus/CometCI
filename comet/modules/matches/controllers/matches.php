@@ -45,8 +45,13 @@ class Matches extends Frontend_Controller {
 		$this->load->helper('matches');
 		$this->parser->checkFunctions();
 
+		$match = $this->matches_m->get($id);
+
+		$eventData = get_event_data($match->event);
+
 		$this->template
-			->set('match', $this->matches_m->get($id))
+			->set('match', $match)
+			->set('event', $eventData)
 			->set('comments', $this->commentslib->render('matches', $id))
 			->build('show.twig');
 	}
