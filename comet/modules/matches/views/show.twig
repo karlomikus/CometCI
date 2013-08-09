@@ -1,69 +1,60 @@
-<div class="pure-g text-center">
-    <div class="pure-u-1-5">
-        <p>{{ get_result(match.id, 2) }}</p>
-    </div>
+<div class="match-versus">
+	
+	<div class="match-team team-logo">
+		<img src="{{ base_url() }}/uploads/teams/{{ get_logo(match.team, 'team') }}" />
+		<h4>{{ get_team_name(match.team) }}sssssssssss</h4>
+	</div>
 
-    <div class="pure-u-1-5">
-        <p>
-        	<img src="{{ base_url() }}/uploads/opponents/{{ get_logo(match.opponent, 'opponent') }}" /><br />
-			{{ get_opponent_name(match.opponent) }}
-		</p>
-    </div>
+	<div class="match-score">
+		{{ cms_date(match.date) }}
+		<br />
+		<span>
+			{{ get_result(match.id, 1) }}:{{ get_result(match.id, 2) }}
+		</span>
+		<br />
+		Event name
+	</div>
 
-    <div class="pure-u-1-5">
-        <p>VS</p>
-    </div>
+	<div class="match-opponent team-logo">
+		<img src="{{ base_url() }}/uploads/opponents/{{ get_logo(match.opponent, 'opponent') }}" />
+		<h4>{{ get_opponent_name(match.opponent) }}ssssssss</h4>
+	</div>
 
-    <div class="pure-u-1-5">
-        <p>
-        	<img src="{{ base_url() }}/uploads/teams/{{ get_logo(match.team, 'team') }}" /><br />
-			{{ get_team_name(match.team) }}
-		</p>
-    </div>
-
-    <div class="pure-u-1-5">
-        <p>{{ get_result(match.id, 1) }}</p>
-    </div>
 </div>
 
 <br />
 
-<table width="100%" class="pure-table pure-table-bordered">
+<table>
 	<thead>
 		<tr>
 			<th></th>
-			<th>Opponent</th>
 			<th>Team</th>
+			<th>Opponent</th>
 		</tr>
 	</thead>
 	{% set i = 1 %}
 	{% for round in get_scores(match.id) %}
 	<tr>
 		<td>Round {{ i }}:</td>
-		<td>{{ round.opponent }}</td>
 		<td>{{ round.team }}</td>
+		<td>{{ round.opponent }}</td>
 	</tr>
 	{% set i = i + 1 %}
 	{% endfor %}
 </table>
 
-<br />
-<h3>Report</h3>
-
-<div class="panel">
-	<p>
-		<strong>{{ cms_date(match.date) }}</strong> - <strong>{{ cms_time(match.date) }}</strong><br />
-		{{ match.report }}
-	</p>
+<div class="match-panel">
+	<h4>Match Report</h4>
+	{{ match.report }}
 </div>
 
 {% if get_match_screenshots(match.id)|length > 0 %}
 
-<h3>Screenshots</h3>
+<div class="match-panel">
 
-<div class="panel">
+	<h3>Screenshots</h3>
 
-	<ul class="image-list">
+	<ul class="media-list">
 	{% for screenshot in get_match_screenshots(match.id) %}
 
 		<li>

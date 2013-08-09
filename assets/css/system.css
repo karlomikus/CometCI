@@ -124,6 +124,70 @@
 	padding: 0;
 }
 
+/* =================================
+   Matches
+   ================================= */
+.match-versus {
+	overflow: hidden;
+}
+
+.team-logo {
+	text-align: center;
+}
+
+.team-logo img {
+	max-height: 100px;
+	max-width: 100px;
+	display: block;
+	margin: auto;
+}
+
+.match-team {
+	float: left;
+}
+
+.match-opponent {
+	float: right;
+}
+
+.match-team, .match-opponent {
+	width: 40%;
+}
+
+.match-score {
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+
+.match-score span {
+	font-size: 28px;
+}
+
+.match-panel {
+	background: rgba(0,0,0,0.1);
+	padding: 15px;
+	margin: 15px 0;
+}
+
+/* =================================
+   Media list
+   ================================= */
+ul.media-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.media-list li {
+	display: inline-block;
+}
+
+ul.media-list li img {
+	max-width: 150px;
+	height: auto;
+}
+
 /* Custom lists */
 ul.cms-list {
 	list-style: none;
@@ -137,22 +201,6 @@ ul.cms-list li {
 
 ul.cms-list.list-vertical li {
 	display: block;
-}
-
-/* Images list */
-ul.image-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-ul.image-list li {
-	display: inline-block;
-}
-
-ul.image-list li img {
-	width: 150px;
-	height: auto;
 }
 
 /* Breadcrumbs */

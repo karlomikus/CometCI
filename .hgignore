@@ -2,3 +2,4 @@
 .htaccess
 
 comet/third_party/htmlpurifier-4.5.0-standalone/standalone/HTMLPurifier/DefinitionCache/*
+upload/*
