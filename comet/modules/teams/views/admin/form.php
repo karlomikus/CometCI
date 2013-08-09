@@ -51,8 +51,8 @@
 		<p>Choose team banner</p> <a class="btn btn-cms-orange show-file-input" href="#file-banner"><i class="icon-cloud-upload"></i></a>
 	</div>	
 
-	<button type="submit" class="btn btn-large btn-cms-orange">Save match</button>
-	<button type="button" class="btn btn-large btn-cms goback">Cancel</button>
+	<button type="submit" class="btn btn-large btn-cms-orange">Save team</button>
+	<a class="btn btn-large btn-cms" href="<?php echo base_url(); ?>admin/<?php echo $this->uri->segment(2); ?>">Cancel</a>
 
 	<input id="file-logo" class="hidden" type="file" name="logo" size="1" />
 	<input id="file-banner" class="hidden" type="file" name="banner" size="1" />

@@ -166,12 +166,12 @@ class Admin extends Backend_Controller {
 			$fileBanner = $this->teams_m->get($id)->banner;
 			if(!empty($logo_data))
 			{
-				unlink($this->folder_path.$fileLogo);
+				if(file_exists($this->folder_path.$fileLogo)) unlink($this->folder_path.$fileLogo);
 				$fileLogo = $logo_data['file_name'];
 			}
 			if(!empty($banner_data))
 			{
-				unlink($this->folder_path.$fileBanner);
+				if(file_exists($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
 				$fileBanner = $banner_data['file_name'];
 			}
 			
