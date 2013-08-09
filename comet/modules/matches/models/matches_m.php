@@ -214,7 +214,7 @@ class Matches_m extends MY_Model {
 	{
 		if($this->db->delete('matches_files', array('file' => $filename)))
 		{
-			unlink('./uploads/screenshots/'.$filename);
+			if(file_exists('./uploads/screenshots/'.$filename)) unlink('./uploads/screenshots/'.$filename);
 			return TRUE;
 		}
 		else return FALSE;
@@ -228,8 +228,9 @@ class Matches_m extends MY_Model {
 	public function delete_files($matchID)
 	{
 		$query = $this->db->get_where('matches_files', array('match_id' => $matchID))->result();
-		foreach ($query as $file) {
-			unlink('./uploads/screenshots/'.$file->file);
+		foreach ($query as $file)
+		{
+			if(file_exists('./uploads/screenshots/'.$file->file)) unlink('./uploads/screenshots/'.$file->file);
 		}
 		$this->db->delete('matches_files', array('match_id' => $matchID));
 	}

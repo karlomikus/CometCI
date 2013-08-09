@@ -39,6 +39,9 @@ class Admin extends Backend_Controller {
 		$this->pagination->initialize($config);
 		$this->matches_m->limit($this->perPage, $page);
 
+		$matches = $this->matches_m->get_matches(false);
+		$upcomingMatches = $this->matches_m->get_upcoming_matches();
+
 		$linkData = new stdClass();
 		$linkData->page = $page;
 		$linkData->sortOrderLink = ($sortOrder == 'asc') ? 'desc' : 'asc';
@@ -46,8 +49,8 @@ class Admin extends Backend_Controller {
 
 		$this->template
 			->set('title', 'Matches')
-			//->set('upcoming', $this->matches_m->get_upcoming_matches())
-			->set('matches', $this->matches_m->get_matches(FALSE))
+			->set('matches', $matches)
+			->set('upcoming', $upcomingMatches)
 			->set('linkdata', $linkData)
 			->set('pagination', $this->pagination->create_links())
 			->build('admin/main');

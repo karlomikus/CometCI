@@ -16,6 +16,24 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php if(!empty($upcoming)): ?>
+		<?php foreach ($upcoming as $match): ?>
+			<tr>
+				<td><?php echo $this->opponents_m->get($match->opponent)->name; ?></td>
+				<td><?php echo cms_date($match->date); ?> - <?php echo cms_time($match->date); ?></td>
+				<td><?php echo $this->games_m->get($match->game)->name; ?></td>
+				<td class="text-center"><span class="upcoming-color">UPCOMING</span></td>
+				<td class="action">
+					<a class="action-icon" href="#">Action</a>
+					<ul class="action-list" style="display: none;">
+						<li><a class="confirm-delete" href="<?php echo site_url('admin/matches/delete/'.$match->id); ?>"><i class="icon-trash icon-large"></i></a></li>
+						<li><a href="<?php echo site_url('admin/matches/edit/'.$match->id); ?>"><i class="icon-edit icon-large"></i></a></li>
+					</ul>
+				</td>
+			</tr>
+		<?php endforeach;?>
+		<?php endif; ?>
+
 		<?php if(!empty($matches)): ?>
 		<?php foreach ($matches as $match): ?>
 			<tr>
