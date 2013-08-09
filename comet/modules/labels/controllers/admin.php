@@ -33,6 +33,7 @@ class Admin extends Backend_Controller {
 		if ($this->form_validation->run() == TRUE)
 		{
 			$next_id = $this->labels_m->get_next_id();
+			$file_data = NULL;
 
 			if (!empty($_FILES['banner']['name']))
 			{
@@ -44,15 +45,8 @@ class Admin extends Backend_Controller {
 				$config['file_name']     = $next_id;
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('banner'))
-				{
-					$file_data = $this->upload->data();
-				}
-				else
-				{
-					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
-                	$file_data = NULL;
-				}
+				if($this->upload->do_upload('banner')) $file_data = $this->upload->data();
+				else $this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
 			}
 
 			$data = array(
@@ -106,7 +100,7 @@ class Admin extends Backend_Controller {
 			$fileBanner = $this->labels_m->get($id)->banner;
 			if(!empty($file_data))
 			{
-				unlink($this->folder_path.$fileBanner);
+				if(file_exists($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
 				$fileBanner = $file_data['file_name'];
 			}
 			
@@ -133,7 +127,7 @@ class Admin extends Backend_Controller {
 		$label = $this->labels_m->get($id);
 		$filepath_banner = $this->folder_path.$label->banner;
 
-		unlink($filepath_banner);
+		if(file_exists($filepath_banner)) unlink($filepath_banner);
 		$this->labels_m->delete($id);
 
 		redirect('admin/labels');

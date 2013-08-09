@@ -207,8 +207,8 @@ class Admin extends Backend_Controller {
 		$filepath_logo = $this->folder_path.$team->logo;
 		$filepath_banner = $this->folder_path.$team->banner;
 
-		unlink($filepath_logo);
-		unlink($filepath_banner);
+		if(file_exists($filepath_logo)) unlink($filepath_logo);
+		if(file_exists($filepath_banner)) unlink($filepath_banner);
 		$this->teams_m->delete($id);
 
 		redirect('admin/teams');
