@@ -1,5 +1,5 @@
 {% if login_alerts|length > 0 %}
-	<div class="cms-alert">{{ login_alerts }}</div>
+	<div class="alert">{{ login_alerts }}</div>
 {% endif %}
 
 {% if logged_in == false %}
@@ -11,19 +11,23 @@
 		<br />
 
 		<button class="button" type="submit">Login</button>
+
 		or
 		<a href="{{ base_url }}users/register">Register</a>
+		
 	</form>
 {% else %}
-	<ul class="cms-list list-vertical">
+
+	<ul class="no-style-list">
+
 		<li>Welcome back: {{ user.username }}</li>
 		<li><a href="{{ base_url() }}profile">Profile</a></li>
 		<li><a href="{{ base_url() }}messages">Private messages ({{ check_pms(user.id) }})</a></li>
-
 		{% if is_admin == true %}
 			<li><a href="{{ base_url() }}admin" target="_blank">Control Panel</a></li>
 		{% endif %}
-
 		<li><a href="{{ base_url() }}users/logout">Logout</a></li>
+
 	</ul>
+
 {% endif %}

@@ -9,7 +9,7 @@ class Profile extends Frontend_Controller {
 		parent::__construct();
 		
 		$this->template
-			->set_layout(get_layout(__CLASS__));
+			->set_layout(get_layout('users')); // We need users since profile module does not exist
 	}
 
 	public function index($id = '')

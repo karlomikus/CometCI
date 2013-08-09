@@ -1,7 +1,23 @@
-{{form_open(uri_string())}}
+<ul class="breadcrumbs">
+	<li><a href="{{ base_url('forums') }}">Forum</a></li>
+	<li>&gt;</li>
+	<li><a href="{{ base_url('forums/forum/' ~ forumID) }}">{{ get_forum_name(forumID) }}</a></li>
+	<li>&gt;</li>
+	<li><a href="{{ base_url('forums/topic/' ~ topicID) }}">Topic</a></li>
+	<li>&gt;</li>
+	<li>New reply</li>
+</ul>
 
-	<textarea class="markitup" placeholder="Write reply here..." name="content"></textarea>
+<div class="forum-post-create">
 
-	<button class="small button">Add reply</button>
+	<h3>Add new reply</h3>
+	
+	{{form_open(uri_string())}}
 
-{{form_close()}}
+		<textarea class="markitup" placeholder="Write reply here..." name="content"></textarea>
+
+		<button class="button">Add reply</button>
+
+	{{form_close()}}
+
+</div>

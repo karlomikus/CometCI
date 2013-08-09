@@ -1,21 +1,18 @@
-{% if logged_in %}
-	<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="pure-button pure-button-primary">
-		<i class="icon-plus"></i> New topic
-	</a>
-	
-	<hr />
-{% endif %}
-
-<ul class="cms-breadcrumbs">
+<ul class="breadcrumbs">
 	<li><a href="{{ base_url('forums') }}">Forum</a></li>
 	<li>&gt;</li>
 	<li><a href="{{ base_url('forums/forum/' ~ forumID) }}">{{ get_forum_name(forumID) }}</a></li>
 </ul>
 
-<br />
+{% if logged_in %}
+	<a href="{{base_url()}}forums/newtopic/{{forumID}}" class="button cms-button">
+		<i class="icon-plus"></i> New topic
+	</a>
+	<br /><br />
+{% endif %}
 
 {% if data %}
-	<table width="100%" class="pure-table pure-table-bordered">
+	<table width="100%">
 		<tbody>
 		{% for topic in data %}
 			<tr>
@@ -46,7 +43,7 @@
 		</tbody>
 	</table>
 {% else %}
-	<div class="panel">No topics, go <a href="{{base_url()}}forums/newtopic/{{forumID}}">make one</a>.</div>
+	<div class="alert">No topics, go <a href="{{base_url()}}forums/newtopic/{{forumID}}">make one</a>.</div>
 {% endif %}
 
 {{pagination}}

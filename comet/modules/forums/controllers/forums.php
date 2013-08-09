@@ -107,12 +107,11 @@ class Forums extends Frontend_Controller {
 	{
 		$this->load->model('forums_m');
 		$this->load->helper('form');
+		$this->load->helper('forum');
 		$this->load->library('form_validation');
 
 		// Load missing twig functions
-		$this->parser->addFunction('validation_errors');
-		$this->parser->addFunction('form_open');
-		$this->parser->addFunction('form_close');
+		$this->parser->checkFunctions();
 
 		$this->form_validation->set_rules('title', 'Topic title', 'required|min_length[4]|max_length[20]|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('content', 'Topic content', 'required|min_length[4]|htmlspecialchars|xss_clean');
@@ -213,6 +212,7 @@ class Forums extends Frontend_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
 		$this->load->helper('form');
+		$this->load->helper('forum');
 
 		$this->parser->checkFunctions();
 
@@ -235,8 +235,11 @@ class Forums extends Frontend_Controller {
 		}
 		else
 		{
+			$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
+
 			$this->template
 				->set('topicID', $topicID)
+				->set('forumID', $forumID)
 				->build('new-reply.twig');
 		}
 	}

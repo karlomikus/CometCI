@@ -538,15 +538,16 @@ textarea {
   text-align: center;
 }
 
-.orange-button {
-  background-color: #fee9cc;
+.cms-button {
+  background-color: #2185c5;
+  color: #fff;
 }
-.orange-button:hover {
-  background-color: #ffe0b5;
-  -webkit-tap-highlight-color: #fdeed8;
+.cms-button:hover {
+  background-color: #2679ad;
+  color: #fff;
 }
-.orange-button:active {
-  background-color: #fdeed8;
+.cms-button:active {
+  background-color: #2185c5;
 }
 
 .button[disabled],
