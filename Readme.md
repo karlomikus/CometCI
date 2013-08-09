@@ -35,7 +35,16 @@ Dependecies
 
 Changelog
 ----------
-### v0.4.1, TBA
+### v0.5 TBA
+- New frontend theme!
+- Added match statistics
+- Added module info text files
+- Fixed unable to delete match scores
+- Added missing styles for a login page
+- User permissions now kinda work
+- Updates to most of module frontend layouts
+
+### v0.4.1, 2013-07-12
 - When adding new site navigation link sort field is auto incremented
 - Bugfix: Lowercased all country icons for case sensitive enviroment settings
 - Admin sidebar links now have title attribute
@@ -64,4 +73,13 @@ TODO / Bugs
 - Finish missing paginations and sortings
 - Add datatables support instead of current buggy table ordering
 - Create module tips and help
-- Image deletion
+- [Edit] Image deletion
+- Rework roster management
+- Rework widgets base code
+
+NOTES
+-----
+If you are using code directly from this repository you'll need to change some stuff in .htaccess file. Also installer will not work, instead use the import.sql database and install manually!
+Default admin:
+user: admin
+pwd: password
