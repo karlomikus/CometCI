@@ -1,4 +1,9 @@
-<ul class="gallery-pictures-list">
+<h4>
+	{{ galleryData.name }}<br />
+	<small>Uploaded on {{ cms_date(galleryData.date) }} by {{ get_username(galleryData.author) }}</small>
+</h4>
+
+<ul class="gallery-pictures-list no-style-list">
 	{% for picture in pictures %}
 		<li>
 			<a href="{{ base_url('uploads/' ~ picture.file) }}" rel="lightbox-gallery" title="{{ picture.title }}" target="_blank"><img src="{{ base_url('uploads/' ~ picture.file) }}" alt="{{ picture.title }}" /></a>

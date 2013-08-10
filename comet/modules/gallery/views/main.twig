@@ -8,7 +8,7 @@
 
 		<div class="gallery-info">
 			<h4><a href="{{ base_url('gallery/show/' ~ gallery.id) }}">{{ gallery.name }}</a></h4>
-			{{ cms_date(gallery.date) }} - 14 Pictures
+			{{ cms_date(gallery.date) }} - {{ count_gallery_items(gallery.id) }} Pictures
 			<ul>
 				<li><img src="http://placehold.it/70x50" /></li>
 				<li><img src="http://placehold.it/70x50" /></li>

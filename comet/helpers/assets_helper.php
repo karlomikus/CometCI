@@ -15,6 +15,12 @@ function system_assets()
 	return $systemCss;
 }
 
+function system_js()
+{
+	$systemJS = '<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>';
+	$systemJS .= '<script src="http://code.jquery.com/jquery-migrate-1.1.0.min.js"></script>';
+}
+
 function asset($file_path, $admin = TRUE) {
 	if($admin) return base_url('assets/admin/'.$file_path);
 	return base_url('assets/'.$file_path);

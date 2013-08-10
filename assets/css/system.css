@@ -202,11 +202,11 @@ ul.media-list li img {
 }
 
 /* =================================
-   FORUMS
+   Forums
    ================================= */
 .forum-post {
 	overflow: hidden;
-	background: rgba(0,0,0,0.1);
+	background: rgba(0,0,0,0.05);
 	padding: 15px;
 	margin-bottom: 15px;
 }
@@ -238,7 +238,7 @@ ul.media-list li img {
 }
 
 /* =================================
-   GALLERY
+   Gallery
    ================================= */
 .gallery {
 	overflow: hidden;
@@ -260,6 +260,16 @@ ul.media-list li img {
 	display: inline-block;
 }
 
+.gallery-pictures-list li {
+	display: inline-block;
+}
+
+.gallery-pictures-list img {
+	max-width: 170px;
+	max-height: 100px;
+	display: block;
+	margin: auto;
+}
 
 /* =================================
    USER MESSAGESS
