@@ -11,9 +11,10 @@ class Wi_upcoming extends MX_Controller {
 		$this->matches_m->limit(1);
 		$query = $this->matches_m->get_upcoming_matches();
 
-		$match = new stdClass();
+		$match = null;
 		if(!empty($query))
 		{
+			$match = new stdClass();
 			$match->opponentlogo = get_logo($query[0]->opponent, 'opponent');
 			$match->teamlogo = get_logo($query[0]->team, 'team');
 			$match->date = $query[0]->date;
