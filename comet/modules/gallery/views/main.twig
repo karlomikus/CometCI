@@ -1,17 +1,25 @@
 {% if galleries|default is not empty %}
 
-	<ul class="gallery-list">
-		{% for gallery in galleries %}
-			<li>
-				<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
-					<img src="{{ base_url('uploads/' ~ show_gallery_preview(gallery.id)) }}" alt="Pla" />
-				</a>
-				<a href="{{ base_url('gallery/show/' ~ gallery.id) }}">
-					{{ gallery.name }}
-				</a>
-			</li>
-		{% endfor %}
-	</ul>
+	{% for gallery in galleries %}
+
+	<div class="gallery">
+
+		<img src="{{ base_url('uploads/' ~ show_gallery_preview(gallery.id)) }}" alt="" />
+
+		<div class="gallery-info">
+			<h4><a href="{{ base_url('gallery/show/' ~ gallery.id) }}">{{ gallery.name }}</a></h4>
+			{{ cms_date(gallery.date) }} - 14 Pictures
+			<ul>
+				<li><img src="http://placehold.it/70x50" /></li>
+				<li><img src="http://placehold.it/70x50" /></li>
+				<li><img src="http://placehold.it/70x50" /></li>
+				<li><img src="http://placehold.it/70x50" /></li>
+			</ul>
+		</div>
+
+	</div>
+
+	{% endfor %}
 
 {% else %}
 	No galleries available.

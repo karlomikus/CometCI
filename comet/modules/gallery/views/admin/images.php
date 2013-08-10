@@ -1,36 +1,44 @@
 <?php echo validation_errors(); ?>
 <?php echo form_open_multipart(uri_string(), array('class' => 'cms-form' )); ?>
 
-	<h4>Upload</h4>
+	<div class="row-fluid">
+		<div class="span4">
+			<h4>Upload</h4>
 
-	<input type="file" id="images" name="images[]" multiple />
+			<input type="file" id="images" name="images[]" multiple />
 
-	<ul class="check-list">
-		<li>
-			<input id="check-resize" type="checkbox" name="resize" value="1" />
-			<label for="check-resize">Resize images</label>
-		</li>
-	</ul>
+			<ul class="check-list">
+				<li>
+					<input id="check-resize" type="checkbox" name="resize" value="1" />
+					<label for="check-resize">Resize images</label>
+				</li>
+			</ul>
 
-	<input placeholder="Width" type="text" name="width" class="input-small" value="1920" />
+			<input placeholder="Width" type="text" name="width" class="input-small" value="1920" />
 
-	X
+			X
 
-	<input placeholder="Height" type="text" name="height" class="input-small" value="1080" />
+			<input placeholder="Height" type="text" name="height" class="input-small" value="1080" />
 
-	<br />
+			<br />
 
-	<button type="submit" class="btn btn-cms-orange">Upload</button>
-
-	<div class="alert alert-info alert-block">
-		<h4>Note</h4>
-		Image processing can require a considerable amount of server memory for some operations. If you are experiencing out of memory errors while processing images you may need to limit number of images and/or resize values.
+			<button type="submit" class="btn btn-cms-orange">Upload</button>
+		</div>
+		<div class="span8">
+			<div class="alert alert-info alert-block">
+				<h4>Note</h4>
+				Image processing can require a considerable amount of server memory for some operations. If you are experiencing out of memory errors while processing images you may need to limit number of images and/or resize values.
+			</div>
+		</div>
 	</div>
+
 <?php echo form_close(); ?>
 
-<?php echo form_open('admin/gallery/update/'.$id); ?>
+<?php echo form_open('admin/gallery/update/'.$id, array('class' => 'cms-form' )); ?>
 	
 	<?php if(!empty($data)): ?>
+
+	<h4>Gallery pictures</h4>
 
 	<ul class="gallery-list">
 		<?php foreach($data as $image): ?>

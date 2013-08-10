@@ -230,19 +230,40 @@ ul.media-list li img {
 	padding: 3px 5px;
 }
 
-/* Upcoming match */
-.cms-upcoming-match {
-	text-align: center;
-}
-
-.cms-upcoming-match span {
+.forum-post-content img {
+	max-width: 100%;
+	height: auto;
 	display: block;
-	font-size: 24px;
-	font-weight: bold;
-	margin: 30px 0 0 0;
+	margin: auto;
 }
 
-/* Messages */
+/* =================================
+   GALLERY
+   ================================= */
+.gallery {
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+
+.gallery > img {
+	max-height: 120px;
+	float: left;
+	margin-right: 15px;
+}
+
+.gallery-info ul {
+	list-style: none;
+	padding: 0;
+}
+
+.gallery-info ul li {
+	display: inline-block;
+}
+
+
+/* =================================
+   USER MESSAGESS
+   ================================= */
 .cms-pm {
 	border-bottom: 1px solid #ccc;
 	background: #f2f2f2;
@@ -258,69 +279,10 @@ ul.media-list li img {
 	float: right;
 }
 
-/* Forums */
 
-
-/* Profiles */
-.cms-profile-header {
-	width: 100%;
-	background: #006bc9;
-	overflow: hidden;
-	box-shadow: inset 0 3px 5px #0a5596;
-}
-
-.cms-profile-avatar{
-	float: left;
-	margin: 0 20px 0 0;
-	max-width: 130px;
-	height: auto;
-}
-
-.cms-profile-header header {
-	float: left;
-}
-
-.cms-profile-header header h3,
-.cms-profile-header header h4 {
-	color: #fff;
-	font-weight: normal;
-	border: 0;
-	margin: 0;
-}
-
-.cms-profile-header header h3 {
-	font-size: 22px;
-}
-
-.cms-profile-header header h3 a {
-	font-size: 18px;
-	color: #fff;
-}
-
-.cms-edit-profile label {
-	display: block;
-	color: #333;
-}
-
-/* Gallery */
-.gallery-list, .gallery-pictures-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.gallery-list li, .gallery-pictures-list li {
-	display: inline-block;
-	margin: 0 15px 15px 0;
-	text-align: center;
-}
-
-.gallery-list li img, .gallery-pictures-list li img {
-	height: 150px;
-	width: auto;
-}
-
-/* Widgets */
+/* =================================
+   WIDGETS
+   ================================= */
 .wi_default {
 	margin: 0;
 	padding: 0;
@@ -336,174 +298,87 @@ ul.media-list li img {
 
 .wi_default span { float: right; }
 
-/* Editor core */
+/* =================================
+   Editor (MarkItUp)
+   ================================= */
 .markItUp * {
-	margin:0px; padding:0px;
-	outline:none;
-}
-.markItUp a:link,
-.markItUp a:visited {
-	color:#000;
-	text-decoration:none;
-}
-.markItUp  {
-	width:700px;
-	margin:5px 0 5px 0;
-}
-.markItUpContainer  {
-	font:11px Verdana, Arial, Helvetica, sans-serif;
-}
-.markItUpEditor {
-	font:12px 'Courier New', Courier, monospace;
-	padding:5px;
-	width:690px;
-	height:320px;
-	clear:both;
-	line-height:18px;
-	overflow:auto;
-}
-.markItUpPreviewFrame	{
-	overflow:auto;
-	background-color:#FFF;
-	width:99.9%;
-	height:300px;
-	margin:5px 0;
-}
-.markItUpFooter {
-	width:100%;
-}
-.markItUpResizeHandle {
-	overflow:hidden;
-	width:22px; height:5px;
-	margin-left:auto;
-	margin-right:auto;
-	background-image:url(images/handle.png);
-	cursor:n-resize;
-}
-.markItUpHeader ul li	{
-	list-style:none;
-	float:left;
-	position:relative;
-}
-.markItUpHeader ul li:hover > ul{
-	display:block;
-}
-.markItUpHeader ul .markItUpDropMenu {
-	background:transparent url(images/menu.png) no-repeat 115% 50%;
-	margin-right:5px;
-}
-.markItUpHeader ul .markItUpDropMenu li {
-	margin-right:0px;
-}
-.markItUpHeader ul ul {
-	display:none;
-	position:absolute;
-	top:18px; left:0px;	
-	background:#FFF;
-	border:1px solid #000;
-}
-.markItUpHeader ul ul li {
-	float:none;
-	border-bottom:1px solid #000;
-}
-.markItUpHeader ul ul .markItUpDropMenu {
-	background:#FFF url(images/submenu.png) no-repeat 100% 50%;
-}
-.markItUpHeader ul .markItUpSeparator {
-	margin:0 10px;
-	width:1px;
-	height:16px;
-	overflow:hidden;
-	background-color:#CCC;
-}
-.markItUpHeader ul ul .markItUpSeparator {
-	width:auto; height:1px;
-	margin:0px;
-}
-.markItUpHeader ul ul ul {
-	position:absolute;
-	top:-1px; left:150px; 
-}
-.markItUpHeader ul ul ul li {
-	float:none;
-}
-.markItUpHeader ul a {
-	display:block;
-	width:16px; height:16px;
-	text-indent:-10000px;
-	background-repeat:no-repeat;
-	margin:0px;
-}
-.markItUpHeader ul ul a {
-	display:block;
-	padding-left:0px;
-	text-indent:0;
-	width:120px; 
-	padding:5px 5px 5px 25px;
-	background-position:2px 50%;
-}
-.markItUpHeader ul ul a:hover  {
-	color:#FFF;
-	background-color:#000;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
 }
 
-/* Custom editor */
-.markdown .editor-bold a {
-	background-image:url(../img/editor/bold.png);
+.markItUp a:link,
+.markItUp a:visited {
+    color: #000;
+    text-decoration: none;
 }
-.markdown .editor-italic a {
-	background-image:url(../img/editor/italic.png);
+
+.markItUpEditor {
+    padding: 5px;
+    width: 100%;
+    height: 170px;
+    clear: both;
+    line-height: 18px;
+    resize: none;
+    overflow: auto;
 }
-.markdown .editor-link a {
-	background-image:url(../img/editor/link.png);
+
+.markItUpHeader {
+	overflow: hidden;
+    margin-bottom: 5px;
 }
-.markdown .editor-bullet-list a {
-	background-image:url(../img/editor/list-bullet.png);
+
+.markItUpHeader ul li {
+    list-style: none;
+    float: left;
+    position: relative;
 }
-.markdown .editor-numeric-list a {
-	background-image:url(../img/editor/list-numeric.png);
+
+.markItUpHeader ul .markItUpSeparator {
+    width: 10px;
+    text-indent: -9999px;
 }
-.markdown .editor-picture a {
-	background-image:url(../img/editor/picture.png); 
+
+.markItUpHeader ul a {
+    display: block;
+    text-indent: -10000px;
+    background-repeat: no-repeat;
+    margin: 0px;
 }
-.markdown .editor-quotes a	{
-	background-image:url(../img/editor/quotes.png);
+
+.cometEditor .editorSprite a {
+	background: url(../img/editor.png) no-repeat;
+	width: 16px;
+	height: 16px;
 }
-.markdown .editor-code a	{
-	background-image:url(../img/editor/code.png);
-}
-.markdown {
+
+.cometEditor .editor-bold 			a { background-position: 0 0; }
+.cometEditor .editor-italic 		a {	background-position: -16px 0; }
+.cometEditor .editor-link 			a { background-position: -32px 0; }
+.cometEditor .editor-bullet-list 	a { background-position: -80px 0; }
+.cometEditor .editor-numeric-list 	a { background-position: -64px 0; }
+.cometEditor .editor-picture 		a { background-position: -96px 0; }
+.cometEditor .editor-quotes 		a { background-position: -112px 0; }
+.cometEditor .editor-code 			a { background-position: -48px 0; }
+
+.cometEditor {
 	margin-bottom: 15px;
 }
 
-.markItUp {
-	width: 100%;
-}
-
 .markItUpButton {
-	background: #333;
-	padding: 5px;
-}
-.markItUpButton:hover {
-	background: #399EB5;
-}
-
-.markItUpHeader ul .markItUpSeparator {
-	height: 35px;
-	margin: 0 5px;
 	background: #fff;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 0 2px;
 }
 
-.markItUpEditor {
-	font: inherit;
-	font-size: 14px;
-	resize: none;
-	width: 100%;
-	height: 200px !important;
+.markItUpButton:hover {
+	background: #ccc;
 }
 
-/* SLIMBOX */
-
+/* =================================
+   LIGHTBOX
+   ================================= */
 #lbOverlay {
 	position: fixed;
 	z-index: 9999;
@@ -586,22 +461,9 @@ ul.media-list li img {
 	font-weight: bold;
 }
 
-/**
- * BxSlider v4.0 - Fully loaded, responsive content slider
- * http://bxslider.com
- *
- * Written by: Steven Wanderski, 2012
- * http://stevenwanderski.com
- * (while drinking Belgian ales and listening to jazz)
- *
- * CEO and founder of bxCreative, LTD
- * http://bxcreative.com
- */
-
-
-/** RESET AND LAYOUT
-===================================*/
-
+/* =================================
+   BXSLIDER
+   ================================= */
 .bx-wrapper {
 	position: relative;
 	margin: 0 auto 60px;
@@ -613,9 +475,6 @@ ul.media-list li img {
 	max-width: 100%;
 	display: block;
 }
-
-/** THEME
-===================================*/
 
 .bx-wrapper .bx-viewport {
 	-moz-box-shadow: 0 0 5px #ccc;
@@ -633,8 +492,6 @@ ul.media-list li img {
 	width: 100%;
 }
 
-/* LOADER */
-
 .bx-wrapper .bx-loading {
 	min-height: 50px;
 	background: url(images/bx_loader.gif) center center no-repeat #fff;
@@ -645,8 +502,6 @@ ul.media-list li img {
 	left: 0;
 	z-index: 2000;
 }
-
-/* PAGER */
 
 .bx-wrapper .bx-pager {
 	text-align: center;
@@ -682,8 +537,6 @@ ul.media-list li img {
 	background: #000;
 }
 
-/* DIRECTION CONTROLS (NEXT / PREV) */
-
 .bx-wrapper .bx-prev {
 	left: 10px;
 	background: url(images/controls.png) no-repeat 0 -32px;
@@ -716,8 +569,6 @@ ul.media-list li img {
 .bx-wrapper .bx-controls-direction a.disabled {
 	display: none;
 }
-
-/* AUTO CONTROLS (START / STOP) */
 
 .bx-wrapper .bx-controls-auto {
 	text-align: center;
@@ -753,8 +604,6 @@ ul.media-list li img {
 	background-position: -86px -33px;
 }
 
-/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
-
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
 	text-align: left;
 	width: 80%;
@@ -764,8 +613,6 @@ ul.media-list li img {
 	right: 0;
 	width: 35px;
 }
-
-/* IMAGE CAPTIONS */
 
 .bx-wrapper .bx-caption {
 	position: absolute;
