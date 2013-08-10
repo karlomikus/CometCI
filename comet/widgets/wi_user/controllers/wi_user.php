@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_user extends Frontend_Controller {
+class Wi_user extends MX_Controller {
 
 	public function index()
 	{
@@ -11,12 +11,13 @@ class Wi_user extends Frontend_Controller {
 		$is_admin = FALSE;
 		if ($this->ion_auth->is_admin()) $is_admin = TRUE;
 
-		echo $this->template
+		return $this->template
+			->set_layout(null)
 			->set('login_alerts', $this->session->flashdata('login_alerts'))
 			->set('logged_in', $logged_in)
 			->set('is_admin', $is_admin)
 			->set('form_open', form_open('users/login'))
-			->load_view('../widgets/wi_user/views/main.twig');
+			->build('wi_user/main.twig');
 	}
 
 }

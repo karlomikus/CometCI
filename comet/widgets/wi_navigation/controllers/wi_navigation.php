@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_navigation extends Frontend_Controller {
+class Wi_navigation extends MX_Controller {
 	
 	public function index()
 	{
@@ -29,8 +29,9 @@ class Wi_navigation extends Frontend_Controller {
 		}
 
 		return $this->template
+			->set_layout(null)
 			->set('links', $links)
-			->load_view('../widgets/wi_navigation/views/main.twig');
+			->build('wi_navigation/main.twig');
 	}
 
 }

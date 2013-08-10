@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_matches extends Frontend_Controller {
+class Wi_matches extends MX_Controller {
 
 	public function index()
 	{
@@ -21,9 +21,10 @@ class Wi_matches extends Frontend_Controller {
 			$matches[$key]->result 		= get_match_result($value->id, 'text');
 		}
 
-		echo $this->template
+		return $this->template
+			->set_layout(null)
 			->set('matches', $matches)
-			->load_view('../widgets/wi_matches/views/main.twig');
+			->build('wi_matches/main.twig');
 	}
 
 }

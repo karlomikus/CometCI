@@ -1,14 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_banners extends Frontend_Controller {
+class Wi_banners extends MX_Controller {
 
 	public function index()
 	{
 		$this->load->model('banners/banners_m', 'banners');
 
-		echo $this->template
+		return $this->template
+			->set_layout(null)
 			->set('banners', $this->banners->get_all())
-			->load_view('../widgets/wi_banners/views/main.twig');
+			->build('wi_banners/main.twig');
 	}
 
 }

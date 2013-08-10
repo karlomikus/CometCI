@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_featured_post extends Frontend_Controller {
+class Wi_featured_post extends MX_Controller {
 	
 	public function index()
 	{
@@ -15,8 +15,9 @@ class Wi_featured_post extends Frontend_Controller {
 		$post->slug = $query[0]->slug;
 
 		return $this->template
+			->set_layout(null)
 			->set('post', $post)
-			->load_view('../widgets/wi_featured_post/views/main.twig');
+			->build('wi_featured_post/main.twig');
 	}
 
 }

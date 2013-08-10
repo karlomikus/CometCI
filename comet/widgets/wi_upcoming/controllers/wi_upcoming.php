@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wi_upcoming extends Frontend_Controller {
+class Wi_upcoming extends MX_Controller {
 
 	public function index()
 	{
@@ -19,9 +19,10 @@ class Wi_upcoming extends Frontend_Controller {
 			$match->date = $query[0]->date;
 		}
 
-		echo $this->template
+		return $this->template
+			->set_layout(null)
 			->set('match', $match)
-			->load_view('../widgets/wi_upcoming/views/main.twig');
+			->build('wi_upcoming/main.twig');
 	}
 
 }
