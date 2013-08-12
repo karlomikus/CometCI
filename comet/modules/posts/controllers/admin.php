@@ -114,7 +114,7 @@ class Admin extends Backend_Controller {
 			if (!empty($_FILES['userfile']['name']))
 			{
 				$config['upload_path']   = $this->folder_path;
-				$config['allowed_types'] = 'gif|jpg|png';
+				$config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
 				$config['max_size']      = '0';
 				$config['max_width']     = '0';
 				$config['max_height']    = '0';
@@ -129,7 +129,7 @@ class Admin extends Backend_Controller {
 			$fileBanner = $this->posts_m->get($id)->image;
 			if(!empty($file_data))
 			{
-				if(file_exists($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
+				if(is_file($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
 				$fileBanner = $file_data['file_name'];
 			}
 
@@ -146,6 +146,7 @@ class Admin extends Backend_Controller {
 			);
 
 			$this->posts_m->update($id, $data);
+
 			redirect('admin/posts');
 		}
 		else

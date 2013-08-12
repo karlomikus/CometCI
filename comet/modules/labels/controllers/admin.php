@@ -96,7 +96,7 @@ class Admin extends Backend_Controller {
 			$fileBanner = $this->labels_m->get($id)->banner;
 			if(!empty($file_data))
 			{
-				if(file_exists($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
+				if(is_file($this->folder_path.$fileBanner)) unlink($this->folder_path.$fileBanner);
 				$fileBanner = $file_data['file_name'];
 			}
 			
