@@ -12,6 +12,8 @@ class Admin extends Backend_Controller {
 		$this->form_validation->set_rules('clanname', 'Clan name', 'required|min_length[3]|trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('clantag', 'Clan tag', 'trim|htmlspecialchars|xss_clean');
 		$this->form_validation->set_rules('adminmail', 'Admin email', 'trim|htmlspecialchars|valid_email|xss_clean');
+		$this->form_validation->set_rules('theme', 'Theme', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('layout', 'Layout', 'trim|required|xss_clean');
 
 		if($this->form_validation->run())
 		{
@@ -22,6 +24,8 @@ class Admin extends Backend_Controller {
 				'adminmail' => $this->input->post('adminmail'),
 				'comments' => $this->input->post('comments'),
 				'closedmsg' => $this->input->post('closedmsg'),
+				'theme' => $this->input->post('theme'),
+				'layout' => $this->input->post('layout'),
 				'commentsdelay' => $this->input->post('commentdelay'),
 				'closed' => $this->input->post('closed'),
 				'date' => date('Y-m-d H:i:s')
@@ -31,11 +35,13 @@ class Admin extends Backend_Controller {
 			redirect('admin/settings');
 		}
 
+		$settingsData = $this->settings_m->get(1);
+
 		$this->template
 			->set('title', 'Site Settings')
-			->set('data', $this->settings_m->get(1))
+			->set('data', $settingsData)
 			->set('themes', $this->template->get_themes())
-			->set('layouts', $this->template->get_theme_layouts('default'))
+			->set('layouts', $this->template->get_theme_layouts($settingsData->theme))
 			->build('admin/main');
 	}
 

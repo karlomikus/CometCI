@@ -249,9 +249,13 @@ function get_layout($moduleName = '')
 {
 	$CI =& get_instance();
 	$CI->load->model('modules/modules_m');
+	$CI->load->model('settings/settings_m');
 	$module = strtolower($moduleName);
 
+	// TODO: Remove error suppressing
 	$moduleLayout = @$CI->modules_m->get_by('name', $module)->layout;
+
+	if(empty($moduleLayout)) $moduleLayout = $CI->settings_m->get(1)->layout;
 
 	if($CI->template->layout_exists($moduleLayout.'.twig')) return $moduleLayout.'.twig';
 	else return 'default.twig';

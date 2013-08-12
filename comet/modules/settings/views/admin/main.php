@@ -25,7 +25,7 @@
 		<select placeholder="Select default theme" name="theme" class="js_select input-xlarge">
 			<option></option>
 			<?php foreach($themes as $theme): ?>
-				<option value="<?php echo $theme; ?>" <?php echo $data->theme == $theme ? 'selected' : ''; ?>><?php echo $theme; ?></option>
+				<option value="<?php echo $theme; ?>" <?php echo $data->theme == $theme ? 'selected' : ''; ?>><?php echo ucfirst($theme); ?></option>
 			<?php endforeach; ?>
 		</select>
 
@@ -33,7 +33,7 @@
 			<option></option>
 			<?php foreach($layouts as $layout): ?>
 				<?php $dbLayout = preg_replace("/\\.[^.\\s]{3,4}$/", "", $layout); ?>
-				<option value="<?php echo $layout; ?>" <?php echo $data->layout == $dbLayout ? 'selected' : ''; ?>><?php echo $layout; ?></option>
+				<option value="<?php echo $dbLayout; ?>" <?php echo $data->layout == $dbLayout ? 'selected' : ''; ?>><?php echo $layout; ?></option>
 			<?php endforeach; ?>
 		</select>
 
