@@ -5,7 +5,7 @@
 		<div class="post">
 
 			<div class="post-media">
-				<img src="{{ base_url() }}uploads/labels/{{ get_label_image(post.label) }}" alt="" />
+				<img src="{{ base_url() }}uploads/posts/{{ get_post_image(post.id) }}" alt="" />
 			</div>
 
 			<h3><a href="{{ base_url() }}post/{{ post.slug }}">{{ post.title }}</a></h3>

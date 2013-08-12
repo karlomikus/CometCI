@@ -76,6 +76,8 @@ class Admin extends Backend_Controller {
 
 		if ($this->form_validation->run() == TRUE)
 		{
+			$file_data = NULL;
+
 			if (!empty($_FILES['banner']['name']))
 			{
 				$config['upload_path']   = $this->folder_path;
@@ -86,14 +88,8 @@ class Admin extends Backend_Controller {
 				$config['file_name']     = $id;
 				$this->upload->initialize($config);
 
-				if ($this->upload->do_upload('banner'))
-				{
-					$file_data = $this->upload->data();
-				}
-				else {
-					$this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
-                	$file_data = NULL;
-				}
+				if ($this->upload->do_upload('banner')) $file_data = $this->upload->data();
+				else $this->session->set_flashdata('create_error', $this->upload->display_errors('', ''));
 			}
 
 			// Found new file delete the old one

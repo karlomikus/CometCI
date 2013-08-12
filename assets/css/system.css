@@ -84,12 +84,12 @@
 	margin-bottom: 15px;
 }
 
-.post .post-media {
+.post-media {
 	text-align: center;
 	background: rgba(0,0,0,0.2);
 }
 
-.post .post-media img {
+.post-media img {
 	display: block;
 	margin: auto;
 	max-height: 200px;

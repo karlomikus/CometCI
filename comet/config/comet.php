@@ -10,7 +10,7 @@ $config['linkify_users'] = TRUE;
 /**
  * Module-specific settings
  */
-$config['mod_max_posts'] = 6;
+$config['mod_max_posts'] = 5;
 $config['mod_max_matches'] = 20;
 
 /**

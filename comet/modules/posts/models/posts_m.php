@@ -24,4 +24,22 @@ class Posts_m extends MY_Model {
 	{
 		return parent::get_many_by('featured', 1);
 	}
+
+	public function get_frontpage_posts($limit, $offset, $includeClanPosts = false)
+	{
+		$this->db->order_by('date', 'desc');
+		$this->db->limit($limit, $offset);
+
+		if($includeClanPosts)
+		{
+			$this->db->where('state', 1);
+		}
+		else
+		{
+			$this->db->where('state', 1);
+			$this->db->where('clan', 0);
+		}
+
+		return $this->db->get('posts')->result();
+	}
 }

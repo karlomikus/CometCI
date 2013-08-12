@@ -9,6 +9,10 @@
 		{{ post.teaser }}
 	</p>
 
+	<div class="post-media">
+		<img src="{{ base_url() }}uploads/posts/{{ get_post_image(post.id) }}" alt="" />
+	</div>
+
 	<div class="post-body">
 		{{ post.body }}
 	</div>

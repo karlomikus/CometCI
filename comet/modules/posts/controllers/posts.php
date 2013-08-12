@@ -19,8 +19,10 @@ class Posts extends Frontend_Controller {
 		$this->parser->checkFunctions();
 
 		$count = $this->posts_m->count_by('state', '1');
-		$this->posts_m->order_by('id', 'desc');
-		$this->posts_m->limit($this->config->item('mod_max_posts'), $page);
+
+		$clanNews = false;
+		if($this->ion_auth->in_group(array(1, 3))) $clanNews = true;
+		$postsData = $this->posts_m->get_frontpage_posts($this->config->item('mod_max_posts'), $page, $clanNews);
 
 		// Pagination configuration
 		$config['base_url'] = base_url().'posts/index/';
@@ -46,7 +48,7 @@ class Posts extends Frontend_Controller {
 		$this->pagination->initialize($config);
 
 		$this->template
-			->set('posts', $this->posts_m->get_many_by('state', '1'))
+			->set('posts', $postsData)
 			->set('pagination', $this->pagination->create_links())
 			->build('main.twig');
 	}
@@ -54,7 +56,11 @@ class Posts extends Frontend_Controller {
 	public function show($id = '') 
 	{
 		if(empty($id)) show_404();
+
 		$this->load->model('posts_m');
+		$this->load->helper('posts');
+
+		$this->parser->checkFunctions();
 
 		if(is_numeric($id))
 		{
