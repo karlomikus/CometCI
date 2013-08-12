@@ -1,7 +1,9 @@
-<a href="{{ base_url() }}messages/index/sent" class="pure-button">Sent</a>
-<a href="{{ base_url() }}messages/" class="pure-button">Received</a>
-<a href="{{ base_url() }}messages/create" class="pure-button">New</a>
+<a href="{{ base_url() }}messages/index/sent" class="button cms-button">Sent</a>
+<a href="{{ base_url() }}messages/" class="button cms-button">Received</a>
+<a href="{{ base_url() }}messages/create" class="button cms-button">New</a>
+
 <hr />
+
 {% for msg in data %}
 	<div class="cms-pm">
 		<span><i class="icon-envelope"></i> {{ msg.title }}</span>

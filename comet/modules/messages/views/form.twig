@@ -1,15 +1,26 @@
 {{ form_open() }}
+	
+	<div class="create-form">
+		<h3>New private message</h3>
 
-	<input placeholder="Send to" type="text" name="sendto" />
+		<!-- Weeee HTML5 autocomplete, will need to change this -->
+		<input placeholder="Send to" type="text" name="sendto" list="states" />
 
-	<br />
+		<br />
 
-	<input placeholder="Title" type="text" name="title" />
+		<input placeholder="Title" type="text" name="title" />
 
-	<br />
+		<br />
 
-	<textarea placeholder="Content" name="content" rows="6"></textarea>
+		<textarea placeholder="Content" name="content"></textarea>
 
-	<button class="pure-button" type="submit">Send</button>
+		<button class="button" type="submit">Send</button>
+	</div>
 
 {{ form_close() }}
+	
+<datalist id="states">
+	{% for user in users %}
+		<option value="{{ user.username }}">
+	{% endfor %}
+</datalist>

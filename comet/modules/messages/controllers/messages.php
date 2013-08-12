@@ -57,7 +57,11 @@ class Messages extends Frontend_Controller {
 		}
 		else
 		{
+			$this->load->model('users/users_m');
+			$users = $this->users_m->get_all();
+
 			$this->template
+				->set('users', $users)
 				->build('form.twig');
 		}
 	}

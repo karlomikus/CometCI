@@ -36,14 +36,14 @@
 	margin-left: 85px;
 }
 
-.comment-add, .forum-post-create {
+.comment-add, .forum-post-create, .create-form {
 	background: rgba(0,0,0,0.1);
 	border-top: 2px solid #3499d1;
 	padding: 15px;
 	padding-top: 7px;
 }
 
-.comment-add textarea {
+.comment-add textarea, .create-form textarea {
 	width: 100%;
 	min-height: 100px;
 }

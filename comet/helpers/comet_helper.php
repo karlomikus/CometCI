@@ -147,15 +147,16 @@ function get_user_id($username)
 	$CI->db->where('username', $username);
 	$query = $CI->db->get('users');
 
-	return $query->row()->id;
+	if(!empty($query->row()->id)) return $query->row()->id;
+	else return 0;
 }
 
 function check_pms($userID)
 {
 	$CI =& get_instance();
-	$CI->load->model('messages/messages_m', 'msg');
+	$CI->load->model('users/users_m');
 
-	return $CI->msg->check_pms($userID);
+	return $CI->users_m->check_unread_messages($userID);
 }
 
 /**
