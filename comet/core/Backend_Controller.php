@@ -27,7 +27,7 @@ class Backend_Controller extends MY_Controller {
 		$currentModule = $this->router->fetch_module();
 		$accessGranted = $this->ion_auth->check_access(get_module_id($currentModule), 'admin');
 
-		if(!$accessGranted)
+		if($this->ion_auth->logged_in() && !$accessGranted)
 		{
 			// Allow access to dashboard
 			$this->session->set_flashdata('access_error', 'You don\'t have access to this module!');
