@@ -15,8 +15,12 @@ function get_game_icon($id, $format = FALSE)
 	$CI =& get_instance();
 	$CI->load->model('games/games_m');
 
-	if($format) return '<img src="'.base_url().'assets/games/'.$CI->games_m->get($id)->icon.'" title="'.$CI->games_m->get($id)->name.'" style="display: inline-block;" />';
-	else return $CI->games_m->get($id)->icon;
+	if(!empty($CI->games_m->get($id)->icon))
+	{
+		if($format) return '<img src="'.base_url().'assets/games/'.$CI->games_m->get($id)->icon.'" title="'.$CI->games_m->get($id)->name.'" style="display: inline-block;" />';
+		else return $CI->games_m->get($id)->icon;
+	}
+	else return '';
 }
 
 /* ================ */
@@ -57,13 +61,19 @@ function get_country($id, $what = 'name', $format = TRUE)
 
 	if($what == 'name')
 	{
-		return $CI->countries_m->get($id)->name;
+		if(!empty($CI->countries_m->get($id)->name)) return $CI->countries_m->get($id)->name;
+		return '';
 	}
 	else
 	{
-		if($format)
-			return '<img src="'.base_url().'assets/countries/'.$CI->countries_m->get($id)->code.'.png" alt="'.$CI->countries_m->get($id)->code.'" style="display: inline-block;" />';
-		return $CI->countries_m->get($id)->code.'.png';
+		if(!empty($CI->countries_m->get($id)->code))
+		{
+			if($format)
+			return '<img src="'.base_url().'assets/countries/'.$CI->countries_m->get($id)->code.'.png" />';
+			return $CI->countries_m->get($id)->code.'.png';
+		}
+
+		return '';
 	}
 }
 

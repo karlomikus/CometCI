@@ -1,20 +1,40 @@
 {% for team in data %}
-	<div class="panel">
-		<h3>{{team.name}}</h3>
-		<div>
-			{% for game in get_team_games(team.id) %}
-				{{get_game_icon(game, true)}} 
-			{% endfor %}
+	
+	<div class="team-roster">
+		<div class="team-roster-header">
+			{% if team.banner %}
+				<img src="{{ base_url() }}uploads/teams/{{ team.banner }}" />
+				<h4><span>{{ team.name }}</span></h4>
+			{% else %}
+				<h3>{{ team.name }}</h3>
+			{% endif %}
 		</div>
-		<p>{{team.description}}</p>
-		<p>
-			<strong>From:</strong> {{get_country(team.countryID, 'icon')}} {{get_country(team.countryID, 'name')}}
-		</p>
-		<hr />
-		<ul class="cms-list">
-		{% for member in get_full_roster(team.id) %}
-			<li class="text-center">{{get_avatar(member.user_id, true)}} {{get_username(member.user_id)}}</li>
-		{% endfor %}
-		</ul>
+
+		<div class="team-roster-info">
+			<p>
+				{{team.description}}
+			</p>
+			<p>
+				Plays:
+				{% for game in get_team_games(team.id) %}
+					{{ get_game_icon(game, true) }} 
+				{% endfor %}
+				<br/>
+				From: {{ get_country(team.countryID, 'icon') }} {{ get_country(team.countryID, 'name') }}
+			</p>
+		</div>
+
+		<div class="team-roster-members">
+
+			<ul class="no-style-list">
+
+				{% for member in get_full_roster(team.id) %}
+					<li>{{ get_avatar(member.user_id, true) }}<br/>{{ get_username(member.user_id) }}</li>
+				{% endfor %}
+
+			</ul>
+
+		</div>
 	</div>
+
 {% endfor %}

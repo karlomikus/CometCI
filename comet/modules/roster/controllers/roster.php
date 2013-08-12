@@ -8,7 +8,7 @@
  * teams for easier management of their website
  * based on Codeigniter framework
  *
- * @author Karlo Mikuš
+ * @author Karlo Mikus
  */
 class Roster extends Frontend_Controller {
 

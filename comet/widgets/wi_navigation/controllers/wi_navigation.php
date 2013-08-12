@@ -24,6 +24,7 @@ class Wi_navigation extends MX_Controller {
 			}
 			else $link = $queryLink;
 
+			$links[$key] = new stdClass();
 			$links[$key]->name = $value->name;
 			$links[$key]->link = $link;
 		}
