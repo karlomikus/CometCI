@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Clan Comet - File manager</title>
+		<link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700,800|Sintony:400,700" rel="stylesheet">
+		<link href="<?php echo $this->assets->css('main'); ?>" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	</head>
+<body class="ckeditor-filemanager">
+
+<h3>SELECT IMAGE</h3>
+
+<ul class="filemanager-list" id="filelist">
+	<?php foreach ($data as $fileName): ?>
+		<li>
+			<a href="#">
+				<img src="<?php echo base_url(); ?>uploads/<?php echo $fileName; ?>" alt="Image" />
+			</a>
+		</li>
+	<?php endforeach; ?>
+</ul>
+
+<script type="text/javascript">
+	var editor = window.opener.CKEDITOR;
+	
+	$("#filelist a").click(function(e) {
+		e.preventDefault();
+
+		var img = $(this).find("img");
+		var func = getUrlParam('CKEditorFuncNum');
+
+		editor.tools.callFunction(func, img.attr("src"));
+		window.close();
+	});
+
+	function getUrlParam( paramName ) {
+	    var reParam = new RegExp( '(?:[\?&]|&)' + paramName + '=([^&]+)', 'i' ) ;
+	    var match = window.location.search.match(reParam) ;
+
+	    return ( match && match.length > 1 ) ? match[ 1 ] : null ;
+	}
+</script>
+</body>
+</html>

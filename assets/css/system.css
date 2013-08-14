@@ -274,19 +274,16 @@ ul.media-list li img {
 /* =================================
    USER MESSAGESS
    ================================= */
-.cms-pm {
-	border-bottom: 1px solid #ccc;
-	background: #f2f2f2;
-	padding: 7px;
+.private-message {
+	margin-bottom: 20px;
 }
 
-.cms-pm span {
-	color: #e3516a;
-	font-weight: bold;
+.private-message-header h4 {
+	margin: 0;
 }
 
-.cms-pm small {
-	float: right;
+.private-message-header span {
+	color: #888;
 }
 
 /* =================================

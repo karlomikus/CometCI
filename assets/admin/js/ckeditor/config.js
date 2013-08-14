@@ -1,6 +1,6 @@
 CKEDITOR.editorConfig = function( config )
 {
-	config.extraPlugins = 'flash,justify,colorbutton,imagebrowser';
+	config.extraPlugins = 'flash,justify,colorbutton';
 	config.removePlugins = 'templates';
 
 	config.toolbarGroups = [
@@ -27,5 +27,6 @@ CKEDITOR.editorConfig = function( config )
 
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
-	config.imageBrowser_listUrl = 'list.json';
+	config.filebrowserBrowseUrl = '/cms/filemanager/';
+    config.filebrowserUploadUrl = '/cms/filemanager/';
 };

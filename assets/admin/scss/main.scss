@@ -1101,6 +1101,39 @@ span.help-block { margin-bottom: 20px; font-size: 14px; }
 	border-right: 1px solid #e4e4e4;
 }
 
+/* CKEditor File Manager */
+body.ckeditor-filemanager {
+	background: #eee !important;
+	margin: 20px;
+	h3 {
+		border-bottom: 2px solid #bbb;
+		font-family: 'Merriweather Sans', sans-serif;
+		font-weight: lighter;
+	}
+}
+
+.filemanager-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	li {
+		display: inline-block;
+		margin-bottom: 5px;
+		a {
+			padding: 5px;
+			border: 2px solid #bbb;
+			background: #fff;
+			display: block;
+			&:hover {
+				border-color: #22c7b6;
+			}
+		}
+		img {
+			max-height: 150px;
+		}
+	}
+}
+
 /* iCheck plugin Square skin */
 .icheckbox_square-blue,
 .iradio_square-blue {

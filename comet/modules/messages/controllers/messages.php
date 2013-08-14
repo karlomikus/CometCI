@@ -35,8 +35,10 @@ class Messages extends Frontend_Controller {
 		$this->load->helper('htmlpurifier');
 		$this->load->library('form_validation');
 
+		$this->parser->checkFunctions();
+
 		$this->form_validation->set_rules('title', 'Title', 'required|min_length[4]|trim|htmlspecialchars|xss_clean');
-		$this->form_validation->set_rules('content', 'Content', 'required|min_length[4]');
+		$this->form_validation->set_rules('content', 'Content', 'required|min_length[4]|htmlspecialchars');
 		$this->form_validation->set_rules('sendto', 'Send to', 'required|trim|htmlspecialchars|xss_clean');
 		// TODO: Check username validation
 

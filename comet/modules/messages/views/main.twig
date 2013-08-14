@@ -5,12 +5,16 @@
 <hr />
 
 {% for msg in data %}
-	<div class="cms-pm">
-		<span><i class="icon-envelope"></i> {{ msg.title }}</span>
-		<small>{{ get_username(msg.from) }}, {{ cms_date(msg.date) }} - {{ cms_time(msg.date) }}</small>
+
+	<div class="private-message">
+		
+		<div class="private-message-header">
+			<h4><i class="icon-envelope"></i> {{ msg.title }}</h4>
+			<span>From {{ get_username(msg.from) }}, to {{ get_username(msg.to) }} on {{ cms_date(msg.date) }} - {{ cms_time(msg.date) }}</span>
+		</div>
+		
 		<p>
 			{{ msg.content }}
-			<br />
 		</p>
 	</div>
 {% endfor %}

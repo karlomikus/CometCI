@@ -1,14 +1,15 @@
+{{ validation_errors() }}
 {{ form_open() }}
 	
 	<div class="create-form">
 		<h3>New private message</h3>
 
 		<!-- Weeee HTML5 autocomplete, will need to change this -->
-		<input placeholder="Send to" type="text" name="sendto" list="states" />
+		<input placeholder="Enter username" type="text" name="sendto" list="users" />
 
 		<br />
 
-		<input placeholder="Title" type="text" name="title" />
+		<input placeholder="Subject" type="text" name="title" />
 
 		<br />
 
@@ -19,7 +20,7 @@
 
 {{ form_close() }}
 	
-<datalist id="states">
+<datalist id="users">
 	{% for user in users %}
 		<option value="{{ user.username }}">
 	{% endfor %}
