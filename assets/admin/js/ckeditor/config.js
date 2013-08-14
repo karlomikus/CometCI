@@ -28,5 +28,4 @@ CKEDITOR.editorConfig = function( config )
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	config.filebrowserBrowseUrl = '/cms/filemanager/';
-    config.filebrowserUploadUrl = '/cms/filemanager/';
 };

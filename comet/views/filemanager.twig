@@ -8,6 +8,14 @@
 	</head>
 <body class="ckeditor-filemanager">
 
+<h3>UPLOAD IMAGE</h3>
+
+<?php echo form_open_multipart('filemanager/uploadImage'); ?>
+	<input type="hidden" name="funcNum" value="<?php echo $funcNum; ?>" />
+	<input type="file" name="imagefile" /> <br />
+	<button type="submit">Upload</button>
+<?php echo form_close(); ?>
+
 <h3>SELECT IMAGE</h3>
 
 <ul class="filemanager-list" id="filelist">
@@ -22,7 +30,7 @@
 
 <script type="text/javascript">
 	var editor = window.opener.CKEDITOR;
-	
+
 	$("#filelist a").click(function(e) {
 		e.preventDefault();
 
