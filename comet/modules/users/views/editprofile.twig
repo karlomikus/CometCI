@@ -1,73 +1,83 @@
 {% for message in messages %}
-	{{ message }}
+	<p class="alert">{{ message }}</p>
 {% endfor %}
 
 {{ validation_errors() }}
+
+<div class="profile-form">
+
 {{ form_open_multipart(current_url()) }}
 
-<fieldset class="cms-edit-profile">
+	<div class="create-form">
 
-	<legend>Personal Information</legend>
+		<h3>Personal Information</h3>
 
-	<label>First name*</label>
-	<input type="text" name="firstname" value="{{ data.first_name }}" />
+		<label class="required">First name</label>
+		<input type="text" name="firstname" value="{{ data.first_name }}" />
 
-	<label>Last name</label>
-	<input type="text" name="lastname" value="{{ data.last_name }}" />
+		<label>Last name</label>
+		<input type="text" name="lastname" value="{{ data.last_name }}" />
 
-	<label>Date of birth*</label>
-	<input type="text" name="dob" value="{{ cms_date(data.dob) }}" />
+		<label class="required">Date of birth</label>
+		<input type="text" name="dob" value="{{ cms_date(data.dob) }}" />
 
-	<label>Gender*</label>
-	<select name="gender">
-		<option value="male" selected>Male</option>
-		<option value="female">Female</option>
-	</select>
+		<label class="required">Gender</label>
+		<select name="gender">
+			<option value="male" selected>Male</option>
+			<option value="female">Female</option>
+		</select>
 
-	<label>Country*</label>
-	<select name="country">
-		{% for country in get_countries() %}
-			<option value="{{ country.id }}" {{ country.id == data.country ? 'selected' : '' }}>{{ country.name }}</option>
-		{% endfor %}
-	</select>
+		<label class="required">Country</label>
+		<select name="country">
+			{% for country in get_countries() %}
+				<option value="{{ country.id }}" {{ country.id == data.country ? 'selected' : '' }}>{{ country.name }}</option>
+			{% endfor %}
+		</select>
 
-	<label>Avatar</label>
-	<input type="file" name="avatar" />
+		<label>Avatar</label>
+		<input type="file" name="avatar" />
 
-</fieldset>
+		<label>Profile background</label>
+		<input type="file" name="background" />
 
-<br />
+	</div>
 
-<fieldset class="cms-edit-profile">
+	<div class="create-form">
 
-	<legend>Public profile</legend>
+		<h3>Public Profile</h3>
 	
-	<label>About me:</label>
-	<textarea name="aboutme">{{ data.about }}</textarea>
+		<label>About me:</label>
+		<textarea name="aboutme">{{ data.about }}</textarea>
 
-</fieldset>
+	</div>
 
-<br />
+	<div class="create-form">
 
-<fieldset class="cms-edit-profile">
+		<h3>Social networks</h3>
+	
+		<label>Steam:</label>
+		<input type="text" name="steam" value="{{ data.steam }}" />
 
-	<legend>Account edit</legend>
+	</div>
 
-	<label>New password</label>
-	<input type="password" name="newpassword" />
+	<div class="create-form">
 
-	<label>New email</label>
-	<input type="text" name="newmail" />
+		<h3>Account edit</h3>
+		
+		<label>New password</label>
+		<input type="password" name="newpassword" />
 
-	<label>Current password</label>
-	<input type="password" name="password" />
-	<br />
-	<small>Only needed if you change your password or email</small>
+		<label>New email</label>
+		<input type="text" name="newmail" />
 
-</fieldset>
+		<label>Current password <small>Only needed if you change your password or email</small></label>
+		<input type="password" name="password" />
+		<br />
 
-<br />
+	</div>
 
-<button type="submit" class="pure-button pure-button-primary">Save changes</button>
+	<button type="submit" class="button cms-button">Save changes</button>
 
 {{form_close()}}
+
+</div>

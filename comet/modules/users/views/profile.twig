@@ -1,14 +1,17 @@
-<div class="cms-profile-header">
-	<img class="cms-profile-avatar" src="{{ base_url() }}uploads/users/{{ get_avatar(userdata.id) }}" alt="avatar" />
-	<header>
-		<h3>
-			{{ userdata.username }}
-			{% if is_loggedin %}
-				<a href="{{ site_url('users/profile/edit/' ~ userdata.id) }}"><i class="icon-edit"></i></a>
-			{% endif %}
-		</h3>
-		<h4>{{ get_country(userdata.country, 'icon', TRUE) }} {{ userdata.first_name }} {{ userdata.last_name }}</h4>
-	</header>
+<div class="user-profile-header">
+
+	<div class="user-profile-bg" style="background: #ddd url({{ base_url() }}uploads/{{ userdata.background }});">
+		<img class="cms-profile-avatar" src="{{ base_url() }}uploads/users/{{ get_avatar(userdata.id) }}" alt="avatar" />
+	</div>
+
+	<h2>
+		<span>{{ userdata.first_name }}</span> {{ userdata.username }} <span>{{ userdata.last_name }}</span>
+		{% if is_loggedin %}
+			<a href="{{ site_url('users/profile/edit/' ~ userdata.id) }}"><i class="icon-edit"></i></a>
+		{% endif %}
+		<small>{{ get_country(userdata.country, 'icon', TRUE) }} {{ get_country(userdata.country, 'name') }}</small>
+	</h2>
+
 </div>
 
 <h3>About me:</h3>
