@@ -1,5 +1,9 @@
+<ul class="banners_widget">
 {% for banner in banners %}
-	<a href="{{ urldecode(banner.url) }}" target="_blank">
-		<img src="{{ base_url() }}uploads/banners/{{ banner.image }}" alt="{{ banner.name }}" style="width: {{ banner.width }}px; height: {{ banner.height }}px;" />
-	</a>
+	<li>
+		<a href="{{ urldecode(banner.url) }}" target="_blank">
+			<img src="{{ base_url() }}uploads/banners/{{ banner.image }}" alt="{{ banner.name }}" />
+		</a>
+	</li>
 {% endfor %}
+</ul>

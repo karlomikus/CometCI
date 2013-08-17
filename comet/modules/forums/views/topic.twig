@@ -37,8 +37,10 @@
 		{{get_avatar(original_post.author, true)}}
 
 		<span>{{get_username(original_post.author)}} <br /> {{original_post.date}}</span>
-
-		<a class="edit-post" href="{{ base_url() }}forums/edittopic/{{ original_post.id }}">edit</a>
+		
+		{% if original_post.author == user.id or is_mod == true %}
+			<a class="edit-post" href="{{ base_url() }}forums/edittopic/{{ original_post.id }}">edit</a>
+		{% endif %}
 
 	</div>
 
@@ -52,11 +54,13 @@
 
 		<div class="forum-post-info">
 
-			{{get_avatar(post.author, true)}}
+			{{get_avatar(post.poster, true)}}
 
-			<span>{{get_username(post.author)}} <br /> {{post.date}}</span>
-
-			<a class="edit-post" href="#">edit</a>
+			<span>{{get_username(post.poster)}} <br /> {{post.date}}</span>
+			
+			{% if post.poster == user.id or is_mod == true %}
+				<a class="edit-post" href="{{ base_url() }}forums/editreply/{{ original_post.id }}/{{ post.id }}">edit</a>
+			{% endif %}
 
 		</div>
 

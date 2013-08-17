@@ -86,6 +86,12 @@ class Forums_m extends MY_Model {
 		parent::insert($data);
 	}
 
+	public function edit_topic($id, $data)
+	{
+		$this->_table = 'forum_topics';
+		parent::update($id, $data);
+	}
+
 	public function delete_topic($topicID)
 	{
 		// Delete topic
@@ -149,6 +155,20 @@ class Forums_m extends MY_Model {
 		// Insert reply
 		$this->_table = 'forum_replies';
 		parent::insert($data);		
+	}
+
+	public function update_reply($id, $data)
+	{
+		// Insert reply
+		$this->_table = 'forum_replies';
+		parent::update($id, $data);		
+	}
+
+	public function get_topic_reply($id)
+	{
+		// Insert reply
+		$this->_table = 'forum_replies';
+		return parent::get($id);		
 	}
 
 	public function update_last_modified($topicID)

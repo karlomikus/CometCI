@@ -57,6 +57,7 @@ class Admin extends Backend_Controller {
 			$data = array(
 				'name' => $this->input->post('name'),
 				'width' => $this->input->post('width', TRUE),
+				'label' => $this->input->post('label'),
 				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
@@ -70,8 +71,10 @@ class Admin extends Backend_Controller {
 		}
 		else
 		{
+			$this->load->model('labels/labels_m');
 			$this->template
 				->set('title', 'Create banner')
+				->set('labels', $this->labels_m->get_all())
 				->build('admin/form');
 		}
 	}
@@ -116,6 +119,7 @@ class Admin extends Backend_Controller {
 			$data = array(
 				'name' => $this->input->post('name'),
 				'width' => $this->input->post('width', TRUE),
+				'label' => $this->input->post('label'),
 				'height' => $this->input->post('height', TRUE),
 				'url' => urlencode($this->input->post('url')),
 				'date' => date('Y-m-d H:i:s'),
@@ -129,9 +133,11 @@ class Admin extends Backend_Controller {
 		}
 		else
 		{
+			$this->load->model('labels/labels_m');
 			$this->template
 				->set('title', 'Edit banner')
 				->set('data', $this->banners_m->as_array()->get($id))
+				->set('labels', $this->labels_m->get_all())
 				->build('admin/form');
 		}
 	}

@@ -1,0 +1,33 @@
+<ul class="breadcrumbs">
+	<li><a href="{{ base_url('forums') }}">Forum</a></li>
+	<li>&gt;</li>
+	<li><a href="{{ base_url('forums/forum/' ~ forumID) }}">{{ get_forum_name(forumID) }}</a></li>
+	<li>&gt;</li>
+	<li>Edit topic</li>
+</ul>
+
+{{ validation_errors() }}
+
+<div class="forum-post-create">
+
+	<h3>Edit topic</h3>
+
+	{{ form_open(uri_string()) }}
+
+		<input placeholder="Topic title" type="text" name="title" value="{{ data.title }}" />
+
+		<textarea class="markitup" placeholder="Write topic content here..." name="content" style="height: 150px;">{{ data.content }}</textarea>
+		
+		{% if is_mod %}
+		<label for="sticky-check">
+			<input type="checkbox" id="sticky-check" name="sticky" value="1" {{ (data.sticky == 1) ? 'checked' : '' }} /> Make sticky topic
+		</label>
+		{% endif %}
+
+		<br />
+
+		<button class="button">Save topic</button>
+		
+	{{ form_close() }}
+
+</div>

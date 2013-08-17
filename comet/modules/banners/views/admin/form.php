@@ -5,6 +5,15 @@
 
 	<br />
 
+	<select placeholder="Choose label" class="js_select input-xlarge" name="label">
+		<option></option>
+		<?php foreach($labels as $label): ?>
+		<option value="<?php echo $label->id; ?>" <?php echo isset($data) ? set_select('label', $data['id'], $label->id==$data['label'] ? TRUE : FALSE) : set_select('label'); ?>><?php echo $label->name; ?></option>
+		<?php endforeach; ?>
+	</select>
+
+	<br />
+
 	<input placeholder="Width" class="input-small" type="text" name="width" value="<?php echo isset($data) ? $data['width'] : set_value("width"); ?>" />
 
 	<input placeholder="Height" class="input-small" type="text" name="height" value="<?php echo isset($data) ? $data['height'] : set_value("height"); ?>" />

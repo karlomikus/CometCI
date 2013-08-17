@@ -34,10 +34,6 @@ class Forums extends Frontend_Controller {
 			->build('main.twig');
 	}
 
-	/**
-	 * Lists all topics in given forum
-	 * @param  integer $id Forum ID
-	 */
 	public function forum($id = 0, $page = 0)
 	{
 		$this->load->model('forums_m');
@@ -105,6 +101,8 @@ class Forums extends Frontend_Controller {
 
 	public function newtopic($forumID = 0)
 	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->model('forums_m');
 		$this->load->helper('form');
 		$this->load->helper('forum');
@@ -144,8 +142,53 @@ class Forums extends Frontend_Controller {
 		}
 	}
 
+	public function edittopic($topicID = 0)
+	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
+		$this->load->model('forums_m');
+		$this->load->helper('form');
+		$this->load->helper('forum');
+		$this->load->library('form_validation');
+
+		// Load missing twig functions
+		$this->parser->checkFunctions();
+
+		$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
+		$data = $this->forums_m->get_topic($topicID);
+
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
+
+		$this->form_validation->set_rules('title', 'Topic title', 'required|min_length[4]|max_length[20]|htmlspecialchars|xss_clean');
+		$this->form_validation->set_rules('content', 'Topic content', 'required|min_length[4]|htmlspecialchars|xss_clean');
+
+		if($this->form_validation->run() && $is_mod)
+		{
+			$data = array(
+				'title' => $this->input->post('title'),
+				'last_modified' => date('Y-m-d H:i:s'),
+				'sticky' => $this->input->post('sticky'),
+				'content' => $this->input->post('content')
+			);
+
+			$this->forums_m->edit_topic($topicID, $data);
+			redirect('forums/forum/'.$forumID);
+		}
+		else
+		{
+			$this->template
+				->set('forumID', $forumID)
+				->set('is_mod', $is_mod)
+				->set('data', $data)
+				->build('edit-topic.twig');
+		}
+	}
+
 	public function deletetopic($topicID = 0)
 	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->model('forums_m');
 		$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
 
@@ -165,6 +208,8 @@ class Forums extends Frontend_Controller {
 
 	public function locktopic($topicID = 0)
 	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->model('forums_m');
 
 		$is_mod = FALSE;
@@ -187,6 +232,8 @@ class Forums extends Frontend_Controller {
 
 	public function sticky($topicID = 0)
 	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->model('forums_m');
 
 		$is_mod = FALSE;
@@ -209,6 +256,8 @@ class Forums extends Frontend_Controller {
 
 	public function newreply($topicID = 0)
 	{
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->library('form_validation');
 		$this->load->model('forums_m');
 		$this->load->helper('form');
@@ -244,7 +293,50 @@ class Forums extends Frontend_Controller {
 		}
 	}
 
+	public function editreply($topicID = 0, $replyID = 0)
+	{
+		if(!$this->ion_auth->logged_in()) redirect();
+		
+		$this->load->library('form_validation');
+		$this->load->model('forums_m');
+		$this->load->helper('form');
+		$this->load->helper('forum');
+
+		$this->parser->checkFunctions();
+
+		if($this->forums_m->is_locked($topicID)) redirect('forums');
+
+		$forumID = $this->forums_m->get_topic_forum($topicID)->forum;
+		$data = $this->forums_m->get_topic_reply($replyID);
+
+		$is_mod = FALSE;
+		if($this->forums_m->is_moderator($this->user->user_id, $forumID) || $this->ion_auth->is_admin()) $is_mod = TRUE;
+
+		$this->form_validation->set_rules('content', 'Reply content', 'required|min_length[4]|htmlspecialchars|xss_clean');		
+
+		if($this->form_validation->run() && ($is_mod || $this->user->id == $data->poster))
+		{
+			$dataDb = array(
+				'topic' => $topicID,
+				'poster' => $this->user->user_id,
+				'date' => date('Y-m-d H:i:s'),
+				'content' => $this->input->post('content')
+			);
+
+			$this->forums_m->update_reply($replyID, $dataDb);
+			redirect('forums/topic/'.$topicID);
+		}
+		else
+		{
+			$this->template
+				->set('topicID', $topicID)
+				->set('forumID', $forumID)
+				->set('data', $data)
+				->build('edit-reply.twig');
+		}
+	}
+
 }
 
 /* End of file forums.php */
-/* Location: .//C/wamp/www/cms/comet/modules/forums/controllers/forums.php */
+/* Location: comet/modules/forums/controllers/forums.php */

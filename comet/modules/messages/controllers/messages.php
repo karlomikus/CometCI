@@ -6,6 +6,8 @@ class Messages extends Frontend_Controller {
 	{
 		parent::__construct();
 
+		if(!$this->ion_auth->logged_in()) redirect();
+
 		$this->load->model('messages_m', 'msg');
 		$this->template
 			->set_layout(get_layout(__CLASS__));
