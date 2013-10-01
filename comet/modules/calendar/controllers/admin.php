@@ -72,6 +72,7 @@ class Admin extends Backend_Controller {
 		if (!$this->input->is_ajax_request()) redirect('admin/calendar');
 
 		$this->load->model('matches/matches_m');
+        $this->load->helper('matches');
 
 		if(isset($_POST) && isset($_POST['date']))
 		{
