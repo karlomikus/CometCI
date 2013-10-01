@@ -1,13 +1,13 @@
 <?php $i=1;foreach ($teams as $team): ?>
-	<h4 class="cms-title"><?php echo $team->name; ?></h4>
+	<h4 class="cms-title"><?php echo ellipsize($team->name, 20); ?></h4>
 	<div class="media-panel">
 		<ul class="media-list">
 			<?php $selectedArray = array(); foreach ($this->roster_m->get_team_roster($team->id) as $member): ?>
 			<li>
 				<div>
-					<img src="<?php echo base_url(); ?>uploads/users/<?php echo get_avatar($member->user_id); ?>" alt="">
+					<img src="<?php echo base_url(); ?>uploads/users/<?php echo get_avatar($member->user_id); ?>" alt="_avatar" />
 					<br />
-					<strong><?php echo $this->ion_auth->user($member->user_id)->row()->username; ?></strong>
+					<strong><?php echo ellipsize($this->ion_auth->user($member->user_id)->row()->username, 8); ?></strong>
 					<br />
 					<?php echo $member->position; ?>
 				</div>
@@ -20,10 +20,10 @@
 <?php echo form_open(uri_string().'/adduser/'.$team->id, array('id'=>'addUser'.$i, 'class'=>'modal hide fade cms-form')); ?>
 
 	<div class="modal-header">
-		<h3>Add user to roster</h3>
+		<h3>Edit members</h3>
 	</div>
 	<div class="modal-body">
-		<p>Choose users you want to add to <strong><?php echo $team->name; ?></strong></p>
+		<p>Editing members for team: <?php echo $team->name; ?></p>
 		<select class="js_select input-xxlarge" name="users[]" multiple>
 			<?php foreach ($this->ion_auth->users()->result() as $member): ?>
 				<?php if(in_array($member->user_id, $selectedArray)) $checked = 'selected'; else $checked = ''; ?>

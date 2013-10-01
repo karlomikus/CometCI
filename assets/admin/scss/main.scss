@@ -364,7 +364,6 @@ label.input-label {
 	background: #37404e;
 	margin-bottom: 20px;
 	padding: 20px 20px 0 20px;
-	box-shadow: 0 1px 0 #fff, inset 0 5px 4px #262d36;
 }
 
 .media-panel .media-list {
@@ -379,18 +378,22 @@ label.input-label {
 
 .media-panel .media-list li div {
 	background: #fff;
-	height: 150px;
 	padding: 5px;
+	height: 120px;
 	text-align: center;
+	img {
+		height: 100px;
+	}
 }
 
 .media-panel .media-add {
 	color: #fff;
 	border: 2px dashed #fff;
 	display: block;
-	height: 150px;
-	line-height: 170px;
-	padding: 0 20px;
+	height: 125px;
+	text-align: center;
+	line-height: 145px;
+	width: 100px;
 }
 
 .media-panel .media-add:hover, .media-panel .media-add:focus {

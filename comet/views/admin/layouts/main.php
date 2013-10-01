@@ -34,7 +34,7 @@
 	</div>
 
 	<footer class="credits">
-		Licensed to CLANNAME <?php echo date('Y') ?> | Icons by <a href="http://www.interactivemania.com" target="_blank">interactivemania</a> and <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font awesome</a> | <a href="http://comet.kami-design.com/" target="_blank">Support</a>
+		Powered by <a href="http://comet.kami-design.com/" target="_blank">Comet CMS</a> for CLANNAME <?php echo date('Y') ?> | Icons by <a href="http://www.interactivemania.com" target="_blank">interactivemania</a> and <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font awesome</a>
 	</footer>
 
 	<?php echo $template['metadata']; ?>

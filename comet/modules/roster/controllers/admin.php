@@ -11,6 +11,7 @@ class Admin extends Backend_Controller {
 	public function index()
 	{
 		$this->load->helper('form');
+		$this->load->helper('text');
 		$this->load->model('teams/teams_m');
 
 		$this->template
