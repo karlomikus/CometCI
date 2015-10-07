@@ -1,3 +1,5 @@
+@deprected: This is a imported repo from mercurial
+
 Clan Comet v0.3a
 ================
 
